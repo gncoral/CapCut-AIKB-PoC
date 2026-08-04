@@ -1,0 +1,11 @@
+{
+  "name": "capcut-aikb-poc",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "sync:figma": "node scripts/sync-figma.mjs",
+    "check": "node scripts/check-data.mjs"
+  }
+}
+

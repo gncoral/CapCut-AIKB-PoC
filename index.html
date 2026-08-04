@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CapCut M&amp;UG Design Library</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div>
+      <div class="brand">CapCut M&amp;UG <span>Design Library</span></div>
+      <div class="subtitle">剪映 CapCut · 商业化与增长设计 · AI 品牌视觉知识库试验版</div>
+    </div>
+    <div class="sync-state" id="sync-state">正在读取图库…</div>
+  </header>
+
+  <nav class="tabs" aria-label="主导航">
+    <button class="tab active" type="button">灵感库 <span id="total-count">0</span></button>
+    <button class="tab" type="button" disabled>收藏 <span id="saved-count">0</span></button>
+  </nav>
+
+  <main>
+    <section class="toolbar" aria-label="图库筛选">
+      <div class="chips" id="category-chips">
+        <button class="chip active" type="button" data-category="all">全部</button>
+        <button class="chip" type="button" data-category="branding">品牌</button>
+        <button class="chip" type="button" data-category="ui">UI界面</button>
+        <button class="chip model-launch" type="button" data-category="model-launch-background">
+          模型上新背景 <span id="model-launch-count">0</span>
+        </button>
+      </div>
+      <label class="search-wrap">
+        <span class="sr-only">搜索图库</span>
+        <input id="search" type="search" placeholder="搜索标题或标签">
+      </label>
+    </section>
+
+    <section class="status-row">
+      <span id="result-count">0 张图片</span>
+      <span class="status-hint">Figma 素材由安全的定时任务更新</span>
+    </section>
+
+    <section class="gallery" id="gallery" aria-live="polite"></section>
+    <section class="empty" id="empty" hidden>
+      <h2>这个分类还没有图片</h2>
+      <p>当前筛选条件下没有找到图片。</p>
+    </section>
+  </main>
+
+  <dialog id="preview-dialog">
+    <button class="dialog-close" id="dialog-close" type="button" aria-label="关闭">×</button>
+    <img id="preview-image" alt="">
+    <div class="dialog-meta">
+      <strong id="preview-title"></strong>
+      <a id="preview-link" target="_blank" rel="noopener">打开来源</a>
+    </div>
+  </dialog>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

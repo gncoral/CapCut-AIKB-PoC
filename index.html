@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CapCut M&amp;UG Design Library</title>
-  <link rel="stylesheet" href="styles.css?v=brand-nav-1">
+  <link rel="stylesheet" href="styles.css?v=brand-nav-2">
 </head>
 <body>
   <header class="site-header">
@@ -49,14 +49,19 @@
     </section>
 
     <section class="view brand-guidelines-view" id="brand-guidelines-view" hidden>
-      <div class="brand-guidelines-empty">
-        <span>品牌规范</span>
-        <h1>先整理 Figma，再接入这里</h1>
-        <p>之后这里会集中展示剪映与 CapCut 的 Logo、品牌色、字体、核心规则和正确案例，并保留完整 Figma 品牌手册入口。</p>
-        <div class="brand-guidelines-coming">
-          <span>剪映</span>
-          <span>CapCut</span>
-        </div>
+      <nav class="brand-family-nav" aria-label="品牌分组">
+        <button class="brand-family active" type="button" data-brand-family="jianying-capcut">剪映 / CapCut</button>
+        <button class="brand-family" type="button" data-brand-family="jimeng-dreamina">即梦 / Dreamina</button>
+        <button class="brand-family" type="button" data-brand-family="xingtu-hypic">醒图 / Hypic</button>
+        <button class="brand-family" type="button" data-brand-family="xioyunqiao-pippit">小云雀 / Pippit</button>
+      </nav>
+
+      <div class="brand-subnav" id="brand-subnav" aria-label="品牌选择"></div>
+
+      <div class="brand-content-empty">
+        <span id="selected-brand-name">剪映</span>
+        <h1>品牌资料待接入</h1>
+        <p>之后这里会连接现有飞书品牌文档、Figma 源文件，并展示最常用规则和相关视觉案例。</p>
       </div>
     </section>
   </main>
@@ -70,6 +75,6 @@
     </div>
   </dialog>
 
-  <script type="module" src="app.js?v=brand-nav-1"></script>
+  <script type="module" src="app.js?v=brand-nav-2"></script>
 </body>
 </html>

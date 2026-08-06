@@ -15,6 +15,47 @@ const modelLaunchCount = document.querySelector('#model-launch-count');
 const searchInput = document.querySelector('#search');
 const dialog = document.querySelector('#preview-dialog');
 
+const brandFamilies = {
+  'jianying-capcut': ['剪映', 'CapCut'],
+  'jimeng-dreamina': ['即梦', 'Dreamina'],
+  'xingtu-hypic': ['醒图', 'Hypic'],
+  'xioyunqiao-pippit': ['小云雀', 'Pippit'],
+};
+
+const brandSubnav = document.querySelector('#brand-subnav');
+const selectedBrandName = document.querySelector('#selected-brand-name');
+
+function selectBrand(name, button) {
+  selectedBrandName.textContent = name;
+  brandSubnav.querySelectorAll('.brand-option').forEach(option => {
+    option.classList.toggle('active', option === button);
+  });
+}
+
+function renderBrandOptions(family) {
+  const names = brandFamilies[family] || [];
+  brandSubnav.replaceChildren(...names.map((name, index) => {
+    const button = document.createElement('button');
+    button.className = `brand-option${index === 0 ? ' active' : ''}`;
+    button.type = 'button';
+    button.textContent = name;
+    button.addEventListener('click', () => selectBrand(name, button));
+    return button;
+  }));
+  selectedBrandName.textContent = names[0] || '';
+}
+
+document.querySelector('.brand-family-nav').addEventListener('click', event => {
+  const button = event.target.closest('[data-brand-family]');
+  if (!button) return;
+  document.querySelectorAll('.brand-family').forEach(option => {
+    option.classList.toggle('active', option === button);
+  });
+  renderBrandOptions(button.dataset.brandFamily);
+});
+
+renderBrandOptions('jianying-capcut');
+
 document.querySelector('.tabs').addEventListener('click', event => {
   const tab = event.target.closest('[data-view]');
   if (!tab) return;

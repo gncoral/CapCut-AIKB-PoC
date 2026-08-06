@@ -15,6 +15,18 @@ const modelLaunchCount = document.querySelector('#model-launch-count');
 const searchInput = document.querySelector('#search');
 const dialog = document.querySelector('#preview-dialog');
 
+document.querySelector('.tabs').addEventListener('click', event => {
+  const tab = event.target.closest('[data-view]');
+  if (!tab) return;
+
+  document.querySelectorAll('.tab[data-view]').forEach(button => {
+    button.classList.toggle('active', button === tab);
+  });
+  document.querySelectorAll('.view').forEach(view => {
+    view.hidden = view.id !== `${tab.dataset.view}-view`;
+  });
+});
+
 function safeText(value) {
   return String(value ?? '');
 }

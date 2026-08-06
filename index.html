@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CapCut M&amp;UG Design Library</title>
-  <link rel="stylesheet" href="styles.css?v=brand-nav-3">
+  <link rel="stylesheet" href="styles.css?v=brand-content-1">
 </head>
 <body>
   <header class="site-header">
@@ -58,11 +58,21 @@
 
       <div class="brand-subnav" id="brand-subnav" aria-label="品牌选择"></div>
 
-      <div class="brand-content-empty">
-        <span id="selected-brand-name">剪映</span>
-        <h1>品牌资料待接入</h1>
-        <p>之后这里会连接现有飞书品牌文档、Figma 源文件，并展示最常用规则和相关视觉案例。</p>
-      </div>
+      <article class="brand-content">
+        <header class="brand-content-header">
+          <div>
+            <span id="selected-brand-name">剪映</span>
+            <h1 id="brand-content-title">剪映品牌规范</h1>
+          </div>
+          <a id="brand-source-link" target="_blank" rel="noopener">打开源文件 Figma ↗</a>
+          <span id="brand-source-pending" hidden>源文件 Figma · 待补充</span>
+        </header>
+        <img class="brand-guide-image" id="brand-guide-image" alt="" hidden>
+        <div class="brand-content-empty" id="brand-content-empty" hidden>
+          <h2>品牌资料待接入</h2>
+          <p>之后这里会连接现有飞书品牌文档、Figma 源文件，并展示最常用规则和相关视觉案例。</p>
+        </div>
+      </article>
     </section>
   </main>
 
@@ -75,6 +85,6 @@
     </div>
   </dialog>
 
-  <script type="module" src="app.js?v=brand-nav-3"></script>
+  <script type="module" src="app.js?v=brand-content-1"></script>
 </body>
 </html>

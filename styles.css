@@ -120,24 +120,55 @@ main { padding: 32px; }
   color: var(--bg);
 }
 
-.brand-content-empty {
-  width: min(560px, 100%);
-  margin: 70px auto 0;
-  padding: 32px 28px;
-  text-align: left;
-  border-left: 2px solid var(--line);
+.brand-content {
+  width: min(1200px, 100%);
+  margin: 26px auto 0;
 }
 
-.brand-content-empty > span {
+.brand-content-header {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand-content-header > div > span {
   color: var(--cyan);
   font-size: 12px;
 }
 
-.brand-content-empty h1 {
-  margin: 12px 0 10px;
+.brand-content-header h1 {
+  margin: 8px 0 0;
   font-size: clamp(22px, 4vw, 32px);
   letter-spacing: -1px;
 }
+
+.brand-content-header a,
+.brand-content-header > span {
+  flex: 0 0 auto;
+  color: #86b3ff;
+  font-size: 13px;
+}
+
+.brand-guide-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+}
+
+.brand-guide-image[hidden] { display: none; }
+
+.brand-content-empty {
+  margin-top: 64px;
+  padding: 32px 28px;
+  border-left: 2px solid var(--line);
+}
+
+.brand-content-empty h2 { margin: 0 0 10px; font-size: 22px; }
 
 .brand-content-empty p {
   margin: 0;
@@ -281,5 +312,6 @@ dialog img { width: 100%; max-height: calc(100vh - 140px); object-fit: contain; 
   .connect-panel form { flex-direction: column; }
   .status-hint { display: none; }
   .brand-family-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .brand-content-header { align-items: flex-start; flex-direction: column; }
   .brand-content-empty { margin-top: 38px; }
 }

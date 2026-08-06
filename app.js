@@ -32,7 +32,7 @@ const brandGuides = {
   },
   'CapCut': {
     image: 'assets/brand-guidelines/capcut/overview.png',
-    sourceUrl: 'https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE',
+    sourceUrl: 'https://www.figma.com/design/iEv05yI0ie9tvrxs6pUbCv/UG%E8%A7%86%E8%A7%89%E8%B5%84%E4%BA%A7%E5%BA%93---%E5%89%AA%E6%98%A0-CapCut?node-id=210-76&t=bUQWPyKBxm9y7aEE-1',
   },
 };
 

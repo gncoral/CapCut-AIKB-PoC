@@ -22,11 +22,42 @@ const brandFamilies = {
   'xioyunqiao-pippit': ['小云雀', 'Pippit'],
 };
 
+const brandGuides = {
+  '剪映': {
+    image: 'assets/brand-guidelines/jianying/overview.png',
+    sourceUrl: 'https://www.figma.com/design/ehZBGGERFm9wim6KUmM5B6/%E5%89%AA%E6%98%A0%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80-%E6%9B%B4%E6%96%B0?node-id=467-146331&t=E0AuhsftD5fHGOwp-1',
+  },
+};
+
 const brandSubnav = document.querySelector('#brand-subnav');
 const selectedBrandName = document.querySelector('#selected-brand-name');
+const brandContentTitle = document.querySelector('#brand-content-title');
+const brandSourceLink = document.querySelector('#brand-source-link');
+const brandSourcePending = document.querySelector('#brand-source-pending');
+const brandGuideImage = document.querySelector('#brand-guide-image');
+const brandContentEmpty = document.querySelector('#brand-content-empty');
+
+function renderBrandGuide(name) {
+  const guide = brandGuides[name];
+  selectedBrandName.textContent = name;
+  brandContentTitle.textContent = `${name}品牌规范`;
+  brandSourceLink.hidden = !guide?.sourceUrl;
+  brandSourcePending.hidden = Boolean(guide?.sourceUrl);
+  brandGuideImage.hidden = !guide?.image;
+  brandContentEmpty.hidden = Boolean(guide?.image);
+
+  if (guide?.sourceUrl) brandSourceLink.href = guide.sourceUrl;
+  if (guide?.image) {
+    brandGuideImage.src = `${guide.image}?t=${Date.now()}`;
+    brandGuideImage.alt = `${name}品牌规范速览`;
+  } else {
+    brandGuideImage.removeAttribute('src');
+    brandGuideImage.alt = '';
+  }
+}
 
 function selectBrand(name, button) {
-  selectedBrandName.textContent = name;
+  renderBrandGuide(name);
   brandSubnav.querySelectorAll('.brand-option').forEach(option => {
     option.classList.toggle('active', option === button);
   });
@@ -42,7 +73,7 @@ function renderBrandOptions(family) {
     button.addEventListener('click', () => selectBrand(name, button));
     return button;
   }));
-  selectedBrandName.textContent = names[0] || '';
+  renderBrandGuide(names[0] || '');
 }
 
 document.querySelector('.brand-family-nav').addEventListener('click', event => {

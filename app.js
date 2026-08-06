@@ -30,6 +30,10 @@ const brandGuides = {
     image: 'assets/brand-guidelines/jianying/overview.png',
     sourceUrl: 'https://www.figma.com/design/ehZBGGERFm9wim6KUmM5B6/%E5%89%AA%E6%98%A0%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80-%E6%9B%B4%E6%96%B0?node-id=467-146331&t=E0AuhsftD5fHGOwp-1',
   },
+  'CapCut': {
+    image: 'assets/brand-guidelines/capcut/overview.png',
+    sourceUrl: 'https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE',
+  },
 };
 
 const brandSubnav = document.querySelector('#brand-subnav');

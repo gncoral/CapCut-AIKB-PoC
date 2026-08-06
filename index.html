@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CapCut M&amp;UG Design Library</title>
-  <link rel="stylesheet" href="styles.css?v=brand-content-1">
+  <link rel="stylesheet" href="styles.css?v=background-styles-1">
 </head>
 <body>
   <header class="site-header">
@@ -39,6 +39,16 @@
       <section class="status-row">
         <span id="result-count">0 张图片</span>
         <span class="status-hint">Figma 素材由安全的定时任务更新</span>
+      </section>
+
+      <section class="style-filter" id="style-filter" aria-label="背景风格筛选" hidden>
+        <span>风格</span>
+        <div class="chips">
+          <button class="style-chip active" type="button" data-style="all">全部风格</button>
+          <button class="style-chip" type="button" data-style="柔焦色场">柔焦色场</button>
+          <button class="style-chip" type="button" data-style="抽象扩散">抽象扩散</button>
+          <button class="style-chip" type="button" data-style="极简3D">极简 3D</button>
+        </div>
       </section>
 
       <section class="gallery" id="gallery" aria-live="polite"></section>
@@ -85,6 +95,6 @@
     </div>
   </dialog>
 
-  <script type="module" src="app.js?v=brand-content-1"></script>
+  <script type="module" src="app.js?v=background-styles-1"></script>
 </body>
 </html>

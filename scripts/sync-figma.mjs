@@ -52,8 +52,27 @@ function exportableChildren(node) {
   return candidates;
 }
 
-function backgroundStyleFor(node) {
-  return backgroundStyleNames.find(name => node.sectionName?.includes(name)) || '';
+function collectStyleAnchors(node, anchors = []) {
+  const label = `${node?.name || ''} ${node?.characters || ''}`;
+  const style = backgroundStyleNames.find(name => label.includes(name));
+  const box = node?.absoluteBoundingBox;
+  if (style && box && Number.isFinite(box.x) && Number.isFinite(box.width)) {
+    anchors.push({ style, centerX: box.x + box.width / 2 });
+  }
+  for (const child of node?.children || []) collectStyleAnchors(child, anchors);
+  return anchors;
+}
+
+function backgroundStyleFor(node, styleAnchors) {
+  const sectionStyle = backgroundStyleNames.find(name => node.sectionName?.includes(name));
+  if (sectionStyle) return sectionStyle;
+
+  const box = node?.absoluteBoundingBox;
+  if (!box || styleAnchors.length === 0) return '';
+  const centerX = box.x + box.width / 2;
+  return styleAnchors
+    .map(anchor => ({ ...anchor, distance: Math.abs(anchor.centerX - centerX) }))
+    .sort((a, b) => a.distance - b.distance)[0].style;
 }
 
 function figmaDeeplink(nodeId) {
@@ -117,6 +136,7 @@ export async function syncFigma() {
   if (candidates.length === 0) {
     throw new Error('指定页面没有找到可导出的 Frame、Group 或图片图层。');
   }
+  const styleAnchors = collectStyleAnchors(targetNode);
 
   const imageUrl = new URL(`https://api.figma.com/v1/images/${fileKey}`);
   imageUrl.searchParams.set('ids', candidates.map(node => node.id).join(','));
@@ -141,7 +161,7 @@ export async function syncFigma() {
 
     const id = `figma:${fileKey}:${node.id}`;
     const previous = byId.get(id);
-    const backgroundStyle = backgroundStyleFor(node);
+    const backgroundStyle = backgroundStyleFor(node, styleAnchors);
     byId.set(id, {
       ...(previous || {}),
       id,
@@ -163,12 +183,16 @@ export async function syncFigma() {
   const merged = Array.from(byId.values());
   await fs.writeFile(dataPath, `${JSON.stringify(merged, null, 2)}\n`, 'utf8');
   const brandGuide = await syncJianyingBrandGuide();
-  return { discovered: candidates.length, synced, total: merged.length, brandGuide };
+  const styleCounts = Object.fromEntries(backgroundStyleNames.map(style => [
+    style,
+    candidates.filter(node => backgroundStyleFor(node, styleAnchors) === style).length,
+  ]));
+  return { discovered: candidates.length, synced, total: merged.length, brandGuide, styleCounts };
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   syncFigma()
-    .then(result => console.log(`Figma 同步完成：发现 ${result.discovered}，写入 ${result.synced}，图库总计 ${result.total}；品牌规范：${result.brandGuide.page} / ${result.brandGuide.board}`))
+    .then(result => console.log(`Figma 同步完成：发现 ${result.discovered}，写入 ${result.synced}，图库总计 ${result.total}；风格标签：${JSON.stringify(result.styleCounts)}；品牌规范：${result.brandGuide.page} / ${result.brandGuide.board}`))
     .catch(error => {
       console.error(error.message);
       process.exitCode = 1;

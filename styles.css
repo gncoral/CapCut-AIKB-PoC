@@ -243,6 +243,32 @@ main { padding: 32px; }
 }
 .text-button { padding: 0; border: 0; background: transparent; color: #86b3ff; cursor: pointer; }
 
+.style-filter {
+  margin: -2px 0 18px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--panel) 78%, transparent);
+}
+
+.style-filter[hidden] { display: none; }
+.style-filter > span { flex: 0 0 auto; color: var(--muted); font-size: 12px; }
+
+.style-chip {
+  padding: 7px 13px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.style-chip:hover { color: var(--text); }
+.style-chip.active { background: #303035; color: var(--text); }
+
 .gallery {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -282,6 +308,18 @@ main { padding: 32px; }
   backdrop-filter: blur(8px);
 }
 
+.style-badge {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: rgba(10, 10, 12, .76);
+  color: #d7f8fa;
+  font-size: 10px;
+  backdrop-filter: blur(8px);
+}
+
 .empty { padding: 110px 20px; text-align: center; color: var(--muted); }
 .empty h2 { color: var(--text); font-size: 18px; }
 
@@ -311,6 +349,7 @@ dialog img { width: 100%; max-height: calc(100vh - 140px); object-fit: contain; 
   .connect-panel { grid-template-columns: 1fr; }
   .connect-panel form { flex-direction: column; }
   .status-hint { display: none; }
+  .style-filter { align-items: flex-start; flex-direction: column; }
   .brand-family-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .brand-content-header { align-items: flex-start; flex-direction: column; }
   .brand-content-empty { margin-top: 38px; }

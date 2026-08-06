@@ -101,7 +101,8 @@ async function syncBrandGuide(pageName, assetSlug) {
   const fileUrl = new URL(`https://api.figma.com/v1/files/${fileKey}`);
   fileUrl.searchParams.set('depth', '3');
   const filePayload = await figmaJson(fileUrl);
-  const page = filePayload.document?.children?.find(node => node.type === 'CANVAS' && node.name.trim() === pageName);
+  const pageAliases = pageName === 'CapCut' ? ['CapCut', 'CapCat'] : [pageName];
+  const page = filePayload.document?.children?.find(node => node.type === 'CANVAS' && pageAliases.includes(node.name.trim()));
   if (!page) throw new Error(`没有找到名为“${pageName}”的 Figma 页面。`);
 
   const candidates = exportableChildren(page);

@@ -13,6 +13,7 @@ const dataPath = path.join(projectRoot, 'data', 'images.json');
 const assetDir = path.join(projectRoot, 'assets', 'model-launch-backgrounds');
 const jianyingAssetDir = path.join(projectRoot, 'assets', 'brand-guidelines', 'jianying');
 const allowedTypes = new Set(['FRAME', 'COMPONENT', 'INSTANCE', 'GROUP', 'RECTANGLE', 'SLICE']);
+const backgroundStyleNames = ['柔焦色场', '抽象扩散', '极简3D'];
 
 function figmaHeaders() {
   const token = process.env.FIGMA_ACCESS_TOKEN;
@@ -39,7 +40,9 @@ function exportableChildren(node) {
     if (child.visible === false) continue;
     if (child.type === 'SECTION') {
       for (const nested of child.children || []) {
-        if (nested.visible !== false && allowedTypes.has(nested.type)) candidates.push(nested);
+        if (nested.visible !== false && allowedTypes.has(nested.type)) {
+          candidates.push({ ...nested, sectionName: child.name.trim() });
+        }
       }
       continue;
     }
@@ -47,6 +50,10 @@ function exportableChildren(node) {
   }
 
   return candidates;
+}
+
+function backgroundStyleFor(node) {
+  return backgroundStyleNames.find(name => node.sectionName?.includes(name)) || '';
 }
 
 function figmaDeeplink(nodeId) {
@@ -134,6 +141,7 @@ export async function syncFigma() {
 
     const id = `figma:${fileKey}:${node.id}`;
     const previous = byId.get(id);
+    const backgroundStyle = backgroundStyleFor(node);
     byId.set(id, {
       ...(previous || {}),
       id,
@@ -144,7 +152,8 @@ export async function syncFigma() {
       figmaNodeId: node.id,
       source: 'figma',
       category: 'model-launch-background',
-      tags: ['模型上新背景', 'figma', 'approved-reference'],
+      style: backgroundStyle,
+      tags: ['模型上新背景', backgroundStyle, 'figma', 'approved-reference'].filter(Boolean),
       added: previous?.added || today,
       syncedAt: new Date().toISOString(),
     });

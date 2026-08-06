@@ -3,6 +3,7 @@ const CATEGORY_MODEL_LAUNCH = 'model-launch-background';
 const state = {
   images: [],
   category: 'all',
+  style: 'all',
   search: '',
 };
 
@@ -14,6 +15,8 @@ const totalCount = document.querySelector('#total-count');
 const modelLaunchCount = document.querySelector('#model-launch-count');
 const searchInput = document.querySelector('#search');
 const dialog = document.querySelector('#preview-dialog');
+const styleFilter = document.querySelector('#style-filter');
+const backgroundStyles = ['柔焦色场', '抽象扩散', '极简3D'];
 
 const brandFamilies = {
   'jianying-capcut': ['剪映', 'CapCut'],
@@ -110,6 +113,7 @@ function sourceLabel(image) {
 
 function matches(image) {
   if (state.category !== 'all' && image.category !== state.category) return false;
+  if (state.style !== 'all' && image.style !== state.style && !(image.tags || []).includes(state.style)) return false;
   if (!state.search) return true;
   const haystack = [image.title, image.source, image.category, ...(image.tags || [])]
     .map(safeText)
@@ -161,6 +165,14 @@ function makeCard(image) {
     card.append(badge);
   }
 
+  const backgroundStyle = image.style || backgroundStyles.find(style => (image.tags || []).includes(style));
+  if (backgroundStyle) {
+    const styleBadge = document.createElement('span');
+    styleBadge.className = 'style-badge';
+    styleBadge.textContent = backgroundStyle === '极简3D' ? '极简 3D' : backgroundStyle;
+    card.append(styleBadge);
+  }
+
   card.addEventListener('click', () => openPreview(image));
   card.addEventListener('keydown', event => {
     if (event.key === 'Enter' || event.key === ' ') {
@@ -185,7 +197,24 @@ document.querySelector('#category-chips').addEventListener('click', event => {
   const button = event.target.closest('[data-category]');
   if (!button) return;
   state.category = button.dataset.category;
+  styleFilter.hidden = state.category !== CATEGORY_MODEL_LAUNCH;
+  if (styleFilter.hidden) {
+    state.style = 'all';
+    document.querySelectorAll('[data-style]').forEach(chip => {
+      chip.classList.toggle('active', chip.dataset.style === 'all');
+    });
+  }
   document.querySelectorAll('[data-category]').forEach(chip => {
+    chip.classList.toggle('active', chip === button);
+  });
+  render();
+});
+
+styleFilter.addEventListener('click', event => {
+  const button = event.target.closest('[data-style]');
+  if (!button) return;
+  state.style = button.dataset.style;
+  document.querySelectorAll('[data-style]').forEach(chip => {
     chip.classList.toggle('active', chip === button);
   });
   render();

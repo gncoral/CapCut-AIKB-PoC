@@ -60,6 +60,55 @@ button, input { font: inherit; }
 
 main { padding: 32px; }
 
+.view[hidden] { display: none; }
+
+.brand-guidelines-view {
+  min-height: 420px;
+  display: grid;
+  place-items: center;
+}
+
+.brand-guidelines-empty {
+  width: min(560px, 100%);
+  padding: 56px 28px;
+  text-align: center;
+}
+
+.brand-guidelines-empty > span {
+  color: var(--cyan);
+  font-size: 12px;
+}
+
+.brand-guidelines-empty h1 {
+  margin: 12px 0 10px;
+  font-size: clamp(24px, 4vw, 38px);
+  letter-spacing: -1px;
+}
+
+.brand-guidelines-empty p {
+  margin: 0 auto;
+  max-width: 500px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.brand-guidelines-coming {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.brand-guidelines-coming span {
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  color: #b8b8be;
+  font-size: 12px;
+}
+
 .connect-panel {
   margin-bottom: 24px;
   padding: 18px;

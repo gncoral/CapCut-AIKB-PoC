@@ -11,6 +11,7 @@ const fileKey = process.env.FIGMA_FILE_KEY || 'HjEFKtMBDJm6Eessye8GjP';
 const targetNodeId = process.env.FIGMA_TARGET_NODE_ID || '0:1';
 const dataPath = path.join(projectRoot, 'data', 'images.json');
 const assetDir = path.join(projectRoot, 'assets', 'model-launch-backgrounds');
+const jianyingAssetDir = path.join(projectRoot, 'assets', 'brand-guidelines', 'jianying');
 const allowedTypes = new Set(['FRAME', 'COMPONENT', 'INSTANCE', 'GROUP', 'RECTANGLE', 'SLICE']);
 
 function figmaHeaders() {
@@ -63,6 +64,36 @@ async function download(url, destination) {
   if (!response.ok) throw new Error(`图片下载失败 ${response.status}`);
   const bytes = new Uint8Array(await response.arrayBuffer());
   await fs.writeFile(destination, bytes);
+}
+
+function nodeArea(node) {
+  const box = node?.absoluteBoundingBox;
+  return Number(box?.width || 0) * Number(box?.height || 0);
+}
+
+async function syncJianyingBrandGuide() {
+  const fileUrl = new URL(`https://api.figma.com/v1/files/${fileKey}`);
+  fileUrl.searchParams.set('depth', '3');
+  const filePayload = await figmaJson(fileUrl);
+  const page = filePayload.document?.children?.find(node => node.type === 'CANVAS' && node.name.trim() === '剪映');
+  if (!page) throw new Error('没有找到名为“剪映”的 Figma 页面。');
+
+  const candidates = exportableChildren(page);
+  if (candidates.length === 0) throw new Error('“剪映”页面没有找到可导出的画板。');
+  const mainBoard = candidates.sort((a, b) => nodeArea(b) - nodeArea(a))[0];
+
+  const imageUrl = new URL(`https://api.figma.com/v1/images/${fileKey}`);
+  imageUrl.searchParams.set('ids', mainBoard.id);
+  imageUrl.searchParams.set('format', 'png');
+  imageUrl.searchParams.set('scale', '1');
+  imageUrl.searchParams.set('use_absolute_bounds', 'true');
+  const imagePayload = await figmaJson(imageUrl);
+  const temporaryUrl = imagePayload.images?.[mainBoard.id];
+  if (!temporaryUrl) throw new Error('Figma 没有返回剪映品牌画板的导出图片。');
+
+  await fs.mkdir(jianyingAssetDir, { recursive: true });
+  await download(temporaryUrl, path.join(jianyingAssetDir, 'overview.png'));
+  return { page: page.name, board: mainBoard.name, nodeId: mainBoard.id };
 }
 
 export async function syncFigma() {
@@ -122,12 +153,13 @@ export async function syncFigma() {
 
   const merged = Array.from(byId.values());
   await fs.writeFile(dataPath, `${JSON.stringify(merged, null, 2)}\n`, 'utf8');
-  return { discovered: candidates.length, synced, total: merged.length };
+  const brandGuide = await syncJianyingBrandGuide();
+  return { discovered: candidates.length, synced, total: merged.length, brandGuide };
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   syncFigma()
-    .then(result => console.log(`Figma 同步完成：发现 ${result.discovered}，写入 ${result.synced}，图库总计 ${result.total}`))
+    .then(result => console.log(`Figma 同步完成：发现 ${result.discovered}，写入 ${result.synced}，图库总计 ${result.total}；品牌规范：${result.brandGuide.page} / ${result.brandGuide.board}`))
     .catch(error => {
       console.error(error.message);
       process.exitCode = 1;

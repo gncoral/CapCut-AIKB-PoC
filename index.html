@@ -16,35 +16,48 @@
   </header>
 
   <nav class="tabs" aria-label="主导航">
-    <button class="tab active" type="button">灵感库 <span id="total-count">0</span></button>
+    <button class="tab active" type="button" data-view="library">视觉库 <span id="total-count">0</span></button>
+    <button class="tab" type="button" data-view="brand-guidelines">品牌规范</button>
     <button class="tab" type="button" disabled>收藏 <span id="saved-count">0</span></button>
   </nav>
 
   <main>
-    <section class="toolbar" aria-label="图库筛选">
-      <div class="chips" id="category-chips">
-        <button class="chip active" type="button" data-category="all">全部</button>
-        <button class="chip" type="button" data-category="branding">品牌</button>
-        <button class="chip" type="button" data-category="ui">UI界面</button>
-        <button class="chip model-launch" type="button" data-category="model-launch-background">
-          模型上新背景 <span id="model-launch-count">0</span>
-        </button>
+    <section class="view" id="library-view">
+      <section class="toolbar" aria-label="图库筛选">
+        <div class="chips" id="category-chips">
+          <button class="chip active" type="button" data-category="all">全部</button>
+          <button class="chip model-launch" type="button" data-category="model-launch-background">
+            模型上新背景 <span id="model-launch-count">0</span>
+          </button>
+        </div>
+        <label class="search-wrap">
+          <span class="sr-only">搜索图库</span>
+          <input id="search" type="search" placeholder="搜索标题或标签">
+        </label>
+      </section>
+
+      <section class="status-row">
+        <span id="result-count">0 张图片</span>
+        <span class="status-hint">Figma 素材由安全的定时任务更新</span>
+      </section>
+
+      <section class="gallery" id="gallery" aria-live="polite"></section>
+      <section class="empty" id="empty" hidden>
+        <h2>这个分类还没有图片</h2>
+        <p>当前筛选条件下没有找到图片。</p>
+      </section>
+    </section>
+
+    <section class="view brand-guidelines-view" id="brand-guidelines-view" hidden>
+      <div class="brand-guidelines-empty">
+        <span>品牌规范</span>
+        <h1>先整理 Figma，再接入这里</h1>
+        <p>之后这里会集中展示剪映与 CapCut 的 Logo、品牌色、字体、核心规则和正确案例，并保留完整 Figma 品牌手册入口。</p>
+        <div class="brand-guidelines-coming">
+          <span>剪映</span>
+          <span>CapCut</span>
+        </div>
       </div>
-      <label class="search-wrap">
-        <span class="sr-only">搜索图库</span>
-        <input id="search" type="search" placeholder="搜索标题或标签">
-      </label>
-    </section>
-
-    <section class="status-row">
-      <span id="result-count">0 张图片</span>
-      <span class="status-hint">Figma 素材由安全的定时任务更新</span>
-    </section>
-
-    <section class="gallery" id="gallery" aria-live="polite"></section>
-    <section class="empty" id="empty" hidden>
-      <h2>这个分类还没有图片</h2>
-      <p>当前筛选条件下没有找到图片。</p>
     </section>
   </main>
 

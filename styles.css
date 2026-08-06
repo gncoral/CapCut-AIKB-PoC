@@ -121,8 +121,8 @@ main { padding: 32px; }
 }
 
 .brand-content {
-  width: min(1200px, 100%);
-  margin: 26px auto 0;
+  width: 100%;
+  margin: 26px 0 0;
 }
 
 .brand-content-header {

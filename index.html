@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CapCut M&amp;UG Design Library</title>
-  <link rel="stylesheet" href="styles.css?v=nav-system-1">
+  <link rel="stylesheet" href="styles.css?v=character-library-1">
 </head>
 <body>
   <header class="site-header">
@@ -28,6 +28,9 @@
           <button class="chip active" type="button" data-category="all">全部</button>
           <button class="chip model-launch" type="button" data-category="model-launch-background">
             模型上新背景 <span id="model-launch-count">0</span>
+          </button>
+          <button class="chip" type="button" data-category="character-library">
+            人物素材库 <span id="character-count">0</span>
           </button>
         </div>
         <label class="search-wrap">
@@ -95,6 +98,28 @@
     </div>
   </dialog>
 
-  <script type="module" src="app.js?v=capcut-source-1"></script>
+  <dialog class="character-dialog" id="character-dialog">
+    <button class="dialog-close" id="character-dialog-close" type="button" aria-label="关闭">×</button>
+    <div class="character-detail">
+      <div class="character-detail-visual">
+        <img id="character-detail-image" alt="">
+      </div>
+      <aside class="character-detail-panel">
+        <span class="character-detail-code" id="character-detail-code"></span>
+        <h2 id="character-detail-name"></h2>
+        <div class="character-detail-tags">
+          <span>三视图</span><span>细节图</span><span>Prompt</span>
+        </div>
+        <div class="prompt-heading">人物生成 Prompt</div>
+        <div class="prompt-copy-box">
+          <p id="character-detail-prompt"></p>
+          <button id="copy-character-prompt" type="button">复制 Prompt</button>
+        </div>
+        <a id="character-detail-source" target="_blank" rel="noopener">打开 Figma 源画板 ↗</a>
+      </aside>
+    </div>
+  </dialog>
+
+  <script type="module" src="app.js?v=character-library-1"></script>
 </body>
 </html>

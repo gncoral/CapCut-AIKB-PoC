@@ -30,6 +30,8 @@ const copyCharacterPrompt = document.querySelector('#copy-character-prompt');
 const copyCharacterViews = document.querySelector('#copy-character-views');
 const copyCharacterDetails = document.querySelector('#copy-character-details');
 const backgroundStyles = ['柔焦色场', '抽象扩散', '极简3D'];
+const characterAssetsCache = new Map();
+let characterLoadRequest = 0;
 
 const brandFamilies = {
   'jianying-capcut': ['剪映', 'CapCut'],
@@ -211,24 +213,59 @@ function makeCard(image) {
   return card;
 }
 
-function drawCharacterCrop(canvas, src, crop) {
-  const image = new Image();
-  image.onload = () => {
-    const safeCrop = crop || { x: 0, y: 0, width: 1, height: 1 };
-    const sx = Math.round(safeCrop.x * image.naturalWidth);
-    const sy = Math.round(safeCrop.y * image.naturalHeight);
-    const sw = Math.max(1, Math.round(safeCrop.width * image.naturalWidth));
-    const sh = Math.max(1, Math.round(safeCrop.height * image.naturalHeight));
-    canvas.width = sw;
-    canvas.height = sh;
-    canvas.getContext('2d').drawImage(image, sx, sy, sw, sh, 0, 0, sw, sh);
-  };
-  image.src = src;
+function drawCanvasMessage(canvas, message) {
+  canvas.width = 1200;
+  canvas.height = 900;
+  const context = canvas.getContext('2d');
+  context.fillStyle = '#eeedeb';
+  context.fillRect(0, 0, canvas.width, canvas.height);
+  context.fillStyle = '#77777f';
+  context.font = '500 24px system-ui, sans-serif';
+  context.textAlign = 'center';
+  context.textBaseline = 'middle';
+  context.fillText(message, canvas.width / 2, canvas.height / 2);
 }
 
-function openCharacter(character) {
-  drawCharacterCrop(characterViewsCanvas, character.viewsSrc || character.src, character.viewsCrop);
-  drawCharacterCrop(characterDetailsCanvas, character.detailsSrc || character.src, character.detailsCrop);
+function drawCharacterCrop(canvas, src, crop) {
+  return new Promise((resolve, reject) => {
+    const image = new Image();
+    image.onload = () => {
+      const safeCrop = crop || { x: 0, y: 0, width: 1, height: 1 };
+      const sx = Math.round(safeCrop.x * image.naturalWidth);
+      const sy = Math.round(safeCrop.y * image.naturalHeight);
+      const sw = Math.max(1, Math.round(safeCrop.width * image.naturalWidth));
+      const sh = Math.max(1, Math.round(safeCrop.height * image.naturalHeight));
+      canvas.width = sw;
+      canvas.height = sh;
+      canvas.getContext('2d').drawImage(image, sx, sy, sw, sh, 0, 0, sw, sh);
+      resolve();
+    };
+    image.onerror = () => reject(new Error('图片读取失败'));
+    image.src = src;
+  });
+}
+
+function loadCharacterAssets(character) {
+  if (character.viewsSrc && character.detailsSrc) {
+    return Promise.resolve({ viewsSrc: character.viewsSrc, detailsSrc: character.detailsSrc });
+  }
+  if (!characterAssetsCache.has(character.code)) {
+    const request = fetch(`data/character-details/${encodeURIComponent(character.code)}.json?v=character-detail-1`)
+      .then(response => {
+        if (!response.ok) throw new Error(`高清素材读取失败 HTTP ${response.status}`);
+        return response.json();
+      })
+      .then(assets => {
+        if (!assets.viewsSrc || !assets.detailsSrc) throw new Error('高清素材数据不完整');
+        return assets;
+      });
+    characterAssetsCache.set(character.code, request);
+  }
+  return characterAssetsCache.get(character.code);
+}
+
+async function openCharacter(character) {
+  const requestId = ++characterLoadRequest;
   characterDetailCode.textContent = character.code;
   characterDetailName.textContent = character.alias;
   characterDetailPrompt.textContent = character.prompt || '这个人物还没有填写 Prompt。';
@@ -238,7 +275,32 @@ function openCharacter(character) {
   copyCharacterViews.textContent = '复制三视图';
   copyCharacterDetails.textContent = '复制细节图';
   copyCharacterPrompt.disabled = !character.prompt;
+  copyCharacterViews.disabled = true;
+  copyCharacterDetails.disabled = true;
+  drawCanvasMessage(characterViewsCanvas, '高清三视图加载中…');
+  drawCanvasMessage(characterDetailsCanvas, '高清细节图加载中…');
   characterDialog.showModal();
+
+  if (character.thumbnailSrc) {
+    drawCharacterCrop(characterViewsCanvas, character.thumbnailSrc).catch(() => {});
+  }
+
+  try {
+    const assets = await loadCharacterAssets(character);
+    if (requestId !== characterLoadRequest) return;
+    await Promise.all([
+      drawCharacterCrop(characterViewsCanvas, assets.viewsSrc),
+      drawCharacterCrop(characterDetailsCanvas, assets.detailsSrc),
+    ]);
+    if (requestId !== characterLoadRequest) return;
+    copyCharacterViews.disabled = false;
+    copyCharacterDetails.disabled = false;
+  } catch (error) {
+    if (requestId !== characterLoadRequest) return;
+    drawCanvasMessage(characterViewsCanvas, '高清三视图加载失败，请稍后重试');
+    drawCanvasMessage(characterDetailsCanvas, '高清细节图加载失败，请稍后重试');
+    console.error(error);
+  }
 }
 
 function makeCharacterCard(character) {

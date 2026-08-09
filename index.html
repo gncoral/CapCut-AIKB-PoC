@@ -4,6 +4,148 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CapCut M&amp;UG Design Library</title>
+  <link rel="stylesheet" href="styles.css?v=character-assets-2">
+</head>
+<body>
+  <header class="site-header">
+    <div>
+      <div class="brand">CapCut M&amp;UG <span>Design Library</span></div>
+      <div class="subtitle">剪映 CapCut · 商业化与增长设计 · AI 品牌视觉知识库试验版</div>
+    </div>
+    <div class="sync-state" id="sync-state">正在读取图库…</div>
+  </header>
+
+  <nav class="tabs" aria-label="主导航">
+    <button class="tab active" type="button" data-view="library">视觉库 <span id="total-count">0</span></button>
+    <button class="tab" type="button" data-view="brand-guidelines">品牌规范</button>
+    <button class="tab" type="button" disabled>收藏 <span id="saved-count">0</span></button>
+  </nav>
+
+  <main>
+    <section class="view" id="library-view">
+      <section class="toolbar" aria-label="图库筛选">
+        <div class="chips" id="category-chips">
+          <button class="chip active" type="button" data-category="all">全部</button>
+          <button class="chip model-launch" type="button" data-category="model-launch-background">
+            模型上新背景 <span id="model-launch-count">0</span>
+          </button>
+          <button class="chip" type="button" data-category="character-library">
+            人物素材库 <span id="character-count">0</span>
+          </button>
+        </div>
+        <label class="search-wrap">
+          <span class="sr-only">搜索图库</span>
+          <input id="search" type="search" placeholder="搜索标题或标签">
+        </label>
+      </section>
+
+      <section class="status-row">
+        <span id="result-count">0 张图片</span>
+        <span class="status-hint">Figma 素材由安全的定时任务更新</span>
+      </section>
+
+      <section class="style-filter" id="style-filter" aria-label="背景风格筛选" hidden>
+        <span>风格</span>
+        <div class="chips">
+          <button class="style-chip active" type="button" data-style="all">全部风格</button>
+          <button class="style-chip" type="button" data-style="柔焦色场">柔焦色场</button>
+          <button class="style-chip" type="button" data-style="抽象扩散">抽象扩散</button>
+          <button class="style-chip" type="button" data-style="极简3D">极简 3D</button>
+        </div>
+      </section>
+
+      <section class="gallery" id="gallery" aria-live="polite"></section>
+      <section class="empty" id="empty" hidden>
+        <h2>这个分类还没有图片</h2>
+        <p>当前筛选条件下没有找到图片。</p>
+      </section>
+    </section>
+
+    <section class="view brand-guidelines-view" id="brand-guidelines-view" hidden>
+      <nav class="brand-family-nav" aria-label="品牌分组">
+        <button class="brand-family active" type="button" data-brand-family="jianying-capcut">剪映 / CapCut</button>
+        <button class="brand-family" type="button" data-brand-family="jimeng-dreamina">即梦 / Dreamina</button>
+        <button class="brand-family" type="button" data-brand-family="xingtu-hypic">醒图 / Hypic</button>
+        <button class="brand-family" type="button" data-brand-family="xioyunqiao-pippit">小云雀 / Pippit</button>
+      </nav>
+
+      <div class="brand-subnav" id="brand-subnav" aria-label="品牌选择"></div>
+
+      <article class="brand-content">
+        <header class="brand-content-header">
+          <div>
+            <span id="selected-brand-name">剪映</span>
+            <h1 id="brand-content-title">剪映品牌规范</h1>
+          </div>
+          <a id="brand-source-link" target="_blank" rel="noopener">打开源文件 Figma ↗</a>
+          <span id="brand-source-pending" hidden>源文件 Figma · 待补充</span>
+        </header>
+        <img class="brand-guide-image" id="brand-guide-image" alt="" hidden>
+        <div class="brand-content-empty" id="brand-content-empty" hidden>
+          <h2>品牌资料待接入</h2>
+          <p>之后这里会连接现有飞书品牌文档、Figma 源文件，并展示最常用规则和相关视觉案例。</p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <dialog id="preview-dialog">
+    <button class="dialog-close" id="dialog-close" type="button" aria-label="关闭">×</button>
+    <img id="preview-image" alt="">
+    <div class="dialog-meta">
+      <strong id="preview-title"></strong>
+      <a id="preview-link" target="_blank" rel="noopener">打开来源</a>
+    </div>
+  </dialog>
+
+  <dialog class="character-dialog" id="character-dialog">
+    <button class="dialog-close" id="character-dialog-close" type="button" aria-label="关闭">×</button>
+    <div class="character-detail">
+      <div class="character-detail-visual">
+        <section class="character-asset-section">
+          <header>
+            <div><span>01</span><h3>人物三视图</h3></div>
+            <button class="copy-image-button" id="copy-character-views" type="button">复制三视图</button>
+          </header>
+          <div class="character-image-stage character-views-stage">
+            <canvas id="character-views-canvas" aria-label="人物三视图"></canvas>
+          </div>
+        </section>
+        <section class="character-asset-section">
+          <header>
+            <div><span>02</span><h3>面部与细节图</h3></div>
+            <button class="copy-image-button" id="copy-character-details" type="button">复制细节图</button>
+          </header>
+          <div class="character-image-stage">
+            <canvas id="character-details-canvas" aria-label="人物细节图"></canvas>
+          </div>
+        </section>
+      </div>
+      <aside class="character-detail-panel">
+        <span class="character-detail-code" id="character-detail-code"></span>
+        <h2 id="character-detail-name"></h2>
+        <div class="character-detail-tags">
+          <span>三视图</span><span>细节图</span><span>Prompt</span>
+        </div>
+        <div class="prompt-heading">人物生成 Prompt</div>
+        <div class="prompt-copy-box">
+          <p id="character-detail-prompt"></p>
+          <button id="copy-character-prompt" type="button">复制 Prompt</button>
+        </div>
+        <a id="character-detail-source" target="_blank" rel="noopener">打开 Figma 源画板 ↗</a>
+      </aside>
+    </div>
+  </dialog>
+
+  <script type="module" src="app.js?v=character-assets-2"></script>
+</body>
+</html>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CapCut M&amp;UG Design Library</title>
   <link rel="stylesheet" href="styles.css?v=character-library-1">
 </head>
 <body>

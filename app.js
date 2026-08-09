@@ -227,8 +227,8 @@ function drawCharacterCrop(canvas, src, crop) {
 }
 
 function openCharacter(character) {
-  drawCharacterCrop(characterViewsCanvas, character.src, character.viewsCrop);
-  drawCharacterCrop(characterDetailsCanvas, character.src, character.detailsCrop);
+  drawCharacterCrop(characterViewsCanvas, character.viewsSrc || character.src, character.viewsCrop);
+  drawCharacterCrop(characterDetailsCanvas, character.detailsSrc || character.src, character.detailsCrop);
   characterDetailCode.textContent = character.code;
   characterDetailName.textContent = character.alias;
   characterDetailPrompt.textContent = character.prompt || '这个人物还没有填写 Prompt。';
@@ -250,9 +250,10 @@ function makeCharacterCard(character) {
   const cover = document.createElement('div');
   cover.className = 'character-cover';
   const image = document.createElement('img');
-  image.src = character.src;
+  image.src = character.thumbnailSrc || character.viewsSrc || character.src;
   image.alt = `${character.code} ${character.alias}`;
   image.loading = 'lazy';
+  image.decoding = 'async';
   cover.append(image);
 
   const meta = document.createElement('div');

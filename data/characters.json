@@ -1,0 +1,102 @@
+[
+  {
+    "id": "figma:HjEFKtMBDJm6Eessye8GjP:125:1353",
+    "code": "CH001",
+    "alias": "冷灰利落",
+    "prompt": "请保持上传参考图中的同一个人物。\nIdentity Lock：强锁定人物身份。\n保持：原始脸部比例，五官之间的关系，眼睛形态与眼神气质，鼻子与嘴唇比例，面部轮廓，年龄感，整体人物辨识度。\n保持人物原始气质：年轻东方女性，清冷、克制、自然，不过度表演，不过度美化。\n不要重新设计人物脸部。不要生成新的美女模板。\n避免：AI美女脸，网红脸，过度精致五官，磨皮皮肤，塑料质感，皮肤过度锐化，改变脸型。",
+    "src": "assets/characters/125-1353.png",
+    "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=125-1353",
+    "figmaFileKey": "HjEFKtMBDJm6Eessye8GjP",
+    "figmaNodeId": "125:1353",
+    "source": "figma",
+    "category": "character-library",
+    "tags": [
+      "人物素材库",
+      "三视图",
+      "细节图",
+      "Prompt",
+      "冷灰利落"
+    ],
+    "syncedAt": "2026-08-09T11:57:15.361Z"
+  },
+  {
+    "id": "figma:HjEFKtMBDJm6Eessye8GjP:125:1358",
+    "code": "CH002",
+    "alias": "橄榄学院",
+    "prompt": "请保持上传参考图中的同一个人物。\nIdentity Lock：强锁定人物身份。\n保持：原始脸部比例、五官关系、眼型与眼神、鼻唇比例、面部轮廓、年龄感、人物辨识度，以及黑色短发、层次狼尾发型。\n保持人物气质：年轻东方女性，清冷、克制、自然，带中性时尚感，不过度美化。\n不要重新设计脸部，不生成新的美女模板。\n避免：AI美女脸、网红脸、过度精致五官、磨皮、塑料皮肤、过度锐化、改变脸型、改变发型结构。",
+    "src": "assets/characters/125-1358.png",
+    "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=125-1358",
+    "figmaFileKey": "HjEFKtMBDJm6Eessye8GjP",
+    "figmaNodeId": "125:1358",
+    "source": "figma",
+    "category": "character-library",
+    "tags": [
+      "人物素材库",
+      "三视图",
+      "细节图",
+      "Prompt",
+      "橄榄学院"
+    ],
+    "syncedAt": "2026-08-09T11:57:15.588Z"
+  },
+  {
+    "id": "figma:HjEFKtMBDJm6Eessye8GjP:125:1372",
+    "code": "CH003",
+    "alias": "蓝衫街头",
+    "prompt": "请保持上传参考图中的同一个人物。\nIdentity Lock：强锁定人物身份。\n保持：原始脸部比例、五官关系、眼型与眼神、鼻子与嘴唇比例、面部轮廓、年龄感、整体人物辨识度，以及黑色中长卷发、蓬松自然发型。\n保持人物气质：年轻东方男性，清冷、克制、理性、安静，自然真实，带轻微中性时尚感。\n不要重新设计人物脸部，不生成新的帅哥模板。\n避免：AI帅哥脸、网红脸、过度精致五官、磨皮、塑料皮肤、过度锐化、改变脸型、改变发型结构。",
+    "src": "assets/characters/125-1372.png",
+    "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=125-1372",
+    "figmaFileKey": "HjEFKtMBDJm6Eessye8GjP",
+    "figmaNodeId": "125:1372",
+    "source": "figma",
+    "category": "character-library",
+    "tags": [
+      "人物素材库",
+      "三视图",
+      "细节图",
+      "Prompt",
+      "蓝衫街头"
+    ],
+    "syncedAt": "2026-08-09T11:57:15.770Z"
+  },
+  {
+    "id": "figma:HjEFKtMBDJm6Eessye8GjP:125:1379",
+    "code": "CH004",
+    "alias": "黑红运动",
+    "prompt": "请保持上传参考图中的同一个人物。\nIdentity Lock：强锁定人物身份。\n保持：原始脸部比例、五官关系、眼神气质、面部轮廓、年龄感、整体人物辨识度，以及黑色长直发中分造型。\n保持人物气质：年轻东方女性，冷静、克制、理性、清冷，带高级感与都市时尚感。\n不要重新设计人物脸部。不要生成新的美女模板。\n避免：AI美女脸、网红脸、过度精致五官、磨皮、塑料皮肤、过度锐化、改变脸型。",
+    "src": "assets/characters/125-1379.png",
+    "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=125-1379",
+    "figmaFileKey": "HjEFKtMBDJm6Eessye8GjP",
+    "figmaNodeId": "125:1379",
+    "source": "figma",
+    "category": "character-library",
+    "tags": [
+      "人物素材库",
+      "三视图",
+      "细节图",
+      "Prompt",
+      "黑红运动"
+    ],
+    "syncedAt": "2026-08-09T11:57:15.996Z"
+  },
+  {
+    "id": "figma:HjEFKtMBDJm6Eessye8GjP:125:1389",
+    "code": "CH005",
+    "alias": "灰调松弛",
+    "prompt": "请保持上传参考图中的同一个人物。\nIdentity Lock：强锁定人物身份。\n保持：原始脸部比例、五官关系、眼神气质、面部轮廓、年龄感、整体人物辨识度，以及黑色长直发中分造型。\n保持人物气质：年轻东方女性，冷静、克制、理性、清冷，带高级感与都市时尚感。\n不要重新设计人物脸部。不要生成新的美女模板。\n避免：AI美女脸、网红脸、过度精致五官、磨皮、塑料皮肤、过度锐化、改变脸型。",
+    "src": "assets/characters/125-1389.png",
+    "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=125-1389",
+    "figmaFileKey": "HjEFKtMBDJm6Eessye8GjP",
+    "figmaNodeId": "125:1389",
+    "source": "figma",
+    "category": "character-library",
+    "tags": [
+      "人物素材库",
+      "三视图",
+      "细节图",
+      "Prompt",
+      "灰调松弛"
+    ],
+    "syncedAt": "2026-08-09T11:57:16.170Z"
+  }
+]

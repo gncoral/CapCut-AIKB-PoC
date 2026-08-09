@@ -270,12 +270,46 @@ function makeCharacterCard(character) {
 
   const tags = document.createElement('div');
   tags.className = 'character-tags';
-  ['三视图', '细节图', '可复制 Prompt'].forEach(label => {
+  ['三视图', '细节图', 'Prompt'].forEach(label => {
     const tag = document.createElement('span');
     tag.textContent = label;
     tags.append(tag);
   });
-  meta.append(title, tags);
+
+  const prompt = document.createElement('p');
+  prompt.className = 'character-card-prompt';
+  const promptLabel = document.createElement('strong');
+  promptLabel.textContent = 'Prompt：';
+  const promptText = document.createElement('span');
+  promptText.textContent = character.prompt || '暂未填写';
+  prompt.append(promptLabel, promptText);
+
+  const copyPrompt = document.createElement('button');
+  copyPrompt.className = 'character-card-copy';
+  copyPrompt.type = 'button';
+  copyPrompt.title = '复制完整 Prompt';
+  copyPrompt.setAttribute('aria-label', `复制 ${character.code} 的 Prompt`);
+  copyPrompt.disabled = !character.prompt;
+  copyPrompt.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="10" height="10" rx="2"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path></svg>';
+  copyPrompt.addEventListener('click', async event => {
+    event.stopPropagation();
+    if (!character.prompt) return;
+    try {
+      await navigator.clipboard.writeText(character.prompt);
+      copyPrompt.classList.add('copied');
+      copyPrompt.title = '已复制';
+      copyPrompt.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"></path></svg>';
+      window.setTimeout(() => {
+        copyPrompt.classList.remove('copied');
+        copyPrompt.title = '复制完整 Prompt';
+        copyPrompt.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="10" height="10" rx="2"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path></svg>';
+      }, 1600);
+    } catch {
+      copyPrompt.title = '复制失败，请点开人物详情复制';
+    }
+  });
+
+  meta.append(title, tags, prompt, copyPrompt);
   card.append(cover, meta);
 
   card.addEventListener('click', () => openCharacter(character));

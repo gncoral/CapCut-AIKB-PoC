@@ -14,6 +14,7 @@ const assetDir = path.join(projectRoot, 'assets', 'model-launch-backgrounds');
 const brandGuideDir = path.join(projectRoot, 'assets', 'brand-guidelines');
 const characterDataPath = path.join(projectRoot, 'data', 'characters.json');
 const characterAssetDir = path.join(projectRoot, 'assets', 'characters');
+const characterThumbnailDir = path.join(projectRoot, 'assets', 'character-thumbnails');
 const allowedTypes = new Set(['FRAME', 'COMPONENT', 'INSTANCE', 'GROUP', 'RECTANGLE', 'SLICE']);
 const backgroundStyleNames = ['柔焦色场', '抽象扩散', '极简3D'];
 const characterAliases = {
@@ -181,7 +182,16 @@ async function syncCharacterLibrary() {
   imageUrl.searchParams.set('use_absolute_bounds', 'true');
   const imagePayload = await figmaJson(imageUrl);
 
+  const thumbnailNodes = candidates.map(node => imageNodesByBoard.get(node.id)?.[0] || node);
+  const thumbnailUrl = new URL(`https://api.figma.com/v1/images/${fileKey}`);
+  thumbnailUrl.searchParams.set('ids', thumbnailNodes.map(node => node.id).join(','));
+  thumbnailUrl.searchParams.set('format', 'jpg');
+  thumbnailUrl.searchParams.set('scale', '0.25');
+  thumbnailUrl.searchParams.set('use_absolute_bounds', 'true');
+  const thumbnailPayload = await figmaJson(thumbnailUrl);
+
   await fs.mkdir(characterAssetDir, { recursive: true });
+  await fs.mkdir(characterThumbnailDir, { recursive: true });
   const characters = [];
   for (const node of candidates) {
     const temporaryUrl = imagePayload.images?.[node.id];
@@ -199,11 +209,18 @@ async function syncCharacterLibrary() {
     await download(temporaryUrl, path.join(characterAssetDir, fileName));
     const viewsFileName = viewsNode ? `views-${fileNameFor(viewsNode.id)}` : fileName;
     const detailsFileName = detailsNode ? `details-${fileNameFor(detailsNode.id)}` : fileName;
+    const thumbnailFileName = fileName.replace(/\.png$/i, '.jpg');
+    let thumbnailSrc = '';
     if (viewsNode && imagePayload.images?.[viewsNode.id]) {
       await download(imagePayload.images[viewsNode.id], path.join(characterAssetDir, viewsFileName));
     }
     if (detailsNode && imagePayload.images?.[detailsNode.id]) {
       await download(imagePayload.images[detailsNode.id], path.join(characterAssetDir, detailsFileName));
+    }
+    const thumbnailNode = viewsNode || node;
+    if (thumbnailPayload.images?.[thumbnailNode.id]) {
+      await download(thumbnailPayload.images[thumbnailNode.id], path.join(characterThumbnailDir, thumbnailFileName));
+      thumbnailSrc = `assets/character-thumbnails/${thumbnailFileName}`;
     }
     const alias = characterAliases[code] || `人物 ${code.slice(-3)}`;
     characters.push({
@@ -214,6 +231,7 @@ async function syncCharacterLibrary() {
       src: `assets/characters/${viewsFileName}`,
       viewsSrc: `assets/characters/${viewsFileName}`,
       detailsSrc: `assets/characters/${detailsFileName}`,
+      ...(thumbnailSrc ? { thumbnailSrc } : {}),
       url: figmaDeeplink(node.id),
       figmaFileKey: fileKey,
       figmaNodeId: node.id,

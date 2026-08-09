@@ -1,7 +1,9 @@
 const CATEGORY_MODEL_LAUNCH = 'model-launch-background';
+const CATEGORY_CHARACTER = 'character-library';
 
 const state = {
   images: [],
+  characters: [],
   category: 'all',
   style: 'all',
   search: '',
@@ -13,9 +15,17 @@ const resultCount = document.querySelector('#result-count');
 const syncState = document.querySelector('#sync-state');
 const totalCount = document.querySelector('#total-count');
 const modelLaunchCount = document.querySelector('#model-launch-count');
+const characterCount = document.querySelector('#character-count');
 const searchInput = document.querySelector('#search');
 const dialog = document.querySelector('#preview-dialog');
 const styleFilter = document.querySelector('#style-filter');
+const characterDialog = document.querySelector('#character-dialog');
+const characterDetailImage = document.querySelector('#character-detail-image');
+const characterDetailCode = document.querySelector('#character-detail-code');
+const characterDetailName = document.querySelector('#character-detail-name');
+const characterDetailPrompt = document.querySelector('#character-detail-prompt');
+const characterDetailSource = document.querySelector('#character-detail-source');
+const copyCharacterPrompt = document.querySelector('#copy-character-prompt');
 const backgroundStyles = ['柔焦色场', '抽象扩散', '极简3D'];
 
 const brandFamilies = {
@@ -126,6 +136,16 @@ function matches(image) {
   return haystack.includes(state.search.toLowerCase());
 }
 
+function matchesCharacter(character) {
+  if (state.category !== 'all' && state.category !== CATEGORY_CHARACTER) return false;
+  if (!state.search) return true;
+  const haystack = [character.code, character.alias, character.prompt, ...(character.tags || [])]
+    .map(safeText)
+    .join(' ')
+    .toLowerCase();
+  return haystack.includes(state.search.toLowerCase());
+}
+
 function openPreview(image) {
   document.querySelector('#preview-image').src = image.src;
   document.querySelector('#preview-image').alt = image.title || '图片预览';
@@ -188,13 +208,81 @@ function makeCard(image) {
   return card;
 }
 
+function openCharacter(character) {
+  characterDetailImage.src = character.src;
+  characterDetailImage.alt = `${character.code} ${character.alias} 人物资料`;
+  characterDetailCode.textContent = character.code;
+  characterDetailName.textContent = character.alias;
+  characterDetailPrompt.textContent = character.prompt || '这个人物还没有填写 Prompt。';
+  characterDetailSource.href = character.url || character.src;
+  copyCharacterPrompt.dataset.prompt = character.prompt || '';
+  copyCharacterPrompt.textContent = '复制 Prompt';
+  copyCharacterPrompt.disabled = !character.prompt;
+  characterDialog.showModal();
+}
+
+function makeCharacterCard(character) {
+  const card = document.createElement('article');
+  card.className = 'card character-card';
+  card.tabIndex = 0;
+  card.setAttribute('aria-label', `查看 ${character.code} ${character.alias}`);
+
+  const cover = document.createElement('div');
+  cover.className = 'character-cover';
+  const image = document.createElement('img');
+  image.src = character.src;
+  image.alt = `${character.code} ${character.alias}`;
+  image.loading = 'lazy';
+  cover.append(image);
+
+  const meta = document.createElement('div');
+  meta.className = 'card-meta';
+  const title = document.createElement('div');
+  title.className = 'character-card-title';
+  const code = document.createElement('span');
+  code.className = 'character-code';
+  code.textContent = character.code;
+  const alias = document.createElement('span');
+  alias.className = 'character-alias';
+  alias.textContent = character.alias;
+  title.append(code, alias);
+
+  const tags = document.createElement('div');
+  tags.className = 'character-tags';
+  ['三视图', '细节图', '可复制 Prompt'].forEach(label => {
+    const tag = document.createElement('span');
+    tag.textContent = label;
+    tags.append(tag);
+  });
+  meta.append(title, tags);
+  card.append(cover, meta);
+
+  card.addEventListener('click', () => openCharacter(character));
+  card.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openCharacter(character);
+    }
+  });
+  return card;
+}
+
 function render() {
-  const filtered = state.images.filter(matches);
-  gallery.replaceChildren(...filtered.map(makeCard));
-  empty.hidden = filtered.length !== 0;
-  resultCount.textContent = `${filtered.length} 张图片`;
-  totalCount.textContent = state.images.length;
+  const filteredImages = state.category === CATEGORY_CHARACTER ? [] : state.images.filter(matches);
+  const filteredCharacters = state.characters.filter(matchesCharacter);
+  const cards = [
+    ...filteredImages.map(makeCard),
+    ...filteredCharacters.map(makeCharacterCard),
+  ];
+  gallery.classList.toggle('character-gallery', state.category === CATEGORY_CHARACTER);
+  gallery.replaceChildren(...cards);
+  empty.hidden = cards.length !== 0;
+  resultCount.textContent = state.category === CATEGORY_CHARACTER
+    ? `${filteredCharacters.length} 个人物`
+    : `${cards.length} 项素材`;
+  totalCount.textContent = state.images.length + state.characters.length;
   modelLaunchCount.textContent = state.images.filter(image => image.category === CATEGORY_MODEL_LAUNCH).length;
+  characterCount.textContent = state.characters.length;
 }
 
 document.querySelector('#category-chips').addEventListener('click', event => {
@@ -234,16 +322,38 @@ dialog.addEventListener('click', event => {
   if (event.target === dialog) dialog.close();
 });
 
+document.querySelector('#character-dialog-close').addEventListener('click', () => characterDialog.close());
+characterDialog.addEventListener('click', event => {
+  if (event.target === characterDialog) characterDialog.close();
+});
+
+copyCharacterPrompt.addEventListener('click', async () => {
+  const prompt = copyCharacterPrompt.dataset.prompt || '';
+  if (!prompt) return;
+  try {
+    await navigator.clipboard.writeText(prompt);
+    copyCharacterPrompt.textContent = '已复制';
+    window.setTimeout(() => { copyCharacterPrompt.textContent = '复制 Prompt'; }, 1600);
+  } catch {
+    copyCharacterPrompt.textContent = '复制失败，请手动选择';
+  }
+});
+
 async function load() {
   try {
-    const response = await fetch(`data/images.json?t=${Date.now()}`);
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const data = await response.json();
-    if (!Array.isArray(data)) throw new Error('images.json 必须是数组');
-    state.images = data;
-    const figmaCount = data.filter(image => image.source === 'figma').length;
-    syncState.textContent = figmaCount
-      ? `已同步 ${figmaCount} 张 Figma 图片`
+    const [imageResponse, characterResponse] = await Promise.all([
+      fetch(`data/images.json?t=${Date.now()}`),
+      fetch(`data/characters.json?t=${Date.now()}`),
+    ]);
+    if (!imageResponse.ok) throw new Error(`图片库读取失败 HTTP ${imageResponse.status}`);
+    const images = await imageResponse.json();
+    const characters = characterResponse.ok ? await characterResponse.json() : [];
+    if (!Array.isArray(images) || !Array.isArray(characters)) throw new Error('图库数据格式错误');
+    state.images = images;
+    state.characters = characters;
+    const figmaCount = images.filter(image => image.source === 'figma').length;
+    syncState.textContent = figmaCount || characters.length
+      ? `已同步 ${figmaCount} 张图片 · ${characters.length} 个人物`
       : '等待首次 Figma 同步';
     render();
   } catch (error) {

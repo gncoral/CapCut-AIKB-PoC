@@ -146,6 +146,13 @@ function cleanPrompt(value) {
   return value.replace(/^\s*Prompt\s*[：:]\s*/i, '').trim();
 }
 
+function collectImageNodes(node, values = []) {
+  const hasImageFill = Array.isArray(node?.fills) && node.fills.some(fill => fill?.type === 'IMAGE' && fill.visible !== false);
+  if (hasImageFill && node.visible !== false) values.push(node);
+  for (const child of node?.children || []) collectImageNodes(child, values);
+  return values;
+}
+
 async function syncCharacterLibrary() {
   const fileUrl = new URL(`https://api.figma.com/v1/files/${fileKey}`);
   fileUrl.searchParams.set('depth', '6');
@@ -158,8 +165,17 @@ async function syncCharacterLibrary() {
     .sort((a, b) => Number(a.absoluteBoundingBox?.x || 0) - Number(b.absoluteBoundingBox?.x || 0));
   if (candidates.length === 0) throw new Error('“人物素材库”页面没有找到包含 CH 编号的画板。');
 
+  const imageNodesByBoard = new Map(candidates.map(node => [
+    node.id,
+    collectImageNodes(node, []).sort((a, b) => Number(a.absoluteBoundingBox?.y || 0) - Number(b.absoluteBoundingBox?.y || 0)),
+  ]));
+  const exportNodes = Array.from(new Map([
+    ...candidates,
+    ...Array.from(imageNodesByBoard.values()).flat(),
+  ].map(node => [node.id, node])).values());
+
   const imageUrl = new URL(`https://api.figma.com/v1/images/${fileKey}`);
-  imageUrl.searchParams.set('ids', candidates.map(node => node.id).join(','));
+  imageUrl.searchParams.set('ids', exportNodes.map(node => node.id).join(','));
   imageUrl.searchParams.set('format', 'png');
   imageUrl.searchParams.set('scale', '1');
   imageUrl.searchParams.set('use_absolute_bounds', 'true');
@@ -176,15 +192,28 @@ async function syncCharacterLibrary() {
     const promptText = textValues.find(value => /^\s*Prompt\s*[：:]/i.test(value))
       || textValues.find(value => /Identity Lock/i.test(value))
       || '';
+    const imageNodes = imageNodesByBoard.get(node.id) || [];
+    const viewsNode = imageNodes[0];
+    const detailsNode = imageNodes.length > 1 ? imageNodes[imageNodes.length - 1] : undefined;
     const fileName = fileNameFor(node.id);
     await download(temporaryUrl, path.join(characterAssetDir, fileName));
+    const viewsFileName = viewsNode ? `views-${fileNameFor(viewsNode.id)}` : fileName;
+    const detailsFileName = detailsNode ? `details-${fileNameFor(detailsNode.id)}` : fileName;
+    if (viewsNode && imagePayload.images?.[viewsNode.id]) {
+      await download(imagePayload.images[viewsNode.id], path.join(characterAssetDir, viewsFileName));
+    }
+    if (detailsNode && imagePayload.images?.[detailsNode.id]) {
+      await download(imagePayload.images[detailsNode.id], path.join(characterAssetDir, detailsFileName));
+    }
     const alias = characterAliases[code] || `人物 ${code.slice(-3)}`;
     characters.push({
       id: `figma:${fileKey}:${node.id}`,
       code,
       alias,
       prompt: cleanPrompt(promptText),
-      src: `assets/characters/${fileName}`,
+      src: `assets/characters/${viewsFileName}`,
+      viewsSrc: `assets/characters/${viewsFileName}`,
+      detailsSrc: `assets/characters/${detailsFileName}`,
       url: figmaDeeplink(node.id),
       figmaFileKey: fileKey,
       figmaNodeId: node.id,

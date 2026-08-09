@@ -12,8 +12,17 @@ const targetNodeId = process.env.FIGMA_TARGET_NODE_ID || '0:1';
 const dataPath = path.join(projectRoot, 'data', 'images.json');
 const assetDir = path.join(projectRoot, 'assets', 'model-launch-backgrounds');
 const brandGuideDir = path.join(projectRoot, 'assets', 'brand-guidelines');
+const characterDataPath = path.join(projectRoot, 'data', 'characters.json');
+const characterAssetDir = path.join(projectRoot, 'assets', 'characters');
 const allowedTypes = new Set(['FRAME', 'COMPONENT', 'INSTANCE', 'GROUP', 'RECTANGLE', 'SLICE']);
 const backgroundStyleNames = ['柔焦色场', '抽象扩散', '极简3D'];
+const characterAliases = {
+  CH001: '冷灰利落',
+  CH002: '橄榄学院',
+  CH003: '蓝衫街头',
+  CH004: '黑红运动',
+  CH005: '灰调松弛',
+};
 
 function figmaHeaders() {
   const token = process.env.FIGMA_ACCESS_TOKEN;
@@ -124,6 +133,72 @@ async function syncBrandGuide(pageName, assetSlug) {
   return { page: page.name, board: mainBoard.name, nodeId: mainBoard.id };
 }
 
+function collectText(node, values = []) {
+  if (node?.type === 'TEXT' && typeof node.characters === 'string') {
+    const value = node.characters.trim();
+    if (value) values.push(value);
+  }
+  for (const child of node?.children || []) collectText(child, values);
+  return values;
+}
+
+function cleanPrompt(value) {
+  return value.replace(/^\s*Prompt\s*[：:]\s*/i, '').trim();
+}
+
+async function syncCharacterLibrary() {
+  const fileUrl = new URL(`https://api.figma.com/v1/files/${fileKey}`);
+  fileUrl.searchParams.set('depth', '6');
+  const filePayload = await figmaJson(fileUrl);
+  const page = filePayload.document?.children?.find(node => node.type === 'CANVAS' && node.name.trim() === '人物素材库');
+  if (!page) return { page: '人物素材库', synced: 0, skipped: true };
+
+  const candidates = exportableChildren(page)
+    .filter(node => collectText(node, []).some(value => /^CH\d{3}$/i.test(value)))
+    .sort((a, b) => Number(a.absoluteBoundingBox?.x || 0) - Number(b.absoluteBoundingBox?.x || 0));
+  if (candidates.length === 0) throw new Error('“人物素材库”页面没有找到包含 CH 编号的画板。');
+
+  const imageUrl = new URL(`https://api.figma.com/v1/images/${fileKey}`);
+  imageUrl.searchParams.set('ids', candidates.map(node => node.id).join(','));
+  imageUrl.searchParams.set('format', 'png');
+  imageUrl.searchParams.set('scale', '1');
+  imageUrl.searchParams.set('use_absolute_bounds', 'true');
+  const imagePayload = await figmaJson(imageUrl);
+
+  await fs.mkdir(characterAssetDir, { recursive: true });
+  const characters = [];
+  for (const node of candidates) {
+    const temporaryUrl = imagePayload.images?.[node.id];
+    if (!temporaryUrl) continue;
+    const textValues = collectText(node, []);
+    const code = textValues.find(value => /^CH\d{3}$/i.test(value))?.toUpperCase();
+    if (!code) continue;
+    const promptText = textValues.find(value => /^\s*Prompt\s*[：:]/i.test(value))
+      || textValues.find(value => /Identity Lock/i.test(value))
+      || '';
+    const fileName = fileNameFor(node.id);
+    await download(temporaryUrl, path.join(characterAssetDir, fileName));
+    const alias = characterAliases[code] || `人物 ${code.slice(-3)}`;
+    characters.push({
+      id: `figma:${fileKey}:${node.id}`,
+      code,
+      alias,
+      prompt: cleanPrompt(promptText),
+      src: `assets/characters/${fileName}`,
+      url: figmaDeeplink(node.id),
+      figmaFileKey: fileKey,
+      figmaNodeId: node.id,
+      source: 'figma',
+      category: 'character-library',
+      tags: ['人物素材库', '三视图', '细节图', 'Prompt', alias],
+      syncedAt: new Date().toISOString(),
+    });
+  }
+
+  await fs.writeFile(characterDataPath, `${JSON.stringify(characters, null, 2)}\n`, 'utf8');
+  return { page: page.name, synced: characters.length, skipped: false };
+}
+
 export async function syncFigma() {
   await fs.mkdir(assetDir, { recursive: true });
 
@@ -188,16 +263,17 @@ export async function syncFigma() {
     syncBrandGuide('剪映', 'jianying'),
     syncBrandGuide('CapCut', 'capcut'),
   ]);
+  const characterLibrary = await syncCharacterLibrary();
   const styleCounts = Object.fromEntries(backgroundStyleNames.map(style => [
     style,
     candidates.filter(node => backgroundStyleFor(node, styleAnchors) === style).length,
   ]));
-  return { discovered: candidates.length, synced, total: merged.length, brandGuides, styleCounts };
+  return { discovered: candidates.length, synced, total: merged.length, brandGuides, characterLibrary, styleCounts };
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   syncFigma()
-    .then(result => console.log(`Figma 同步完成：发现 ${result.discovered}，写入 ${result.synced}，图库总计 ${result.total}；风格标签：${JSON.stringify(result.styleCounts)}；品牌规范：${result.brandGuides.map(guide => `${guide.page} / ${guide.board}`).join('、')}`))
+    .then(result => console.log(`Figma 同步完成：发现 ${result.discovered}，写入 ${result.synced}，图库总计 ${result.total}；人物素材：${result.characterLibrary.synced}；风格标签：${JSON.stringify(result.styleCounts)}；品牌规范：${result.brandGuides.map(guide => `${guide.page} / ${guide.board}`).join('、')}`))
     .catch(error => {
       console.error(error.message);
       process.exitCode = 1;

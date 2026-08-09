@@ -437,6 +437,7 @@ dialog img { width: 100%; max-height: calc(100vh - 140px); object-fit: contain; 
   cursor: pointer;
 }
 .copy-image-button:hover { border-color: var(--blue); color: #fff; }
+.copy-image-button:disabled { cursor: wait; opacity: .45; }
 .character-detail-panel {
   padding: 44px 32px 32px;
   display: flex;

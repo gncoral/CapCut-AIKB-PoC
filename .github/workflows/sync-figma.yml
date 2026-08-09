@@ -36,6 +36,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/images.json data/characters.json assets/model-launch-backgrounds assets/brand-guidelines assets/characters
+          git add data/images.json data/characters.json assets/model-launch-backgrounds assets/brand-guidelines assets/characters assets/character-thumbnails
           git diff --cached --quiet || git commit -m "chore: sync approved Figma images"
           git push

@@ -166,12 +166,23 @@ function makeCard(image) {
   card.tabIndex = 0;
   card.setAttribute('aria-label', `预览 ${image.title || '图片'}`);
 
+  const mediaStage = document.createElement('div');
+  mediaStage.className = 'card-media-stage';
+  if (image.thumbnailSrc) {
+    mediaStage.style.setProperty('--preview-image', `url("${image.thumbnailSrc}")`);
+  }
+
   const img = document.createElement('img');
   img.className = 'card-media';
   img.src = image.src;
   img.alt = image.title || '';
   img.loading = 'lazy';
+  img.decoding = 'async';
   img.referrerPolicy = 'no-referrer-when-downgrade';
+  const markLoaded = () => mediaStage.classList.add('is-loaded');
+  img.addEventListener('load', markLoaded, { once: true });
+  if (img.complete && img.naturalWidth) markLoaded();
+  mediaStage.append(img);
 
   const meta = document.createElement('div');
   meta.className = 'card-meta';
@@ -185,7 +196,7 @@ function makeCard(image) {
   source.textContent = sourceLabel(image);
 
   meta.append(title, source);
-  card.append(img, meta);
+  card.append(mediaStage, meta);
 
   if (image.source === 'figma') {
     const badge = document.createElement('span');
@@ -274,6 +285,8 @@ function prefetchCharacterAssets(characters = state.characters) {
 
 async function openCharacter(character) {
   const requestId = ++characterLoadRequest;
+  const viewsStage = characterViewsCanvas.closest('.character-image-stage');
+  const detailsStage = characterDetailsCanvas.closest('.character-image-stage');
   characterDetailCode.textContent = character.code;
   characterDetailName.textContent = character.alias;
   characterDetailPrompt.textContent = character.prompt || '这个人物还没有填写 Prompt。';
@@ -285,12 +298,17 @@ async function openCharacter(character) {
   copyCharacterPrompt.disabled = !character.prompt;
   copyCharacterViews.disabled = true;
   copyCharacterDetails.disabled = true;
-  drawCanvasMessage(characterViewsCanvas, '高清三视图加载中…');
-  drawCanvasMessage(characterDetailsCanvas, '高清细节图加载中…');
+  viewsStage.classList.add('is-loading');
+  detailsStage.classList.add('is-loading');
+  if (!character.thumbnailSrc) drawCanvasMessage(characterViewsCanvas, '图片准备中…');
+  if (!character.detailsPreviewSrc) drawCanvasMessage(characterDetailsCanvas, '图片准备中…');
   characterDialog.showModal();
 
   if (character.thumbnailSrc) {
     drawCharacterCrop(characterViewsCanvas, character.thumbnailSrc).catch(() => {});
+  }
+  if (character.detailsPreviewSrc) {
+    drawCharacterCrop(characterDetailsCanvas, character.detailsPreviewSrc).catch(() => {});
   }
 
   try {
@@ -301,12 +319,16 @@ async function openCharacter(character) {
       drawCharacterCrop(characterDetailsCanvas, assets.detailsSrc),
     ]);
     if (requestId !== characterLoadRequest) return;
+    viewsStage.classList.remove('is-loading');
+    detailsStage.classList.remove('is-loading');
     copyCharacterViews.disabled = false;
     copyCharacterDetails.disabled = false;
   } catch (error) {
     if (requestId !== characterLoadRequest) return;
-    drawCanvasMessage(characterViewsCanvas, '高清三视图加载失败，请稍后重试');
-    drawCanvasMessage(characterDetailsCanvas, '高清细节图加载失败，请稍后重试');
+    viewsStage.classList.remove('is-loading');
+    detailsStage.classList.remove('is-loading');
+    if (!character.thumbnailSrc) drawCanvasMessage(characterViewsCanvas, '图片加载失败，请稍后重试');
+    if (!character.detailsPreviewSrc) drawCanvasMessage(characterDetailsCanvas, '图片加载失败，请稍后重试');
     console.error(error);
   }
 }

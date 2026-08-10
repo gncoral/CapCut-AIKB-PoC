@@ -155,6 +155,15 @@ function collectImageNodes(node, values = []) {
 }
 
 async function syncCharacterLibrary() {
+  let existingCharacters = [];
+  try {
+    const parsed = JSON.parse(await fs.readFile(characterDataPath, 'utf8'));
+    if (Array.isArray(parsed)) existingCharacters = parsed;
+  } catch {
+    existingCharacters = [];
+  }
+  const previousByCode = new Map(existingCharacters.map(character => [character.code, character]));
+
   const fileUrl = new URL(`https://api.figma.com/v1/files/${fileKey}`);
   fileUrl.searchParams.set('depth', '6');
   const filePayload = await figmaJson(fileUrl);
@@ -202,6 +211,8 @@ async function syncCharacterLibrary() {
     const promptText = textValues.find(value => /^\s*Prompt\s*[：:]/i.test(value))
       || textValues.find(value => /Identity Lock/i.test(value))
       || '';
+    const previous = previousByCode.get(code);
+    const prompt = cleanPrompt(promptText) || previous?.prompt || '';
     const imageNodes = imageNodesByBoard.get(node.id) || [];
     const viewsNode = imageNodes[0];
     const detailsNode = imageNodes.length > 1 ? imageNodes[imageNodes.length - 1] : undefined;
@@ -227,11 +238,12 @@ async function syncCharacterLibrary() {
       id: `figma:${fileKey}:${node.id}`,
       code,
       alias,
-      prompt: cleanPrompt(promptText),
+      prompt,
       src: `assets/characters/${viewsFileName}`,
       viewsSrc: `assets/characters/${viewsFileName}`,
       detailsSrc: `assets/characters/${detailsFileName}`,
-      ...(thumbnailSrc ? { thumbnailSrc } : {}),
+      ...((thumbnailSrc || previous?.thumbnailSrc) ? { thumbnailSrc: thumbnailSrc || previous.thumbnailSrc } : {}),
+      ...(previous?.detailsPreviewSrc ? { detailsPreviewSrc: previous.detailsPreviewSrc } : {}),
       url: figmaDeeplink(node.id),
       figmaFileKey: fileKey,
       figmaNodeId: node.id,

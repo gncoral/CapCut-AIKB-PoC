@@ -264,6 +264,14 @@ function loadCharacterAssets(character) {
   return characterAssetsCache.get(character.code);
 }
 
+function prefetchCharacterAssets(characters = state.characters) {
+  characters.forEach(character => {
+    loadCharacterAssets(character).catch(() => {
+      characterAssetsCache.delete(character.code);
+    });
+  });
+}
+
 async function openCharacter(character) {
   const requestId = ++characterLoadRequest;
   characterDetailCode.textContent = character.code;
@@ -375,6 +383,8 @@ function makeCharacterCard(character) {
   card.append(cover, meta);
 
   card.addEventListener('click', () => openCharacter(character));
+  card.addEventListener('pointerenter', () => prefetchCharacterAssets([character]), { once: true });
+  card.addEventListener('focus', () => prefetchCharacterAssets([character]), { once: true });
   card.addEventListener('keydown', event => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
@@ -417,6 +427,9 @@ document.querySelector('#category-chips').addEventListener('click', event => {
     chip.classList.toggle('active', chip === button);
   });
   render();
+  if (state.category === CATEGORY_CHARACTER) {
+    window.setTimeout(() => prefetchCharacterAssets(), 80);
+  }
 });
 
 styleFilter.addEventListener('click', event => {

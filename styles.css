@@ -332,13 +332,36 @@ main { padding: 32px; }
   cursor: zoom-in;
 }
 
-.card-media {
-  width: 100%;
+.card-media-stage {
+  position: relative;
   aspect-ratio: 4 / 3;
-  display: block;
-  object-fit: cover;
+  overflow: hidden;
   background: #19191b;
 }
+.card-media-stage::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  background-color: #19191b;
+  background-image: var(--preview-image);
+  background-position: center;
+  background-size: cover;
+  filter: blur(12px);
+  transform: scale(1.06);
+  transition: opacity .35s ease;
+}
+.card-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+.card-media-stage.is-loaded::before { opacity: 0; }
+.card-media-stage.is-loaded .card-media { opacity: 1; }
 
 .card-meta { padding: 10px 12px 12px; }
 .card-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; }
@@ -424,6 +447,12 @@ dialog img { width: 100%; max-height: calc(100vh - 140px); object-fit: contain; 
   object-fit: contain;
   object-position: center;
   background: #efeeec;
+  transition: filter .35s ease, opacity .35s ease, transform .35s ease;
+}
+.character-image-stage.is-loading canvas {
+  filter: blur(9px);
+  opacity: .9;
+  transform: scale(1.015);
 }
 .character-views-stage canvas { max-height: 700px; }
 .copy-image-button {

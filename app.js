@@ -29,6 +29,9 @@ const characterDetailSource = document.querySelector('#character-detail-source')
 const copyCharacterPrompt = document.querySelector('#copy-character-prompt');
 const copyCharacterViews = document.querySelector('#copy-character-views');
 const copyCharacterDetails = document.querySelector('#copy-character-details');
+const toolImageDialog = document.querySelector('#tool-image-dialog');
+const toolImagePreview = document.querySelector('#tool-image-preview');
+const toolImageTitle = document.querySelector('#tool-image-title');
 const backgroundStyles = ['柔焦色场', '抽象扩散', '极简3D'];
 const characterAssetsCache = new Map();
 let characterLoadRequest = 0;
@@ -508,6 +511,35 @@ async function copyCanvasImage(canvas, button, successLabel) {
 
 copyCharacterViews.addEventListener('click', () => copyCanvasImage(characterViewsCanvas, copyCharacterViews, '三视图已复制'));
 copyCharacterDetails.addEventListener('click', () => copyCanvasImage(characterDetailsCanvas, copyCharacterDetails, '细节图已复制'));
+
+document.querySelectorAll('[data-tool-image]').forEach(button => {
+  button.addEventListener('click', () => {
+    toolImagePreview.src = button.dataset.toolImage;
+    toolImagePreview.alt = button.dataset.toolTitle || '案例图片';
+    toolImageTitle.textContent = button.dataset.toolTitle || '案例图片';
+    toolImageDialog.showModal();
+  });
+});
+
+document.querySelector('#tool-image-dialog-close').addEventListener('click', () => toolImageDialog.close());
+toolImageDialog.addEventListener('click', event => {
+  if (event.target === toolImageDialog) toolImageDialog.close();
+});
+
+async function copyToolCommand(button) {
+  const command = document.querySelector('#tool-command').textContent.trim();
+  try {
+    await navigator.clipboard.writeText(command);
+    const original = button.textContent;
+    button.textContent = '已复制';
+    window.setTimeout(() => { button.textContent = original; }, 1600);
+  } catch {
+    button.textContent = '复制失败，请手动选择';
+  }
+}
+
+document.querySelector('#copy-tool-command').addEventListener('click', event => copyToolCommand(event.currentTarget));
+document.querySelector('#copy-tool-command-inline').addEventListener('click', event => copyToolCommand(event.currentTarget));
 
 async function load() {
   try {

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CapCut M&amp;UG Design Library</title>
-  <link rel="stylesheet" href="styles.css?v=character-assets-3">
+  <link rel="stylesheet" href="styles.css?v=design-tools-1">
 </head>
 <body>
   <header class="site-header">
@@ -18,6 +18,7 @@
   <nav class="tabs" aria-label="主导航">
     <button class="tab active" type="button" data-view="library">视觉库 <span id="total-count">0</span></button>
     <button class="tab" type="button" data-view="brand-guidelines">品牌规范</button>
+    <button class="tab" type="button" data-view="design-tools">设计工具</button>
     <button class="tab" type="button" disabled>收藏 <span id="saved-count">0</span></button>
   </nav>
 
@@ -87,6 +88,82 @@
         </div>
       </article>
     </section>
+
+    <section class="view design-tools-view" id="design-tools-view" hidden>
+      <div class="tool-layout">
+        <aside class="tool-sidebar">
+          <div class="tool-sidebar-label">设计工作流</div>
+          <button class="tool-nav-card active" type="button">
+            <span class="tool-nav-icon">文</span>
+            <span><strong>多语言设计延展</strong><small>Figma 批量适配与校验</small></span>
+          </button>
+          <div class="tool-sidebar-note">更多 Skill 会在真实项目验证后逐步加入。</div>
+        </aside>
+
+        <article class="tool-detail">
+          <header class="tool-hero">
+            <div>
+              <span class="tool-eyebrow">DESIGN SKILL · V1.0</span>
+              <h1>多语言设计延展</h1>
+              <p>读取 Figma 标准母版和多语言文案，先确认语言映射与排版规则，再批量完成画板延展、检查和导出。</p>
+              <div class="tool-actions">
+                <a class="tool-button primary" href="assets/tools/multilingual-design/extend-multilingual-designs-v1.0.zip" download>下载 Skill v1.0</a>
+                <button class="tool-button secondary" id="copy-tool-command" type="button">复制调用语句</button>
+              </div>
+            </div>
+            <div class="tool-flow" aria-label="工作流程">
+              <span>母版</span><i>＋</i><span>文案表</span><i>→</i><span>识别确认</span><i>→</i><span>批量延展</span><i>→</i><span>检查导出</span>
+            </div>
+          </header>
+
+          <section class="tool-section">
+            <div class="tool-section-heading">
+              <div><span>01</span><h2>实际案例：30 个语言 Banner 延展</h2></div>
+              <p>四张图分别说明输入和最终交付，不要求设计师阅读复杂流程。</p>
+            </div>
+            <div class="tool-case-grid">
+              <div class="tool-case-inputs">
+                <figure class="tool-case-card">
+                  <figcaption><span>输入 01</span><strong>Figma 标准母版</strong></figcaption>
+                  <button class="tool-image-button" type="button" data-tool-image="assets/tools/multilingual-design/input-figma-template.jpg" data-tool-title="输入 01｜Figma 标准母版"><img src="assets/tools/multilingual-design/input-figma-template.jpg" alt="Figma 标准母版"></button>
+                </figure>
+                <figure class="tool-case-card">
+                  <figcaption><span>输入 02</span><strong>多语言文案表</strong></figcaption>
+                  <button class="tool-image-button" type="button" data-tool-image="assets/tools/multilingual-design/input-copy-sheet.jpg" data-tool-title="输入 02｜多语言文案表"><img src="assets/tools/multilingual-design/input-copy-sheet.jpg" alt="多语言文案表"></button>
+                </figure>
+              </div>
+              <figure class="tool-case-card tool-case-primary">
+                <figcaption><span>输出 01</span><strong>30 个语言 Figma 画板</strong></figcaption>
+                <button class="tool-image-button" type="button" data-tool-image="assets/tools/multilingual-design/output-figma-locales.jpg" data-tool-title="输出 01｜30 个语言 Figma 画板"><img src="assets/tools/multilingual-design/output-figma-locales.jpg" alt="30 个语言 Figma 画板"></button>
+              </figure>
+              <figure class="tool-case-card">
+                <figcaption><span>输出 02</span><strong>Locale 命名 PNG 文件</strong></figcaption>
+                <button class="tool-image-button" type="button" data-tool-image="assets/tools/multilingual-design/output-locale-png.jpg" data-tool-title="输出 02｜Locale 命名 PNG 文件"><img src="assets/tools/multilingual-design/output-locale-png.jpg" alt="Locale 命名 PNG 文件"></button>
+              </figure>
+            </div>
+          </section>
+
+          <section class="tool-section tool-usage">
+            <div class="tool-section-heading"><div><span>02</span><h2>怎么使用</h2></div></div>
+            <div class="tool-usage-grid">
+              <div class="tool-code-card">
+                <div class="tool-code-label">在 Codex 新任务里输入</div>
+                <pre id="tool-command">使用 $extend-multilingual-designs。
+
+请读取我提供的 Figma 模板和多语言文案文件，
+先输出识别摘要，确认后再完成延展、校验和导出。</pre>
+                <button id="copy-tool-command-inline" type="button">复制</button>
+              </div>
+              <ol class="tool-steps">
+                <li><span>1</span><div><strong>提供文件</strong><p>发送 Figma 链接和 XLSX / CSV 多语言文案。</p></div></li>
+                <li><span>2</span><div><strong>先确认</strong><p>Skill 先识别语言、字段与画板规范，设计师确认后再执行。</p></div></li>
+                <li><span>3</span><div><strong>批量交付</strong><p>生成各语言画板，并检查命名、字体、尺寸与导出文件。</p></div></li>
+              </ol>
+            </div>
+          </section>
+        </article>
+      </div>
+    </section>
   </main>
 
   <dialog id="preview-dialog">
@@ -137,6 +214,12 @@
     </div>
   </dialog>
 
-  <script type="module" src="app.js?v=progressive-images-1"></script>
+  <dialog class="tool-image-dialog" id="tool-image-dialog">
+    <button class="dialog-close" id="tool-image-dialog-close" type="button" aria-label="关闭">×</button>
+    <img id="tool-image-preview" alt="">
+    <div class="dialog-meta"><strong id="tool-image-title"></strong><span>点击图片外区域关闭</span></div>
+  </dialog>
+
+  <script type="module" src="app.js?v=design-tools-1"></script>
 </body>
 </html>

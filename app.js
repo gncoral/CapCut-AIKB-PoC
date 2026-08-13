@@ -70,7 +70,7 @@ function renderBrandGuide(name) {
 
   if (guide?.sourceUrl) brandSourceLink.href = guide.sourceUrl;
   if (guide?.image) {
-    brandGuideImage.src = `${guide.image}?t=${Date.now()}`;
+    brandGuideImage.src = guide.image;
     brandGuideImage.alt = `${name}品牌规范速览`;
   } else {
     brandGuideImage.removeAttribute('src');
@@ -174,7 +174,7 @@ function makeCard(image) {
 
   const img = document.createElement('img');
   img.className = 'card-media';
-  img.src = image.src;
+  img.src = image.cardSrc || image.src;
   img.alt = image.title || '';
   img.loading = 'lazy';
   img.decoding = 'async';
@@ -512,8 +512,8 @@ copyCharacterDetails.addEventListener('click', () => copyCanvasImage(characterDe
 async function load() {
   try {
     const [imageResponse, characterResponse] = await Promise.all([
-      fetch(`data/images.json?t=${Date.now()}`),
-      fetch(`data/characters.json?t=${Date.now()}`),
+      fetch('data/images.json'),
+      fetch('data/characters.json'),
     ]);
     if (!imageResponse.ok) throw new Error(`图片库读取失败 HTTP ${imageResponse.status}`);
     const images = await imageResponse.json();

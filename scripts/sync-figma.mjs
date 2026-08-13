@@ -20,6 +20,7 @@ const characterThumbnailDir = path.join(projectRoot, 'assets', 'character-thumbn
 const syncStatePath = path.join(projectRoot, 'data', 'sync-state.json');
 const allowedTypes = new Set(['FRAME', 'COMPONENT', 'INSTANCE', 'GROUP', 'RECTANGLE', 'SLICE']);
 const backgroundStyleNames = ['柔焦色场', '抽象扩散', '极简3D'];
+const characterThumbnailScale = 0.35;
 const characterAliases = {
   CH001: '冷灰利落',
   CH002: '橄榄学院',
@@ -204,7 +205,7 @@ async function syncCharacterLibrary() {
     const textValues = collectText(node, []);
     const code = textValues.find(value => /^CH\d{3}$/i.test(value))?.toUpperCase();
     const previous = code ? previousByCode.get(code) : undefined;
-    const signature = signatureFor(node);
+    const signature = signatureFor({ node, characterThumbnailScale });
     return { node, code, previous, signature, changed: !previous || previous.figmaSignature !== signature };
   });
   const changedState = candidateState.filter(item => item.changed);
@@ -229,7 +230,7 @@ async function syncCharacterLibrary() {
     const thumbnailUrl = new URL(`https://api.figma.com/v1/images/${fileKey}`);
     thumbnailUrl.searchParams.set('ids', thumbnailNodes.map(node => node.id).join(','));
     thumbnailUrl.searchParams.set('format', 'jpg');
-    thumbnailUrl.searchParams.set('scale', '0.25');
+    thumbnailUrl.searchParams.set('scale', String(characterThumbnailScale));
     thumbnailUrl.searchParams.set('use_absolute_bounds', 'true');
     thumbnailPayload = await figmaJson(thumbnailUrl);
   }

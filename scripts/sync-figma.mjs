@@ -20,7 +20,7 @@ const characterThumbnailDir = path.join(projectRoot, 'assets', 'character-thumbn
 const syncStatePath = path.join(projectRoot, 'data', 'sync-state.json');
 const allowedTypes = new Set(['FRAME', 'COMPONENT', 'INSTANCE', 'GROUP', 'RECTANGLE', 'SLICE']);
 const backgroundStyleNames = ['柔焦色场', '抽象扩散', '极简3D'];
-const characterThumbnailScale = 0.35;
+const characterThumbnailScale = 1;
 const characterAliases = {
   CH001: '冷灰利落',
   CH002: '橄榄学院',

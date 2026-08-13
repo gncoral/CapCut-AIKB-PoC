@@ -264,7 +264,7 @@ main { padding: 32px; }
 .character-card { cursor: pointer; }
 .character-card .character-cover {
   position: relative;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   background: #eeedeb;
 }
@@ -291,12 +291,12 @@ main { padding: 32px; }
   font-size: 10px;
 }
 .character-card-prompt {
-  min-height: 6.2em;
+  min-height: 4.65em;
   margin: 12px 0 0;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   color: #a9a9b0;
   font-size: 11px;
   line-height: 1.55;

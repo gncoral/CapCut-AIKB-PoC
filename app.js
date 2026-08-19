@@ -180,7 +180,7 @@ function characterThumbnailName(character) {
 
 function characterCardImage(character, folder) {
   const name = characterThumbnailName(character);
-  return name ? `assets/${folder}/${name}` : (character.thumbnailSrc || character.viewsSrc || character.src);
+  return name ? `assets/${folder}/${name}?v=progressive-images-1` : (character.thumbnailSrc || character.viewsSrc || character.src);
 }
 
 
@@ -650,7 +650,6 @@ async function load() {
 
 
 await load();
-
 
 
 

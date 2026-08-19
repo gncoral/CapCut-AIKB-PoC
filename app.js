@@ -1,6 +1,7 @@
 const CATEGORY_MODEL_LAUNCH = 'model-launch-background';
 const CATEGORY_CHARACTER = 'character-library';
 
+
 const state = {
   images: [],
   characters: [],
@@ -8,6 +9,7 @@ const state = {
   style: 'all',
   search: '',
 };
+
 
 const gallery = document.querySelector('#gallery');
 const empty = document.querySelector('#empty');
@@ -36,12 +38,14 @@ const backgroundStyles = ['柔焦色场', '抽象扩散', '极简3D'];
 const characterAssetsCache = new Map();
 let characterLoadRequest = 0;
 
+
 const brandFamilies = {
   'jianying-capcut': ['剪映', 'CapCut'],
   'jimeng-dreamina': ['即梦', 'Dreamina'],
   'xingtu-hypic': ['醒图', 'Hypic'],
   'xioyunqiao-pippit': ['小云雀', 'Pippit'],
 };
+
 
 const brandGuides = {
   '剪映': {
@@ -54,6 +58,7 @@ const brandGuides = {
   },
 };
 
+
 const brandSubnav = document.querySelector('#brand-subnav');
 const selectedBrandName = document.querySelector('#selected-brand-name');
 const brandContentTitle = document.querySelector('#brand-content-title');
@@ -61,6 +66,7 @@ const brandSourceLink = document.querySelector('#brand-source-link');
 const brandSourcePending = document.querySelector('#brand-source-pending');
 const brandGuideImage = document.querySelector('#brand-guide-image');
 const brandContentEmpty = document.querySelector('#brand-content-empty');
+
 
 function renderBrandGuide(name) {
   const guide = brandGuides[name];
@@ -70,6 +76,7 @@ function renderBrandGuide(name) {
   brandSourcePending.hidden = Boolean(guide?.sourceUrl);
   brandGuideImage.hidden = !guide?.image;
   brandContentEmpty.hidden = Boolean(guide?.image);
+
 
   if (guide?.sourceUrl) brandSourceLink.href = guide.sourceUrl;
   if (guide?.image) {
@@ -81,12 +88,14 @@ function renderBrandGuide(name) {
   }
 }
 
+
 function selectBrand(name, button) {
   renderBrandGuide(name);
   brandSubnav.querySelectorAll('.brand-option').forEach(option => {
     option.classList.toggle('active', option === button);
   });
 }
+
 
 function renderBrandOptions(family) {
   const names = brandFamilies[family] || [];
@@ -101,6 +110,7 @@ function renderBrandOptions(family) {
   renderBrandGuide(names[0] || '');
 }
 
+
 document.querySelector('.brand-family-nav').addEventListener('click', event => {
   const button = event.target.closest('[data-brand-family]');
   if (!button) return;
@@ -110,11 +120,14 @@ document.querySelector('.brand-family-nav').addEventListener('click', event => {
   renderBrandOptions(button.dataset.brandFamily);
 });
 
+
 renderBrandOptions('jianying-capcut');
+
 
 document.querySelector('.tabs').addEventListener('click', event => {
   const tab = event.target.closest('[data-view]');
   if (!tab) return;
+
 
   document.querySelectorAll('.tab[data-view]').forEach(button => {
     button.classList.toggle('active', button === tab);
@@ -124,14 +137,17 @@ document.querySelector('.tabs').addEventListener('click', event => {
   });
 });
 
+
 function safeText(value) {
   return String(value ?? '');
 }
+
 
 function sourceLabel(image) {
   if (image.source === 'figma') return 'Figma · 模型上新背景';
   return image.source || image.platform || '参考素材';
 }
+
 
 function matches(image) {
   if (state.category !== 'all' && image.category !== state.category) return false;
@@ -144,6 +160,7 @@ function matches(image) {
   return haystack.includes(state.search.toLowerCase());
 }
 
+
 function matchesCharacter(character) {
   if (state.category !== 'all' && state.category !== CATEGORY_CHARACTER) return false;
   if (!state.search) return true;
@@ -154,6 +171,19 @@ function matchesCharacter(character) {
   return haystack.includes(state.search.toLowerCase());
 }
 
+
+function characterThumbnailName(character) {
+  const source = character.thumbnailSrc || character.viewsSrc || character.src || '';
+  return source.split('/').pop()?.split('?')[0] || '';
+}
+
+
+function characterCardImage(character, folder) {
+  const name = characterThumbnailName(character);
+  return name ? `assets/${folder}/${name}` : (character.thumbnailSrc || character.viewsSrc || character.src);
+}
+
+
 function openPreview(image) {
   document.querySelector('#preview-image').src = image.src;
   document.querySelector('#preview-image').alt = image.title || '图片预览';
@@ -163,17 +193,20 @@ function openPreview(image) {
   dialog.showModal();
 }
 
+
 function makeCard(image) {
   const card = document.createElement('article');
   card.className = 'card';
   card.tabIndex = 0;
   card.setAttribute('aria-label', `预览 ${image.title || '图片'}`);
 
+
   const mediaStage = document.createElement('div');
   mediaStage.className = 'card-media-stage';
   if (image.thumbnailSrc) {
     mediaStage.style.setProperty('--preview-image', `url("${image.thumbnailSrc}")`);
   }
+
 
   const img = document.createElement('img');
   img.className = 'card-media';
@@ -187,19 +220,24 @@ function makeCard(image) {
   if (img.complete && img.naturalWidth) markLoaded();
   mediaStage.append(img);
 
+
   const meta = document.createElement('div');
   meta.className = 'card-meta';
+
 
   const title = document.createElement('div');
   title.className = 'card-title';
   title.textContent = image.title || '未命名';
 
+
   const source = document.createElement('div');
   source.className = 'card-source';
   source.textContent = sourceLabel(image);
 
+
   meta.append(title, source);
   card.append(mediaStage, meta);
+
 
   if (image.source === 'figma') {
     const badge = document.createElement('span');
@@ -207,6 +245,7 @@ function makeCard(image) {
     badge.textContent = 'Figma 已同步';
     card.append(badge);
   }
+
 
   const backgroundStyle = image.style || backgroundStyles.find(style => (image.tags || []).includes(style));
   if (backgroundStyle) {
@@ -216,6 +255,7 @@ function makeCard(image) {
     card.append(styleBadge);
   }
 
+
   card.addEventListener('click', () => openPreview(image));
   card.addEventListener('keydown', event => {
     if (event.key === 'Enter' || event.key === ' ') {
@@ -224,8 +264,10 @@ function makeCard(image) {
     }
   });
 
+
   return card;
 }
+
 
 function drawCanvasMessage(canvas, message) {
   canvas.width = 1200;
@@ -239,6 +281,7 @@ function drawCanvasMessage(canvas, message) {
   context.textBaseline = 'middle';
   context.fillText(message, canvas.width / 2, canvas.height / 2);
 }
+
 
 function drawCharacterCrop(canvas, src, crop) {
   return new Promise((resolve, reject) => {
@@ -259,6 +302,7 @@ function drawCharacterCrop(canvas, src, crop) {
   });
 }
 
+
 function loadCharacterAssets(character) {
   if (character.viewsSrc && character.detailsSrc) {
     return Promise.resolve({ viewsSrc: character.viewsSrc, detailsSrc: character.detailsSrc });
@@ -278,6 +322,7 @@ function loadCharacterAssets(character) {
   return characterAssetsCache.get(character.code);
 }
 
+
 function prefetchCharacterAssets(characters = state.characters) {
   characters.forEach(character => {
     loadCharacterAssets(character).catch(() => {
@@ -285,6 +330,7 @@ function prefetchCharacterAssets(characters = state.characters) {
     });
   });
 }
+
 
 async function openCharacter(character) {
   const requestId = ++characterLoadRequest;
@@ -307,12 +353,14 @@ async function openCharacter(character) {
   if (!character.detailsPreviewSrc) drawCanvasMessage(characterDetailsCanvas, '图片准备中…');
   characterDialog.showModal();
 
+
   if (character.thumbnailSrc) {
     drawCharacterCrop(characterViewsCanvas, character.thumbnailSrc).catch(() => {});
   }
   if (character.detailsPreviewSrc) {
     drawCharacterCrop(characterDetailsCanvas, character.detailsPreviewSrc).catch(() => {});
   }
+
 
   try {
     const assets = await loadCharacterAssets(character);
@@ -336,20 +384,28 @@ async function openCharacter(character) {
   }
 }
 
+
 function makeCharacterCard(character) {
   const card = document.createElement('article');
   card.className = 'card character-card';
   card.tabIndex = 0;
   card.setAttribute('aria-label', `查看 ${character.code} ${character.alias}`);
 
+
   const cover = document.createElement('div');
   cover.className = 'character-cover';
+  const previewSrc = characterCardImage(character, 'character-previews');
+  if (previewSrc) cover.style.setProperty('--character-preview', `url("${previewSrc}")`);
   const image = document.createElement('img');
-  image.src = character.thumbnailSrc || character.viewsSrc || character.src;
+  image.src = characterCardImage(character, 'character-card-thumbnails');
   image.alt = `${character.code} ${character.alias}`;
-  image.loading = 'lazy';
+  image.loading = 'eager';
   image.decoding = 'async';
+  const markCharacterLoaded = () => cover.classList.add('is-loaded');
+  image.addEventListener('load', markCharacterLoaded, { once: true });
+  if (image.complete && image.naturalWidth) markCharacterLoaded();
   cover.append(image);
+
 
   const meta = document.createElement('div');
   meta.className = 'card-meta';
@@ -363,6 +419,7 @@ function makeCharacterCard(character) {
   alias.textContent = character.alias;
   title.append(code, alias);
 
+
   const tags = document.createElement('div');
   tags.className = 'character-tags';
   ['三视图', '细节图', 'Prompt'].forEach(label => {
@@ -371,6 +428,7 @@ function makeCharacterCard(character) {
     tags.append(tag);
   });
 
+
   const prompt = document.createElement('p');
   prompt.className = 'character-card-prompt';
   const promptLabel = document.createElement('strong');
@@ -378,6 +436,7 @@ function makeCharacterCard(character) {
   const promptText = document.createElement('span');
   promptText.textContent = character.prompt || '暂未填写';
   prompt.append(promptLabel, promptText);
+
 
   const copyPrompt = document.createElement('button');
   copyPrompt.className = 'character-card-copy';
@@ -404,8 +463,10 @@ function makeCharacterCard(character) {
     }
   });
 
+
   meta.append(title, tags, prompt, copyPrompt);
   card.append(cover, meta);
+
 
   card.addEventListener('click', () => openCharacter(character));
   card.addEventListener('pointerenter', () => prefetchCharacterAssets([character]), { once: true });
@@ -418,6 +479,7 @@ function makeCharacterCard(character) {
   });
   return card;
 }
+
 
 function render() {
   const filteredImages = state.category === CATEGORY_CHARACTER ? [] : state.images.filter(matches);
@@ -436,6 +498,7 @@ function render() {
   modelLaunchCount.textContent = state.images.filter(image => image.category === CATEGORY_MODEL_LAUNCH).length;
   characterCount.textContent = state.characters.length;
 }
+
 
 document.querySelector('#category-chips').addEventListener('click', event => {
   const button = event.target.closest('[data-category]');
@@ -457,6 +520,7 @@ document.querySelector('#category-chips').addEventListener('click', event => {
   }
 });
 
+
 styleFilter.addEventListener('click', event => {
   const button = event.target.closest('[data-style]');
   if (!button) return;
@@ -467,20 +531,24 @@ styleFilter.addEventListener('click', event => {
   render();
 });
 
+
 searchInput.addEventListener('input', () => {
   state.search = searchInput.value.trim();
   render();
 });
+
 
 document.querySelector('#dialog-close').addEventListener('click', () => dialog.close());
 dialog.addEventListener('click', event => {
   if (event.target === dialog) dialog.close();
 });
 
+
 document.querySelector('#character-dialog-close').addEventListener('click', () => characterDialog.close());
 characterDialog.addEventListener('click', event => {
   if (event.target === characterDialog) characterDialog.close();
 });
+
 
 copyCharacterPrompt.addEventListener('click', async () => {
   const prompt = copyCharacterPrompt.dataset.prompt || '';
@@ -493,6 +561,7 @@ copyCharacterPrompt.addEventListener('click', async () => {
     copyCharacterPrompt.textContent = '复制失败，请手动选择';
   }
 });
+
 
 async function copyCanvasImage(canvas, button, successLabel) {
   try {
@@ -509,8 +578,10 @@ async function copyCanvasImage(canvas, button, successLabel) {
   }
 }
 
+
 copyCharacterViews.addEventListener('click', () => copyCanvasImage(characterViewsCanvas, copyCharacterViews, '三视图已复制'));
 copyCharacterDetails.addEventListener('click', () => copyCanvasImage(characterDetailsCanvas, copyCharacterDetails, '细节图已复制'));
+
 
 document.querySelectorAll('[data-tool-image]').forEach(button => {
   button.addEventListener('click', () => {
@@ -521,10 +592,12 @@ document.querySelectorAll('[data-tool-image]').forEach(button => {
   });
 });
 
+
 document.querySelector('#tool-image-dialog-close').addEventListener('click', () => toolImageDialog.close());
 toolImageDialog.addEventListener('click', event => {
   if (event.target === toolImageDialog) toolImageDialog.close();
 });
+
 
 async function copyToolCommand(button) {
   const command = document.querySelector('#tool-command').textContent.trim();
@@ -538,26 +611,35 @@ async function copyToolCommand(button) {
   }
 }
 
+
 document.querySelector('#copy-tool-command').addEventListener('click', event => copyToolCommand(event.currentTarget));
 document.querySelector('#copy-tool-command-inline').addEventListener('click', event => copyToolCommand(event.currentTarget));
 
+
 async function load() {
   try {
-    const [imageResponse, characterResponse] = await Promise.all([
-      fetch('data/images.json'),
-      fetch('data/characters.json'),
-    ]);
+    const imageResponse = await fetch('data/images.json');
     if (!imageResponse.ok) throw new Error(`图片库读取失败 HTTP ${imageResponse.status}`);
     const images = await imageResponse.json();
-    const characters = characterResponse.ok ? await characterResponse.json() : [];
-    if (!Array.isArray(images) || !Array.isArray(characters)) throw new Error('图库数据格式错误');
+    if (!Array.isArray(images)) throw new Error('图库数据格式错误');
     state.images = images;
-    state.characters = characters;
     const figmaCount = images.filter(image => image.source === 'figma').length;
-    syncState.textContent = figmaCount || characters.length
-      ? `已同步 ${figmaCount} 张图片 · ${characters.length} 个人物`
-      : '等待首次 Figma 同步';
+    syncState.textContent = figmaCount ? `已同步 ${figmaCount} 张图片 · 人物加载中…` : '等待首次 Figma 同步';
     render();
+
+    try {
+      const characterResponse = await fetch('data/characters.json');
+      const characters = characterResponse.ok ? await characterResponse.json() : [];
+      if (!Array.isArray(characters)) throw new Error('人物数据格式错误');
+      state.characters = characters;
+      syncState.textContent = figmaCount || characters.length
+        ? `已同步 ${figmaCount} 张图片 · ${characters.length} 个人物`
+        : '等待首次 Figma 同步';
+      render();
+    } catch (characterError) {
+      syncState.textContent = `已同步 ${figmaCount} 张图片 · 人物读取失败`;
+      console.error(characterError);
+    }
   } catch (error) {
     syncState.textContent = '图库读取失败';
     empty.hidden = false;
@@ -566,4 +648,22 @@ async function load() {
   }
 }
 
+
 await load();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

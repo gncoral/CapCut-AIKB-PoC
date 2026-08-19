@@ -215,6 +215,83 @@ main { padding: 32px; }
 }
 
 
+.brand-fonts {
+  margin: 0 0 22px;
+}
+
+
+.brand-fonts[hidden] { display: none; }
+
+
+.brand-fonts-heading {
+  margin-bottom: 10px;
+}
+
+
+.brand-fonts-heading h2 { margin: 0; font-size: 16px; letter-spacing: -.2px; }
+
+
+.brand-font-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+
+.brand-font-item {
+  min-width: 0;
+  min-height: 64px;
+  padding: 11px 12px 11px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
+  background: var(--panel);
+}
+
+
+.brand-font-copy { min-width: 0; }
+
+
+.brand-font-copy span {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+
+.brand-font-copy strong {
+  display: block;
+  overflow: hidden;
+  color: var(--text);
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.brand-font-download {
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+
+.brand-font-download svg { width: 18px; height: 18px; fill: none; stroke: #a98cff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.8; }
+.brand-font-download:hover { border-color: #a98cff; background: rgba(169, 140, 255, 0.11); transform: translateY(-1px); }
+
+
 .brand-guide-image {
   width: 100%;
   height: auto;
@@ -634,6 +711,7 @@ dialog img { width: 100%; max-height: calc(100vh - 140px); object-fit: contain; 
 @media (max-width: 1200px) { .gallery.character-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 1050px) { .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 1120px) {
+  .brand-font-list { grid-template-columns: 1fr; }
   .tool-layout { grid-template-columns: 1fr; }
   .tool-sidebar { position: static; }
   .tool-sidebar-note { display: none; }

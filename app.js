@@ -51,10 +51,22 @@ const brandGuides = {
   '剪映': {
     image: 'assets/brand-guidelines/jianying/overview.png',
     sourceUrl: 'https://www.figma.com/design/ehZBGGERFm9wim6KUmM5B6/%E5%89%AA%E6%98%A0%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80-%E6%9B%B4%E6%96%B0?node-id=467-146331&t=E0AuhsftD5fHGOwp-1',
+    fonts: [
+      { role: '中文字体 · 标题', name: '汉仪雅酷黑', file: 'assets/brand-fonts/jianying/汉仪雅酷黑.zip', size: '9.2 MB' },
+      { role: '中文字体 · 内文', name: '可口可乐文本体', file: 'assets/brand-fonts/jianying/可口可乐文本体.zip', size: '5.8 MB' },
+      { role: '英文字体', name: 'Futura', file: 'assets/brand-fonts/jianying/Futura.zip', size: '405 KB' },
+    ],
   },
   'CapCut': {
     image: 'assets/brand-guidelines/capcut/overview.png',
     sourceUrl: 'https://www.figma.com/design/iEv05yI0ie9tvrxs6pUbCv/UG%E8%A7%86%E8%A7%89%E8%B5%84%E4%BA%A7%E5%BA%93---%E5%89%AA%E6%98%A0-CapCut?node-id=210-76&t=bUQWPyKBxm9y7aEE-1',
+  },
+  '即梦': {
+    fonts: [
+      { role: '中文字体 · 标题', name: '方正雅士黑', file: 'assets/brand-fonts/dreamina/方正雅士黑.zip', size: '4.9 MB' },
+      { role: '中文字体 · 内文', name: '可口可乐文本体', file: 'assets/brand-fonts/dreamina/可口可乐文本体.zip', size: '5.8 MB' },
+      { role: '英文字体', name: 'Floane', file: 'assets/brand-fonts/dreamina/Floane.zip', size: '113 KB' },
+    ],
   },
 };
 
@@ -66,6 +78,36 @@ const brandSourceLink = document.querySelector('#brand-source-link');
 const brandSourcePending = document.querySelector('#brand-source-pending');
 const brandGuideImage = document.querySelector('#brand-guide-image');
 const brandContentEmpty = document.querySelector('#brand-content-empty');
+const brandFonts = document.querySelector('#brand-fonts');
+const brandFontList = document.querySelector('#brand-font-list');
+
+
+function renderBrandFonts(fonts = []) {
+  brandFonts.hidden = !fonts.length;
+  brandFontList.replaceChildren(...fonts.map(font => {
+    const item = document.createElement('article');
+    item.className = 'brand-font-item';
+
+    const copy = document.createElement('div');
+    copy.className = 'brand-font-copy';
+    const role = document.createElement('span');
+    role.textContent = font.role;
+    const name = document.createElement('strong');
+    name.textContent = font.name;
+    copy.append(role, name);
+
+    const download = document.createElement('a');
+    download.className = 'brand-font-download';
+    download.href = font.file;
+    download.download = '';
+    download.setAttribute('aria-label', `下载${font.name}字体包`);
+    download.title = `下载${font.name}字体包`;
+    download.innerHTML = `<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 18v2h14v-2"/></svg>`;
+
+    item.append(copy, download);
+    return item;
+  }));
+}
 
 
 function renderBrandGuide(name) {
@@ -76,6 +118,7 @@ function renderBrandGuide(name) {
   brandSourcePending.hidden = Boolean(guide?.sourceUrl);
   brandGuideImage.hidden = !guide?.image;
   brandContentEmpty.hidden = Boolean(guide?.image);
+  renderBrandFonts(guide?.fonts);
 
 
   if (guide?.sourceUrl) brandSourceLink.href = guide.sourceUrl;
@@ -650,9 +693,6 @@ async function load() {
 
 
 await load();
-
-
-
 
 
 

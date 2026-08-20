@@ -74,6 +74,10 @@ const brandGuides = {
     image: 'assets/brand-guidelines/xingtu/overview.png',
     sourceUrl: 'https://www.figma.com/design/xgNKURSvSnjPokiFQF1uHr/%E9%86%92%E5%9B%BE%E5%93%81%E7%89%8C%E8%A7%84%E8%8C%83%E6%89%8B%E5%86%8C-logo%E4%BD%BF%E7%94%A8?node-id=0-1&t=EJ9Pg9eH3pXmfn8M-1',
   },
+  'Hypic': {
+    image: 'assets/brand-guidelines/hypic/overview.png',
+    sourceUrl: 'https://www.figma.com/design/xgNKURSvSnjPokiFQF1uHr/%E9%86%92%E5%9B%BE%E5%93%81%E7%89%8C%E8%A7%84%E8%8C%83%E6%89%8B%E5%86%8C-logo%E4%BD%BF%E7%94%A8?node-id=0-1&t=YMYCIH97y5S85I17-1',
+  },
 };
 
 
@@ -699,7 +703,6 @@ async function load() {
 
 
 await load();
-
 
 
 

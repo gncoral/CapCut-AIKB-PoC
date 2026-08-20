@@ -60,6 +60,10 @@ const brandGuides = {
   'CapCut': {
     image: 'assets/brand-guidelines/capcut/overview.png',
     sourceUrl: 'https://www.figma.com/design/iEv05yI0ie9tvrxs6pUbCv/UG%E8%A7%86%E8%A7%89%E8%B5%84%E4%BA%A7%E5%BA%93---%E5%89%AA%E6%98%A0-CapCut?node-id=210-76&t=bUQWPyKBxm9y7aEE-1',
+    fonts: [
+      { role: 'CC 字体 · 全场景适用', name: 'CapCut Sans Text', file: 'assets/brand-fonts/capcut/CapCut Sans Text.zip', size: '177 KB' },
+      { role: '标题字体 · 仅运营设计用', name: 'Futura', file: 'assets/brand-fonts/capcut/CC运营标题字-futura.zip', size: '406 KB' },
+    ],
   },
   '即梦': {
     image: 'assets/brand-guidelines/jimeng/overview.png',
@@ -711,7 +715,6 @@ async function load() {
 
 
 await load();
-
 
 
 

@@ -401,11 +401,13 @@ export async function syncFigma() {
   const brandGuides = await Promise.all([
     syncBrandGuide('剪映', 'jianying', syncState.brandGuides?.jianying || ''),
     syncBrandGuide('CapCut', 'capcut', syncState.brandGuides?.capcut || ''),
+    syncBrandGuide('即梦', 'jimeng', syncState.brandGuides?.jimeng || ''),
   ]);
   await fs.writeFile(syncStatePath, `${JSON.stringify({
     brandGuides: {
       jianying: brandGuides[0].signature,
       capcut: brandGuides[1].signature,
+      jimeng: brandGuides[2].signature,
     },
   }, null, 2)}\n`, 'utf8');
   const characterLibrary = await syncCharacterLibrary();

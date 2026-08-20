@@ -62,6 +62,8 @@ const brandGuides = {
     sourceUrl: 'https://www.figma.com/design/iEv05yI0ie9tvrxs6pUbCv/UG%E8%A7%86%E8%A7%89%E8%B5%84%E4%BA%A7%E5%BA%93---%E5%89%AA%E6%98%A0-CapCut?node-id=210-76&t=bUQWPyKBxm9y7aEE-1',
   },
   '即梦': {
+    image: 'assets/brand-guidelines/jimeng/overview.png',
+    sourceUrl: 'https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E7%BD%91%E7%AB%99%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86',
     fonts: [
       { role: '中文字体 · 标题', name: '方正雅士黑', file: 'assets/brand-fonts/dreamina/方正雅士黑.zip', size: '4.9 MB' },
       { role: '中文字体 · 内文', name: '可口可乐文本体', file: 'assets/brand-fonts/dreamina/可口可乐文本体.zip', size: '5.8 MB' },
@@ -693,7 +695,6 @@ async function load() {
 
 
 await load();
-
 
 
 

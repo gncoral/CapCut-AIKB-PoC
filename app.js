@@ -78,6 +78,14 @@ const brandGuides = {
     image: 'assets/brand-guidelines/hypic/overview.png',
     sourceUrl: 'https://www.figma.com/design/xgNKURSvSnjPokiFQF1uHr/%E9%86%92%E5%9B%BE%E5%93%81%E7%89%8C%E8%A7%84%E8%8C%83%E6%89%8B%E5%86%8C-logo%E4%BD%BF%E7%94%A8?node-id=0-1&t=YMYCIH97y5S85I17-1',
   },
+  '小云雀': {
+    image: 'assets/brand-guidelines/xiaoyunque/overview.png',
+    sourceUrl: 'https://www.figma.com/design/O6DV31oatGS2NMD30hEPaJ/%F0%9F%9F%A3-Pippit-%E6%96%B0%E5%93%81%E7%89%8C---logo---%E4%B8%AD%E5%9B%BD%E5%8C%BA%E7%89%A9%E6%96%99?node-id=1802-37125&t=GqvfFaEarcT5Tvxf-1',
+  },
+  'Pippit': {
+    image: 'assets/brand-guidelines/pippit/overview.png',
+    sourceUrl: 'https://www.figma.com/design/O6DV31oatGS2NMD30hEPaJ/%F0%9F%9F%A3-Pippit-%E6%96%B0%E5%93%81%E7%89%8C---logo---%E4%B8%AD%E5%9B%BD%E5%8C%BA%E7%89%A9%E6%96%99?node-id=1802-37125&t=GqvfFaEarcT5Tvxf-1',
+  },
 };
 
 
@@ -703,7 +711,6 @@ async function load() {
 
 
 await load();
-
 
 
 

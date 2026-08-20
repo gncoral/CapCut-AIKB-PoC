@@ -404,6 +404,8 @@ export async function syncFigma() {
     syncBrandGuide('即梦', 'jimeng', syncState.brandGuides?.jimeng || ''),
     syncBrandGuide('醒图', 'xingtu', syncState.brandGuides?.xingtu || ''),
     syncBrandGuide('Hypic', 'hypic', syncState.brandGuides?.hypic || ''),
+    syncBrandGuide('小云雀', 'xiaoyunque', syncState.brandGuides?.xiaoyunque || ''),
+    syncBrandGuide('Pippit', 'pippit', syncState.brandGuides?.pippit || ''),
   ]);
   await fs.writeFile(syncStatePath, `${JSON.stringify({
     brandGuides: {
@@ -412,6 +414,8 @@ export async function syncFigma() {
       jimeng: brandGuides[2].signature,
       xingtu: brandGuides[3].signature,
       hypic: brandGuides[4].signature,
+      xiaoyunque: brandGuides[5].signature,
+      pippit: brandGuides[6].signature,
     },
   }, null, 2)}\n`, 'utf8');
   const characterLibrary = await syncCharacterLibrary();

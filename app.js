@@ -82,6 +82,14 @@ const brandGuides = {
   '醒图': {
     image: 'assets/brand-guidelines/xingtu/overview.png',
     sourceUrl: 'https://www.figma.com/design/xgNKURSvSnjPokiFQF1uHr/%E9%86%92%E5%9B%BE%E5%93%81%E7%89%8C%E8%A7%84%E8%8C%83%E6%89%8B%E5%86%8C-logo%E4%BD%BF%E7%94%A8?node-id=0-1&t=EJ9Pg9eH3pXmfn8M-1',
+    fonts: [
+      { role: '中文品牌字体', name: '方正兰亭黑', file: 'assets/brand-fonts/xingtu/方正兰亭黑.TTF', size: '2.3 MB' },
+      { role: '英文品牌字体', name: 'Hypic', file: 'assets/brand-fonts/xingtu/HYPIC-REGULAR.OTF', size: '8.5 KB' },
+      { role: '英文品牌字体', name: 'PingFang SC', file: 'https://github.com/gncoral/CapCut-AIKB-PoC/releases/download/brand-fonts-v1/pingfang.zip', size: '40.5 MB' },
+      { role: '运营字体', name: '方正筑紫明朝 简', file: 'assets/brand-fonts/xingtu/方正FW筑紫明朝 简 D.TTF', size: '5.6 MB' },
+      { role: '运营字体', name: '汉仪雅酷黑', file: 'assets/brand-fonts/xingtu/汉仪雅酷黑.zip', size: '9.2 MB' },
+      { role: '运营字体', name: '方正雅士宋', file: 'assets/brand-fonts/xingtu/方正雅士宋.zip', size: '9.1 MB' },
+    ],
   },
   'Hypic': {
     image: 'assets/brand-guidelines/hypic/overview.png',
@@ -720,7 +728,6 @@ async function load() {
 
 
 await load();
-
 
 
 

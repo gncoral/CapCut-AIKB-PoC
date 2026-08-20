@@ -102,6 +102,15 @@ const brandGuides = {
   '小云雀': {
     image: 'assets/brand-guidelines/xiaoyunque/overview.png',
     sourceUrl: 'https://www.figma.com/design/O6DV31oatGS2NMD30hEPaJ/%F0%9F%9F%A3-Pippit-%E6%96%B0%E5%93%81%E7%89%8C---logo---%E4%B8%AD%E5%9B%BD%E5%8C%BA%E7%89%A9%E6%96%99?node-id=1802-37125&t=GqvfFaEarcT5Tvxf-1',
+    fonts: [
+      { role: '中文品牌字体', name: '方正兰亭粗黑简体' },
+      { role: '中文品牌字体', name: 'CapCut Sans Text', file: 'assets/brand-fonts/xiaoyunque/CapCut Sans Text.zip', size: '177 KB' },
+      { role: '英文品牌字体', name: 'CapCut Sans Display' },
+      { role: '英文品牌字体', name: 'TikTok Sans Text' },
+      { role: '运营字体', name: '方正兰亭黑', file: 'assets/brand-fonts/xiaoyunque/方正兰亭黑.TTF', size: '2.3 MB' },
+      { role: '运营字体', name: '方正筑紫明朝体' },
+      { role: '运营字体', name: '造字工房品宋' },
+    ],
   },
   'Pippit': {
     image: 'assets/brand-guidelines/pippit/overview.png',
@@ -135,15 +144,17 @@ function renderBrandFonts(fonts = []) {
     name.textContent = font.name;
     copy.append(role, name);
 
-    const download = document.createElement('a');
-    download.className = 'brand-font-download';
-    download.href = font.file;
-    download.download = '';
-    download.setAttribute('aria-label', `下载${font.name}字体包`);
-    download.title = `下载${font.name}字体包`;
-    download.innerHTML = `<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 18v2h14v-2"/></svg>`;
-
-    item.append(copy, download);
+    item.append(copy);
+    if (font.file) {
+      const download = document.createElement('a');
+      download.className = 'brand-font-download';
+      download.href = font.file;
+      download.download = '';
+      download.setAttribute('aria-label', `下载${font.name}字体包`);
+      download.title = `下载${font.name}字体包`;
+      download.innerHTML = `<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 18v2h14v-2"/></svg>`;
+      item.append(download);
+    }
     return item;
   }));
 }
@@ -732,6 +743,5 @@ async function load() {
 
 
 await load();
-
 
 

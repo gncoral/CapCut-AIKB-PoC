@@ -38,12 +38,21 @@ function figmaHeaders() {
 }
 
 async function figmaJson(url) {
-  const response = await fetch(url, { headers: figmaHeaders() });
-  if (!response.ok) {
+  const maxAttempts = 4;
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    const response = await fetch(url, { headers: figmaHeaders() });
+    if (response.ok) return response.json();
+
     const body = await response.text();
-    throw new Error(`Figma 请求失败 ${response.status}: ${body.slice(0, 240)}`);
+    const retryable = response.status === 429 || response.status >= 500;
+    if (!retryable || attempt === maxAttempts) {
+      throw new Error(`Figma 请求失败 ${response.status}: ${body.slice(0, 240)}`);
+    }
+
+    const delayMs = attempt * 2000;
+    console.warn(`Figma 暂时不可用（${response.status}），${delayMs / 1000} 秒后进行第 ${attempt + 1} 次尝试…`);
+    await new Promise(resolve => setTimeout(resolve, delayMs));
   }
-  return response.json();
 }
 
 function exportableChildren(node) {

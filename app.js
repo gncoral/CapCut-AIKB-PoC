@@ -94,6 +94,10 @@ const brandGuides = {
   'Hypic': {
     image: 'assets/brand-guidelines/hypic/overview.png',
     sourceUrl: 'https://www.figma.com/design/xgNKURSvSnjPokiFQF1uHr/%E9%86%92%E5%9B%BE%E5%93%81%E7%89%8C%E8%A7%84%E8%8C%83%E6%89%8B%E5%86%8C-logo%E4%BD%BF%E7%94%A8?node-id=0-1&t=YMYCIH97y5S85I17-1',
+    fonts: [
+      { role: '英文品牌字体', name: 'SF Pro Display', file: 'assets/brand-fonts/hypic/sf-pro-display.zip', size: '883 KB' },
+      { role: '英文品牌字体', name: 'Hypic', file: 'assets/brand-fonts/hypic/HYPIC-REGULAR.OTF', size: '8.5 KB' },
+    ],
   },
   '小云雀': {
     image: 'assets/brand-guidelines/xiaoyunque/overview.png',
@@ -728,7 +732,6 @@ async function load() {
 
 
 await load();
-
 
 
 

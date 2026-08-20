@@ -63,7 +63,7 @@ const brandGuides = {
   },
   '即梦': {
     image: 'assets/brand-guidelines/jimeng/overview.png',
-    sourceUrl: 'https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E7%BD%91%E7%AB%99%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86',
+    sourceUrl: 'https://www.figma.com/design/CsnIVi9Lmln5f4kxiVIrYz/%E5%8D%B3%E6%A2%A6AI%E5%93%81%E7%89%8C%E8%B5%84%E4%BA%A7?node-id=0-1&t=rHSpzwhKStj8C0CE-1',
     fonts: [
       { role: '中文字体 · 标题', name: '方正雅士黑', file: 'assets/brand-fonts/dreamina/方正雅士黑.zip', size: '4.9 MB' },
       { role: '中文字体 · 内文', name: '可口可乐文本体', file: 'assets/brand-fonts/dreamina/可口可乐文本体.zip', size: '5.8 MB' },
@@ -695,7 +695,6 @@ async function load() {
 
 
 await load();
-
 
 
 

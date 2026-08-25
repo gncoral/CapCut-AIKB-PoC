@@ -157,7 +157,8 @@ main { padding: 32px; }
 
 
 .brand-option,
-.style-chip {
+.style-chip,
+.brand-chip {
   padding: 8px 18px;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -168,11 +169,13 @@ main { padding: 32px; }
 
 
 .brand-option:hover,
-.style-chip:hover { color: var(--text); }
+.style-chip:hover,
+.brand-chip:hover { color: var(--text); }
 
 
 .brand-option.active,
-.style-chip.active {
+.style-chip.active,
+.brand-chip.active {
   border-color: var(--text);
   background: var(--text);
   color: var(--bg);
@@ -417,17 +420,19 @@ main { padding: 32px; }
 
 
 .style-filter {
-  min-height: 64px;
   margin: 0 0 18px;
-  padding: 18px 0;
+  padding: 14px 0;
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
 }
 
 
 .style-filter[hidden] { display: none; }
-.style-filter > span { flex: 0 0 auto; color: var(--muted); font-size: 12px; }
+.background-filter-row { display: flex; align-items: center; gap: 10px; }
+.background-filter-row > span { width: 28px; flex: 0 0 auto; color: var(--muted); font-size: 12px; }
+.brand-chip [data-brand-count]:not(:empty)::before { content: '· '; }
 
 
 .gallery {
@@ -588,6 +593,20 @@ main { padding: 32px; }
 }
 
 
+.brand-badge {
+  position: absolute;
+  top: 39px;
+  right: 9px;
+  padding: 5px 8px;
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 999px;
+  background: rgba(10, 10, 12, .78);
+  color: #fff;
+  font-size: 10px;
+  backdrop-filter: blur(8px);
+}
+
+
 .empty { padding: 110px 20px; text-align: center; color: var(--muted); }
 .empty h2 { color: var(--text); font-size: 18px; }
 
@@ -729,7 +748,7 @@ dialog img { width: 100%; max-height: calc(100vh - 140px); object-fit: contain; 
   .connect-panel { grid-template-columns: 1fr; }
   .connect-panel form { flex-direction: column; }
   .status-hint { display: none; }
-  .style-filter { align-items: flex-start; flex-direction: column; }
+  .background-filter-row { align-items: flex-start; flex-direction: column; }
   .brand-family-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .brand-content-header { align-items: flex-start; flex-direction: column; }
   .brand-content-empty { margin-top: 38px; }

@@ -7,6 +7,7 @@ const state = {
   characters: [],
   category: 'all',
   style: 'all',
+  backgroundBrand: 'all',
   search: '',
 };
 
@@ -21,6 +22,7 @@ const characterCount = document.querySelector('#character-count');
 const searchInput = document.querySelector('#search');
 const dialog = document.querySelector('#preview-dialog');
 const styleFilter = document.querySelector('#style-filter');
+const brandFilter = document.querySelector('#brand-filter');
 const characterDialog = document.querySelector('#character-dialog');
 const characterViewsCanvas = document.querySelector('#character-views-canvas');
 const characterDetailsCanvas = document.querySelector('#character-details-canvas');
@@ -35,6 +37,7 @@ const toolImageDialog = document.querySelector('#tool-image-dialog');
 const toolImagePreview = document.querySelector('#tool-image-preview');
 const toolImageTitle = document.querySelector('#tool-image-title');
 const backgroundStyles = ['柔焦色场', '抽象扩散', '极简3D'];
+const backgroundBrands = ['即梦', '小云雀'];
 const characterAssetsCache = new Map();
 let characterLoadRequest = 0;
 
@@ -245,6 +248,7 @@ function sourceLabel(image) {
 function matches(image) {
   if (state.category !== 'all' && image.category !== state.category) return false;
   if (state.style !== 'all' && image.style !== state.style && !(image.tags || []).includes(state.style)) return false;
+  if (state.backgroundBrand !== 'all' && image.brand !== state.backgroundBrand && !(image.tags || []).includes(state.backgroundBrand)) return false;
   if (!state.search) return true;
   const haystack = [image.title, image.source, image.category, ...(image.tags || [])]
     .map(safeText)
@@ -346,6 +350,15 @@ function makeCard(image) {
     styleBadge.className = 'style-badge';
     styleBadge.textContent = backgroundStyle === '极简3D' ? '极简 3D' : backgroundStyle;
     card.append(styleBadge);
+  }
+
+
+  const backgroundBrand = image.brand || backgroundBrands.find(brand => (image.tags || []).includes(brand));
+  if (backgroundBrand) {
+    const brandBadge = document.createElement('span');
+    brandBadge.className = 'brand-badge';
+    brandBadge.textContent = backgroundBrand;
+    card.append(brandBadge);
   }
 
 
@@ -590,6 +603,10 @@ function render() {
   totalCount.textContent = state.images.length + state.characters.length;
   modelLaunchCount.textContent = state.images.filter(image => image.category === CATEGORY_MODEL_LAUNCH).length;
   characterCount.textContent = state.characters.length;
+  document.querySelectorAll('[data-brand-count]').forEach(count => {
+    const brand = count.dataset.brandCount;
+    count.textContent = state.images.filter(image => image.category === CATEGORY_MODEL_LAUNCH && (image.brand === brand || (image.tags || []).includes(brand))).length;
+  });
 }
 
 
@@ -600,8 +617,12 @@ document.querySelector('#category-chips').addEventListener('click', event => {
   styleFilter.hidden = state.category !== CATEGORY_MODEL_LAUNCH;
   if (styleFilter.hidden) {
     state.style = 'all';
+    state.backgroundBrand = 'all';
     document.querySelectorAll('[data-style]').forEach(chip => {
       chip.classList.toggle('active', chip.dataset.style === 'all');
+    });
+    document.querySelectorAll('[data-background-brand]').forEach(chip => {
+      chip.classList.toggle('active', chip.dataset.backgroundBrand === 'all');
     });
   }
   document.querySelectorAll('[data-category]').forEach(chip => {
@@ -619,6 +640,17 @@ styleFilter.addEventListener('click', event => {
   if (!button) return;
   state.style = button.dataset.style;
   document.querySelectorAll('[data-style]').forEach(chip => {
+    chip.classList.toggle('active', chip === button);
+  });
+  render();
+});
+
+
+brandFilter.addEventListener('click', event => {
+  const button = event.target.closest('[data-background-brand]');
+  if (!button) return;
+  state.backgroundBrand = button.dataset.backgroundBrand;
+  document.querySelectorAll('[data-background-brand]').forEach(chip => {
     chip.classList.toggle('active', chip === button);
   });
   render();
@@ -743,5 +775,3 @@ async function load() {
 
 
 await load();
-
-

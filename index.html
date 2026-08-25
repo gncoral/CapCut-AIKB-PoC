@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CapCut M&amp;UG Design Library</title>
-  <link rel="stylesheet" href="styles.css?v=brand-pippit-1">
+  <link rel="stylesheet" href="styles.css?v=background-brand-filter-1">
 </head>
 <body>
   <header class="site-header">
@@ -49,13 +49,23 @@
       </section>
 
 
-      <section class="style-filter" id="style-filter" aria-label="背景风格筛选" hidden>
-        <span>风格</span>
-        <div class="chips">
-          <button class="style-chip active" type="button" data-style="all">全部风格</button>
-          <button class="style-chip" type="button" data-style="柔焦色场">柔焦色场</button>
-          <button class="style-chip" type="button" data-style="抽象扩散">抽象扩散</button>
-          <button class="style-chip" type="button" data-style="极简3D">极简 3D</button>
+      <section class="style-filter" id="style-filter" aria-label="背景筛选" hidden>
+        <div class="background-filter-row">
+          <span>风格</span>
+          <div class="chips">
+            <button class="style-chip active" type="button" data-style="all">全部风格</button>
+            <button class="style-chip" type="button" data-style="柔焦色场">柔焦色场</button>
+            <button class="style-chip" type="button" data-style="抽象扩散">抽象扩散</button>
+            <button class="style-chip" type="button" data-style="极简3D">极简 3D</button>
+          </div>
+        </div>
+        <div class="background-filter-row" id="brand-filter">
+          <span>品牌</span>
+          <div class="chips">
+            <button class="brand-chip active" type="button" data-background-brand="all">全部品牌</button>
+            <button class="brand-chip" type="button" data-background-brand="即梦">即梦 <span data-brand-count="即梦"></span></button>
+            <button class="brand-chip" type="button" data-background-brand="小云雀">小云雀 <span data-brand-count="小云雀"></span></button>
+          </div>
         </div>
       </section>
 
@@ -243,6 +253,6 @@
   </dialog>
 
 
-  <script type="module" src="app.js?v=xiaoyunque-fonts-1"></script>
+  <script type="module" src="app.js?v=background-brand-filter-1"></script>
 </body>
 </html>

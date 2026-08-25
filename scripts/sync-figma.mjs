@@ -392,7 +392,7 @@ export async function syncFigma() {
       source: 'figma',
       category: 'model-launch-background',
       style: backgroundStyle,
-      tags: ['模型上新背景', backgroundStyle, 'figma', 'approved-reference'].filter(Boolean),
+      tags: ['模型上新背景', backgroundStyle, previous?.brand, 'figma', 'approved-reference'].filter(Boolean),
       added: previous?.added || today,
       figmaSignature: signature,
       syncedAt: changed ? new Date().toISOString() : previous?.syncedAt,

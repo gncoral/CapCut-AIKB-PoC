@@ -81,8 +81,13 @@ main { padding: 32px; }
   width: 100%; padding: 14px; display: flex; align-items: center; gap: 12px;
   border: 1px solid var(--blue); border-radius: 13px;
   background: color-mix(in srgb, var(--blue) 15%, var(--panel)); color: var(--text); text-align: left;
+  text-decoration: none; cursor: pointer;
 }
+.tool-nav-card + .tool-nav-card { margin-top: 10px; }
+.tool-nav-card:not(.active) { border-color: #35353b; background: #171719; }
+.tool-nav-card:hover { border-color: var(--blue); }
 .tool-nav-icon { width: 38px; height: 38px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 10px; background: #dfff00; color: #171719; font-weight: 800; }
+.tool-nav-gradient { background: linear-gradient(135deg, #18c8f5, #7157ff 54%, #ff9a52); color: #fff; }
 .tool-nav-card strong, .tool-nav-card small { display: block; }
 .tool-nav-card strong { font-size: 13px; }
 .tool-nav-card small { margin-top: 4px; color: #a9a9b0; font-size: 10px; }

@@ -1,0 +1,874 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>品牌背景工作台</title>
+<style>
+:root{--bg:#0c0d10;--panel:#121318;--line:#292b33;--text:#f5f6f8;--muted:#898c96;--ok:#4ade80;--warn:#ffbf4b;--bad:#ff6675;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color-scheme:dark}*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text)}button,input{font:inherit}button{color:inherit}.app{min-height:100vh}.header{height:68px;padding:0 22px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:#0e0f12}.brand-title{display:flex;align-items:center;gap:12px}.mark{width:30px;height:30px;border-radius:9px;background:conic-gradient(from 210deg,#704cfd,#20c4ef,#ff973d,#704cfd);box-shadow:inset 0 0 0 1px #ffffff38}.brand-title strong{font-size:15px}.brand-title small{display:block;margin-top:3px;color:var(--muted);font-size:10px}.header-actions{display:flex;gap:8px}.button{border:1px solid #343741;border-radius:9px;background:#181a20;padding:9px 13px;font-size:11px;font-weight:650;cursor:pointer}.button:hover{border-color:#666b78}.button:disabled{opacity:.55;cursor:wait}.button.primary{background:#f5f6f8;color:#111217;border-color:#f5f6f8}.button.ghost{background:transparent}.quick{padding:16px 22px;border-bottom:1px solid var(--line);background:#101115;display:grid;grid-template-columns:auto minmax(220px,1fr);gap:12px 22px;align-items:start}.quick-label{width:54px;color:#737681;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding-top:8px}.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.chip{border:1px solid #30323a;background:#17181d;border-radius:999px;padding:7px 12px;font-size:11px;cursor:pointer}.chip.active{background:#f4f5f7;color:#101115;border-color:#f4f5f7}.chip .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}.palette{display:flex;height:28px;overflow:hidden;border:1px solid #30323a;border-radius:8px;margin-left:5px}.palette i{width:28px}.ratio-note{color:#777b85;font-size:10px;margin-left:3px}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 286px;min-height:690px}.main{min-width:0;padding:18px 20px 22px}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}.toolbar-left,.toolbar-right{display:flex;align-items:center;gap:7px}.seg{display:flex;padding:3px;border:1px solid #2d3038;border-radius:9px;background:#14151a}.seg button{border:0;background:transparent;padding:6px 10px;border-radius:6px;color:#8c8f99;font-size:10px;cursor:pointer}.seg button.active{background:#2a2c34;color:#fff}.meta{font-size:10px;color:#777b85}.canvas-shell{height:520px;display:grid;place-items:center;padding:26px;border:1px solid var(--line);border-radius:15px;background:radial-gradient(circle at 50% 42%,#1b1d24,#0e0f12 72%);overflow:hidden}.canvas-frame{position:relative;max-width:100%;max-height:100%;box-shadow:0 24px 65px rgba(0,0,0,.45);overflow:hidden;background:#ddd;transition:width .2s,height .2s;border-radius:var(--radius,12px)}canvas{display:block;width:100%;height:100%}.safe-zone{position:absolute;border:1px dashed rgba(255,255,255,.92);box-shadow:0 0 0 1px rgba(0,0,0,.28),inset 0 0 0 9999px rgba(0,0,0,.035);pointer-events:none}.safe-zone:before{content:"文字安全区";position:absolute;left:0;top:-22px;padding:3px 7px;border-radius:5px;background:rgba(11,12,15,.78);font-size:9px;color:#fff;white-space:nowrap}.mock{position:absolute;inset:0;pointer-events:none}.mock-copy{position:absolute;display:flex;flex-direction:column;justify-content:center}.mock-copy h2{font-size:clamp(13px,2.25vw,31px);line-height:1.08;margin:0 0 7px;letter-spacing:-.04em}.mock-copy p{margin:0;font-size:clamp(7px,.8vw,12px);opacity:.72}.mock-copy .cta{align-self:flex-start;margin-top:12px;padding:6px 12px;border-radius:999px;background:#111217;color:white;font-size:8px}.countdown{position:absolute;display:flex;gap:3px}.countdown i{display:grid;place-items:center;width:34px;height:38px;border:1px solid #ffffff70;border-radius:8px;background:#ffffff30;color:#111217;font-style:normal;font-size:13px;font-weight:700;backdrop-filter:blur(8px)}.preview-off .mock,.background-only .mock,.background-only .safe-zone{display:none}.preview-off .safe-zone{display:block}.status{margin-top:12px;display:flex;align-items:center;justify-content:space-between;gap:12px}.score{display:flex;align-items:center;gap:8px;font-size:11px;color:#b8bbc3}.score-dot{width:8px;height:8px;border-radius:50%;background:var(--ok)}.score strong{color:white}.tip{color:#737681;font-size:10px}.templates{margin-top:18px}.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:10px}.section-head strong{font-size:12px}.section-head span{font-size:10px;color:#737681}.template-grid{display:grid;grid-template-columns:repeat(8,minmax(78px,1fr));gap:8px}.template{min-width:0;padding:6px;border:1px solid #2a2c33;border-radius:10px;background:#131419;text-align:left;cursor:pointer}.template.active{border-color:#e9ebef;background:#1c1e24}.thumb{height:46px;border-radius:6px;background:#333;margin-bottom:6px;background-size:cover}.template span{font-size:9px;color:#a6a9b1}.template.active span{color:#fff}.template-random{margin-top:10px;padding:9px 11px;display:flex;align-items:center;gap:11px;border:1px solid #292b33;border-radius:10px;background:#111216}.template-random .button{white-space:nowrap}.template-random span{color:#737681;font-size:9px;line-height:1.45}.side{border-left:1px solid var(--line);background:#111216;padding:18px 16px;overflow:auto}.side h3{font-size:12px;margin:0 0 13px}.group{padding-bottom:17px;margin-bottom:17px;border-bottom:1px solid var(--line)}.group:last-child{border:0}.field{margin:12px 0}.field-head{display:flex;justify-content:space-between;gap:10px;margin-bottom:7px;color:#9a9da6;font-size:10px}.field-head b{color:#e7e8ec;font-weight:600}.field input[type=range]{width:100%;accent-color:#fff}.text-input{width:100%;padding:9px 10px;border:1px solid #30323a;border-radius:8px;background:#18191e;color:#fff;font-size:11px}.switch-row{display:flex;align-items:center;justify-content:space-between;color:#9a9da6;font-size:10px}.switch{width:34px;height:20px;padding:2px;border:0;border-radius:999px;background:#343741;cursor:pointer}.switch i{display:block;width:16px;height:16px;border-radius:50%;background:white;transition:.2s}.switch.on{background:#4b7cff}.switch.on i{transform:translateX(14px)}.help{font-size:9px;line-height:1.55;color:#70737d}.scene-list{display:grid;gap:6px}.scene{width:100%;display:grid;grid-template-columns:1fr auto;text-align:left;border:1px solid #2e3038;background:#17181d;border-radius:9px;padding:9px 10px;cursor:pointer}.scene strong{font-size:10px}.scene small{color:#777b85;font-size:9px}.scene.active{border-color:#e8eaf0;background:#22242b}.footer-note{margin-top:13px;padding:10px;border-radius:8px;background:#17181d;color:#858995;font-size:9px;line-height:1.55}.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);padding:9px 13px;border:1px solid #393c45;border-radius:9px;background:#1b1d23;color:#fff;font-size:11px;opacity:0;pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}@media(max-width:900px){.workspace{grid-template-columns:1fr}.side{border-left:0;border-top:1px solid var(--line)}.template-grid{grid-template-columns:repeat(4,1fr)}.canvas-shell{height:430px}.quick{grid-template-columns:1fr}.quick-label{display:none}.template-random{align-items:flex-start;flex-direction:column}}
+.canvas-frame{container-type:inline-size}
+.mock-copy{justify-content:flex-start;overflow:hidden}
+.mock-copy h2,.mock-copy p{max-width:100%;white-space:nowrap;overflow:hidden}
+.mock-copy h2{font-family:"PingFang SC",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-style:normal;font-weight:600;font-size:2.9cqw;line-height:1.42;margin:0;letter-spacing:-.025em}
+.mock-copy p{font-family:"PingFang SC",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-style:normal;font-size:2.9cqw;line-height:1.42;font-weight:600;opacity:1;color:var(--copy-accent,#704cfd)}
+.mock-copy .cta{display:none}
+.product-lockup{display:none;width:100%;font-family:"PingFang SC",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#050509;font-style:normal}
+.canvas-frame:not([data-scene="banner"]) .mock-copy{align-items:center;justify-content:center;text-align:center;overflow:visible}
+.canvas-frame:not([data-scene="banner"]) .preview-badges,.canvas-frame:not([data-scene="banner"]) .banner-copy{display:none!important}
+.canvas-frame:not([data-scene="banner"]) .product-lockup{display:flex;flex-direction:column;align-items:center;gap:4.6cqw}
+.product-name-row{display:flex;align-items:center;justify-content:center;gap:1.35cqw;white-space:nowrap;line-height:1}
+.product-name{font-size:6.6cqw;font-weight:520;letter-spacing:-.055em}
+.mini-badge{display:flex;align-items:center;height:5.05cqw;padding:0 1.2cqw;border-radius:1.4cqw;background:#050509;color:#fff;font-size:3.45cqw;font-weight:480;letter-spacing:-.03em}
+.product-price-row{display:flex;align-items:flex-end;justify-content:center;gap:1.05cqw;white-space:nowrap;line-height:.92}
+.quality-stack{display:flex;flex-direction:column;align-items:center;gap:.75cqw;margin-right:.4cqw}
+.quality-stack b{display:flex;align-items:center;height:4.2cqw;padding:0 1cqw;border:1px solid currentColor;border-radius:1.25cqw;font-size:2.8cqw;line-height:1;font-weight:700}
+.quality-stack span{font-size:3.35cqw;font-weight:520;line-height:1}
+.low-word{font-size:8.4cqw;font-weight:560;letter-spacing:-.06em}
+.price-number{font-size:10.3cqw;font-weight:500;letter-spacing:-.07em;color:var(--copy-accent,#704cfd)}
+.price-unit{padding-bottom:.55cqw;font-size:4.2cqw;font-weight:560;letter-spacing:-.04em}
+.copy-source-note{margin-top:10px;padding:8px 10px;border-radius:8px;background:#17181d;color:#777b85;font-size:9px;line-height:1.5}
+.preview-badges{display:flex;gap:.4cqw;margin-bottom:.8cqw}
+.preview-badges i{height:2.4cqw;padding:0 .78cqw;display:flex;align-items:center;border-radius:999px;background:#111217;color:#fff;font-size:1.05cqw;line-height:1;font-style:normal;font-weight:650;white-space:nowrap}
+.countdown{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.176%}
+.countdown i{min-width:0;min-height:0;width:auto;height:auto;display:flex;align-items:center;justify-content:center;flex-direction:column;border:0;border-radius:1.5cqw;background:#ffffffa8;color:#111217}
+.countdown b{font-size:3.6cqw;line-height:1.4;font-weight:650;letter-spacing:-.03em}
+.countdown small{margin-top:.45cqw;font-size:1.2cqw;line-height:1;font-weight:500;opacity:.55}
+.safe-zone{border:1px dashed rgba(255,255,255,.96);box-shadow:none;background:transparent}
+.canvas-frame:not([data-scene="banner"]) .product-lockup{gap:3.25cqw}
+.product-name{font-family:"SF Pro Display","SF Compact Display","Helvetica Neue",Arial,sans-serif;font-weight:400}
+.mini-badge{font-family:"SF Pro Display","Helvetica Neue",Arial,sans-serif;font-weight:400}
+.quality-stack b{font-family:"SF Pro Display","Helvetica Neue",Arial,sans-serif;font-weight:650}
+.quality-stack span,.low-word,.price-unit{font-weight:500}
+.price-number{font-family:"SF Pro Display","SF Compact Display","Helvetica Neue",Arial,sans-serif;font-weight:400;color:var(--copy-accent,#ff9828)}
+.text-input{font-style:normal}
+.canvas-frame[data-scene="banner"][data-brand="dreamina"] .preview-badges i{background:#fff;color:#111217;box-shadow:0 1px 3px rgba(17,18,23,.08)}
+.canvas-frame[data-scene="banner"][data-brand="dreamina"] .banner-copy h2{color:#fff;text-shadow:0 1px 2px rgba(0,103,145,.1)}
+.canvas-frame[data-scene="banner"][data-brand="dreamina"] .banner-copy p{color:#ffe66d;text-shadow:0 1px 2px rgba(0,103,145,.08)}
+.canvas-frame[data-scene="banner"][data-brand="dreamina"] .countdown i{background:rgba(255,255,255,.9)}
+.workspace{min-height:calc(100vh - 160px)}
+.canvas-shell{height:calc(100vh - 250px);min-height:520px}
+.curve-overlay{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
+.curve-overlay path{display:none;fill:none;stroke:rgba(255,255,255,.92);stroke-width:2;vector-effect:non-scaling-stroke;filter:drop-shadow(0 1px 4px rgba(0,0,0,.28))}
+.curve-anchor{--node-color:#fff;position:absolute;z-index:8;width:20px;height:20px;padding:0;border:3px solid #fff;border-radius:50%;background:#fff;box-shadow:0 0 0 2px rgba(10,12,18,.54),0 3px 12px rgba(0,0,0,.45);transform:translate(-50%,-50%);cursor:grab;touch-action:none;user-select:none}
+.curve-anchor::after{content:"";position:absolute;inset:-9px;border:1px solid rgba(255,255,255,.72);border-radius:50%;opacity:.72}
+.curve-anchor:active{cursor:grabbing;transform:translate(-50%,-50%) scale(1.12)}
+.curve-hidden .curve-overlay,.curve-hidden .curve-anchor{display:none!important}
+.safe-zone{z-index:5;box-shadow:none!important;background:transparent!important}.mock{z-index:6}
+@media(max-width:900px){.canvas-shell{height:430px;min-height:430px}}
+</style></head>
+<body><div class="app">
+<header class="header"><div class="brand-title"><a class="button ghost" href="index.html?v=tools-fullscreen-1#design-tools">← 设计工具</a><span class="mark"></span><div><strong>品牌背景工作台</strong><small>固定品牌色 · 场景化安全区 · 本地生成</small></div></div><div class="header-actions"><button class="button" id="download">下载当前 PNG</button><button class="button primary" id="pack">下载场景套图 ZIP</button></div></header>
+<section class="quick"><div class="quick-label">品牌</div><div class="row" id="brands"></div><div class="quick-label">场景</div><div class="row" id="scenes"></div></section>
+<section class="workspace"><main class="main">
+<div class="toolbar"><div class="toolbar-left"><div class="seg" id="modes"><button data-mode="preview" class="active">真实预览</button><button data-mode="safe">安全区</button><button data-mode="background">纯背景</button></div><span class="meta" id="size-meta"></span></div><div class="toolbar-right"><button class="button" id="curve-toggle">隐藏形态控制点</button><button class="button" id="curve-reset">重置模板形态</button><span class="meta">节点共同调节整体流场形态；默认模板已保护文字识别</span></div></div>
+<div class="canvas-shell" id="shell"><div class="canvas-frame" id="frame"><canvas id="canvas"></canvas><svg class="curve-overlay" id="curve-overlay" aria-hidden="true"><path id="curve-path"></path></svg><button class="curve-anchor" data-color-anchor="0" aria-label="深蓝色场点"></button><button class="curve-anchor" data-color-anchor="1" aria-label="青色色场点"></button><button class="curve-anchor" data-color-anchor="2" aria-label="亮白色场点"></button><button class="curve-anchor" data-color-anchor="3" aria-label="橙色色场点"></button><button class="curve-anchor" data-color-anchor="4" aria-label="明黄色场点"></button><div class="safe-zone" id="safe"></div><div class="mock"><div class="mock-copy" id="copy"><div class="preview-badges" id="preview-badges"><i>全球首发</i><i>抢先体验</i></div><div class="banner-copy"><h2 id="preview-title">Seedance 2.5 模型低至0.09元/秒</h2><p id="preview-sub">会员3.8折 + 积分消耗5折</p></div><div class="product-lockup" id="product-lockup"><div class="product-name-row"><span class="product-name" id="product-name">Seedance2.0</span><b class="mini-badge">Mini</b></div><div class="product-price-row"><span class="quality-stack"><b>720P</b><span>首发</span></span><span class="low-word">低至</span><strong class="price-number" id="product-price">0.11</strong><span class="price-unit">元/秒</span></div></div></div><div class="countdown" id="countdown"><i><b>03</b><small>天</small></i><i><b>28</b><small>小时</small></i><i><b>32</b><small>分钟</small></i><i><b>58</b><small>秒</small></i></div></div></div></div>
+<div class="status"><div class="score"><span class="score-dot" id="score-dot"></span><strong id="grade">AA 通过</strong><span id="ratio">7.2 : 1</span><span class="tip" id="advice">建议使用黑字</span></div><span class="tip">按 WCAG 2.2 AA 检查文字安全区内最低对比度</span></div>
+<section class="templates"><div class="section-head"><strong>背景模板</strong><span>为商业化资源位收敛过的 8 种形态</span></div><div class="template-grid" id="templates"></div><div class="template-random"><button class="button" id="random">随机当前模板形态</button><span>保持品牌色和当前模板不变，只调整结构尺度、流向与色块位置</span></div></section>
+</main><aside class="side">
+<div class="group"><h3>场景套装</h3><div class="scene-list" id="scene-list"></div><div class="footer-note">套图会按当前品牌与模板输出横幅、弹窗、订阅头图和挽留图；每个场景使用独立文字安全区。</div></div>
+<div class="group"><h3>文字预览</h3><div class="field"><div class="field-head"><span id="title-label">主标题</span></div><input class="text-input" id="title-input" value="Seedance 2.5 模型低至0.09元/秒"></div><div class="field"><div class="field-head"><span id="sub-label">活动副标题</span></div><input class="text-input" id="sub-input" value="会员3.8折 + 积分消耗5折"></div><div class="switch-row"><span>自动选择黑/白文字</span><button class="switch on" id="auto-text"><i></i></button></div><div class="copy-source-note" id="copy-source-note">默认文案与排版来自 Figma 资源位示例；修改只替换字段，不改变原有层级和对齐。</div></div>
+<div class="group"><h3>形态与质感</h3><div class="field"><div class="field-head"><span>结构尺度</span><b id="scale-v">100%</b></div><input id="scale" type="range" min="65" max="145" value="100"></div><div class="field"><div class="field-head"><span>流向</span><b id="angle-v">0°</b></div><input id="angle" type="range" min="-70" max="70" value="0"></div><div class="field"><div class="field-head"><span>柔和度</span><b id="blur-v">66%</b></div><input id="blur" type="range" min="35" max="90" value="66"></div><div class="field"><div class="field-head"><span>饱和度</span><b id="sat-v">120%</b></div><input id="sat" type="range" min="82" max="140" value="120"></div><div class="field"><div class="field-head"><span>暖色点缀</span><b id="accent-v">84%</b></div><input id="accent" type="range" min="0" max="100" value="84"></div><div class="field"><div class="field-head"><span>彩色微粒强度</span><b id="noise-v">18%</b></div><input id="noise" type="range" min="0" max="60" value="18"></div><div class="field"><div class="field-head"><span>微粒尺寸</span><b id="grainSize-v">1.0 px</b></div><input id="grainSize" type="range" min="1" max="3" step="0.5" value="1"></div><div class="field"><div class="field-head"><span>导出倍率</span><b id="exportScale-v">3×</b></div><input id="exportScale" type="range" min="1" max="3" step="1" value="3"></div><p class="help">强度控制彩色微粒的清晰程度，尺寸控制颗粒大小。青色区域保持青蓝、暖色区域形成橙红细粒；预览使用 2× 精度，默认以 3× 分辨率导出。</p></div>
+</aside></section></div><div class="toast" id="toast"></div>
+<script>window.addEventListener('error',e=>document.body.setAttribute('data-js-error',`${e.message} @${e.lineno}:${e.colno}`));</script>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const brands={dreamina:{name:'即梦',colors:['#00BFF2','#22D8F2','#126FFF','#F8FDFF','#FF7026','#FF4858','#FFD33D'],base:'#18C6F0',ratio:'高饱和青蓝 65% · 亮白 22% · 纯橙 8% · 明黄 4% · 珊瑚红 <1%'},pippit:{name:'小云雀',colors:['#5F49E8','#8E73FF','#DCD7FF','#F4F1FF','#8EDCF6'],base:'#CFC8FF',ratio:'深紫 45% · 浅紫/白 45% · 青蓝 10%'}};
+const copyPresets={dreamina:{accent:'#ff9828',banner:{title:'Seedance 2.5 模型低至0.09元/秒',sub:'会员3.8折 + 积分消耗5折'},product:{title:'Seedance2.0',sub:'0.11'}},pippit:{accent:'#704cfd',banner:{title:'Seedance 2.0 Mini 全球首发',sub:'720P 低至0.11元/秒'},product:{title:'seedance 2.0',sub:'0.11'}}};
+const scenes={banner:{name:'Web 订阅页活动 Banner',size:[1000,170],radius:18,safe:[.032,.22,.50,.52],copy:[.032,.165,.54,.67],count:[.65,.27,.31,.46]},popup:{name:'Web 弹窗媒体图',size:[544,303],radius:8,safe:[.22,.34,.56,.26],copy:[.09,.28,.82,.40]},app:{name:'App 首页弹窗',size:[279,496],radius:18,safe:[.20,.36,.60,.20],copy:[.10,.24,.8,.38]},pc:{name:'PC 订阅页头图',size:[400,240],radius:10,safe:[.19,.30,.62,.32],copy:[.08,.20,.84,.46]},web:{name:'Web 订阅页头图',size:[443,500],radius:12,safe:[.18,.36,.64,.22],copy:[.09,.22,.82,.40]},retain:{name:'收银台挽留图',size:[279,279],radius:12,safe:[.16,.32,.68,.28],copy:[.11,.22,.78,.40]}};
+const templates=[['soft','微距花卉'],['diffuse','斜向光场'],['horizon','柔焦花瓣'],['halo','地平薄雾'],['fold','玻璃花瓣'],['focus','双向扩散'],['ripple','弧面花影'],['prism','明亮切面']];
+const templateControlDefaults={soft:[[.05,.16,0],[.67,.48,3],[.98,.18,4]],diffuse:[[.04,.52,0],[.5,.48,3],[.78,.48,2],[.36,.78,4]],horizon:[[.48,.08,3],[.48,.9,0],[.82,.82,4]],halo:[[.18,.58,0],[.72,.4,3],[.96,.86,4]],fold:[[.14,.42,0],[.72,.38,3],[.52,.72,4]],focus:[[.02,.22,0],[.52,.5,3],[.98,.78,2]],ripple:[[.42,.34,3],[.02,.72,0],[.68,.76,4]],prism:[[.18,.16,0],[.72,.76,3],[.3,.5,4],[.82,.5,2]]};const cloneTemplateControls=()=>Object.fromEntries(Object.entries(templateControlDefaults).map(([k,v])=>[k,v.map(p=>[...p])]));const cloneSceneTemplateControls=()=>Object.fromEntries(Object.keys(scenes).map(sceneKey=>[sceneKey,cloneTemplateControls()]));const state={brand:'dreamina',scene:'banner',template:'soft',seed:18,scale:100,angle:0,blur:66,sat:120,accent:84,noise:18,grainSize:1,exportScale:3,autoText:true,curveEnabled:true,curveVisible:true,sceneTemplateControls:cloneSceneTemplateControls()};const canvas=$('#canvas'),ctx=canvas.getContext('2d',{willReadFrequently:true}),frame=$('#frame'),safe=$('#safe'),copy=$('#copy'),countdown=$('#countdown');
+Object.assign(templateControlDefaults,{soft:[[.08,.18,0],[.88,.2,2],[.5,.5,3],[.82,.84,4]],diffuse:[[.08,.46,0],[.5,.48,3],[.76,.28,2],[.34,.78,4]],horizon:[[.5,.14,0],[.5,.44,3],[.5,.72,2],[.76,.88,4]],halo:[[.16,.6,0],[.48,.5,3],[.78,.26,2],[.82,.84,4]],fold:[[.12,.42,0],[.38,.3,3],[.66,.62,2],[.46,.84,4]],focus:[[.06,.28,0],[.48,.48,3],[.92,.66,2],[.72,.84,4]],ripple:[[.1,.2,0],[.4,.34,3],[.66,.58,2],[.7,.82,4]],prism:[[.12,.18,0],[.78,.72,3],[.28,.48,2],[.58,.6,4],[.82,.82,6]]});state.sceneTemplateControls=cloneSceneTemplateControls();
+function rng(seed){return()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}function hex(h){return[h.slice(1,3),h.slice(3,5),h.slice(5,7)].map(x=>parseInt(x,16))}function satColor(h,m){let[r,g,b]=hex(h),g0=.2126*r+.7152*g+.0722*b;return`rgb(${[r,g,b].map(v=>Math.max(0,Math.min(255,g0+(v-g0)*m))).join(',')})`}
+function addFineGrain(c,w,h,outputScale){if(!state.noise)return;const im=c.getImageData(0,0,w,h),d=im.data,NR=rng(state.seed+77),amount=state.noise/60,grain=Math.max(1,Math.round(state.grainSize)),clamp=v=>Math.max(0,Math.min(255,v));for(let y=0;y<h;y+=grain)for(let x=0;x<w;x+=grain){const i0=(y*w+x)*4,r0=d[i0],g0=d[i0+1],b0=d[i0+2],light=.2126*r0+.7152*g0+.0722*b0,dr=r0-light,dg=g0-light,db=b0-light,norm=Math.max(8,Math.abs(dr),Math.abs(dg),Math.abs(db)),pulse=(NR()+NR()-1)*(4+amount*30),micro=(NR()+NR()-1)*(.7+amount*3.2),spark=NR()>1-(.003+amount*.018)?(10+amount*26):0,shift=pulse+spark;for(let yy=y;yy<Math.min(h,y+grain);yy++)for(let xx=x;xx<Math.min(w,x+grain);xx++){const i=(yy*w+xx)*4;d[i]=clamp(d[i]+micro+dr/norm*shift);d[i+1]=clamp(d[i+1]+micro+dg/norm*shift);d[i+2]=clamp(d[i+2]+micro+db/norm*shift)}}c.putImageData(im,0,0)}
+function render(target=canvas,sceneKey=state.scene,outputScale=1){
+  if(target===canvas&&outputScale===1)outputScale=2;
+  const sc=scenes[sceneKey],w=sc.size[0]*outputScale,h=sc.size[1]*outputScale,c=target.getContext('2d',{willReadFrequently:true}),b=brands[state.brand],R=rng(state.seed+templates.findIndex(t=>t[0]===state.template)*997),cs=b.colors.map(x=>satColor(x,state.sat/100)),S=state.scale/100,A=state.accent/100,B=state.blur/100;
+  const cyan=cs[0],aqua=cs[1]||cs[0],blue=cs[2]||cs[0],white=cs[3]||cs[1],orange=cs[4]||cs[2],coral=cs[5]||cs[4],yellow=cs[6]||cs[1];
+  c.canvas.width=w;c.canvas.height=h;c.fillStyle=satColor(b.base,state.sat/100);c.fillRect(0,0,w,h);
+  const alpha=(col,a)=>col.replace('rgb(','rgba(').replace(')',`,`+a+`)`);
+  const add=(x,y,rx,ry,col,a)=>{const m=Math.max(rx,ry),g=c.createRadialGradient(x,y,0,x,y,m);g.addColorStop(0,alpha(col,a));g.addColorStop(.5,alpha(col,a*.66));g.addColorStop(1,alpha(col,0));c.save();c.translate(x,y);c.scale(rx/m,ry/m);c.translate(-x,-y);c.fillStyle=g;c.fillRect(x-m,y-m,m*2,m*2);c.restore()};
+  const curve=(p,col,a,width,soft=0)=>{const x0=p[0]*w,y0=p[1]*h,x1=p[6]*w,y1=p[7]*h,g=c.createLinearGradient(x0,y0,x1,y1);g.addColorStop(0,alpha(col,0));g.addColorStop(.12,alpha(col,a));g.addColorStop(.86,alpha(col,a));g.addColorStop(1,alpha(col,0));c.save();c.filter=soft?`blur(${soft}px)`:'none';c.strokeStyle=g;c.lineWidth=width;c.lineCap='round';c.beginPath();c.moveTo(x0,y0);c.bezierCurveTo(p[2]*w,p[3]*h,p[4]*w,p[5]*h,x1,y1);c.stroke();c.restore()};
+  const qcurve=(p,col,a,width,soft=0)=>{const x0=p[0][0]*w,y0=p[0][1]*h,x1=p[2][0]*w,y1=p[2][1]*h,g=c.createLinearGradient(x0,y0,x1,y1);g.addColorStop(0,alpha(col,0));g.addColorStop(.14,alpha(col,a));g.addColorStop(.84,alpha(col,a));g.addColorStop(1,alpha(col,0));c.save();c.filter=soft?`blur(${soft}px)`:'none';c.strokeStyle=g;c.lineWidth=width;c.lineCap='round';c.beginPath();c.moveTo(x0,y0);c.quadraticCurveTo(p[1][0]*w,p[1][1]*h,x1,y1);c.stroke();c.restore()};
+  const beam=(pts,col,a,soft=0)=>{c.save();c.filter=soft?`blur(${soft}px)`:'none';c.fillStyle=alpha(col,a);c.beginPath();c.moveTo(pts[0][0]*w,pts[0][1]*h);for(let i=1;i<pts.length;i++)c.lineTo(pts[i][0]*w,pts[i][1]*h);c.closePath();c.fill();c.restore()};
+  const star=(x,y,r,col,a,turn=0)=>{c.save();c.translate(x*w,y*h);c.rotate(turn);c.shadowColor=alpha(col,a);c.shadowBlur=r*.42;c.fillStyle=alpha(col,a);c.beginPath();for(let i=0;i<16;i++){const q=i%4===0?r:i%2===0?r*.34:r*.08,ang=-Math.PI/2+i*Math.PI/8;c.lineTo(Math.cos(ang)*q,Math.sin(ang)*q)}c.closePath();c.fill();c.restore()};
+  const bloom=(x,y,rx,ry,col,a,soft=0)=>{c.save();c.translate(x*w,y*h);c.filter=soft?`blur(${soft}px)`:'none';c.fillStyle=alpha(col,a);c.beginPath();c.moveTo(0,-ry);c.bezierCurveTo(rx*.04,-ry*.2,rx*.2,-ry*.04,rx,0);c.bezierCurveTo(rx*.2,ry*.04,rx*.04,ry*.2,0,ry);c.bezierCurveTo(-rx*.04,ry*.2,-rx*.2,ry*.04,-rx,0);c.bezierCurveTo(-rx*.2,-ry*.04,-rx*.04,-ry*.2,0,-ry);c.closePath();c.fill();c.restore()};
+  const glassWave=(base,amp,col1,col2,a)=>{c.save();c.globalCompositeOperation='screen';for(let i=0;i<56;i++){const x=i/55,y=base+Math.sin(x*6.2+phase*30)*amp+Math.sin(x*14)*amp*.18,ww=.008+(.5+.5*Math.sin(i*1.7))*.007;c.filter=`blur(${Math.max(0,h*.0025)}px)`;c.fillStyle=alpha(i%4===0?col2:col1,a*(.42+.48*Math.sin(Math.PI*x)));c.beginPath();c.moveTo((x-ww)*w,y*h);c.lineTo((x+ww)*w,(y-.035)*h);c.lineTo((x+ww*.55)*w,1.04*h);c.lineTo((x-ww*.55)*w,1.04*h);c.closePath();c.fill()}c.restore()};
+  const outsideText=fn=>{const zones=[sc.safe];if(sc.count)zones.push(sc.count);c.save();c.beginPath();c.rect(0,0,w,h);for(const q of zones)c.rect(q[0]*w,q[1]*h,q[2]*w,q[3]*h);c.clip('evenodd');fn();c.restore()};
+  const j=()=>R()-.5,phase=j()*.045,tc=state.sceneTemplateControls[sceneKey][state.template],P=i=>tc[i]||[.5,.5,3],O=i=>{const d=templateControlDefaults[state.template][i];return[P(i)[0]-d[0],P(i)[1]-d[1]]};
+  c.save();c.translate(w/2,h/2);c.rotate(state.angle*Math.PI/180);c.translate(-w/2,-h/2);
+  c.filter=`blur(${Math.round(Math.min(w,h)*(.035+B*.105))}px)`;
+
+  if(state.template==='soft'){
+    add(w*P(0)[0],h*P(0)[1],w*.5*S,h*.62*S,cyan,.88);
+    add(w*P(1)[0],h*P(1)[1],w*.46*S,h*.58*S,blue,.58);
+    add(w*P(2)[0],h*P(2)[1],w*.54*S,h*.72*S,white,.94);
+    qcurve([[P(3)[0]-.5,P(3)[1]+.08],[P(3)[0]-.12,P(3)[1]-.22],[Math.min(1.14,P(3)[0]+.32),P(3)[1]-.06]],orange,.72*A,h*.18,h*.045);
+    qcurve([[P(3)[0]-.46,P(3)[1]+.06],[P(3)[0]-.1,P(3)[1]-.18],[Math.min(1.1,P(3)[0]+.28),P(3)[1]-.05]],yellow,.58*A,h*.055,h*.012);
+  }
+  if(state.template==='diffuse'){
+    add(w*P(0)[0],h*P(0)[1],w*.5*S,h*.9*S,cyan,.8);
+    add(w*P(1)[0],h*P(1)[1],w*.34*S,h*.82*S,white,.94);
+    qcurve([[P(2)[0]-.54,P(2)[1]+.18],[P(2)[0]-.1,P(2)[1]-.22],[P(2)[0]+.34,P(2)[1]+.08]],blue,.48,h*.24,h*.06);
+    qcurve([[P(3)[0]-.42,P(3)[1]+.1],[P(3)[0]-.06,P(3)[1]-.2],[P(3)[0]+.42,P(3)[1]-.02]],orange,.72*A,h*.16,h*.035);
+    qcurve([[P(3)[0]-.38,P(3)[1]+.08],[P(3)[0]-.04,P(3)[1]-.16],[P(3)[0]+.38,P(3)[1]-.02]],yellow,.5*A,h*.045,h*.01);
+  }
+  if(state.template==='horizon'){
+    add(w*P(0)[0],h*P(0)[1],w*.92*S,h*.38*S,cyan,.82);
+    curve([-.12,P(1)[1],P(1)[0]-.34,P(1)[1]-.08,P(1)[0]+.34,P(1)[1]+.08,1.12,P(1)[1]],white,.72,h*.22,h*.055);
+    curve([-.12,P(2)[1],P(2)[0]-.36,P(2)[1]-.06,P(2)[0]+.34,P(2)[1]+.07,1.12,P(2)[1]],blue,.46,h*.16,h*.04);
+    curve([-.12,P(3)[1],P(3)[0]-.38,P(3)[1]-.08,P(3)[0]+.3,P(3)[1]+.05,1.12,P(3)[1]-.02],orange,.68*A,h*.11,h*.025);
+    curve([-.08,P(3)[1],P(3)[0]-.3,P(3)[1]-.05,P(3)[0]+.24,P(3)[1]+.03,1.08,P(3)[1]-.02],yellow,.5*A,h*.035,h*.007);
+  }
+  if(state.template==='halo'){
+    add(w*P(0)[0],h*P(0)[1],w*.62*S,h*.9*S,cyan,.76);
+    bloom(P(1)[0],P(1)[1],w*.42*S,h*.62*S,white,.7,h*.035);
+    bloom(P(2)[0],P(2)[1],w*.32*S,h*.48*S,blue,.46,h*.025);
+    bloom(P(3)[0],P(3)[1],w*.3*S,h*.42*S,orange,.58*A,h*.022);
+    bloom(P(3)[0],P(3)[1],w*.17*S,h*.25*S,yellow,.5*A,h*.008);
+  }
+  if(state.template==='fold'){
+    add(w*P(0)[0],h*P(0)[1],w*.62*S,h*.86*S,cyan,.76);
+    c.save();c.translate((P(1)[0]-.5)*w,0);glassWave(P(1)[1],.08,white,aqua,.58);c.restore();
+    c.save();c.translate((P(2)[0]-.5)*w,0);glassWave(P(2)[1],.075,blue,white,.42);c.restore();
+    c.save();c.translate((P(3)[0]-.5)*w,0);glassWave(P(3)[1],.06,orange,yellow,.46*A);c.restore();
+  }
+  if(state.template==='focus'){
+    add(w*P(0)[0],h*P(0)[1],w*.56*S,h*.62*S,cyan,.82);
+    add(w*P(1)[0],h*P(1)[1],w*.34*S,h*.72*S,white,.94);
+    add(w*P(2)[0],h*P(2)[1],w*.52*S,h*.64*S,blue,.58);
+    qcurve([[P(3)[0]-.45,P(3)[1]+.06],[P(3)[0],P(3)[1]-.2],[P(3)[0]+.4,P(3)[1]-.05]],coral,.5*A,h*.12,h*.035);
+    qcurve([[P(3)[0]-.4,P(3)[1]+.04],[P(3)[0],P(3)[1]-.15],[P(3)[0]+.36,P(3)[1]-.04]],orange,.56*A,h*.055,h*.012);
+  }
+  if(state.template==='ripple'){
+    add(w*P(0)[0],h*P(0)[1],w*.68*S,h*.72*S,cyan,.76);
+    qcurve([[-.12,P(1)[1]+.08],[P(1)[0],P(1)[1]-.2],[1.12,P(1)[1]+.06]],white,.72,h*.18,h*.045);
+    qcurve([[-.12,P(2)[1]+.1],[P(2)[0],P(2)[1]-.2],[1.12,P(2)[1]+.04]],blue,.46,h*.12,h*.03);
+    qcurve([[-.08,P(3)[1]+.08],[P(3)[0],P(3)[1]-.18],[1.08,P(3)[1]]],orange,.62*A,h*.075,h*.018);
+    qcurve([[-.04,P(3)[1]+.06],[P(3)[0],P(3)[1]-.14],[1.04,P(3)[1]]],yellow,.48*A,h*.026,h*.006);
+  }
+  if(state.template==='prism'){
+    add(w*P(0)[0],h*P(0)[1],w*.58*S,h*.62*S,cyan,.74);
+    add(w*P(1)[0],h*P(1)[1],w*.58*S,h*.64*S,white,.86);
+    const beamAt=(node,col,a,width=.12)=>{c.save();c.translate((node[0]-.5)*w,(node[1]-.5)*h);beam([[.28,-.18],[.28+width,-.18],[.72-width,1.18],[.72,1.18]],col,a,h*.008);c.restore()};
+    beamAt(P(2),blue,.42,.16);beamAt(P(3),orange,.52*A,.11);beamAt(P(4),yellow,.46*A,.055);
+  }
+  c.restore();c.filter='none';
+
+  if(false&&state.brand==='dreamina'){
+    const wa=Math.min(.98,A*.98),clean='rgb(252,254,255)',vivid='rgb(0,218,242)',deep='rgb(22,86,255)',orange='rgb(255,104,28)',yellow='rgb(255,218,42)',coral='rgb(255,62,82)';
+    const accentOffset=O(tc.length-1);c.save();c.translate(accentOffset[0]*w,accentOffset[1]*h);
+    const zones=[sc.safe,...(sc.count?[sc.count]:[])],top=Math.min(...zones.map(q=>q[1])),right=Math.max(...zones.map(q=>q[0]+q[2])),bottom=Math.max(...zones.map(q=>q[1]+q[3])),topY=Math.max(.025,top*.34),bottomH=Math.max(.1,1-bottom),bottomY=bottom+bottomH*.62,rightX=right+(1-right)*.62;
+    add(w*.03,h*topY,w*.18*S,h*Math.max(.08,top*.55)*S,deep,.34);add(w*.98,h*topY,w*.16*S,h*Math.max(.07,top*.48)*S,deep,.38);add(w*.98,h*bottomY,w*.2*S,h*bottomH*.72*S,vivid,.34);
+    if(sceneKey==='banner'){
+      const topH=Math.max(.1,top),ty=topH*.42,by=bottom+bottomH*.58;
+      if(state.template==='soft'){
+        add(w*.99,h*ty,w*.22*S,h*topH*.9*S,clean,.82);add(w*1.01,h*ty,w*.13*S,h*topH*.58*S,orange,wa*.8);add(w*1.01,h*ty,w*.065*S,h*topH*.34*S,yellow,wa*.72);
+      }
+      if(state.template==='diffuse'){
+        curve([-.12,bottom+.88*bottomH,.02,bottom+.24*bottomH,.2,bottom+.82*bottomH,.38,bottom+.3*bottomH],clean,.92,h*bottomH*1.5,h*.05);
+        curve([-.1,bottom+.9*bottomH,.04,bottom+.42*bottomH,.2,bottom+.88*bottomH,.36,bottom+.46*bottomH],orange,wa*.78,h*bottomH*.48,h*.016);
+        curve([-.06,bottom+.88*bottomH,.07,bottom+.52*bottomH,.21,bottom+.85*bottomH,.34,bottom+.5*bottomH],yellow,wa*.66,h*bottomH*.18,h*.005);
+      }
+      if(state.template==='horizon'){
+        curve([-.12,bottom+.7*bottomH,.2,bottom+.3*bottomH,.52,bottom+.7*bottomH,.82,bottom+.32*bottomH],clean,.9,h*bottomH*1.25,h*.045);
+        curve([-.1,bottom+.82*bottomH,.22,bottom+.48*bottomH,.54,bottom+.8*bottomH,.84,bottom+.5*bottomH],orange,wa*.78,h*bottomH*.4,h*.013);
+        curve([.22,bottom+.8*bottomH,.42,bottom+.6*bottomH,.62,bottom+.74*bottomH,.82,bottom+.54*bottomH],yellow,wa*.64,h*bottomH*.14,h*.004);
+      }
+      if(state.template==='halo'){
+        add(w*.56,-h*.06,w*.28*S,h*topH*.82*S,clean,.72);add(w*.56,-h*.08,w*.17*S,h*topH*.52*S,yellow,wa*.5);curve([.38,.015,.49,-.035,.63,.045,.76,-.01],orange,wa*.34,h*topH*.13,h*.004);
+      }
+      if(state.template==='fold'){
+        glassWave(bottom+.12*bottomH,bottomH*.18,clean,orange,.72);curve([-.04,bottom+.62*bottomH,.24,bottom+.14*bottomH,.62,bottom+.78*bottomH,1.04,bottom+.22*bottomH],yellow,wa*.46,h*bottomH*.12,h*.003);
+      }
+      if(state.template==='focus'){
+        add(-w*.075,h*.52,w*.15*S,h*.62*S,clean,.78);add(-w*.08,h*.52,w*.09*S,h*.42*S,orange,wa*.72);add(w*1.075,h*.46,w*.15*S,h*.62*S,clean,.76);add(w*1.08,h*.46,w*.08*S,h*.4*S,yellow,wa*.7);
+      }
+      if(state.template==='ripple'){
+        curve([.08,topH*.3,.25,topH*.92,.46,topH*.12,.72,topH*.72],clean,.88,h*topH*1.05,h*.038);
+        curve([.1,topH*.22,.28,topH*.8,.48,topH*.18,.7,topH*.64],orange,wa*.7,h*topH*.3,h*.01);
+        curve([.26,topH*.74,.38,topH*.42,.54,topH*.64,.68,topH*.52],yellow,wa*.58,h*topH*.1,h*.003);
+      }
+      if(state.template==='prism'){
+        beam([[-.02,0],[.09,0],[.19,topH],[.08,topH]],clean,.68,h*.01);beam([[.01,0],[.06,0],[.16,topH],[.11,topH]],orange,wa*.64,h*.004);beam([[.94,bottom],[1.02,bottom],[1.02,1],[.84,1]],clean,.62,h*.008);beam([[.97,bottom],[1.01,bottom],[1.01,1],[.9,1]],yellow,wa*.6,h*.003);
+      }
+    }else{
+      const topH=Math.max(.1,top),ty=topH*.42;
+      if(state.template==='soft'){add(w*rightX,h*bottomY,w*.24*S,h*bottomH*.7*S,clean,.84);add(w*rightX,h*bottomY,w*.15*S,h*bottomH*.48*S,orange,wa*.84);add(w*rightX,h*bottomY,w*.075*S,h*bottomH*.26*S,yellow,wa*.74)}
+      if(state.template==='diffuse'){curve([-.1,topH*.1,.06,topH*.92,.24,topH*.18,.42,topH*.86],clean,.9,h*topH*1.28,h*.045);curve([-.08,topH*.16,.07,topH*.84,.24,topH*.28,.4,topH*.78],orange,wa*.75,h*topH*.42,h*.014);curve([.02,topH*.28,.13,topH*.72,.25,topH*.38,.38,topH*.68],yellow,wa*.62,h*topH*.14,h*.004)}
+      if(state.template==='horizon'){curve([-.12,bottom+.72*bottomH,.28,bottom+.28*bottomH,.72,bottom+.72*bottomH,1.12,bottom+.3*bottomH],clean,.9,h*bottomH*1.2,h*.045);curve([-.1,bottom+.82*bottomH,.3,bottom+.48*bottomH,.74,bottom+.8*bottomH,1.1,bottom+.5*bottomH],orange,wa*.78,h*bottomH*.42,h*.015);curve([.45,bottom+.8*bottomH,.7,bottom+.62*bottomH,.92,bottom+.72*bottomH,1.08,bottom+.54*bottomH],yellow,wa*.66,h*bottomH*.15,h*.005)}
+      if(state.template==='halo'){const sx=.78;add(w*sx,-h*.03,w*.28*S,h*topH*.76*S,clean,.7);add(w*sx,-h*.04,w*.16*S,h*topH*.46*S,yellow,wa*.46);curve([.56,.012,.66,-.025,.78,.04,.94,-.008],orange,wa*.3,h*topH*.11,h*.003)}
+      if(state.template==='fold'){glassWave(bottom+.08*bottomH,bottomH*.2,clean,orange,.72);curve([-.04,bottom+.6*bottomH,.22,bottom+.12*bottomH,.62,bottom+.78*bottomH,1.04,bottom+.2*bottomH],yellow,wa*.44,h*bottomH*.12,h*.003)}
+      if(state.template==='focus'){add(-w*.055,h*.52,w*.14*S,h*.52*S,clean,.8);add(-w*.06,h*.52,w*.085*S,h*.34*S,orange,wa*.76);add(w*1.055,h*.48,w*.14*S,h*.52*S,clean,.76);add(w*1.06,h*.48,w*.075*S,h*.32*S,yellow,wa*.7)}
+      if(state.template==='ripple'){curve([.08,topH*.2,.26,topH*.92,.48,topH*.08,.76,topH*.74],clean,.88,h*topH*1.1,h*.04);curve([.1,topH*.24,.28,topH*.82,.5,topH*.16,.74,topH*.66],orange,wa*.7,h*topH*.3,h*.01);curve([.3,topH*.72,.42,topH*.38,.58,topH*.64,.72,topH*.54],yellow,wa*.58,h*topH*.1,h*.003)}
+      if(state.template==='prism'){beam([[-.02,0],[.1,0],[.22,topH],[.09,topH]],clean,.66,h*.01);beam([[.02,0],[.07,0],[.18,topH],[.13,topH]],orange,wa*.62,h*.004);beam([[.94,bottom],[1.02,bottom],[1.02,1],[.82,1]],clean,.62,h*.008);beam([[.97,bottom],[1.01,bottom],[1.01,1],[.89,1]],yellow,wa*.58,h*.003)}
+    }
+    c.restore();
+  }
+  const z=sc.safe,g=c.createRadialGradient(w*(z[0]+z[2]/2),h*(z[1]+z[3]/2),0,w*(z[0]+z[2]/2),h*(z[1]+z[3]/2),Math.max(w*z[2],h*z[3])*.78);g.addColorStop(0,sceneKey==='banner'?'rgba(255,255,255,.16)':'rgba(255,255,255,.28)');g.addColorStop(.7,sceneKey==='banner'?'rgba(255,255,255,.08)':'rgba(255,255,255,.15)');g.addColorStop(1,'rgba(255,255,255,0)');c.fillStyle=g;c.fillRect(0,0,w,h);if(sceneKey==='banner'&&sc.count){const q=sc.count,gg=c.createRadialGradient(w*(q[0]+q[2]/2),h*(q[1]+q[3]/2),0,w*(q[0]+q[2]/2),h*(q[1]+q[3]/2),w*q[2]*.76);gg.addColorStop(0,'rgba(255,255,255,.18)');gg.addColorStop(1,'rgba(255,255,255,0)');c.fillStyle=gg;c.fillRect(0,0,w,h)}addFineGrain(c,w,h,outputScale);if(target===canvas)updateContrast()
+}
+Object.assign(templateControlDefaults,{soft:[[-.04,.82,3],[.28,.66,3],[.72,.9,3],[1.04,.72,3]],diffuse:[[-.08,.28,3],[.26,.04,3],[.72,.52,3],[1.08,.2,3]],horizon:[[-.08,.78,3],[.3,.62,3],[.7,.82,3],[1.08,.68,3]],halo:[[.2,.78,3],[.36,.34,3],[.78,.3,3],[.92,.78,3]],fold:[[-.08,.72,3],[.28,.48,3],[.72,.84,3],[1.08,.56,3]],focus:[[-.08,.2,3],[.28,.08,3],[.68,.92,3],[1.08,.72,3]],ripple:[[-.08,.82,3],[.3,.56,3],[.68,.78,3],[1.08,.48,3]],prism:[[-.08,.08,3],[.32,.24,3],[.66,.76,3],[1.08,.92,3]]});for(const pts of Object.values(templateControlDefaults))for(const p of pts){p[0]=Math.max(.02,Math.min(.98,p[0]));p[1]=Math.max(.02,Math.min(.98,p[1]))}state.sceneTemplateControls=cloneSceneTemplateControls();
+render=function(target=canvas,sceneKey=state.scene,outputScale=1){
+  if(target===canvas&&outputScale===1)outputScale=2;
+  const sc=scenes[sceneKey],w=sc.size[0]*outputScale,h=sc.size[1]*outputScale,c=target.getContext('2d',{willReadFrequently:true}),b=brands[state.brand],cs=b.colors.map(x=>satColor(x,state.sat/100)),S=state.scale/100,A=state.accent/100,B=state.blur/100,tc=state.sceneTemplateControls[sceneKey][state.template],P=i=>tc[i]||[.5,.5,3];
+  const cyan=cs[0],aqua=cs[1]||cs[0],blue=cs[2]||cs[0],white=cs[3]||cs[1],orange=cs[4]||cs[2],yellow=cs[6]||cs[1],alpha=(col,a)=>col.replace('rgb(','rgba(').replace(')',`,`+a+`)`);
+  c.canvas.width=w;c.canvas.height=h;
+  const bg=c.createLinearGradient(0,0,w,h);bg.addColorStop(0,cyan);bg.addColorStop(.3,aqua);bg.addColorStop(.58,white);bg.addColorStop(1,blue);c.fillStyle=bg;c.fillRect(0,0,w,h);
+  const field=(x,y,rx,ry,col,a)=>{const m=Math.max(rx,ry),g=c.createRadialGradient(x,y,0,x,y,m);g.addColorStop(0,alpha(col,a));g.addColorStop(.64,alpha(col,a*.42));g.addColorStop(1,alpha(col,0));c.save();c.translate(x,y);c.scale(rx/m,ry/m);c.translate(-x,-y);c.fillStyle=g;c.fillRect(x-m,y-m,m*2,m*2);c.restore()};
+  field(w*.46,h*.46,w*.48,h*.78,white,.74);field(w*.04,h*.1,w*.34,h*.48,blue,.28);field(w*.98,h*.92,w*.3,h*.42,aqua,.28);
+  const path=dy=>[P(0)[0],P(0)[1]+dy,P(1)[0],P(1)[1]+dy,P(2)[0],P(2)[1]+dy,P(3)[0],P(3)[1]+dy];
+  const stroke=(p,col,a,width,soft=0)=>{const x0=p[0]*w,y0=p[1]*h,x1=p[6]*w,y1=p[7]*h,g=c.createLinearGradient(x0,y0,x1,y1);g.addColorStop(0,alpha(col,0));g.addColorStop(.12,alpha(col,a));g.addColorStop(.88,alpha(col,a));g.addColorStop(1,alpha(col,0));c.save();c.filter=soft?`blur(${soft}px)`:'none';c.strokeStyle=g;c.lineWidth=width;c.lineCap='round';c.beginPath();c.moveTo(x0,y0);c.bezierCurveTo(p[2]*w,p[3]*h,p[4]*w,p[5]*h,x1,y1);c.stroke();c.restore()};
+  const outsideText=fn=>{c.save();c.beginPath();c.rect(0,0,w,h);for(const q of[sc.safe,...(sc.count?[sc.count]:[])])c.rect(q[0]*w,q[1]*h,q[2]*w,q[3]*h);c.clip('evenodd');fn();c.restore()};
+  const flow=(strength=1,width=.16,shift=0)=>{const draw=k=>{stroke(path(shift-.055),blue,.34*k,h*width*1.08,h*.025);stroke(path(shift),white,.86*k,h*width*1.38,h*.035);stroke(path(shift+.055),orange,.72*A*k,h*width*.62,h*.018);stroke(path(shift+.055),yellow,.62*A*k,h*width*.18,h*.005)};draw(.72*strength)};
+  c.save();c.translate(w/2,h/2);c.rotate(state.angle*Math.PI/180);c.translate(-w/2,-h/2);
+  if(state.template==='soft')flow(1,.2,0);
+  if(state.template==='diffuse'){for(let i=-2;i<=2;i++)flow(.48-Math.abs(i)*.05,.08,i*.075)}
+  if(state.template==='horizon'){for(let i=-2;i<=2;i++)flow(.54-Math.abs(i)*.06,.065,i*.06)}
+  if(state.template==='fold'){for(let i=-4;i<=4;i++){const k=.42-Math.abs(i)*.025;flow(k,.036,i*.038)}}
+  if(state.template==='focus'){flow(.9,.18,0);flow(.36,.08,-.16)}
+  if(state.template==='ripple'){for(let i=-3;i<=3;i++)flow(.46-Math.abs(i)*.035,.042,i*.052)}
+  if(state.template==='prism'){const drawPrism=k=>{for(let i=-2;i<=2;i++){const dy=i*.055;stroke(path(dy),i===0?white:i<0?blue:i===1?orange:yellow,(i===0?.72:.48*A)*k,h*(i===0?.14:.065),h*.006)}};drawPrism(.68)}
+  if(state.template==='halo'){
+    const cx=(P(0)[0]+P(1)[0]+P(2)[0]+P(3)[0])/4,cy=(P(0)[1]+P(1)[1]+P(2)[1]+P(3)[1])/4,rx=Math.max(.18,Math.max(...tc.map(p=>Math.abs(p[0]-cx)))),ry=Math.max(.2,Math.max(...tc.map(p=>Math.abs(p[1]-cy))));
+    const starShape=(col,a,scale,soft)=>{c.save();c.translate(cx*w,cy*h);c.filter=`blur(${soft}px)`;c.fillStyle=alpha(col,a);c.beginPath();for(let i=0;i<24;i++){const r=i%4===0?1:i%2===0?.36:.08,ang=-Math.PI/2+i*Math.PI/12;c.lineTo(Math.cos(ang)*rx*w*scale*r,Math.sin(ang)*ry*h*scale*r)}c.closePath();c.fill();c.restore()};
+    starShape(white,.16,1.1,h*.035);starShape(blue,.2,.98,h*.02);starShape(white,.5,.82,h*.015);starShape(orange,.3*A,.58,h*.012);starShape(yellow,.26*A,.36,h*.005)
+  }
+  c.restore();
+  const protect=q=>{const x=w*(q[0]+q[2]/2),y=h*(q[1]+q[3]/2),r=Math.max(w*q[2],h*q[3])*.9,g=c.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,alpha(white,sceneKey==='banner'?.34:.52));g.addColorStop(.62,alpha(white,sceneKey==='banner'?.2:.34));g.addColorStop(1,alpha(white,0));c.fillStyle=g;c.fillRect(0,0,w,h)};protect(sc.safe);if(sc.count)protect(sc.count);
+  addFineGrain(c,w,h,outputScale);if(target===canvas)updateContrast();
+};
+function currentCopy(){return copyPresets[state.brand][state.scene==='banner'?'banner':'product']}
+function applyCopy(){const isBanner=state.scene==='banner',preset=currentCopy(),accent=copyPresets[state.brand].accent;frame.style.setProperty('--copy-accent',accent);$('#preview-title').textContent=copyPresets[state.brand].banner.title;$('#preview-sub').textContent=copyPresets[state.brand].banner.sub;$('#product-name').textContent=copyPresets[state.brand].product.title;$('#product-price').textContent=copyPresets[state.brand].product.sub;$('#title-input').value=preset.title;$('#sub-input').value=preset.sub;$('#title-label').textContent=isBanner?'主标题':'产品名';$('#sub-label').textContent=isBanner?'活动副标题':'价格数字';$('#copy-source-note').textContent=isBanner?'已按 Figma Banner 示例保留标签、两行文案与倒计时布局。':'已按 Figma 产品示例保留 Mini 徽标、720P/首发、价格强调与单位布局。';fitCopy()}
+function fitCopy(){const isBanner=state.scene==='banner',w=frame.clientWidth,title=$('#preview-title'),sub=$('#preview-sub');$('#preview-badges').style.display=isBanner?'flex':'none';if(!isBanner){title.style.fontSize='';sub.style.fontSize='';return}const fitLine=(el,start,min)=>{let px=w*start,limit=w*min;const textWidth=()=>{const range=document.createRange();range.selectNodeContents(el);return range.getBoundingClientRect().width};el.style.fontSize=px+'px';while(textWidth()>copy.clientWidth-2&&px>limit){px-=.4;el.style.fontSize=px+'px'}};fitLine(title,.029,.018);fitLine(sub,.029,.015)}
+function renderCurveUI(){const w=frame.clientWidth,h=frame.clientHeight,nodes=state.sceneTemplateControls[state.scene][state.template],points=nodes.map(n=>[n[0]*w,n[1]*h]);$('#curve-overlay').setAttribute('viewBox',`0 0 ${w} ${h}`);let d=`M ${points[0][0]} ${points[0][1]}`;for(let i=1;i<points.length-1;i++){const next=points[i+1],mid=[(points[i][0]+next[0])/2,(points[i][1]+next[1])/2];d+=` Q ${points[i][0]} ${points[i][1]} ${mid[0]} ${mid[1]}`}d+=` Q ${points.at(-1)[0]} ${points.at(-1)[1]} ${points.at(-1)[0]} ${points.at(-1)[1]}`;$('#curve-path').setAttribute('d',d);const palette=brands[state.brand].colors,templateName=templates.find(t=>t[0]===state.template)?.[1]||state.template;$$('[data-color-anchor]').forEach((el,i)=>{const node=nodes[i];if(!node){el.style.display='none';return}const color=palette[node[2]%palette.length];el.style.display='block';Object.assign(el.style,{left:node[0]*100+'%',top:node[1]*100+'%'});el.style.setProperty('--node-color',color);el.setAttribute('aria-label',`${templateName}原生控制点${i+1}`);el.title=`拖动调整「${templateName}」原生色层或纹路位置`});frame.classList.toggle('curve-hidden',!state.curveVisible)}
+function fit(){const sc=scenes[state.scene],shell=$('#shell'),mw=shell.clientWidth-52,mh=shell.clientHeight-52,r=Math.min(mw/sc.size[0],mh/sc.size[1]);frame.dataset.scene=state.scene;frame.dataset.brand=state.brand;frame.style.width=Math.round(sc.size[0]*r)+'px';frame.style.height=Math.round(sc.size[1]*r)+'px';frame.style.setProperty('--radius',Math.max(4,sc.radius*r)+'px');const z=sc.safe;Object.assign(safe.style,{left:z[0]*100+'%',top:z[1]*100+'%',width:z[2]*100+'%',height:z[3]*100+'%'});const p=sc.copy;Object.assign(copy.style,{left:p[0]*100+'%',top:p[1]*100+'%',width:p[2]*100+'%',height:p[3]*100+'%'});if(sc.count){countdown.style.display='grid';Object.assign(countdown.style,{left:sc.count[0]*100+'%',top:sc.count[1]*100+'%',width:sc.count[2]*100+'%',height:sc.count[3]*100+'%'})}else countdown.style.display='none';fitCopy();renderCurveUI();$('#size-meta').textContent=`${sc.name} · ${sc.size[0]} × ${sc.size[1]} px · 默认 ${state.exportScale}× 导出`;setTimeout(updateContrast,20)}
+function lum(r,g,b){const f=v=>(v/=255)<=.04045?v/12.92:Math.pow((v+.055)/1.055,2.4);return .2126*f(r)+.7152*f(g)+.0722*f(b)}function cr(a,b){return(Math.max(a,b)+.05)/(Math.min(a,b)+.05)}function updateContrast(){const z=scenes[state.scene].safe;let black=99,white=99;for(let iy=0;iy<5;iy++)for(let ix=0;ix<7;ix++){const x=Math.min(canvas.width-1,Math.round(canvas.width*(z[0]+z[2]*ix/6))),y=Math.min(canvas.height-1,Math.round(canvas.height*(z[1]+z[3]*iy/4))),d=ctx.getImageData(x,y,1,1).data,L=lum(d[0],d[1],d[2]);black=Math.min(black,cr(L,0));white=Math.min(white,cr(L,1))}const useBlack=!state.autoText||black>=white,ratio=useBlack?black:white;copy.style.color=useBlack?'#111217':'#fff';$('#ratio').textContent=ratio.toFixed(1)+' : 1';$('#advice').textContent='建议使用'+(useBlack?'黑字':'白字');const ok=ratio>=4.5,big=ratio>=3;$('#grade').textContent=ok?'AA 通过':big?'仅大字通过':'不通过';$('#score-dot').style.background=ok?'var(--ok)':big?'var(--warn)':'var(--bad)'}
+function paintUI(){const b=brands[state.brand];$('#brands').innerHTML=Object.entries(brands).map(([k,v])=>`<button class="chip ${k===state.brand?'active':''}" data-brand="${k}"><span class="dot" style="background:${v.colors[0]}"></span>${v.name}</button>`).join('')+`<span class="palette">${b.colors.map(c=>`<i style="background:${c}"></i>`).join('')}</span><span class="ratio-note">${b.ratio}</span>`;$('#scenes').innerHTML=Object.entries(scenes).map(([k,v])=>`<button class="chip ${k===state.scene?'active':''}" data-scene="${k}">${v.name}</button>`).join('');$('#scene-list').innerHTML=Object.entries(scenes).map(([k,v])=>`<button class="scene ${k===state.scene?'active':''}" data-scene="${k}"><strong>${v.name}</strong><small>${v.size.join(' × ')}</small></button>`).join('');$('#templates').innerHTML=templates.map(([k,n])=>`<button class="template ${k===state.template?'active':''}" data-template="${k}"><div class="thumb"></div><span>${n}</span></button>`).join('');bindDynamic();paintThumbs()}
+function paintThumbs(){const a=[state.scene,state.template,state.noise];state.noise=0;$$('.template').forEach((el,i)=>{state.template=templates[i][0];const t=document.createElement('canvas');render(t,state.scene,.28);el.querySelector('.thumb').style.backgroundImage=`url(${t.toDataURL('image/jpeg',.78)})`});[state.scene,state.template,state.noise]=a;render()}
+function bindDynamic(){$$('[data-brand]').forEach(b=>b.onclick=()=>{state.brand=b.dataset.brand;state.seed=18;paintUI();fit();applyCopy();render()});$$('[data-scene]').forEach(b=>b.onclick=()=>{state.scene=b.dataset.scene;paintUI();fit();applyCopy();render()});$$('[data-template]').forEach(b=>b.onclick=()=>{state.template=b.dataset.template;paintUI();fit();render()})}function downloadCanvas(c,name){const a=document.createElement('a');a.download=name;a.href=c.toDataURL('image/png');a.click()}function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1800)}
+const zipEncoder=new TextEncoder(),u16=n=>new Uint8Array([n&255,n>>>8&255]),u32=n=>new Uint8Array([n&255,n>>>8&255,n>>>16&255,n>>>24&255]);let crcTable;function concatBytes(parts){const out=new Uint8Array(parts.reduce((n,p)=>n+p.length,0));let offset=0;for(const p of parts){out.set(p,offset);offset+=p.length}return out}function crc32(bytes){if(!crcTable)crcTable=Array.from({length:256},(_,n)=>{let c=n;for(let k=0;k<8;k++)c=c&1?0xedb88320^c>>>1:c>>>1;return c>>>0});let c=0xffffffff;for(const b of bytes)c=crcTable[(c^b)&255]^c>>>8;return(c^0xffffffff)>>>0}function makeZip(entries){const localParts=[],centralParts=[];let offset=0;for(const entry of entries){const name=zipEncoder.encode(entry.name),data=entry.data,crc=crc32(data),local=concatBytes([u32(0x04034b50),u16(20),u16(0x0800),u16(0),u16(0),u16(0),u32(crc),u32(data.length),u32(data.length),u16(name.length),u16(0),name,data]);localParts.push(local);centralParts.push(concatBytes([u32(0x02014b50),u16(20),u16(20),u16(0x0800),u16(0),u16(0),u16(0),u32(crc),u32(data.length),u32(data.length),u16(name.length),u16(0),u16(0),u16(0),u16(0),u32(0),u32(offset),name]));offset+=local.length}const central=concatBytes(centralParts),end=concatBytes([u32(0x06054b50),u16(0),u16(0),u16(entries.length),u16(entries.length),u32(central.length),u32(offset),u16(0)]);return new Blob([...localParts,central,end],{type:'application/zip'})}function canvasBlob(c){return new Promise((resolve,reject)=>c.toBlob(blob=>blob?resolve(blob):reject(new Error('PNG export failed')),'image/png'))}
+$('#random').onclick=()=>{state.seed=Math.floor(Math.random()*1e9);state.scale=88+Math.floor(Math.random()*25);state.angle=-18+Math.floor(Math.random()*37);$('#scale').value=state.scale;$('#angle').value=state.angle;syncValues();render();paintThumbs();toast('品牌色比例已锁定，仅更新形态')};$('#download').onclick=()=>{const c=document.createElement('canvas'),sc=scenes[state.scene];render(c,state.scene,state.exportScale);downloadCanvas(c,`${brands[state.brand].name}-${sc.name}-${state.template}-${sc.size[0]}x${sc.size[1]}@${state.exportScale}x.png`)};$('#pack').onclick=async e=>{const button=e.currentTarget,label=button.textContent,brand=brands[state.brand],templateName=templates.find(t=>t[0]===state.template)?.[1]||state.template;button.disabled=true;button.textContent='正在打包…';try{const entries=[],files=[];for(const[k,sc]of Object.entries(scenes)){const c=document.createElement('canvas');render(c,k,state.exportScale);const blob=await canvasBlob(c),name=`${brand.name}-${sc.name}-${templateName}-${sc.size[0]}x${sc.size[1]}@${state.exportScale}x.png`;entries.push({name,data:new Uint8Array(await blob.arrayBuffer())});files.push({file:name,scene:k,label:sc.name,logicalSize:{width:sc.size[0],height:sc.size[1]},exportSize:{width:sc.size[0]*state.exportScale,height:sc.size[1]*state.exportScale},scale:state.exportScale,safeZone:{x:sc.safe[0],y:sc.safe[1],width:sc.safe[2],height:sc.safe[3]},copyZone:{x:sc.copy[0],y:sc.copy[1],width:sc.copy[2],height:sc.copy[3]}})}const manifest={name:'品牌背景场景套图',brand:brand.name,template:templateName,generatedAt:new Date().toISOString(),colorRule:brand.ratio,exportScale:state.exportScale,grain:{amount:state.noise,sizePx:state.grainSize},note:'安全区与文案区坐标均为相对画布的 0–1 比例；PNG 为高清纯背景，可直接置入对应资源位并按标注倍率缩放。',files};entries.push({name:'使用说明.json',data:zipEncoder.encode(JSON.stringify(manifest,null,2))});const zip=makeZip(entries),a=document.createElement('a'),url=URL.createObjectURL(zip);a.download=`${brand.name}-${templateName}-场景套图-${state.exportScale}x.zip`;a.href=url;a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);toast(`6 张 ${state.exportScale}× PNG 已打包为一个 ZIP`)}catch(err){console.error(err);toast('打包失败，请重试')}finally{button.disabled=false;button.textContent=label}};
+const randomShape=$('#random').onclick;$('#random').onclick=()=>{const defaults=templateControlDefaults[state.template],sceneControls=state.sceneTemplateControls[state.scene];sceneControls[state.template]=sceneControls[state.template].map((node,index)=>[Math.max(0,Math.min(1,defaults[index][0]+(Math.random()-.5)*.34)),Math.max(0,Math.min(1,defaults[index][1]+(Math.random()-.5)*.34)),node[2]]);renderCurveUI();randomShape()};$('#curve-toggle').onclick=e=>{state.curveVisible=!state.curveVisible;e.currentTarget.textContent=state.curveVisible?'隐藏模板控制点':'显示模板控制点';renderCurveUI()};$('#curve-reset').onclick=()=>{state.sceneTemplateControls[state.scene][state.template]=templateControlDefaults[state.template].map(p=>[...p]);renderCurveUI();render();paintThumbs();toast('当前场景的模板原生位置已重置')};$$('[data-color-anchor]').forEach((anchor,index)=>{anchor.onpointerdown=e=>{const node=state.sceneTemplateControls[state.scene][state.template][index];if(!node)return;e.preventDefault();let moved=false;const move=event=>{moved=true;const r=frame.getBoundingClientRect();node[0]=Math.max(0,Math.min(1,(event.clientX-r.left)/r.width));node[1]=Math.max(0,Math.min(1,(event.clientY-r.top)/r.height));renderCurveUI();render()};const up=()=>{window.removeEventListener('pointermove',move);window.removeEventListener('pointerup',up);if(moved)paintThumbs()};window.addEventListener('pointermove',move);window.addEventListener('pointerup',up,{once:true})}});
+$$('#modes button').forEach(b=>b.onclick=()=>{$$('#modes button').forEach(x=>x.classList.remove('active'));b.classList.add('active');const modeClass=b.dataset.mode==='background'?'background-only':b.dataset.mode==='safe'?'preview-off':'';frame.className='canvas-frame '+modeClass+(state.curveVisible?'':' curve-hidden');renderCurveUI()});$('#title-input').oninput=e=>{const p=currentCopy();p.title=e.target.value;if(state.scene==='banner')$('#preview-title').textContent=p.title;else $('#product-name').textContent=p.title;fitCopy()};$('#sub-input').oninput=e=>{const p=currentCopy();p.sub=e.target.value;if(state.scene==='banner')$('#preview-sub').textContent=p.sub;else $('#product-price').textContent=p.sub;fitCopy()};$('#auto-text').onclick=e=>{state.autoText=!state.autoText;e.currentTarget.classList.toggle('on',state.autoText);updateContrast()};function syncValues(){for(const k of['scale','angle','blur','sat','accent','noise','grainSize','exportScale'])state[k]=+$('#'+k).value;for(const k of['scale','blur','sat','accent','noise'])$('#'+k+'-v').textContent=state[k]+'%';$('#angle-v').textContent=state.angle+'°';$('#grainSize-v').textContent=state.grainSize.toFixed(1)+' px';$('#exportScale-v').textContent=state.exportScale+'×'}for(const k of['scale','angle','blur','sat','accent','noise','grainSize','exportScale'])$('#'+k).oninput=()=>{syncValues();if(k==='exportScale')fit();render()};new ResizeObserver(fit).observe($('#shell'));paintUI();syncValues();fit();applyCopy();render();
+const baseRenderCurveUI=renderCurveUI;renderCurveUI=function(){baseRenderCurveUI();const templateName=templates.find(t=>t[0]===state.template)?.[1]||state.template;$$('[data-color-anchor]').forEach((el,i)=>{if(el.style.display==='none')return;el.setAttribute('aria-label',`${templateName}形态控制点${i+1}`);el.title=`拖动改变「${templateName}」整体流场形态`})};$('#curve-toggle').onclick=e=>{state.curveVisible=!state.curveVisible;e.currentTarget.textContent=state.curveVisible?'隐藏形态控制点':'显示形态控制点';renderCurveUI()};renderCurveUI();
+
+/* Continuous brand field v1
+   Four anchors describe one native field curve. Colors are sampled from a
+   fixed brand palette across smooth offsets of that curve; no anchor paints
+   a radial color overlay. Everything outside this background module stays on
+   the existing page architecture. */
+const fieldSpecs={
+  soft:{axis:'x',band:.54,wave:.018,freq:1.0},
+  diffuse:{axis:'x',band:.42,wave:.045,freq:1.5},
+  horizon:{axis:'x',band:.34,wave:.018,freq:2.0},
+  halo:{axis:'star',band:.38,wave:.0,freq:1.0},
+  fold:{axis:'y',band:.38,wave:.035,freq:1.5},
+  focus:{axis:'x',band:.48,wave:.026,freq:1.0,focus:true},
+  ripple:{axis:'x',band:.29,wave:.055,freq:2.2},
+  prism:{axis:'x',band:.36,wave:.018,freq:1.0,prism:true}
+};
+Object.assign(templateControlDefaults,{
+  soft:[[.02,.78,3],[.31,.45,3],[.69,.38,3],[.98,.72,3]],
+  diffuse:[[.02,.22,3],[.31,.34,3],[.69,.62,3],[.98,.82,3]],
+  horizon:[[.02,.76,3],[.32,.65,3],[.68,.72,3],[.98,.68,3]],
+  halo:[[.08,.72,3],[.34,.29,3],[.66,.27,3],[.92,.7,3]],
+  fold:[[.18,.02,3],[.43,.32,3],[.72,.68,3],[.82,.98,3]],
+  focus:[[.02,.22,3],[.3,.1,3],[.68,.84,3],[.98,.72,3]],
+  ripple:[[.02,.72,3],[.31,.44,3],[.69,.78,3],[.98,.5,3]],
+  prism:[[.02,.12,3],[.31,.3,3],[.69,.68,3],[.98,.9,3]]
+});
+state.sceneTemplateControls=cloneSceneTemplateControls();
+
+function fieldRgb(value){
+  if(Array.isArray(value))return value;
+  const nums=String(value).match(/[\d.]+/g)||[0,0,0];
+  return nums.slice(0,3).map(Number);
+}
+function fieldMix(a,b,t){
+  t=Math.max(0,Math.min(1,t));
+  return[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];
+}
+function fieldPalette(brandKey){
+  const colors=brands[brandKey].colors.map(x=>fieldRgb(satColor(x,state.sat/100)));
+  if(brandKey==='dreamina'){
+    const cyan=colors[0],aqua=colors[1],blue=colors[2],white=colors[3],orange=fieldMix(white,colors[4],state.accent/100),coral=fieldMix(orange,colors[5],Math.min(.34,state.accent/240)),yellow=fieldMix(white,colors[6],state.accent/100);
+    return[[0,blue],[.16,cyan],[.31,aqua],[.425,white],[.485,white],[.515,yellow],[.545,orange],[.56,coral],[.575,orange],[.615,yellow],[.69,white],[.8,aqua],[.92,cyan],[1,blue]];
+  }
+  const deep=colors[0],purple=colors[1],lav=colors[2],white=colors[3],cyan=colors[4];
+  return[[0,deep],[.18,purple],[.34,lav],[.46,white],[.53,cyan],[.62,white],[.76,lav],[.9,purple],[1,deep]];
+}
+function coolFieldPalette(brandKey){
+  const colors=brands[brandKey].colors.map(x=>fieldRgb(satColor(x,state.sat/100)));
+  return brandKey==='dreamina'?[[0,colors[2]],[.24,colors[0]],[.5,colors[1]],[.72,colors[3]],[.9,colors[1]],[1,colors[0]]]:[[0,colors[0]],[.25,colors[1]],[.5,colors[2]],[.72,colors[3]],[.9,colors[4]],[1,colors[1]]];
+}
+function sampleFieldPalette(stops,t,feather){
+  t=Math.max(0,Math.min(1,t));
+  for(let i=1;i<stops.length;i++)if(t<=stops[i][0]){
+    const a=stops[i-1],b=stops[i];let u=(t-a[0])/(b[0]-a[0]);
+    const softness=.55+feather*.75;u=Math.pow(u,softness);u=u*u*(3-2*u);
+    return fieldMix(a[1],b[1],u);
+  }
+  return stops.at(-1)[1];
+}
+function evalFieldCurve(nodes,q,axis){
+  const ai=axis==='y'?1:0,ci=axis==='y'?0:1,pts=nodes.map(p=>[p[ai],p[ci]]).sort((a,b)=>a[0]-b[0]);
+  if(q<=pts[0][0])return pts[0][1];if(q>=pts.at(-1)[0])return pts.at(-1)[1];
+  let i=0;while(i<pts.length-2&&q>pts[i+1][0])i++;
+  const p0=pts[Math.max(0,i-1)],p1=pts[i],p2=pts[i+1],p3=pts[Math.min(pts.length-1,i+2)],t=(q-p1[0])/Math.max(.001,p2[0]-p1[0]),t2=t*t,t3=t2*t;
+  const v=.5*((2*p1[1])+(-p0[1]+p2[1])*t+(2*p0[1]-5*p1[1]+4*p2[1]-p3[1])*t2+(-p0[1]+3*p1[1]-3*p2[1]+p3[1])*t3);
+  return Math.max(-.2,Math.min(1.2,v));
+}
+function nativeFieldValue(x,y,nodes,spec,phase){
+  if(spec.axis==='star'){
+    const cx=nodes.reduce((s,p)=>s+p[0],0)/nodes.length,cy=nodes.reduce((s,p)=>s+p[1],0)/nodes.length,rx=.2+(.5*(Math.max(...nodes.map(p=>p[0]))-Math.min(...nodes.map(p=>p[0])))),ry=.2+(.5*(Math.max(...nodes.map(p=>p[1]))-Math.min(...nodes.map(p=>p[1])))),dx=(x-cx)/rx,dy=(y-cy)/ry,ang=Math.atan2(dy,dx),star=1+.2*Math.cos(4*ang+phase*.12)+.055*Math.cos(8*ang),d=Math.hypot(dx,dy)/star-1;
+    return .54+d/(spec.band*(state.scale/100)*2.5);
+  }
+  const q=spec.axis==='y'?y:x,r=spec.axis==='y'?x:y,boundary=evalFieldCurve(nodes,q,spec.axis),tilt=Math.tan(state.angle*Math.PI/180)*(q-.5)*.16;
+  let d=r-boundary-tilt+spec.wave*Math.sin((q*spec.freq*2*Math.PI)+phase*.18);
+  if(spec.focus)d*=.72+Math.abs(q-.5)*1.05;
+  if(spec.prism)d+=.025*Math.tanh((q-.5)*7);
+  return .55+d/(spec.band*(state.scale/100));
+}
+render=function(target=canvas,sceneKey=state.scene,outputScale=1){
+  if(target===canvas&&outputScale===1)outputScale=2;
+  const sc=scenes[sceneKey],w=sc.size[0]*outputScale,h=sc.size[1]*outputScale,c=target.getContext('2d',{willReadFrequently:true}),spec=fieldSpecs[state.template],nodes=state.sceneTemplateControls[sceneKey][state.template],stops=fieldPalette(state.brand),coolStops=coolFieldPalette(state.brand),phase=(state.seed%1009)/1009*Math.PI*2;
+  c.canvas.width=w;c.canvas.height=h;
+  const work=document.createElement('canvas'),fw=Math.max(180,sc.size[0]),fh=Math.max(180,sc.size[1]);work.width=fw;work.height=fh;const wc=work.getContext('2d'),im=wc.createImageData(fw,fh),data=im.data,feather=state.blur/100;
+  for(let py=0;py<fh;py++)for(let px=0;px<fw;px++){
+    const x=(px+.5)/fw,y=(py+.5)/fh,u=nativeFieldValue(x,y,nodes,spec,phase),q=spec.axis==='y'?y:x,curve=spec.axis==='star'?.5:evalFieldCurve(nodes,q,spec.axis),motif=state.template==='horizon'?y*.88+x*.12:state.template==='fold'?x*.82+y*.18:state.template==='focus'?(Math.hypot(x-.5,y-.5)*.72+q*.28):state.template==='halo'?Math.atan2(y-.5,x-.5)/(Math.PI*2)+.5:(q*.72+(spec.axis==='y'?x:y)*.28),coolT=.5+.47*Math.sin((motif*(.72+spec.freq*.18)+curve*.18+phase*.018)*Math.PI*2),rgb=sampleFieldPalette(stops,u,feather),cool=sampleFieldPalette(coolStops,coolT,feather),distance=Math.min(1,Math.abs(u-.55)*3.1),layered=fieldMix(rgb,cool,.24+.28*distance),light=.035*Math.sin((x*.7+y*.45+phase*.025)*Math.PI*2),final=fieldMix(layered,[255,255,255],Math.max(0,light)),i=(py*fw+px)*4;
+    data[i]=final[0];data[i+1]=final[1];data[i+2]=final[2];data[i+3]=255;
+  }
+  wc.putImageData(im,0,0);c.imageSmoothingEnabled=true;c.imageSmoothingQuality='high';c.drawImage(work,0,0,w,h);
+  const protect=q=>{const cx=w*(q[0]+q[2]/2),cy=h*(q[1]+q[3]/2),r=Math.max(w*q[2],h*q[3])*1.15,g=c.createRadialGradient(cx,cy,0,cx,cy,r),white=state.brand==='dreamina'?'248,253,255':'244,241,255';g.addColorStop(0,`rgba(${white},${sceneKey==='banner'?.16:.25})`);g.addColorStop(.58,`rgba(${white},${sceneKey==='banner'?.08:.13})`);g.addColorStop(1,`rgba(${white},0)`);c.fillStyle=g;c.fillRect(0,0,w,h)};
+  protect(sc.safe);if(sc.count)protect(sc.count);addFineGrain(c,w,h,outputScale);if(target===canvas)updateContrast();
+};
+
+function scoreFieldNodes(nodes,spec,sceneKey){
+  const sc=scenes[sceneKey],zones=[sc.safe,...(sc.count?[sc.count]:[])];let smooth=0,risk=0,min=2,max=-1,prev=null,prevDelta=null;
+  for(let i=0;i<=28;i++){
+    const q=i/28,v=evalFieldCurve(nodes,q,spec.axis==='star'?'x':spec.axis);min=Math.min(min,v);max=Math.max(max,v);
+    if(prev!==null){const delta=v-prev;if(prevDelta!==null)smooth+=Math.abs(delta-prevDelta);prevDelta=delta}prev=v;
+    if(spec.axis!=='star')for(const z of zones){const axis0=spec.axis==='y'?z[1]:z[0],axis1=axis0+(spec.axis==='y'?z[3]:z[2]),cross0=spec.axis==='y'?z[0]:z[1],cross1=cross0+(spec.axis==='y'?z[2]:z[3]);if(q>=axis0&&q<=axis1){const gap=v<cross0?cross0-v:v>cross1?v-cross1:0;risk+=Math.exp(-gap/.055)}}
+  }
+  const range=max-min,rangePenalty=range<.12?(.12-range)*50:range>.68?(range-.68)*35:0;return smooth*4+risk*1.65+rangePenalty;
+}
+function randomFieldNodes(template,sceneKey){
+  const spec=fieldSpecs[template],base=templateControlDefaults[template],sc=scenes[sceneKey],R=Math.random,best={score:1e9,nodes:null};
+  for(let attempt=0;attempt<18;attempt++){
+    const axis=spec.axis==='y'?'y':'x',zones=[sc.safe,...(sc.count?[sc.count]:[])],crossLow=Math.min(...zones.map(z=>axis==='y'?z[0]:z[1])),crossHigh=Math.max(...zones.map(z=>(axis==='y'?z[0]+z[2]:z[1]+z[3]))),useLow=R()<.5,target=useLow?Math.max(.08,crossLow-(.08+R()*.12)):Math.min(.92,crossHigh+(.08+R()*.12));
+    const pattern=[(R()-.5)*.08,(R()-.5)*.2,(R()-.5)*.2,(R()-.5)*.08],nodes=base.map((p,i)=>{const main=i===0?.02:i===3?.98:(i===1?.27+R()*.1:.63+R()*.1),cross=Math.max(.04,Math.min(.96,target+pattern[i]+(p[axis==='y'?0:1]-.5)*.2));return axis==='y'?[cross,main,3]:[main,cross,3]});
+    const score=scoreFieldNodes(nodes,spec,sceneKey)+(R()*.08);if(score<best.score){best.score=score;best.nodes=nodes}
+  }
+  return best.nodes||base.map(p=>[...p]);
+}
+function defaultFieldNodes(template,sceneKey){
+  const spec=fieldSpecs[template],axis=spec.axis==='y'?'y':'x',base=templateControlDefaults[template].map(p=>[...p]),sc=scenes[sceneKey],zones=[sc.safe,...(sc.count?[sc.count]:[])],crossLow=Math.min(...zones.map(z=>axis==='y'?z[0]:z[1])),crossHigh=Math.max(...zones.map(z=>(axis==='y'?z[0]+z[2]:z[1]+z[3]))),templateIndex=templates.findIndex(t=>t[0]===template),useLow=sceneKey!=='banner'&&(templateIndex+Object.keys(scenes).indexOf(sceneKey))%2===0,target=useLow?Math.max(.06,crossLow-.105):Math.min(.94,crossHigh+.105),ci=axis==='y'?0:1,mean=base.reduce((s,p)=>s+p[ci],0)/base.length,shift=target-mean;
+  for(const p of base)p[ci]=Math.max(.025,Math.min(.975,p[ci]+shift));
+  return base;
+}
+for(const sceneKey of Object.keys(scenes))for(const templateKey of Object.keys(templateControlDefaults))state.sceneTemplateControls[sceneKey][templateKey]=defaultFieldNodes(templateKey,sceneKey);
+
+function renderFieldCurveUI(){
+  const w=frame.clientWidth,h=frame.clientHeight,nodes=state.sceneTemplateControls[state.scene][state.template],points=nodes.map(n=>[n[0]*w,n[1]*h]);$('#curve-overlay').setAttribute('viewBox',`0 0 ${w} ${h}`);let d=`M ${points[0][0]} ${points[0][1]}`;for(let i=1;i<points.length-1;i++){const next=points[i+1],mid=[(points[i][0]+next[0])/2,(points[i][1]+next[1])/2];d+=` Q ${points[i][0]} ${points[i][1]} ${mid[0]} ${mid[1]}`}d+=` Q ${points.at(-1)[0]} ${points.at(-1)[1]} ${points.at(-1)[0]} ${points.at(-1)[1]}`;$('#curve-path').setAttribute('d',d);
+  const templateName=templates.find(t=>t[0]===state.template)?.[1]||state.template;$$('[data-color-anchor]').forEach((el,i)=>{const node=nodes[i];if(!node){el.style.display='none';return}el.style.display='block';Object.assign(el.style,{left:node[0]*100+'%',top:node[1]*100+'%'});el.style.setProperty('--node-color','#fff');el.setAttribute('aria-label',`${templateName}色场控制点${i+1}`);el.title='拖动重新分配整组品牌色层，不会新增色块'});frame.classList.toggle('curve-hidden',!state.curveVisible);
+}
+renderCurveUI=renderFieldCurveUI;
+$('#random').textContent='随机高质量背景';$('#random').nextElementSibling.textContent='固定品牌色与模板语言，从多组受约束曲线中自动选择最平顺、最不影响文字的一组';
+$('#random').onclick=()=>{state.seed=Math.floor(Math.random()*1e9);state.sceneTemplateControls[state.scene][state.template]=randomFieldNodes(state.template,state.scene);state.scale=92+Math.floor(Math.random()*21);state.angle=-10+Math.floor(Math.random()*21);$('#scale').value=state.scale;$('#angle').value=state.angle;syncValues();renderCurveUI();render();paintThumbs();toast('已固定品牌色，选出一组高质量色场分布')};
+$('#curve-reset').onclick=()=>{state.sceneTemplateControls[state.scene][state.template]=templateControlDefaults[state.template].map(p=>[...p]);renderCurveUI();render();paintThumbs();toast('当前场景的色场曲线已重置')};
+bindDynamic=function(){$$('[data-brand]').forEach(b=>b.onclick=()=>{state.brand=b.dataset.brand;state.seed=18;paintUI();fit();applyCopy();render()});$$('[data-scene]').forEach(b=>b.onclick=()=>{state.scene=b.dataset.scene;paintUI();fit();applyCopy();render()});$$('[data-template]').forEach(b=>b.onclick=()=>{state.template=b.dataset.template;$$('[data-template]').forEach(x=>x.classList.toggle('active',x.dataset.template===state.template));fit();render()})};
+bindDynamic();
+$$('[data-color-anchor]').forEach((anchor,index)=>{anchor.onpointerdown=e=>{const nodes=state.sceneTemplateControls[state.scene][state.template],node=nodes[index],spec=fieldSpecs[state.template];if(!node)return;e.preventDefault();let moved=false,raf=0;const move=event=>{moved=true;const r=frame.getBoundingClientRect(),x=Math.max(.02,Math.min(.98,(event.clientX-r.left)/r.width)),y=Math.max(.02,Math.min(.98,(event.clientY-r.top)/r.height)),axis=spec.axis==='y'?1:0,main=axis?y:x,cross=axis?x:y,lo=index?nodes[index-1][axis]+.055:.02,hi=index<nodes.length-1?nodes[index+1][axis]-.055:.98;node[axis]=Math.max(lo,Math.min(hi,main));node[1-axis]=cross;renderCurveUI();if(!raf)raf=requestAnimationFrame(()=>{raf=0;render()})};const up=()=>{window.removeEventListener('pointermove',move);window.removeEventListener('pointerup',up);if(raf)cancelAnimationFrame(raf);render();if(moved)paintThumbs()};window.addEventListener('pointermove',move);window.addEventListener('pointerup',up,{once:true})}});
+renderCurveUI();render();paintThumbs();
+
+/* Procedural brand field v2
+   Curated templates and algorithmic random generation are deliberately kept
+   separate. The four visible anchors describe the deformation domain of the
+   active field; they never paint independent radial colour overlays. */
+const procFamilies={
+  ribbon:{name:'流星轨迹',curve:true},
+  strata:{name:'分层波面',curve:true},
+  vortex:{name:'不规则扭转'},
+  pools:{name:'柔焦团块'},
+  facet:{name:'折射切面'},
+  lens:{name:'玻璃透镜'},
+  drift:{name:'流体漂移'},
+  hourglass:{name:'收束流场'}
+};
+const procTemplateFamilies={soft:'pools',diffuse:'drift',horizon:'strata',halo:'vortex',fold:'facet',focus:'lens',ripple:'hourglass',prism:'ribbon'};
+state.procProfiles={};
+state.lastProcFamily={};
+
+function procRand(seed){let a=(seed>>>0)||1;return()=>{a+=0x6D2B79F5;let t=a;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return((t^t>>>14)>>>0)/4294967296}}
+function procClamp(v,a=0,b=1){return Math.max(a,Math.min(b,v))}
+function procSmooth(a,b,x){const t=procClamp((x-a)/Math.max(.0001,b-a));return t*t*(3-2*t)}
+function procRotate(x,y,angle,scale){const c=Math.cos(angle),s=Math.sin(angle),dx=(x-.5)/scale,dy=(y-.5)/scale;return[.5+dx*c-dy*s,.5+dx*s+dy*c]}
+function procSegmentDistance(px,py,ax,ay,bx,by){const vx=bx-ax,vy=by-ay,wx=px-ax,wy=py-ay,t=procClamp((wx*vx+wy*vy)/Math.max(.0001,vx*vx+vy*vy));return Math.hypot(px-(ax+vx*t),py-(ay+vy*t))}
+function procCurveAt(nodes,x){return evalFieldCurve(nodes,x,'x')}
+function procProfileNodes(sceneKey){const p=state.procProfiles[sceneKey];return p&&p.template===state.template?p.nodes:state.sceneTemplateControls[sceneKey][state.template]}
+function procActiveProfile(sceneKey=state.scene){const random=state.procProfiles[sceneKey];if(random&&random.template===state.template)return random;return{family:procTemplateFamilies[state.template],nodes:state.sceneTemplateControls[sceneKey][state.template],params:{phase:(state.seed%997)/997*Math.PI*2,warp:.13,spread:.48,repeat:1.15,skew:.08,soft:.58},template:state.template,curated:true}}
+
+function procNoise(x,y,p){
+  const ph=p.phase||0,w=p.warp||.12;
+  return w*(.52*Math.sin((x*1.17+y*.43)*Math.PI*2+ph)+.31*Math.sin((x*.38-y*1.31)*Math.PI*2-ph*.63)+.17*Math.cos((x*1.83+y*1.54)*Math.PI*2+ph*.29));
+}
+function procFieldValue(x,y,profile){
+  const p=profile.params,n=profile.nodes,f=profile.family,rot=procRotate(x,y,(state.angle||0)*Math.PI/180,(state.scale||100)/100),xx=rot[0],yy=rot[1],noise=procNoise(xx,yy,p),phase=p.phase||0;
+  if(f==='ribbon'){
+    const boundary=procCurveAt(n,xx),d=yy-boundary+noise*.34;
+    return procClamp(.5+d/(p.spread||.42));
+  }
+  if(f==='strata'){
+    const boundary=procCurveAt(n,xx),d=yy-boundary+noise*.26;
+    return procClamp(.5+d/(p.spread||.55)+.105*Math.sin((d*(p.repeat||1.2)*5+xx*.65)*Math.PI+phase));
+  }
+  const cx=n.reduce((s,v)=>s+v[0],0)/n.length,cy=n.reduce((s,v)=>s+v[1],0)/n.length;
+  if(f==='vortex'){
+    const dx=xx-cx,dy=yy-cy,r=Math.hypot(dx,dy),theta=phase*.34+r*(1.45+(p.repeat||1)*1.1),flow=dx*Math.cos(theta)-dy*Math.sin(theta);
+    return procClamp(.5+flow*.9+noise*.3);
+  }
+  if(f==='pools'){
+    let field=0,total=0;
+    for(let i=0;i<n.length;i++){const q=n[i],rx=.2+(i%2)*.08+(p.spread||.45)*.2,ry=.22+((i+1)%2)*.1+(p.soft||.55)*.13,dx=(xx-q[0])/rx,dy=(yy-q[1])/ry,w=i===1||i===2?1.15:.78;field+=w*Math.exp(-(dx*dx+dy*dy)*1.05);total+=w}
+    return procClamp(.78-field/Math.max(.1,total)*1.45+noise*.28);
+  }
+  if(f==='facet'){
+    const d1=procSegmentDistance(xx,yy,n[0][0],n[0][1],n[2][0],n[2][1]),d2=procSegmentDistance(xx,yy,n[1][0],n[1][1],n[3][0],n[3][1]),plane=(xx-.5)*.62+(yy-.5)*.48+(p.skew||0);
+    return procClamp(.5+plane+.24*Math.tanh((d1-d2)*8)+noise*.16);
+  }
+  if(f==='lens'){
+    const rx=Math.max(.2,(Math.max(...n.map(v=>v[0]))-Math.min(...n.map(v=>v[0])))*.58),ry=Math.max(.2,(Math.max(...n.map(v=>v[1]))-Math.min(...n.map(v=>v[1])))*.58),dx=Math.abs((xx-cx)/rx),dy=Math.abs((yy-cy)/ry),shape=Math.pow(Math.pow(dx,3.2)+Math.pow(dy,3.2),1/3.2)-1;
+    return procClamp(.5+shape*.42+noise*.22+.08*Math.sin((xx+yy)*Math.PI*2+phase));
+  }
+  if(f==='hourglass'){
+    const dx=xx-cx,dy=yy-cy,bend=dx+Math.sin((dy+.5)*Math.PI*1.4+phase)*(.18+(p.warp||.1)),waist=Math.abs(dx-bend*.38)-(.12+.34*Math.abs(dy));
+    return procClamp(.52+waist*1.25+noise*.28);
+  }
+  const flowX=xx+noise*.62+(n[1][0]-n[2][0])*.16*Math.sin(yy*Math.PI+phase),flowY=yy+noise*.38+(n[0][1]-n[3][1])*.18*Math.sin(xx*Math.PI-phase*.7),dir=phase*.27;
+  return procClamp(.5+(flowX-.5)*Math.cos(dir)*.72+(flowY-.5)*Math.sin(dir)*.72+noise*.22);
+}
+
+function procSafeMask(x,y,sceneKey){
+  const sc=scenes[sceneKey],zones=[sc.safe,...(sc.count?[sc.count]:[])];let mask=0;
+  for(const z of zones){const cx=z[0]+z[2]/2,cy=z[1]+z[3]/2,dx=Math.max(0,Math.abs(x-cx)-z[2]/2),dy=Math.max(0,Math.abs(y-cy)-z[3]/2),outside=Math.hypot(dx,dy);mask=Math.max(mask,1-procSmooth(.025,.19,outside))}
+  return mask;
+}
+function procFieldColor(u,secondary,brandKey){
+  const colors=brands[brandKey].colors.map(x=>fieldRgb(satColor(x,state.sat/100))),white=brandKey==='dreamina'?colors[3]:colors[3];
+  if(brandKey==='dreamina'){
+    const cool=sampleFieldPalette([[0,colors[2]],[.32,colors[0]],[.68,colors[1]],[1,fieldMix(colors[3],colors[1],.28)]],secondary,state.blur/100),yellow=fieldMix(white,colors[6],state.accent/100),orange=fieldMix(white,colors[4],state.accent/100),warm=fieldMix(yellow,orange,procSmooth(.58,.95,u));
+    if(u<.62)return fieldMix(cool,white,procSmooth(.08,.62,u)*.84);
+    let out=fieldMix(white,warm,procSmooth(.62,.96,u));
+    if(u>.965)out=fieldMix(out,colors[5],procSmooth(.965,1,u)*.12);
+    return out;
+  }
+  const cool=sampleFieldPalette([[0,colors[0]],[.36,colors[1]],[.7,colors[4]],[1,colors[2]]],secondary,state.blur/100);
+  return u<.58?fieldMix(cool,white,procSmooth(.1,.58,u)*.78):fieldMix(white,colors[1],procSmooth(.58,1,u)*.72);
+}
+function procRender(target=canvas,sceneKey=state.scene,outputScale=1){
+  if(target===canvas&&outputScale===1)outputScale=2;
+  const sc=scenes[sceneKey],w=sc.size[0]*outputScale,h=sc.size[1]*outputScale,c=target.getContext('2d',{willReadFrequently:true}),profile=procActiveProfile(sceneKey);
+  c.canvas.width=w;c.canvas.height=h;
+  const work=document.createElement('canvas'),previewScale=Math.min(1,outputScale),fw=Math.max(120,Math.round(sc.size[0]*previewScale)),fh=Math.max(120,Math.round(sc.size[1]*previewScale));work.width=fw;work.height=fh;const wc=work.getContext('2d'),im=wc.createImageData(fw,fh),data=im.data;
+  for(let py=0;py<fh;py++)for(let px=0;px<fw;px++){
+    const x=(px+.5)/fw,y=(py+.5)/fh,safe=procSafeMask(x,y,sceneKey),raw=procFieldValue(x,y,profile),u=fieldMix([raw,0,0],[.28,0,0],safe*.78)[0],secondary=procClamp(.5+.28*Math.sin((x*.72+y*.47+(profile.params.phase||0)*.025)*Math.PI*2)+.22*(x-y)),main=procFieldColor(u,secondary,state.brand),protectedColor=state.brand==='dreamina'?[224,247,255]:[238,235,255],final=fieldMix(main,protectedColor,safe*(sceneKey==='banner'?.38:.52)),i=(py*fw+px)*4;
+    data[i]=final[0];data[i+1]=final[1];data[i+2]=final[2];data[i+3]=255;
+  }
+  wc.putImageData(im,0,0);c.imageSmoothingEnabled=true;c.imageSmoothingQuality='high';c.drawImage(work,0,0,w,h);addFineGrain(c,w,h,outputScale);if(target===canvas)updateContrast();
+}
+render=procRender;
+
+function procCandidateScore(profile,sceneKey){
+  const sc=scenes[sceneKey],zones=[sc.safe,...(sc.count?[sc.count]:[])];let safeRisk=0,variation=0,min=1,max=0,warm=0,total=0;
+  for(let gy=0;gy<24;gy++)for(let gx=0;gx<32;gx++){
+    const x=(gx+.5)/32,y=(gy+.5)/24,u=procFieldValue(x,y,profile);min=Math.min(min,u);max=Math.max(max,u);total++;if(u>.46&&u<.64)warm++;
+    for(const z of zones)if(x>=z[0]&&x<=z[0]+z[2]&&y>=z[1]&&y<=z[1]+z[3]){const ux=procFieldValue(procClamp(x+.012),y,profile),uy=procFieldValue(x,procClamp(y+.012),profile);safeRisk+=Math.max(0,.19-Math.abs(u-.55))*7+Math.hypot(ux-u,uy-u)*8;variation+=Math.abs(ux-u)+Math.abs(uy-u)}
+  }
+  const range=max-min,coverage=warm/total;return safeRisk+variation*3+(range<.42?(.42-range)*90:0)+(coverage<.035?(.035-coverage)*120:coverage>.3?(coverage-.3)*70:0);
+}
+function procRandomNodes(family,R){
+  if(family==='ribbon'||family==='strata')return[[.02,.15+R()*.7,3],[.28,.08+R()*.84,3],[.67,.08+R()*.84,3],[.98,.15+R()*.7,3]];
+  if(family==='facet')return[[.02,.12+R()*.34,3],[.24+R()*.18,.02,3],[.66+R()*.18,.98,3],[.98,.58+R()*.34,3]];
+  return Array.from({length:4},(_,i)=>[.08+R()*.84,.08+R()*.84,3]);
+}
+function procMakeRandomProfile(sceneKey){
+  const seed=Math.floor(Math.random()*0xffffffff),R=procRand(seed),families=Object.keys(procFamilies).filter(f=>f!=='ribbon'&&f!==state.lastProcFamily[sceneKey]),family=families[Math.floor(R()*families.length)],sc=scenes[sceneKey];let best=null;
+  for(let attempt=0;attempt<28;attempt++){
+    const profile={family,template:state.template,seed,nodes:procRandomNodes(family,R),params:{phase:R()*Math.PI*2,warp:.07+R()*.15,spread:.34+R()*.3,repeat:.75+R()*1.15,skew:(R()-.5)*.26,soft:.42+R()*.36}};
+    const score=procCandidateScore(profile,sceneKey)+R()*.2;if(!best||score<best.score)best={profile,score};
+  }
+  state.lastProcFamily[sceneKey]=best.profile.family;return best.profile;
+}
+
+function procRenderCurveUI(){
+  const w=frame.clientWidth,h=frame.clientHeight,profile=procActiveProfile(),nodes=profile.nodes,points=nodes.map(n=>[n[0]*w,n[1]*h]),path=$('#curve-path');$('#curve-overlay').setAttribute('viewBox',`0 0 ${w} ${h}`);
+  path.setAttribute('d','');path.style.display='none';
+  $$('[data-color-anchor]').forEach((el,i)=>{const node=nodes[i];if(!node){el.style.display='none';return}el.style.display='block';Object.assign(el.style,{left:node[0]*100+'%',top:node[1]*100+'%'});el.style.setProperty('--node-color','#fff');el.setAttribute('aria-label',`${procFamilies[profile.family].name}色场控制点${i+1}`);el.title='拖动只改变整体色场分布，不会添加独立色块'});frame.classList.toggle('curve-hidden',!state.curveVisible);
+}
+renderCurveUI=procRenderCurveUI;
+
+paintThumbs=function(){const savedTemplate=state.template,savedNoise=state.noise,savedProfile=state.procProfiles[state.scene];state.noise=0;state.procProfiles[state.scene]=null;$$('.template').forEach((el,i)=>{state.template=templates[i][0];const t=document.createElement('canvas');render(t,state.scene,.28);el.querySelector('.thumb').style.backgroundImage=`url(${t.toDataURL('image/jpeg',.8)})`});state.template=savedTemplate;state.noise=savedNoise;state.procProfiles[state.scene]=savedProfile;render()};
+function procRefreshThumbs(){window.requestIdleCallback?requestIdleCallback(paintThumbs,{timeout:1400}):setTimeout(paintThumbs,80)}
+bindDynamic=function(){$$('[data-brand]').forEach(b=>b.onclick=()=>{state.brand=b.dataset.brand;state.seed=18;paintUI();fit();applyCopy();render()});$$('[data-scene]').forEach(b=>b.onclick=()=>{state.scene=b.dataset.scene;$$('[data-scene]').forEach(x=>x.classList.toggle('active',x.dataset.scene===state.scene));fit();applyCopy();renderCurveUI();render();procRefreshThumbs()});$$('[data-template]').forEach(b=>b.onclick=()=>{state.template=b.dataset.template;state.procProfiles[state.scene]=null;$$('[data-template]').forEach(x=>x.classList.toggle('active',x.dataset.template===state.template));fit();render();toast('已切回精修模板')})};
+bindDynamic();
+$('#random').textContent='随机高质量背景';$('#random').nextElementSibling.textContent='固定品牌色，随机选择扭转、块面、流体、分层、折射等生成机制；自动避开文字安全区';
+$('#random').onclick=()=>{state.seed=Math.floor(Math.random()*1e9);state.procProfiles[state.scene]=procMakeRandomProfile(state.scene);state.scale=94+Math.floor(Math.random()*15);state.angle=-12+Math.floor(Math.random()*25);$('#scale').value=state.scale;$('#angle').value=state.angle;syncValues();renderCurveUI();render();toast(`已生成：${procFamilies[state.procProfiles[state.scene].family].name}`)};
+$('#curve-reset').onclick=()=>{state.procProfiles[state.scene]=null;state.sceneTemplateControls[state.scene][state.template]=defaultFieldNodes(state.template,state.scene);renderCurveUI();render();paintThumbs();toast('已恢复当前精修模板')};
+$$('[data-color-anchor]').forEach((anchor,index)=>{anchor.onpointerdown=e=>{const profile=procActiveProfile(),node=profile.nodes[index];if(!node)return;e.preventDefault();let moved=false,raf=0;const move=event=>{moved=true;const r=frame.getBoundingClientRect();let x=procClamp((event.clientX-r.left)/r.width,.02,.98),y=procClamp((event.clientY-r.top)/r.height,.02,.98);if(procFamilies[profile.family]?.curve){const lo=index?profile.nodes[index-1][0]+.055:.02,hi=index<profile.nodes.length-1?profile.nodes[index+1][0]-.055:.98;x=procClamp(x,lo,hi)}node[0]=x;node[1]=y;renderCurveUI();if(!raf)raf=requestAnimationFrame(()=>{raf=0;render()})};const up=()=>{window.removeEventListener('pointermove',move);window.removeEventListener('pointerup',up);if(raf)cancelAnimationFrame(raf);render();if(moved&&!state.procProfiles[state.scene])paintThumbs()};window.addEventListener('pointermove',move);window.addEventListener('pointerup',up,{once:true})}});
+renderCurveUI();render();procRefreshThumbs();
+
+/* GPU continuous colour field v3
+   Four handles edit two sampled scalar curves (X and Y). The fragment shader
+   combines those curves into one continuous field and only then samples a
+   perceptually-interpolated brand LUT. Handles therefore redistribute the
+   original field; they never paint extra colour blobs. */
+const flowCurated={
+  soft:{mode:0,nodes:[[.28,.24],[.72,.76],[.15,.34],[.85,.66]],warp:.08,phase:.12,feather:.72},
+  diffuse:{mode:1,nodes:[[.25,.72],[.76,.30],[.14,.22],[.86,.78]],warp:.16,phase:.38,feather:.78},
+  horizon:{mode:2,nodes:[[.28,.38],[.72,.63],[.16,.28],[.84,.72]],warp:.09,phase:.64,feather:.82},
+  halo:{mode:3,nodes:[[.26,.18],[.74,.82],[.13,.78],[.87,.22]],warp:.14,phase:.21,feather:.7},
+  fold:{mode:4,nodes:[[.22,.70],[.78,.24],[.16,.72],[.84,.30]],warp:.11,phase:.76,feather:.63},
+  focus:{mode:5,nodes:[[.27,.30],[.73,.70],[.14,.68],[.86,.34]],warp:.18,phase:.47,feather:.84},
+  ripple:{mode:6,nodes:[[.23,.74],[.77,.28],[.15,.30],[.85,.72]],warp:.15,phase:.9,feather:.68},
+  prism:{mode:7,nodes:[[.24,.24],[.76,.76],[.14,.72],[.86,.28]],warp:.07,phase:.58,feather:.6}
+};
+state.flowProfiles={};state.flowDragging=false;
+function flowCloneProfile(template){const p=flowCurated[template]||flowCurated.soft;return{template,mode:p.mode,nodes:p.nodes.map(n=>[...n]),warp:p.warp,phase:p.phase,feather:p.feather,seed:(state.seed||18)>>>0,randomized:false}}
+function flowProfile(sceneKey=state.scene,template=state.template){state.flowProfiles[sceneKey]??={};return state.flowProfiles[sceneKey][template]??=(flowCloneProfile(template))}
+function flowClamp(v,a=0,b=1){return Math.max(a,Math.min(b,v))}
+function flowCurvePoints(profile,axis){const n=profile.nodes;if(axis==='x')return[[0,.5+(n[0][1]-.5)*.5],[n[0][0],n[0][1]],[n[1][0],n[1][1]],[1,.5+(n[1][1]-.5)*.5]];return[[0,.5+(n[2][0]-.5)*.5],[n[2][1],n[2][0]],[n[3][1],n[3][0]],[1,.5+(n[3][0]-.5)*.5]].sort((a,b)=>a[0]-b[0])}
+function flowSampleCurve(points,count=512){const out=new Uint8Array(count*4),p=points.slice().sort((a,b)=>a[0]-b[0]),m=[];for(let i=0;i<p.length;i++){const prev=p[Math.max(0,i-1)],next=p[Math.min(p.length-1,i+1)];m[i]=(next[1]-prev[1])/Math.max(.001,next[0]-prev[0])}for(let j=0;j<count;j++){const x=j/(count-1);let i=0;while(i<p.length-2&&x>p[i+1][0])i++;const a=p[i],b=p[i+1],span=Math.max(.001,b[0]-a[0]),t=flowClamp((x-a[0])/span),t2=t*t,t3=t2*t,v=flowClamp((2*t3-3*t2+1)*a[1]+(t3-2*t2+t)*span*m[i]+(-2*t3+3*t2)*b[1]+(t3-t2)*span*m[i+1]);out[j*4]=out[j*4+1]=out[j*4+2]=Math.round(v*255);out[j*4+3]=255}return out}
+function flowHexRgb(hex){const n=parseInt(hex.replace('#',''),16);return[(n>>16&255)/255,(n>>8&255)/255,(n&255)/255]}
+function flowSrgbLinear(v){return v<=.04045?v/12.92:Math.pow((v+.055)/1.055,2.4)}
+function flowLinearSrgb(v){return v<=.0031308?12.92*v:1.055*Math.pow(Math.max(0,v),1/2.4)-.055}
+function flowRgbLab(rgb){const r=flowSrgbLinear(rgb[0]),g=flowSrgbLinear(rgb[1]),b=flowSrgbLinear(rgb[2]),l=.4122214708*r+.5363325363*g+.0514459929*b,m=.2119034982*r+.6806995451*g+.1073969566*b,s=.0883024619*r+.2817188376*g+.6299787005*b,L=Math.cbrt(l),M=Math.cbrt(m),S=Math.cbrt(s);return[.2104542553*L+.793617785*M-.0040720468*S,1.9779984951*L-2.428592205*M+.4505937099*S,.0259040371*L+.7827717662*M-.808675766*S]}
+function flowLabRgb(lab){const L=lab[0]+.3963377774*lab[1]+.2158037573*lab[2],M=lab[0]-.1055613458*lab[1]-.0638541728*lab[2],S=lab[0]-.0894841775*lab[1]-1.291485548*lab[2],l=L*L*L,m=M*M*M,s=S*S*S;return[flowLinearSrgb(4.0767416621*l-3.3077115913*m+.2309699292*s),flowLinearSrgb(-1.2684380046*l+2.6097574011*m-.3413193965*s),flowLinearSrgb(-.0041960863*l-.7034186147*m+1.707614701*s)].map(v=>flowClamp(v))}
+function flowPaletteStops(){if(state.brand==='pippit')return[[0,'#4B35D6'],[.18,'#6E54F4'],[.36,'#A38EFF'],[.52,'#E6E1FF'],[.66,'#F8F6FF'],[.82,'#C6EFFF'],[1,'#7760F0']];return[[0,'#0759E8'],[.17,'#008FF4'],[.36,'#00C8F2'],[.5,'#B9F3FF'],[.59,'#FAFEFF'],[.7,'#FFFFFF'],[.8,'#FFE13B'],[.92,'#FF7417'],[.98,'#FF5E3A'],[1,'#FF7417']]}
+function flowMakeLut(count=512){const stops=flowPaletteStops().map(([p,c])=>[p,flowRgbLab(flowHexRgb(c))]),out=new Uint8Array(count*4),chroma=.82+flowClamp((state.sat||100)/100)*.28;for(let j=0;j<count;j++){const x=j/(count-1);let i=0;while(i<stops.length-2&&x>stops[i+1][0])i++;const a=stops[i],b=stops[i+1],raw=flowClamp((x-a[0])/Math.max(.001,b[0]-a[0])),t=raw*raw*(3-2*raw),lab=a[1].map((v,k)=>v+(b[1][k]-v)*t);lab[1]*=chroma;lab[2]*=chroma;const rgb=flowLabRgb(lab);out[j*4]=Math.round(rgb[0]*255);out[j*4+1]=Math.round(rgb[1]*255);out[j*4+2]=Math.round(rgb[2]*255);out[j*4+3]=255}return out}
+
+const flowGLCanvas=document.createElement('canvas'),flowGL=flowGLCanvas.getContext('webgl',{alpha:false,antialias:false,preserveDrawingBuffer:true,premultipliedAlpha:false});
+let flowProgram=null,flowXTex=null,flowYTex=null,flowLutTex=null,flowLutKey='';
+function flowShader(type,source){const s=flowGL.createShader(type);flowGL.shaderSource(s,source);flowGL.compileShader(s);if(!flowGL.getShaderParameter(s,flowGL.COMPILE_STATUS))throw new Error(flowGL.getShaderInfoLog(s));return s}
+function flowInitGL(){if(flowProgram||!flowGL)return!!flowProgram;try{const vs=flowShader(flowGL.VERTEX_SHADER,'attribute vec2 a;varying vec2 v;void main(){v=(a+1.0)*.5;gl_Position=vec4(a,0.,1.);}'),fs=flowShader(flowGL.FRAGMENT_SHADER,`precision highp float;varying vec2 v;uniform sampler2D xC;uniform sampler2D yC;uniform sampler2D lut;uniform vec2 res;uniform float phase;uniform float warp;uniform float feather;uniform float grain;uniform float safeT;uniform int mode;uniform vec4 safe0;uniform vec4 safe1;uniform float hasSafe1;
+float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453123);}
+float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1.,0.)),f.x),mix(hash(i+vec2(0.,1.)),hash(i+vec2(1.,1.)),f.x),f.y);}
+float fbm(vec2 p){float s=0.,a=.5;for(int i=0;i<3;i++){s+=a*noise(p);p=p*2.03+17.17;a*=.5;}return s;}
+float rmask(vec2 p,vec4 z){vec2 c=z.xy+z.zw*.5;vec2 q=abs(p-c)-z.zw*.5;float d=length(max(q,0.))+min(max(q.x,q.y),0.);return 1.-smoothstep(-.025,.19,d);}
+void main(){vec2 uv=vec2(v.x,1.-v.y);float n=fbm(uv*2.15+phase*3.1)-.5;vec2 wuv=uv+warp*vec2(n,fbm(uv.yx*2.37-phase*2.2)-.5);wuv=clamp(wuv,0.,1.);float x=texture2D(xC,vec2(wuv.x,.5)).r;float y=texture2D(yC,vec2(wuv.y,.5)).r;float t;
+if(mode==0)t=.5*x+.5*y;else if(mode==1)t=1.-(1.-x)*(1.-y);else if(mode==2)t=.72*y+.28*x;else if(mode==3)t=.5+.72*(x-.5)*(y-.5)*2.;else if(mode==4)t=.5+.72*(x-y);else if(mode==5)t=mix(min(x,y),max(x,y),.38+.24*sin(phase*6.28));else if(mode==6)t=.5+.36*sin((x*.72+y*.82+n*.18)*6.283+phase*4.);else t=.58*x+.42*y+.1*sin((x-y)*9.+phase*5.);
+t=clamp(t,0.,1.);float sm=max(rmask(uv,safe0),rmask(uv,safe1)*hasSafe1);float safeTarget=safeT+(t-.5)*.14;t=mix(t,safeTarget,sm*.84);t=smoothstep(-.08,1.08,t);vec3 col=texture2D(lut,vec2(t,.5)).rgb;float micro=(hash(gl_FragCoord.xy+phase*91.7)-.5)*grain;col=clamp(col+micro*(.45+col*.55),0.,1.);gl_FragColor=vec4(col,1.);}`);flowProgram=flowGL.createProgram();flowGL.attachShader(flowProgram,vs);flowGL.attachShader(flowProgram,fs);flowGL.linkProgram(flowProgram);if(!flowGL.getProgramParameter(flowProgram,flowGL.LINK_STATUS))throw new Error(flowGL.getProgramInfoLog(flowProgram));flowGL.useProgram(flowProgram);const b=flowGL.createBuffer();flowGL.bindBuffer(flowGL.ARRAY_BUFFER,b);flowGL.bufferData(flowGL.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),flowGL.STATIC_DRAW);const a=flowGL.getAttribLocation(flowProgram,'a');flowGL.enableVertexAttribArray(a);flowGL.vertexAttribPointer(a,2,flowGL.FLOAT,false,0,0);[flowXTex,flowYTex,flowLutTex]=[0,1,2].map(()=>{const t=flowGL.createTexture();flowGL.bindTexture(flowGL.TEXTURE_2D,t);flowGL.texParameteri(flowGL.TEXTURE_2D,flowGL.TEXTURE_MIN_FILTER,flowGL.LINEAR);flowGL.texParameteri(flowGL.TEXTURE_2D,flowGL.TEXTURE_MAG_FILTER,flowGL.LINEAR);flowGL.texParameteri(flowGL.TEXTURE_2D,flowGL.TEXTURE_WRAP_S,flowGL.CLAMP_TO_EDGE);flowGL.texParameteri(flowGL.TEXTURE_2D,flowGL.TEXTURE_WRAP_T,flowGL.CLAMP_TO_EDGE);return t});return true}catch(err){console.error('GPU field unavailable',err);flowProgram=null;return false}}
+function flowUpload(tex,unit,data,width){flowGL.activeTexture(flowGL.TEXTURE0+unit);flowGL.bindTexture(flowGL.TEXTURE_2D,tex);flowGL.texImage2D(flowGL.TEXTURE_2D,0,flowGL.RGBA,width,1,0,flowGL.RGBA,flowGL.UNSIGNED_BYTE,data)}
+function flowRenderGL(profile,sceneKey,w,h){if(!flowInitGL())return false;flowGLCanvas.width=w;flowGLCanvas.height=h;flowGL.viewport(0,0,w,h);flowGL.useProgram(flowProgram);const count=512;flowUpload(flowXTex,0,flowSampleCurve(flowCurvePoints(profile,'x'),count),count);flowUpload(flowYTex,1,flowSampleCurve(flowCurvePoints(profile,'y'),count),count);const key=[state.brand,state.sat,state.accent].join('|');if(key!==flowLutKey){flowUpload(flowLutTex,2,flowMakeLut(count),count);flowLutKey=key}const U=(n)=>flowGL.getUniformLocation(flowProgram,n),sc=scenes[sceneKey],z0=sc.safe,z1=sc.count||[0,0,0,0];flowGL.uniform1i(U('xC'),0);flowGL.uniform1i(U('yC'),1);flowGL.uniform1i(U('lut'),2);flowGL.uniform2f(U('res'),w,h);flowGL.uniform1f(U('phase'),profile.phase+(profile.seed%997)/997);flowGL.uniform1f(U('warp'),profile.warp*(state.scale/100));flowGL.uniform1f(U('feather'),profile.feather);flowGL.uniform1f(U('grain'),Math.min(.035,state.noise/1150));flowGL.uniform1f(U('safeT'),sceneKey==='banner'?(state.brand==='dreamina'?.22:.18):.5);flowGL.uniform1i(U('mode'),profile.mode);flowGL.uniform4f(U('safe0'),...z0);flowGL.uniform4f(U('safe1'),...z1);flowGL.uniform1f(U('hasSafe1'),sc.count?1:0);flowGL.drawArrays(flowGL.TRIANGLES,0,6);return true}
+
+render=function(target=canvas,sceneKey=state.scene,outputScale=1){if(target===canvas&&outputScale===1)outputScale=state.flowDragging?1:2;const sc=scenes[sceneKey],w=Math.round(sc.size[0]*outputScale),h=Math.round(sc.size[1]*outputScale),c=target.getContext('2d',{willReadFrequently:target===canvas}),profile=flowProfile(sceneKey,state.template);target.width=w;target.height=h;if(!flowRenderGL(profile,sceneKey,w,h))return procRender(target,sceneKey,outputScale);c.imageSmoothingEnabled=true;c.imageSmoothingQuality='high';c.clearRect(0,0,w,h);c.drawImage(flowGLCanvas,0,0,w,h);if(target===canvas&&!state.flowDragging)updateContrast()};
+
+function flowRenderCurveUI(){const w=frame.clientWidth,h=frame.clientHeight,p=flowProfile();$('#curve-overlay').setAttribute('viewBox',`0 0 ${w} ${h}`);$('#curve-path').setAttribute('d','');$('#curve-path').style.display='none';$$('[data-color-anchor]').forEach((el,i)=>{const n=p.nodes[i];if(!n){el.style.display='none';return}el.style.display='block';Object.assign(el.style,{left:n[0]*100+'%',top:n[1]*100+'%'});el.style.setProperty('--node-color','#fff');el.setAttribute('aria-label',i<2?`横向色场控制点${i+1}`:`纵向色场控制点${i-1}`);el.title=i<2?'拖动改变横向颜色分层':'拖动改变纵向颜色分层'});frame.classList.toggle('curve-hidden',!state.curveVisible)}
+renderCurveUI=flowRenderCurveUI;
+function flowEvalCurve(profile,axis,q){const pts=flowCurvePoints(profile,axis),data=flowSampleCurve(pts,257);return data[Math.round(flowClamp(q)*256)*4]/255}
+function flowApprox(profile,x,y){const n=(Math.sin((x*1.7+y*.9+profile.phase)*6.283)+1)*.5,xx=flowClamp(x+(n-.5)*profile.warp),yy=flowClamp(y+(n-.5)*profile.warp),a=flowEvalCurve(profile,'x',xx),b=flowEvalCurve(profile,'y',yy);if(profile.mode===0)return(a+b)/2;if(profile.mode===1)return 1-(1-a)*(1-b);if(profile.mode===2)return .28*a+.72*b;if(profile.mode===3)return .5+.72*(a-.5)*(b-.5)*2;if(profile.mode===4)return .5+.72*(a-b);if(profile.mode===5)return Math.min(a,b)*.62+Math.max(a,b)*.38;if(profile.mode===6)return .5+.36*Math.sin((a*.72+b*.82+n*.18)*6.283+profile.phase*4);return .58*a+.42*b+.1*Math.sin((a-b)*9+profile.phase*5)}
+function flowScore(profile,sceneKey){const sc=scenes[sceneKey],zones=[sc.safe,...(sc.count?[sc.count]:[])],xs=flowSampleCurve(flowCurvePoints(profile,'x'),257),ys=flowSampleCurve(flowCurvePoints(profile,'y'),257),at=(a,q)=>a[Math.round(flowClamp(q)*256)*4]/255,evalAt=(u,v)=>{const n=(Math.sin((u*1.7+v*.9+profile.phase)*6.283)+1)*.5,x=at(xs,u+(n-.5)*profile.warp),y=at(ys,v+(n-.5)*profile.warp);if(profile.mode===0)return(x+y)/2;if(profile.mode===1)return 1-(1-x)*(1-y);if(profile.mode===2)return .28*x+.72*y;if(profile.mode===3)return .5+.72*(x-.5)*(y-.5)*2;if(profile.mode===4)return .5+.72*(x-y);if(profile.mode===5)return Math.min(x,y)*.62+Math.max(x,y)*.38;if(profile.mode===6)return .5+.36*Math.sin((x*.72+y*.82+n*.18)*6.283+profile.phase*4);return .58*x+.42*y+.1*Math.sin((x-y)*9+profile.phase*5)};let safe=0,variation=0,cool=0,warm=0,white=0;for(let y=0;y<18;y++)for(let x=0;x<26;x++){const u=(x+.5)/26,v=(y+.5)/18,t=flowClamp(evalAt(u,v));if(t<.42)cool++;if(t>.72)warm++;if(t>.48&&t<.72)white++;for(const z of zones)if(u>z[0]&&u<z[0]+z[2]&&v>z[1]&&v<z[1]+z[3]){safe+=Math.max(0,Math.abs(t-.49)-.12)*8;variation+=Math.abs(t-evalAt(flowClamp(u+.02),v))+Math.abs(t-evalAt(u,flowClamp(v+.02)))}}const total=26*18,c=cool/total,w=warm/total,wh=white/total;return safe+variation*1.8+(c<.2?(.2-c)*180:0)+(w<.09?(.09-w)*260:0)+(w>.3?(w-.3)*130:0)+(wh<.12?(.12-wh)*180:0)}
+function flowRandomProfile(sceneKey,template){let best=null;for(let k=0;k<30;k++){const R=Math.random,profile={template,mode:Math.floor(R()*8),nodes:[[.18+R()*.22,.12+R()*.76],[.62+R()*.22,.12+R()*.76],[.12+R()*.76,.18+R()*.22],[.12+R()*.76,.62+R()*.22]],warp:.035+R()*.17,phase:R(),feather:.58+R()*.32,seed:Math.floor(R()*0xffffffff),randomized:true},score=flowScore(profile,sceneKey)+R()*.1;if(!best||score<best.score)best={profile,score}}return best.profile}
+
+paintThumbs=function(){const saved=state.template,savedNoise=state.noise;state.noise=0;$$('.template').forEach((el,i)=>{state.template=templates[i][0];const t=document.createElement('canvas');render(t,state.scene,.24);el.querySelector('.thumb').style.backgroundImage=`url(${t.toDataURL('image/jpeg',.82)})`});state.template=saved;state.noise=savedNoise;render()};
+function flowRefreshThumbs(){window.requestIdleCallback?requestIdleCallback(paintThumbs,{timeout:1000}):setTimeout(paintThumbs,60)}
+bindDynamic=function(){$$('[data-brand]').forEach(b=>b.onclick=()=>{state.brand=b.dataset.brand;flowLutKey='';state.seed=18;paintUI();fit();applyCopy();render()});$$('[data-scene]').forEach(b=>b.onclick=()=>{state.scene=b.dataset.scene;$$('[data-scene]').forEach(x=>x.classList.toggle('active',x.dataset.scene===state.scene));fit();applyCopy();renderCurveUI();render();flowRefreshThumbs()});$$('[data-template]').forEach(b=>b.onclick=()=>{state.template=b.dataset.template;$$('[data-template]').forEach(x=>x.classList.toggle('active',x.dataset.template===state.template));fit();render();toast('已切换精修模板')})};bindDynamic();
+$('#random').textContent='随机高质量背景';$('#random').nextElementSibling.textContent='固定品牌色谱，随机两组连续色场及融合方式；蓝橙之间始终经过宽白色过渡，并自动保护文字区';
+$('#random').onclick=()=>{const p=flowRandomProfile(state.scene,state.template);state.flowProfiles[state.scene]??={};state.flowProfiles[state.scene][state.template]=p;state.seed=p.seed;renderCurveUI();render();toast('已生成连续色场：没有附加色块或可见线条')};
+$('#curve-reset').onclick=()=>{state.flowProfiles[state.scene]??={};state.flowProfiles[state.scene][state.template]=flowCloneProfile(state.template);renderCurveUI();render();flowRefreshThumbs();toast('已恢复当前精修模板')};
+$$('[data-color-anchor]').forEach((anchor,index)=>{anchor.onpointerdown=e=>{const p=flowProfile(),node=p.nodes[index];if(!node)return;e.preventDefault();anchor.setPointerCapture?.(e.pointerId);state.flowDragging=true;let raf=0;const move=event=>{const r=frame.getBoundingClientRect(),x=flowClamp((event.clientX-r.left)/r.width,.02,.98),y=flowClamp((event.clientY-r.top)/r.height,.02,.98);if(index<2){const other=p.nodes[index?0:1],lo=index?other[0]+.08:.08,hi=index?.92:other[0]-.08;node[0]=flowClamp(x,lo,hi);node[1]=y}else{const other=p.nodes[index===2?3:2],lo=index===3?other[1]+.08:.08,hi=index===3?.92:other[1]-.08;node[0]=x;node[1]=flowClamp(y,lo,hi)}renderCurveUI();if(!raf)raf=requestAnimationFrame(()=>{raf=0;render()})};const up=()=>{window.removeEventListener('pointermove',move);window.removeEventListener('pointerup',up);if(raf)cancelAnimationFrame(raf);state.flowDragging=false;render();updateContrast();flowRefreshThumbs()};window.addEventListener('pointermove',move);window.addEventListener('pointerup',up,{once:true})}});
+renderCurveUI();render();flowRefreshThumbs();
+</script>
+<script>
+/* Soft mesh colour field v4
+   The four handles are colour sites in one continuous field: deep blue,
+   cyan, white light and warm accent.  They never paint independent blobs.
+   Broad softmax interpolation, domain warping and a white bridge keep the
+   field fluid while hard brand weighting prevents warm/white takeover. */
+const meshCanvas=document.createElement('canvas'),meshGL=meshCanvas.getContext('webgl',{alpha:false,antialias:false,preserveDrawingBuffer:true,premultipliedAlpha:false});
+let meshProgram=null,meshLut=null,meshLutKey='';
+const curatedFlowRenderGL=flowRenderGL;
+function meshShader(type,source){const s=meshGL.createShader(type);meshGL.shaderSource(s,source);meshGL.compileShader(s);if(!meshGL.getShaderParameter(s,meshGL.COMPILE_STATUS))throw new Error(meshGL.getShaderInfoLog(s));return s}
+function meshInit(){if(meshProgram||!meshGL)return!!meshProgram;try{const vs=meshShader(meshGL.VERTEX_SHADER,'attribute vec2 a;varying vec2 v;void main(){v=(a+1.0)*.5;gl_Position=vec4(a,0.,1.);}'),fs=meshShader(meshGL.FRAGMENT_SHADER,`precision highp float;varying vec2 v;uniform sampler2D lut;uniform vec2 res;uniform vec2 n0;uniform vec2 n1;uniform vec2 n2;uniform vec2 n3;uniform float phase;uniform float warp;uniform float softness;uniform float grain;uniform int mode;uniform vec4 safe0;uniform vec4 safe1;uniform float hasSafe1;
+float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453123);}
+float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),f.x),f.y);}
+float fbm(vec2 p){float s=0.,a=.5;for(int i=0;i<3;i++){s+=a*noise(p);p=p*2.02+13.7;a*=.5;}return s;}
+float rmask(vec2 p,vec4 z){vec2 c=z.xy+z.zw*.5;vec2 q=abs(p-c)-z.zw*.5;float d=length(max(q,0.))+min(max(q.x,q.y),0.);return 1.-smoothstep(-.015,.11,d);}
+vec3 toLin(vec3 c){return mix(c/12.92,pow((c+.055)/1.055,vec3(2.4)),step(vec3(.04045),c));}
+vec3 toSrgb(vec3 c){return mix(c*12.92,1.055*pow(max(c,0.),vec3(1./2.4))-.055,step(vec3(.0031308),c));}
+float kernel(vec2 p,vec2 c,float aspect,float k){vec2 d=p-c;d.x*=mix(1.,aspect,.32);return exp(-dot(d,d)*k);}
+void main(){vec2 uv=vec2(v.x,1.-v.y);float aspect=res.x/max(res.y,1.);float f1=fbm(uv*1.55+phase*3.7)-.5;float f2=fbm(uv.yx*1.73-phase*2.1)-.5;vec2 p=uv+vec2(f1,f2)*warp*.16;
+if(mode==1)p+=vec2(sin((uv.y+phase)*6.283),cos((uv.x-phase)*6.283))*warp*.045;
+if(mode==2)p.y+=(uv.x-.5)*warp*.16;
+float k=mix(3.2,7.2,clamp(1.-softness,0.,1.));
+float a=kernel(p,n0,mix(1.,aspect,.18),k)*.96+.42;
+float b=kernel(p,n1,mix(1.,aspect,.18),k*.88)*1.06+.56;
+float c=kernel(p,n2,mix(1.,aspect,.12),k*.72)*.58+.08;
+float d=kernel(p,n3,1.,k*.78)*2.08+.002;
+float sm=max(rmask(uv,safe0),rmask(uv,safe1)*hasSafe1);
+d*=1.-sm*.86;c+=sm*.16;b+=sm*.18;
+float cool=a+b;float dn=clamp(d/2.08,0.,1.);float bridge=smoothstep(.025,.22,dn)*(1.-smoothstep(.48,.88,dn))*smoothstep(.12,.76,cool/(cool+d));c+=bridge*.92;
+vec3 ca=toLin(texture2D(lut,vec2(.08,.5)).rgb),cb=toLin(texture2D(lut,vec2(.34,.5)).rgb),cc=toLin(texture2D(lut,vec2(.66,.5)).rgb),cd=toLin(texture2D(lut,vec2(.88,.5)).rgb);
+vec3 coolCol=(ca*a+cb*b)/cool;float warmRatio=d/(cool+d);float whiteMix=clamp(c/(cool+c+d)+bridge*.76,0.,.84);vec3 blended=mix(coolCol,cc,whiteMix);float warmMix=smoothstep(.34,.58,warmRatio)*(1.-sm*.88);vec3 col=toSrgb(mix(blended,cd,warmMix));float luma=dot(col,vec3(.2126,.7152,.0722));col=mix(vec3(luma),col,1.16);float micro=(hash(gl_FragCoord.xy+phase*97.3)-.5)*grain;col=clamp(col+micro*(.35+col*.45),0.,1.);gl_FragColor=vec4(col,1.);}`);meshProgram=meshGL.createProgram();meshGL.attachShader(meshProgram,vs);meshGL.attachShader(meshProgram,fs);meshGL.linkProgram(meshProgram);if(!meshGL.getProgramParameter(meshProgram,meshGL.LINK_STATUS))throw new Error(meshGL.getProgramInfoLog(meshProgram));meshGL.useProgram(meshProgram);const b=meshGL.createBuffer();meshGL.bindBuffer(meshGL.ARRAY_BUFFER,b);meshGL.bufferData(meshGL.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),meshGL.STATIC_DRAW);const a=meshGL.getAttribLocation(meshProgram,'a');meshGL.enableVertexAttribArray(a);meshGL.vertexAttribPointer(a,2,meshGL.FLOAT,false,0,0);meshLut=meshGL.createTexture();meshGL.bindTexture(meshGL.TEXTURE_2D,meshLut);meshGL.texParameteri(meshGL.TEXTURE_2D,meshGL.TEXTURE_MIN_FILTER,meshGL.LINEAR);meshGL.texParameteri(meshGL.TEXTURE_2D,meshGL.TEXTURE_MAG_FILTER,meshGL.LINEAR);meshGL.texParameteri(meshGL.TEXTURE_2D,meshGL.TEXTURE_WRAP_S,meshGL.CLAMP_TO_EDGE);meshGL.texParameteri(meshGL.TEXTURE_2D,meshGL.TEXTURE_WRAP_T,meshGL.CLAMP_TO_EDGE);return true}catch(err){console.error('Soft mesh unavailable',err);meshProgram=null;return false}}
+function meshUploadLut(){const key=[state.brand,state.sat,state.accent].join('|');if(key===meshLutKey)return;meshGL.activeTexture(meshGL.TEXTURE0);meshGL.bindTexture(meshGL.TEXTURE_2D,meshLut);meshGL.texImage2D(meshGL.TEXTURE_2D,0,meshGL.RGBA,512,1,0,meshGL.RGBA,meshGL.UNSIGNED_BYTE,flowMakeLut(512));meshLutKey=key}
+flowRenderGL=function(profile,sceneKey,w,h){if(!profile.randomized)return curatedFlowRenderGL(profile,sceneKey,w,h);if(!meshInit())return false;meshCanvas.width=w;meshCanvas.height=h;meshGL.viewport(0,0,w,h);meshGL.useProgram(meshProgram);meshUploadLut();const U=n=>meshGL.getUniformLocation(meshProgram,n),sc=scenes[sceneKey],z0=sc.safe,z1=sc.count||[0,0,0,0],n=profile.nodes;meshGL.uniform1i(U('lut'),0);meshGL.uniform2f(U('res'),w,h);for(let i=0;i<4;i++)meshGL.uniform2f(U('n'+i),n[i][0],n[i][1]);meshGL.uniform1f(U('phase'),profile.phase+(profile.seed%997)/997);meshGL.uniform1f(U('warp'),Math.min(.16,profile.warp)*(state.scale/100));meshGL.uniform1f(U('softness'),Math.max(.58,profile.feather));meshGL.uniform1f(U('grain'),Math.min(.022,state.noise/1700));meshGL.uniform1i(U('mode'),profile.mode%3);meshGL.uniform4f(U('safe0'),...z0);meshGL.uniform4f(U('safe1'),...z1);meshGL.uniform1f(U('hasSafe1'),sc.count?1:0);meshGL.drawArrays(meshGL.TRIANGLES,0,6);return true};
+
+function meshFamilyProfile(template){const R=Math.random,edge=[[.08,.10],[.92,.10],[.08,.90],[.92,.90],[.5,.06],[.5,.94]][Math.floor(R()*6)],op=[1-edge[0],1-edge[1]],mode=Math.floor(R()*3);return{template,mode,nodes:[[.12+R()*.28,.12+R()*.76],[.58+R()*.30,.10+R()*.80],[.30+R()*.40,.22+R()*.56],[edge[0],edge[1]]],warp:.035+R()*.07,phase:R(),feather:.72+R()*.18,seed:Math.floor(R()*0xffffffff),randomized:true,family:true}}
+function meshClone(p){return{...p,nodes:p.nodes.map(n=>[...n])}}
+flowRandomProfile=function(sceneKey,template){return meshFamilyProfile(template)};
+$('#random').nextElementSibling.textContent='固定品牌色占比，随机柔焦、缓流与斜向光场；四个节点共同牵引同一连续色场，整套尺寸保持一致';
+$('#random').onclick=()=>{const family=meshFamilyProfile(state.template);Object.keys(scenes).forEach(key=>{state.flowProfiles[key]??={};state.flowProfiles[key][state.template]=meshClone(family)});state.seed=family.seed;renderCurveUI();render();flowRefreshThumbs();toast('已为整套尺寸生成同一组柔流色场；每个尺寸仍可独立微调')};
+render=function(target=canvas,sceneKey=state.scene,outputScale=1){if(target===canvas&&outputScale===1)outputScale=state.flowDragging?1:2;const sc=scenes[sceneKey],w=Math.round(sc.size[0]*outputScale),h=Math.round(sc.size[1]*outputScale),c=target.getContext('2d',{willReadFrequently:target===canvas}),profile=flowProfile(sceneKey,state.template);target.width=w;target.height=h;if(!flowRenderGL(profile,sceneKey,w,h))return procRender(target,sceneKey,outputScale);c.imageSmoothingEnabled=true;c.imageSmoothingQuality='high';c.clearRect(0,0,w,h);c.drawImage(profile.randomized?meshCanvas:flowGLCanvas,0,0,w,h);if(target===canvas&&!state.flowDragging)updateContrast()};
+meshLutKey='';render();flowRefreshThumbs();
+</script>
+<script>
+/* Continuous brand field v5
+   Four handles warp one shared field. They never paint local colour blobs. */
+const fieldV5Canvas=document.createElement('canvas');
+let fieldV5GL=null,fieldV5Program=null,fieldV5Lut=null,fieldV5LutKey='';
+const fieldV5Vertex=`attribute vec2 p;varying vec2 uv;void main(){uv=p*.5+.5;gl_Position=vec4(p,0.,1.);}`;
+const fieldV5Fragment=`precision highp float;
+varying vec2 uv;
+uniform vec2 res,n0,n1,n2,n3,d0,d1,d2,d3,warmDir;
+uniform vec4 safe0,safe1;
+uniform float hasSafe1,phase,warp,softness,grain,mode,brand;
+uniform sampler2D lut;
+float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453123);}
+float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),f.x),f.y);}
+float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<4;i++){v+=a*noise(p);p=p*1.96+vec2(7.3,3.9);a*=.5;}return v;}
+float rmask(vec2 p,vec4 r){vec2 c=r.xy+r.zw*.5;vec2 q=abs(p-c)-r.zw*.5;float sd=length(max(q,0.))+min(max(q.x,q.y),0.);return 1.-smoothstep(-.025,.11,sd);}
+vec3 sampleL(float x){return texture2D(lut,vec2(clamp(x,0.,1.),.5)).rgb;}
+void main(){
+  float asp=res.x/res.y;
+  vec2 c0=d0,c1=d1,c2=d2,c3=d3;
+  vec2 q=uv;
+  vec2 drift=vec2(0.);
+  vec2 dc0=n0-c0,dc1=n1-c1,dc2=n2-c2,dc3=n3-c3;
+  float w0=exp(-dot((uv-c0)*vec2(1.,asp*.58),(uv-c0)*vec2(1.,asp*.58))*2.15);
+  float w1=exp(-dot((uv-c1)*vec2(1.,asp*.58),(uv-c1)*vec2(1.,asp*.58))*2.15);
+  float w2=exp(-dot((uv-c2)*vec2(1.,asp*.58),(uv-c2)*vec2(1.,asp*.58))*2.15);
+  float w3=exp(-dot((uv-c3)*vec2(1.,asp*.58),(uv-c3)*vec2(1.,asp*.58))*2.15);
+  drift=(dc0*w0+dc1*w1+dc2*w2+dc3*w3)/(w0+w1+w2+w3+.001);
+  q+=drift*(.88+warp*1.8);
+  float nx=fbm(q*1.08+vec2(phase*6.7,2.1));
+  float ny=fbm(q*1.12+vec2(4.3,phase*5.1));
+  q+=(vec2(nx,ny)-.5)*warp*.22;
+  vec2 z=q-.5;
+  float structure=.5;
+  if(mode<.5) structure=.5+.34*(fbm(q*.92+phase*3.7)-.5)+.17*(z.x-z.y);
+  else if(mode<1.5) structure=.5+.34*(z.y+.18*sin((q.x+phase)*3.15))+.13*(fbm(q*1.1+phase)-.5);
+  else if(mode<2.5){vec2 cc=vec2(.48+.18*sin(phase*6.28),.48+.14*cos(phase*5.2));structure=.5+.34*(length((q-cc)*vec2(.72+asp*.16,1.))-.34)+.12*(fbm(q+phase)-.5);}
+  else if(mode<3.5) structure=.5+.5*(z.x*z.y)+.2*(z.x-z.y)+.12*(fbm(q*1.05+phase)-.5);
+  else if(mode<4.5) structure=.5+.30*(z.x+.15*sin((q.y+phase)*3.4))+.13*(fbm(q*.95+phase)-.5);
+  else structure=.5+.25*(z.y-z.x)+.19*(fbm(q*.82+phase*2.4)-.5);
+  float broad=fbm(q*.62+vec2(phase*2.3,5.1));
+  float broad2=fbm(q*.43+vec2(9.2,phase*3.7));
+  float flowBand=.5+.5*sin((q.x*.72+q.y*.48+(broad2-.5)*.48+phase)*3.14159);
+  float coolVariation=clamp(.10+.61*structure+.17*(broad-.5)+.12*(flowBand-.5),0.,1.);
+  /* The warm accent is a long warped sweep living on an edge.  It is deliberately
+     expressed as a narrow field, never as a radial blob painted over the template. */
+  float warmX=warmDir.x>.24?.84:(warmDir.x<-.24?.16:.70);
+  float warmY=warmDir.y<-.2?.22:.075;
+  float side=step(.24,abs(warmDir.x));
+  float hCurve=warmY+.045*sin((q.x+phase)*4.15)+.035*(broad2-.5);
+  float vCurve=warmX+.050*sin((q.y-phase)*3.65)+.035*(broad2-.5);
+  float cross=mix(q.y-hCurve,q.x-vCurve,side);
+  float along=mix(q.x-warmX,q.y-.58,side);
+  float warmRaw=exp(-(cross*cross/.0058+along*along/.145));
+  warmRaw*=.86+.14*smoothstep(.18,.82,structure);
+  float warm=smoothstep(.12+.06*softness,.70+.10*softness,warmRaw);
+  float sm=max(rmask(uv,safe0),hasSafe1*rmask(uv,safe1));
+  warm*=1.-sm*.94;
+  float bridge=smoothstep(.008,.26,warmRaw)*(1.-smoothstep(.52,.88,warmRaw));
+  float atmosphere=.10+.25*smoothstep(.10,.88,broad)+.12*smoothstep(.18,.82,flowBand);
+  atmosphere=mix(atmosphere,.31,sm*.28);
+  float coolPos=mix(.035,.38,coolVariation);
+  vec3 cool=sampleL(coolPos);
+  vec3 cool2=sampleL(clamp(coolPos+.07*(broad2-.5)+.035,0.,.48));
+  cool=mix(cool,cool2,.28+.18*flowBand);
+  vec3 light=sampleL(brand < .5 ? .61 : .56);
+  vec3 yellow=sampleL(brand < .5 ? .795 : .72);
+  vec3 orange=sampleL(brand < .5 ? .915 : .84);
+  vec3 coral=sampleL(brand < .5 ? .975 : .91);
+  vec3 warmCol=mix(yellow,orange,smoothstep(.22,.78,warmRaw));
+  warmCol=mix(warmCol,coral,smoothstep(.88,.99,warmRaw)*.13);
+  vec3 col=mix(cool,light,clamp(atmosphere+bridge*.88,0.,.76));
+  col=mix(col,warmCol,warm*.84);
+  col=mix(col,mix(col,light,.18),sm*.16);
+  float g=(hash(gl_FragCoord.xy+phase*991.)-.5)*grain;
+  col=clamp(col+g,0.,1.);
+  gl_FragColor=vec4(col,1.);
+}`;
+function fieldV5Shader(gl,type,src){const s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))console.warn('field-v5 shader',gl.getShaderInfoLog(s));return s}
+function fieldV5Init(){if(fieldV5Program)return true;const gl=fieldV5Canvas.getContext('webgl',{alpha:false,antialias:false,preserveDrawingBuffer:true});if(!gl)return false;fieldV5GL=gl;const p=gl.createProgram();gl.attachShader(p,fieldV5Shader(gl,gl.VERTEX_SHADER,fieldV5Vertex));gl.attachShader(p,fieldV5Shader(gl,gl.FRAGMENT_SHADER,fieldV5Fragment));gl.linkProgram(p);if(!gl.getProgramParameter(p,gl.LINK_STATUS)){console.warn(gl.getProgramInfoLog(p));return false}fieldV5Program=p;gl.useProgram(p);const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);const a=gl.getAttribLocation(p,'p');gl.enableVertexAttribArray(a);gl.vertexAttribPointer(a,2,gl.FLOAT,false,0,0);fieldV5Lut=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,fieldV5Lut);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);return true}
+const fieldV5Defaults=[[.16,.18],[.84,.20],[.22,.82],[.80,.78]];
+function fieldV5MakeFamily(template){const R=Math.random;const dirs=state.brand==='dreamina'?[[0,1],[.75,.66],[-.75,.66],[1,.12],[-1,.12]]:[[0,1],[.72,.7],[-.72,.7],[1,.15],[-1,.15],[0,-1]];const dir=dirs[Math.floor(R()*dirs.length)];return{template,v5:true,randomized:true,mode:Math.floor(R()*6),nodes:fieldV5Defaults.map(n=>[flowClamp(n[0]+(R()-.5)*.18,.05,.95),flowClamp(n[1]+(R()-.5)*.18,.05,.95)]),warp:.28+R()*.36,phase:R(),feather:.72+R()*.18,softness:.45+R()*.35,grain:.004+R()*.006,warmDir:dir,seed:Math.floor(R()*0xffffffff)}}
+function fieldV5Clone(p,sceneKey){const sc=scenes[sceneKey],asp=sc.size[0]/sc.size[1],stretch=flowClamp(Math.sqrt(asp/(16/9)),.68,1.32);return{...p,nodes:p.nodes.map(n=>[flowClamp(.5+(n[0]-.5)/stretch,.04,.96),flowClamp(.5+(n[1]-.5)*stretch,.04,.96)]),warmDir:[...p.warmDir],sceneKey}}
+function fieldV5Rect(sceneKey){const sc=scenes[sceneKey],r=sc.copy||sc.safe;let padX=.018,padY=.025;if(sceneKey==='banner'){padX=.008;padY=.012}return[flowClamp(r[0]-padX,0,1),flowClamp(r[1]-padY,0,1),flowClamp(r[2]+padX*2,0,1),flowClamp(r[3]+padY*2,0,1)]}
+function fieldV5Render(profile,sceneKey,w,h){if(!fieldV5Init())return false;const gl=fieldV5GL,p=fieldV5Program,sc=scenes[sceneKey];fieldV5Canvas.width=w;fieldV5Canvas.height=h;gl.viewport(0,0,w,h);gl.useProgram(p);const u=(n)=>gl.getUniformLocation(p,n),v2=(n,a)=>gl.uniform2f(u(n),a[0],a[1]),v4=(n,a)=>gl.uniform4f(u(n),a[0],a[1],a[2],a[3]),f=(n,x)=>gl.uniform1f(u(n),x);v2('res',[w,h]);profile.nodes.forEach((n,i)=>v2('n'+i,n));fieldV5Defaults.forEach((n,i)=>v2('d'+i,n));const r0=fieldV5Rect(sceneKey);v4('safe0',r0);if(sceneKey==='banner'&&sc.count){v4('safe1',sc.count);f('hasSafe1',1)}else{v4('safe1',[0,0,0,0]);f('hasSafe1',0)}v2('warmDir',profile.warmDir||[0,1]);f('phase',profile.phase||0);f('warp',profile.warp||.4);f('softness',profile.softness||.6);f('grain',profile.grain||.006);f('mode',profile.mode||0);f('brand',state.brand==='dreamina'?0:1);const lk=state.brand+'|'+state.sat;if(fieldV5LutKey!==lk){gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,fieldV5Lut);gl.pixelStorei(gl.UNPACK_ALIGNMENT,1);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,512,1,0,gl.RGBA,gl.UNSIGNED_BYTE,flowMakeLut(512));fieldV5LutKey=lk}gl.uniform1i(u('lut'),0);gl.drawArrays(gl.TRIANGLES,0,6);return gl.getError()===gl.NO_ERROR}
+const fieldV5PrevRenderGL=flowRenderGL;
+flowRenderGL=function(profile,sceneKey,w,h){return profile&&profile.v5?fieldV5Render(profile,sceneKey,w,h):fieldV5PrevRenderGL(profile,sceneKey,w,h)};
+render=function(target=canvas,sceneKey=state.scene,outputScale=1){if(target===canvas&&outputScale===1)outputScale=state.flowDragging?1:2;const sc=scenes[sceneKey],w=Math.round(sc.size[0]*outputScale),h=Math.round(sc.size[1]*outputScale),c=target.getContext('2d',{willReadFrequently:target===canvas}),profile=flowProfile(sceneKey,state.template);target.width=w;target.height=h;if(!flowRenderGL(profile,sceneKey,w,h))return procRender(target,sceneKey,outputScale);c.imageSmoothingEnabled=true;c.imageSmoothingQuality='high';c.clearRect(0,0,w,h);c.drawImage(profile.v5?fieldV5Canvas:(profile.randomized?meshCanvas:flowGLCanvas),0,0,w,h);if(target===canvas&&!state.flowDragging)updateContrast()};
+$('#random').nextElementSibling.textContent='固定品牌色与套图气质，随机生成连续柔流色场；四个节点共同拉扯整体结构，不再叠加局部色块';
+$('#random').onclick=()=>{const family=fieldV5MakeFamily(state.template);Object.keys(scenes).forEach(key=>{state.flowProfiles[key]??={};state.flowProfiles[key][state.template]=fieldV5Clone(family,key)});state.seed=family.seed;renderCurveUI();render();flowRefreshThumbs();toast('已生成同一套连续色场；不同尺寸保持同一气质，并可分别微调')};
+const fieldV5PrevCurveUI=renderCurveUI;
+renderCurveUI=function(){fieldV5PrevCurveUI();const p=flowProfile(state.scene,state.template);if(!p?.v5)return;$('#curve-path').setAttribute('d','');$('#curve-path').style.display='none';$$('[data-color-anchor]').forEach((el,i)=>{if(i>=p.nodes.length){el.style.display='none';return}el.style.display='block';Object.assign(el.style,{left:p.nodes[i][0]*100+'%',top:p.nodes[i][1]*100+'%'});el.style.setProperty('--node-color','#fff');el.setAttribute('aria-label',`整体色场控制点${i+1}`);el.title='拖动拉扯整张背景的连续流场；不会新增圆形色块'})};
+$$('[data-color-anchor]').forEach((anchor,index)=>{const legacy=anchor.onpointerdown;anchor.onpointerdown=e=>{const p=flowProfile(state.scene,state.template);if(!p?.v5)return legacy?.call(anchor,e);const node=p.nodes[index];if(!node)return;e.preventDefault();anchor.setPointerCapture?.(e.pointerId);state.flowDragging=true;let raf=0,moved=false;const move=event=>{moved=true;const r=frame.getBoundingClientRect();node[0]=flowClamp((event.clientX-r.left)/r.width,.025,.975);node[1]=flowClamp((event.clientY-r.top)/r.height,.025,.975);renderCurveUI();if(!raf)raf=requestAnimationFrame(()=>{raf=0;render()})};const up=()=>{window.removeEventListener('pointermove',move);window.removeEventListener('pointerup',up);if(raf)cancelAnimationFrame(raf);state.flowDragging=false;render();updateContrast();if(moved)flowRefreshThumbs()};window.addEventListener('pointermove',move);window.addEventListener('pointerup',up,{once:true})}});
+render();flowRefreshThumbs();
+</script>
+<script>
+/* Atelier field v7
+   Constrained topology families, suite-consistent composition and automatic
+   rejection of unsafe / off-brand candidates.  Handles deform the shared
+   coordinate field; they never add local colour layers. */
+const atelierCanvas=document.createElement('canvas');
+let atelierGL=null,atelierProgram=null,atelierLut=null,atelierLutKey='';
+const atelierVertex=`attribute vec2 p;varying vec2 uv;void main(){uv=p*.5+.5;gl_Position=vec4(p,0.,1.);}`;
+const atelierFragment=`precision highp float;
+varying vec2 uv;
+uniform vec2 res,n0,n1,n2,n3,d0,d1,d2,d3,accentDir;
+uniform vec4 safe0,safe1;
+uniform float hasSafe1,phase,warp,softness,grain,family,brand;
+uniform sampler2D lut;
+float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453123);}
+float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),f.x),f.y);}
+float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<4;i++){v+=a*noise(p);p=p*1.93+vec2(4.7,8.2);a*=.5;}return v;}
+float rectMask(vec2 p,vec4 r){vec2 c=r.xy+r.zw*.5;vec2 q=abs(p-c)-r.zw*.5;float sd=length(max(q,0.))+min(max(q.x,q.y),0.);return 1.-smoothstep(-.015,.075,sd);}
+mat2 rot(float a){float c=cos(a),s=sin(a);return mat2(c,-s,s,c);}
+float petal(vec2 p,vec2 c,vec2 s,float a){vec2 z=rot(a)*(p-c)/s;return exp(-dot(z,z)*1.32);}
+float softsign(float x){return x/(1.+abs(x));}
+vec3 pal(float x){return texture2D(lut,vec2(clamp(x,0.,1.),.5)).rgb;}
+void main(){
+  float asp=res.x/res.y;
+  vec2 q=uv;
+  vec2 delta=vec2(0.);
+  delta+=(n0-d0)*exp(-dot(q-d0,q-d0)/.22);
+  delta+=(n1-d1)*exp(-dot(q-d1,q-d1)/.22);
+  delta+=(n2-d2)*exp(-dot(q-d2,q-d2)/.22);
+  delta+=(n3-d3)*exp(-dot(q-d3,q-d3)/.22);
+  float bend=(n0.y+n1.y-n2.y-n3.y)*.11;
+  float shear=(n1.x+n3.x-n0.x-n2.x)*.09;
+  q+=delta*(.34+warp*.46);
+  q.x+=(q.y-.5)*shear;
+  q.y+=(q.x-.5)*bend;
+  float f1=fbm(q*.72+vec2(phase*3.1,2.7));
+  float f2=fbm(q*.46+vec2(8.3,phase*2.4));
+  vec2 flow=vec2(f1-.5,f2-.5)*(.035+.045*warp);
+  q+=flow;
+  vec2 p=q-.5;
+  p.x*=clamp(pow(asp,.28),.82,1.72);
+  float coolField=.5,warmField=0.,lightField=.22;
+  if(family<.5){
+    /* Macro bloom: broad out-of-focus petal masses, never a drawn flower. */
+    float a=petal(p,vec2(-.28,.18),vec2(.72,.27),-.55+.2*phase);
+    float b=petal(p,vec2(.20,-.22),vec2(.82,.32),.42-.2*phase);
+    float c=petal(p,vec2(.38,.26),vec2(.62,.24),-.18);
+    coolField=.38+.32*a-.16*b+.20*c+.08*(f1-.5);
+    warmField=smoothstep(.34,.93,b*.96+c*.12);
+    lightField=.16+.48*smoothstep(.18,.82,a*.58+b*.44-c*.34);
+  }else if(family<1.5){
+    /* Diagonal atmosphere: giant off-canvas sweeps with a white breathing gap. */
+    float a=petal(p,vec2(-.55,.36),vec2(1.18,.31),-.36);
+    float b=petal(p,vec2(.48,-.40),vec2(.94,.28),-.28);
+    coolField=.46+.31*a-.10*b+.08*(f2-.5);
+    warmField=smoothstep(.42,.95,b);
+    lightField=.20+.54*smoothstep(.18,.78,a*.40+b*.48);
+  }else if(family<2.5){
+    /* Soft flower field: lobes overlap into one continuous low-frequency field. */
+    float ang=atan(p.y,p.x),rad=length(p*vec2(.82,1.05));
+    float lobes=.5+.5*cos(ang*3.+phase*6.283+.45*sin(ang));
+    float bloom=exp(-pow(rad/(.46+.16*lobes),2.)*1.5);
+    float lower=petal(p,vec2(.24,-.46),vec2(.86,.30),.18);
+    coolField=.38+.38*bloom+.10*(f1-.5);
+    warmField=smoothstep(.42,.97,lower*(.58+.42*lobes));
+    lightField=.20+.46*smoothstep(.22,.86,bloom*.66+lower*.30);
+  }else if(family<3.5){
+    /* Horizon mist: nonlinear, asymmetrical and broad rather than a stripe. */
+    float h=p.y+.17*sin(p.x*2.1+phase*4.4)+.11*sin(p.x*4.2-phase*3.1);
+    float d=softsign(h*2.1);
+    coolField=.48+.31*d+.09*(f1-.5);
+    warmField=smoothstep(.34,.96,-d-.18);
+    lightField=.20+.49*exp(-h*h/(.075+.05*softness));
+  }else if(family<4.5){
+    /* Glass petal: a translucent oval fold with a diffused warm underside. */
+    vec2 z=rot(-.48+phase*.22)*p;
+    float ring=abs(length(z/vec2(.78,.40))-.76);
+    float fold=exp(-ring*ring/.075);
+    float under=petal(p,vec2(-.36,-.42),vec2(.72,.27),-.5);
+    coolField=.42+.31*fold+.12*(f2-.5);
+    warmField=smoothstep(.38,.94,under*(1.-fold*.24));
+    lightField=.17+.51*fold+.12*under;
+  }else if(family<5.5){
+    /* Twin diffusion: opposing blurred masses create depth without edges. */
+    float a=petal(p,vec2(-.42,.28),vec2(.88,.42),-.24);
+    float b=petal(p,vec2(.38,-.30),vec2(.76,.34),.32);
+    float bridge=petal(p,vec2(.02,.02),vec2(.92,.54),0.);
+    coolField=.34+.42*a+.14*bridge-.15*b+.07*(f1-.5);
+    warmField=smoothstep(.46,.96,b);
+    lightField=.16+.42*bridge+.18*(1.-abs(a-b));
+  }else if(family<6.5){
+    /* Arc bloom: one large off-canvas colour body with a soft luminous rim. */
+    vec2 z=p-vec2(-.50,-.42);
+    float r=length(z/vec2(1.15,.78));
+    float rim=exp(-pow(r-.76,2.)/.055);
+    coolField=.42+.36*rim+.10*(f2-.5);
+    warmField=smoothstep(.36,.94,exp(-pow(r-.50,2.)/.11));
+    lightField=.19+.48*rim;
+  }else{
+    /* Clean fold: softly intersecting planes, still fully blended. */
+    float h=p.y-.22*p.x+.14*sin(p.x*2.4+phase*3.7);
+    float d=softsign(h*1.8);
+    float veil=petal(p,vec2(.28,.24),vec2(.95,.28),-.28);
+    coolField=.44+.28*d+.15*veil+.07*(f1-.5);
+    warmField=smoothstep(.40,.96,-d-.24);
+    lightField=.22+.38*exp(-h*h/.13)+.12*veil;
+  }
+  coolField=clamp(coolField,0.,1.);
+  float sm=max(rectMask(uv,safe0),hasSafe1*rectMask(uv,safe1));
+  /* Preserve one continuous background: protection alters chroma/contrast only,
+     never draws a rectangle or clips the field. */
+  warmField*=1.-sm*.86;
+  float warmSoft=smoothstep(.03,.72,warmField);
+  /* A broad pale-cyan/white bridge is inserted before warm colour begins.
+     This avoids the muddy intermediate produced by directly mixing orange
+     into cyan while keeping the field continuous. */
+  float whiteBridge=smoothstep(.02,.24,warmSoft)*(1.-smoothstep(.55,.90,warmSoft));
+  float warmCore=smoothstep(.42,.91,warmSoft);
+  lightField=clamp(lightField+whiteBridge*.92+sm*.10,0.,.86);
+  vec3 cyan=pal(.07),blue=pal(.31),light=pal(brand<.5?.61:.56);
+  vec3 yellow=pal(brand<.5?.79:.72),orange=pal(brand<.5?.90:.84),coral=pal(brand<.5?.965:.91);
+  if(brand<.5){yellow=vec3(1.,.88,.025);orange=vec3(1.,.34,.018);coral=vec3(.99,.23,.25);}
+  vec3 cool=mix(cyan,blue,smoothstep(.30,.78,coolField));
+  cool=mix(cool,cyan,.18*smoothstep(.72,.96,f2));
+  vec3 warm=mix(yellow,orange,smoothstep(.62,.98,warmCore));
+  warm=mix(warm,coral,.055*smoothstep(.94,.998,warmCore));
+  vec3 col=mix(cool,light,lightField);
+  col=mix(col,warm,warmCore*(brand<.5?.92:.72));
+  col=mix(col,mix(col,light,.18),sm*.20);
+  float g=(hash(gl_FragCoord.xy+phase*911.)-.5)*grain;
+  col=clamp(col+g*(.34+.42*col),0.,1.);
+  gl_FragColor=vec4(col,1.);
+}`;
+function atelierShader(gl,type,src){const s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))console.warn('atelier-v7 shader',gl.getShaderInfoLog(s));return s}
+function atelierInit(){if(atelierProgram)return true;const gl=atelierCanvas.getContext('webgl',{alpha:false,antialias:false,preserveDrawingBuffer:true});if(!gl)return false;atelierGL=gl;const p=gl.createProgram();gl.attachShader(p,atelierShader(gl,gl.VERTEX_SHADER,atelierVertex));gl.attachShader(p,atelierShader(gl,gl.FRAGMENT_SHADER,atelierFragment));gl.linkProgram(p);if(!gl.getProgramParameter(p,gl.LINK_STATUS)){console.warn(gl.getProgramInfoLog(p));return false}atelierProgram=p;gl.useProgram(p);const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);const a=gl.getAttribLocation(p,'p');gl.enableVertexAttribArray(a);gl.vertexAttribPointer(a,2,gl.FLOAT,false,0,0);atelierLut=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,atelierLut);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);return true}
+const atelierDefaults=[[.16,.18],[.84,.20],[.22,.82],[.80,.78]];
+function atelierRand(seed){let a=seed>>>0;return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function atelierMakeFamily(template,seed=(Math.random()*4294967295)>>>0,family=null){const R=atelierRand(seed),fam=family==null?Math.floor(R()*8):family;/* Brand colour placement is encoded inside each topology; nodes deform the whole field instead of painting colour blobs. */const dirs=state.brand==='dreamina'?[[0,1],[.32,1],[-.32,1]]:[[0,1],[.7,.65],[-.7,.65],[1,.12],[-1,.12],[0,-1]];return{template,v6:true,randomized:true,family:fam,nodes:atelierDefaults.map(n=>[flowClamp(n[0]+(R()-.5)*.14,.05,.95),flowClamp(n[1]+(R()-.5)*.14,.05,.95)]),warp:.30+R()*.34,phase:R(),softness:.68+R()*.20,grain:.0035+R()*.0045,accentDir:[...dirs[Math.floor(R()*dirs.length)]],seed}}
+function atelierClone(p,sceneKey){const sc=scenes[sceneKey],asp=sc.size[0]/sc.size[1],stretch=flowClamp(Math.pow(asp/(16/9),.22),.78,1.20);return{...p,nodes:p.nodes.map(n=>[flowClamp(.5+(n[0]-.5)/stretch,.035,.965),flowClamp(.5+(n[1]-.5)*stretch,.035,.965)]),accentDir:[...p.accentDir],sceneKey}}
+function atelierSafeRect(sceneKey){const sc=scenes[sceneKey],r=sc.copy||sc.safe;const px=sceneKey==='banner'?.006:.010,py=sceneKey==='banner'?.010:.016;return[flowClamp(r[0]-px,0,1),flowClamp(r[1]-py,0,1),flowClamp(r[2]+px*2,0,1),flowClamp(r[3]+py*2,0,1)]}
+function atelierRender(profile,sceneKey,w,h){if(!atelierInit())return false;const gl=atelierGL,p=atelierProgram,sc=scenes[sceneKey];atelierCanvas.width=w;atelierCanvas.height=h;gl.viewport(0,0,w,h);gl.useProgram(p);const u=n=>gl.getUniformLocation(p,n),v2=(n,a)=>gl.uniform2f(u(n),a[0],a[1]),v4=(n,a)=>gl.uniform4f(u(n),a[0],a[1],a[2],a[3]),f=(n,x)=>gl.uniform1f(u(n),x);v2('res',[w,h]);profile.nodes.forEach((n,i)=>v2('n'+i,n));atelierDefaults.forEach((n,i)=>v2('d'+i,n));v4('safe0',atelierSafeRect(sceneKey));if(sceneKey==='banner'&&sc.count){v4('safe1',sc.count);f('hasSafe1',1)}else{v4('safe1',[0,0,0,0]);f('hasSafe1',0)}v2('accentDir',profile.accentDir||[0,1]);f('phase',profile.phase||0);f('warp',profile.warp||.42);f('softness',profile.softness||.75);f('grain',profile.grain||.005);f('family',profile.family||0);f('brand',state.brand==='dreamina'?0:1);const lk=state.brand+'|'+state.sat+'|v7';if(atelierLutKey!==lk){gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,atelierLut);gl.pixelStorei(gl.UNPACK_ALIGNMENT,1);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,512,1,0,gl.RGBA,gl.UNSIGNED_BYTE,flowMakeLut(512));atelierLutKey=lk}gl.uniform1i(u('lut'),0);gl.drawArrays(gl.TRIANGLES,0,6);return gl.getError()===gl.NO_ERROR}
+function atelierScore(profile){atelierRender(profile,'app',84,150);const gl=atelierGL,pix=new Uint8Array(84*150*4);gl.readPixels(0,0,84,150,gl.RGBA,gl.UNSIGNED_BYTE,pix);let cool=0,warm=0,light=0,harsh=0,safeWarm=0,topWarm=0,bottomWarm=0,n=0,sn=0,tn=0,bn=0;const sr=atelierSafeRect('app');for(let y=0;y<150;y+=2)for(let x=0;x<84;x+=2){const i=(y*84+x)*4,r=pix[i]/255,g=pix[i+1]/255,b=pix[i+2]/255,lum=.2126*r+.7152*g+.0722*b,sat=Math.max(r,g,b)-Math.min(r,g,b),isWarm=(r>g*1.04&&r>b*1.12||r>.82&&g>.55&&b<.42);if(b>r*1.03||g>b*.92&&b>r)cool++;if(isWarm)warm++;if(y<42){bn++;if(isWarm)bottomWarm++}if(y>108){tn++;if(isWarm)topWarm++}if(lum>.78&&sat<.24)light++;if(x>1){const j=i-4;harsh+=Math.max(Math.abs(r-pix[j]/255),Math.abs(g-pix[j+1]/255),Math.abs(b-pix[j+2]/255))>.23?1:0}const ux=x/84,uy=1-y/150;if(ux>sr[0]&&ux<sr[0]+sr[2]&&uy>sr[1]&&uy<sr[1]+sr[3]){sn++;if(isWarm)safeWarm++}n++}cool/=n;warm/=n;light/=n;harsh/=n;safeWarm/=Math.max(1,sn);topWarm/=Math.max(1,tn);bottomWarm/=Math.max(1,bn);const tc=state.brand==='dreamina'?.62:.67,tw=state.brand==='dreamina'?.10:.03,tl=state.brand==='dreamina'?.23:.22;return Math.abs(cool-tc)*2.2+Math.abs(warm-tw)*3.2+Math.abs(light-tl)*1.5+safeWarm*5+harsh*3+(cool<.43?2:0)+(warm>.18?3:0)+(state.brand==='dreamina'&&topWarm>bottomWarm*.35?.8+topWarm*4:0)}
+function atelierBest(template,familyHint=null){let best=null,bestScore=1e9;for(let i=0;i<12;i++){const p=atelierMakeFamily(template,(Math.random()*4294967295)>>>0,familyHint);const s=atelierScore(p);if(s<bestScore){best=p;bestScore=s}}best.quality=Math.max(0,1-bestScore/5);return best}
+const atelierPrevRenderGL=flowRenderGL;
+flowRenderGL=function(profile,sceneKey,w,h){return profile&&profile.v6?atelierRender(profile,sceneKey,w,h):atelierPrevRenderGL(profile,sceneKey,w,h)};
+render=function(target=canvas,sceneKey=state.scene,outputScale=1){if(target===canvas&&outputScale===1)outputScale=state.flowDragging?1:2;const sc=scenes[sceneKey],w=Math.round(sc.size[0]*outputScale),h=Math.round(sc.size[1]*outputScale),c=target.getContext('2d',{willReadFrequently:target===canvas}),profile=flowProfile(sceneKey,state.template);target.width=w;target.height=h;if(!flowRenderGL(profile,sceneKey,w,h))return procRender(target,sceneKey,outputScale);c.imageSmoothingEnabled=true;c.imageSmoothingQuality='high';c.clearRect(0,0,w,h);c.drawImage(profile.v6?atelierCanvas:(profile.v5?fieldV5Canvas:(profile.randomized?meshCanvas:flowGLCanvas)),0,0,w,h);if(target===canvas&&!state.flowDragging)updateContrast()};
+const atelierPrevCurveUI=renderCurveUI;
+renderCurveUI=function(){atelierPrevCurveUI();const p=flowProfile(state.scene,state.template);if(!p?.v6)return;$('#curve-path').setAttribute('d','');$('#curve-path').style.display='none';$$('[data-color-anchor]').forEach((el,i)=>{if(i>=p.nodes.length){el.style.display='none';return}el.style.display='block';Object.assign(el.style,{left:p.nodes[i][0]*100+'%',top:p.nodes[i][1]*100+'%'});el.style.setProperty('--node-color','#fff');el.title='拖动时连续改变整张色场的走向与重心，不会叠加色块'})};
+$$('[data-color-anchor]').forEach((anchor,index)=>{anchor.onpointerdown=e=>{const p=flowProfile(state.scene,state.template);if(!p?.v6)return;e.preventDefault();const node=p.nodes[index];if(!node)return;anchor.setPointerCapture?.(e.pointerId);state.flowDragging=true;let raf=0,moved=false;const move=event=>{moved=true;const r=frame.getBoundingClientRect();node[0]=flowClamp((event.clientX-r.left)/r.width,.025,.975);node[1]=flowClamp((event.clientY-r.top)/r.height,.025,.975);renderCurveUI();if(!raf)raf=requestAnimationFrame(()=>{raf=0;render()})};const up=()=>{window.removeEventListener('pointermove',move);window.removeEventListener('pointerup',up);if(raf)cancelAnimationFrame(raf);state.flowDragging=false;render();updateContrast();if(moved)flowRefreshThumbs()};window.addEventListener('pointermove',move);window.addEventListener('pointerup',up,{once:true})}});
+function atelierApplyFamily(family){Object.keys(scenes).forEach(key=>{state.flowProfiles[key]??={};state.flowProfiles[key][state.template]=atelierClone(family,key)});state.seed=family.seed}
+$('#random').textContent='随机高质量背景';
+$('#random').nextElementSibling.textContent='固定品牌色与文字保护，先生成多组柔和色场，再自动筛掉暖色过量、割裂和文字区受干扰的结果';
+let atelierLastFamily=-1;
+const atelierFamilyNames=['微距花卉','斜向光场','柔焦花瓣','地平薄雾','玻璃花瓣','双向扩散','弧面花影','明亮切面'];
+$('#random').onclick=()=>{atelierLastFamily=(atelierLastFamily+1+Math.floor(Math.random()*7))%8;const family=atelierBest(state.template,atelierLastFamily);atelierApplyFamily(family);renderCurveUI();render();flowRefreshThumbs();toast(`已筛选柔和色场 · ${atelierFamilyNames[family.family]} · 品牌与文字区已校验`)};
+/* Upgrade the current eight template slots immediately.  Families deliberately
+   alternate so the gallery is not eight positional variations of one gradient. */
+for(let t=0;t<8;t++){const fam=atelierMakeFamily(t,(0x91e10da5+t*2654435761)>>>0,t);Object.keys(scenes).forEach(key=>{state.flowProfiles[key]??={};state.flowProfiles[key][t]=atelierClone(fam,key)})}
+renderCurveUI();render();flowRefreshThumbs();
+</script></body></html>

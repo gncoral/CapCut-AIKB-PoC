@@ -233,6 +233,15 @@ document.querySelector('.tabs').addEventListener('click', event => {
   });
 });
 
+function activateHashView() {
+  const hashView = location.hash.slice(1);
+  const hashTab = document.querySelector(`.tab[data-view="${hashView}"]`);
+  if (hashTab) hashTab.click();
+}
+
+activateHashView();
+window.addEventListener('hashchange', activateHashView);
+
 
 function safeText(value) {
   return String(value ?? '');

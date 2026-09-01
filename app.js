@@ -36,6 +36,8 @@ const copyCharacterDetails = document.querySelector('#copy-character-details');
 const toolImageDialog = document.querySelector('#tool-image-dialog');
 const toolImagePreview = document.querySelector('#tool-image-preview');
 const toolImageTitle = document.querySelector('#tool-image-title');
+const toolGallery = document.querySelector('#tool-gallery');
+const multilingualToolDetail = document.querySelector('#multilingual-tool-detail');
 const backgroundStyles = ['柔焦色场', '抽象扩散', '极简3D'];
 const backgroundBrands = ['即梦', '小云雀'];
 const characterAssetsCache = new Map();
@@ -231,6 +233,24 @@ document.querySelector('.tabs').addEventListener('click', event => {
   document.querySelectorAll('.view').forEach(view => {
     view.hidden = view.id !== `${tab.dataset.view}-view`;
   });
+  if (tab.dataset.view === 'design-tools') showToolGallery();
+});
+
+function showToolGallery() {
+  toolGallery.hidden = false;
+  multilingualToolDetail.hidden = true;
+}
+
+function showMultilingualTool() {
+  toolGallery.hidden = true;
+  multilingualToolDetail.hidden = false;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.querySelector('#open-multilingual-tool').addEventListener('click', showMultilingualTool);
+document.querySelector('#back-to-tool-gallery').addEventListener('click', () => {
+  showToolGallery();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 function activateHashView() {

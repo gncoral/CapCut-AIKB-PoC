@@ -115,22 +115,28 @@
 
 
     <section class="view design-tools-view" id="design-tools-view" hidden>
-      <div class="tool-layout">
-        <aside class="tool-sidebar">
-          <div class="tool-sidebar-label">设计工作流</div>
-          <button class="tool-nav-card active" type="button">
-            <span class="tool-nav-icon">文</span>
-            <span><strong>多语言设计延展</strong><small>Figma 批量适配与校验</small></span>
+      <div class="tool-gallery" id="tool-gallery">
+        <header class="tool-gallery-header">
+          <span>DESIGN WORKFLOW</span>
+          <h1>设计工具</h1>
+          <p>将可复用的设计流程沉淀为工具。先选择一个工具，再进入案例说明或实际编辑器。</p>
+        </header>
+        <div class="tool-gallery-grid">
+          <button class="tool-showcase-card" id="open-multilingual-tool" type="button">
+            <span class="tool-showcase-visual"><img src="assets/tools/multilingual-design/output-figma-locales.jpg" alt="多语言设计延展案例预览"></span>
+            <span class="tool-showcase-copy"><i class="tool-nav-icon">文</i><span><strong>多语言设计延展</strong><small>Figma 批量适配、检查与导出</small></span><b>查看工具详情 →</b></span>
           </button>
-          <a class="tool-nav-card" href="gradient-editor.html?v=brand-workbench-9-1">
-            <span class="tool-nav-icon tool-nav-gradient">渐</span>
-            <span><strong>品牌渐变背景</strong><small>模板、品牌色与可读性检查</small></span>
+          <a class="tool-showcase-card" href="gradient-editor.html?v=brand-workbench-9-1">
+            <span class="tool-showcase-visual tool-showcase-gradient"><img src="assets/model-launch-backgrounds/1-37.png" alt="品牌渐变背景工具预览"></span>
+            <span class="tool-showcase-copy"><i class="tool-nav-icon tool-nav-gradient">渐</i><span><strong>品牌渐变背景</strong><small>模板、品牌色、文字安全区与导出</small></span><b>进入编辑器 →</b></span>
           </a>
-          <div class="tool-sidebar-note">更多 Skill 会在真实项目验证后逐步加入。</div>
-        </aside>
+        </div>
+        <p class="tool-gallery-note">更多经过真实项目验证的设计工具会逐步加入。</p>
+      </div>
 
 
-        <article class="tool-detail">
+        <article class="tool-detail" id="multilingual-tool-detail" hidden>
+          <button class="tool-detail-back" id="back-to-tool-gallery" type="button">← 返回全部工具</button>
           <header class="tool-hero">
             <div>
               <span class="tool-eyebrow">DESIGN SKILL · V1.0</span>
@@ -195,7 +201,6 @@
             </div>
           </section>
         </article>
-      </div>
     </section>
   </main>
 

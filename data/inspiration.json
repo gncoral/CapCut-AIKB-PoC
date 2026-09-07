@@ -1,0 +1,667 @@
+{
+  "version": 2,
+  "categories": [
+    {
+      "id": "model-launch-background",
+      "name": "模型上新背景",
+      "eyebrow": "01 / COLOR & GRADIENT",
+      "focus": "寻找渐变配色、自然过渡、色场走势与文案留白。只参考背景，不参考人物或标题。",
+      "figmaUrl": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/?node-id=0-1",
+      "samples": [
+        {
+          "id": "1:3",
+          "title": "image 1",
+          "src": "assets/model-launch-thumbnails/1-3.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-3"
+        },
+        {
+          "id": "1:6",
+          "title": "image 2",
+          "src": "assets/model-launch-thumbnails/1-6.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-6"
+        },
+        {
+          "id": "1:9",
+          "title": "image 3",
+          "src": "assets/model-launch-thumbnails/1-9.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-9"
+        },
+        {
+          "id": "1:13",
+          "title": "image 4",
+          "src": "assets/model-launch-thumbnails/1-13.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-13"
+        },
+        {
+          "id": "1:16",
+          "title": "image 5",
+          "src": "assets/model-launch-thumbnails/1-16.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-16"
+        },
+        {
+          "id": "1:19",
+          "title": "image 6",
+          "src": "assets/model-launch-thumbnails/1-19.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-19"
+        },
+        {
+          "id": "1:22",
+          "title": "image 7",
+          "src": "assets/model-launch-thumbnails/1-22.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-22"
+        },
+        {
+          "id": "1:25",
+          "title": "image 8",
+          "src": "assets/model-launch-thumbnails/1-25.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-25"
+        },
+        {
+          "id": "1:28",
+          "title": "image 9",
+          "src": "assets/model-launch-thumbnails/1-28.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-28"
+        },
+        {
+          "id": "1:31",
+          "title": "image 10",
+          "src": "assets/model-launch-thumbnails/1-31.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-31"
+        },
+        {
+          "id": "1:34",
+          "title": "image 11",
+          "src": "assets/model-launch-thumbnails/1-34.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-34"
+        },
+        {
+          "id": "1:37",
+          "title": "image 12",
+          "src": "assets/model-launch-thumbnails/1-37.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-37"
+        },
+        {
+          "id": "1:40",
+          "title": "image 13",
+          "src": "assets/model-launch-thumbnails/1-40.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-40"
+        },
+        {
+          "id": "1:43",
+          "title": "image 14",
+          "src": "assets/model-launch-thumbnails/1-43.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-43"
+        },
+        {
+          "id": "1:46",
+          "title": "image 15",
+          "src": "assets/model-launch-thumbnails/1-46.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-46"
+        },
+        {
+          "id": "1:49",
+          "title": "image 16",
+          "src": "assets/model-launch-thumbnails/1-49.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-49"
+        },
+        {
+          "id": "1:52",
+          "title": "image 17",
+          "src": "assets/model-launch-thumbnails/1-52.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-52"
+        },
+        {
+          "id": "1:55",
+          "title": "image 18",
+          "src": "assets/model-launch-thumbnails/1-55.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-55"
+        },
+        {
+          "id": "1:58",
+          "title": "image 19",
+          "src": "assets/model-launch-thumbnails/1-58.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-58"
+        },
+        {
+          "id": "1:61",
+          "title": "image 20",
+          "src": "assets/model-launch-thumbnails/1-61.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-61"
+        },
+        {
+          "id": "1:64",
+          "title": "image 21",
+          "src": "assets/model-launch-thumbnails/1-64.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-64"
+        },
+        {
+          "id": "1:67",
+          "title": "image 22",
+          "src": "assets/model-launch-thumbnails/1-67.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-67"
+        },
+        {
+          "id": "1:70",
+          "title": "image 23",
+          "src": "assets/model-launch-thumbnails/1-70.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-70"
+        },
+        {
+          "id": "1:73",
+          "title": "image 24",
+          "src": "assets/model-launch-thumbnails/1-73.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-73"
+        },
+        {
+          "id": "1:76",
+          "title": "image 25",
+          "src": "assets/model-launch-thumbnails/1-76.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-76"
+        },
+        {
+          "id": "1:79",
+          "title": "image 26",
+          "src": "assets/model-launch-thumbnails/1-79.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-79"
+        },
+        {
+          "id": "1:82",
+          "title": "image 27",
+          "src": "assets/model-launch-thumbnails/1-82.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-82"
+        },
+        {
+          "id": "1:85",
+          "title": "image 28",
+          "src": "assets/model-launch-thumbnails/1-85.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-85"
+        },
+        {
+          "id": "1:88",
+          "title": "image 29",
+          "src": "assets/model-launch-thumbnails/1-88.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-88"
+        },
+        {
+          "id": "1:91",
+          "title": "image 30",
+          "src": "assets/model-launch-thumbnails/1-91.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-91"
+        },
+        {
+          "id": "1:94",
+          "title": "image 31",
+          "src": "assets/model-launch-thumbnails/1-94.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-94"
+        },
+        {
+          "id": "1:97",
+          "title": "image 32",
+          "src": "assets/model-launch-thumbnails/1-97.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-97"
+        },
+        {
+          "id": "1:100",
+          "title": "image 33",
+          "src": "assets/model-launch-thumbnails/1-100.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-100"
+        },
+        {
+          "id": "1:103",
+          "title": "image 34",
+          "src": "assets/model-launch-thumbnails/1-103.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-103"
+        },
+        {
+          "id": "1:106",
+          "title": "image 35",
+          "src": "assets/model-launch-thumbnails/1-106.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-106"
+        },
+        {
+          "id": "1:109",
+          "title": "image 36",
+          "src": "assets/model-launch-thumbnails/1-109.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-109"
+        },
+        {
+          "id": "1:112",
+          "title": "image 37",
+          "src": "assets/model-launch-thumbnails/1-112.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=1-112"
+        },
+        {
+          "id": "93:3",
+          "title": "image 38",
+          "src": "assets/model-launch-thumbnails/93-3.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/%E8%83%8C%E6%99%AF%E5%9B%BE?node-id=93-3"
+        }
+      ]
+    },
+    {
+      "id": "character-action",
+      "name": "人物动作库",
+      "eyebrow": "02 / PEOPLE & POSE",
+      "focus": "寻找广角透视、前倾俯拍和靠近镜头的手势。优先人物动作清楚、背景干净的参考。",
+      "figmaUrl": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/?node-id=240-86866",
+      "samples": [
+        {
+          "id": "240:86868",
+          "title": "持相机前倾俯拍",
+          "src": "assets/character-actions/240-86868.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/?node-id=240-86868"
+        },
+        {
+          "id": "240:86871",
+          "title": "扶墨镜前倾",
+          "src": "assets/character-actions/240-86871.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/?node-id=240-86871"
+        },
+        {
+          "id": "240:86874",
+          "title": "抬手靠近镜头",
+          "src": "assets/character-actions/240-86874.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/?node-id=240-86874"
+        },
+        {
+          "id": "240:86877",
+          "title": "扶帽沿俯拍",
+          "src": "assets/character-actions/240-86877.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/?node-id=240-86877"
+        },
+        {
+          "id": "240:86880",
+          "title": "单手前伸",
+          "src": "assets/character-actions/240-86880.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/?node-id=240-86880"
+        },
+        {
+          "id": "240:86883",
+          "title": "双手交错前伸",
+          "src": "assets/character-actions/240-86883.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/?node-id=240-86883"
+        },
+        {
+          "id": "240:86886",
+          "title": "双手框景俯拍",
+          "src": "assets/character-actions/240-86886.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/?node-id=240-86886"
+        },
+        {
+          "id": "240:86889",
+          "title": "双手背后前倾",
+          "src": "assets/character-actions/240-86889.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/?node-id=240-86889"
+        },
+        {
+          "id": "240:86892",
+          "title": "托腮前倾",
+          "src": "assets/character-actions/240-86892.jpg",
+          "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/?node-id=240-86892"
+        }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "pinterest-377317275052306750",
+      "category": "model-launch-background",
+      "title": "紫蓝与暖橙的柔焦交汇",
+      "src": "assets/inspiration/377317275052306750.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/377317275052306750/",
+      "originalUrl": "https://www.freepik.com/premium-psd/soft-gradient-background-web-social-media_418854640.htm",
+      "attribution": "来源标注 Freepik，原作者待核实",
+      "reason": "青蓝、紫色与暖橙自然融合，亮部可以作为文案区域的配色参考。",
+      "difference": "画面包含资源包标题，只参考底层色场；正式设计需替换为品牌色。",
+      "tags": [
+        "柔焦色场",
+        "冷暖交汇"
+      ],
+      "sampleId": "1:3",
+      "collectedAt": "2026-09-07"
+    },
+    {
+      "id": "pinterest-112730796954899595",
+      "category": "model-launch-background",
+      "title": "横向铺开的冷暖色场",
+      "src": "assets/inspiration/112730796954899595.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/112730796954899595/",
+      "originalUrl": "https://creativemarket.com/product/30472053-Abstract-gradient-flowing-blur-background-design.",
+      "attribution": "来源标注 Creative Market，原作者待核实",
+      "reason": "深紫、青绿与暖粉形成宽幅渐变，适合观察横向色场的分布和过渡。",
+      "difference": "上方暗部较重；可借鉴过渡方式，不能直接当作品牌配色标准。",
+      "tags": [
+        "宽幅渐变",
+        "自然扩散"
+      ],
+      "sampleId": "1:6",
+      "collectedAt": "2026-09-07"
+    },
+    {
+      "id": "pinterest-398427898298855102",
+      "category": "model-launch-background",
+      "title": "紫粉流动与底部暖光",
+      "src": "assets/inspiration/398427898298855102.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/398427898298855102/",
+      "originalUrl": "https://creativemarket.com/feelthis/10882280-Waves-Liquid-Gradient-Textures",
+      "attribution": "来源链接标注 feelthis / Creative Market",
+      "reason": "紫色波形与粉橙亮部形成柔和起伏，可参考色块的走势和暖色落点。",
+      "difference": "原图有文字且为竖版；用于横幅时需要重新安排留白。",
+      "tags": [
+        "流动渐变",
+        "暖色落点"
+      ],
+      "sampleId": "1:49",
+      "collectedAt": "2026-09-07"
+    },
+    {
+      "id": "pinterest-723038915191404823",
+      "category": "model-launch-background",
+      "title": "青蓝光带与深紫色场",
+      "src": "assets/inspiration/723038915191404823.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/723038915191404823/",
+      "originalUrl": "https://www.teahub.io/viewwp/TRxJxb_neon-colors-gradient-blur-colorful-wallpaper-blurred-background/",
+      "attribution": "原作者待核实",
+      "reason": "青蓝光带从深色背景中自然浮现，可参考高饱和冷色之间的融合。",
+      "difference": "整体比多数上新样本更暗，只取光带关系，不照搬明暗比例。",
+      "tags": [
+        "冷色渐变",
+        "纵向光带"
+      ],
+      "sampleId": "1:34",
+      "collectedAt": "2026-09-07"
+    },
+    {
+      "id": "pinterest-1014154409873403047",
+      "category": "model-launch-background",
+      "title": "蓝橙交织的通透曲线",
+      "src": "assets/inspiration/1014154409873403047.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/1014154409873403047/",
+      "originalUrl": "https://www.freepik.com/premium-photo/soft-gradient-blue-orange-colors-transitions-white-background_351608458.htm",
+      "attribution": "来源标注 Freepik，原作者待核实",
+      "reason": "蓝色与暖橙沿曲线自然延伸，亮底与流动方向可用于背景构图探索。",
+      "difference": "线性纹理比样本更密，需简化细节，给文案留出空间。",
+      "tags": [
+        "通透光影",
+        "蓝橙对比"
+      ],
+      "sampleId": "1:28",
+      "collectedAt": "2026-09-07"
+    },
+    {
+      "id": "pinterest-1067986499105544102",
+      "category": "model-launch-background",
+      "title": "紫粉色场与轻颗粒",
+      "src": "assets/inspiration/1067986499105544102.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/1067986499105544102/",
+      "originalUrl": "https://crmrkt.com/g0bvqD",
+      "attribution": "图上标注 Love Radiation，作者身份待核实",
+      "reason": "轻颗粒让柔焦色场保留细腻质感，可参考纹理强度与边缘过渡。",
+      "difference": "配色比品牌样本更淡；这里只参考颗粒和过渡，不把低饱和度作为方向。",
+      "tags": [
+        "柔焦色场",
+        "轻颗粒"
+      ],
+      "sampleId": "1:16",
+      "collectedAt": "2026-09-07"
+    },
+    {
+      "id": "pinterest-474989091969747795",
+      "category": "character-action",
+      "title": "俯拍前倾，墨镜靠近镜头",
+      "src": "assets/inspiration/474989091969747795.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/474989091969747795/",
+      "originalUrl": "",
+      "attribution": "原作者待核实",
+      "reason": "人物前倾靠近镜头，头部与身体形成清楚的透视差，白底保持动作突出。",
+      "difference": "透视比样本更夸张；重点参考前倾姿态，不照搬五官变形。",
+      "tags": [
+        "前倾俯拍",
+        "干净背景"
+      ],
+      "sampleId": "240:86871",
+      "collectedAt": "2026-09-07"
+    },
+    {
+      "id": "pinterest-76420524923441183",
+      "category": "character-action",
+      "title": "前伸手掌形成画面前景",
+      "src": "assets/inspiration/76420524923441183.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/76420524923441183/",
+      "originalUrl": "https://www.yhansonphotography.ca/",
+      "attribution": "原帖署名 Y Hanson Photography",
+      "reason": "手掌靠近镜头、身体后撤，前后层次明确；与样本中的前伸手势方向接近。",
+      "difference": "原图带室内布景和遮挡，可只取手掌角度与身体关系。",
+      "tags": [
+        "手掌前伸",
+        "广角透视"
+      ],
+      "sampleId": "240:86874",
+      "collectedAt": "2026-09-07"
+    },
+    {
+      "id": "pinterest-483925922476766082",
+      "category": "character-action",
+      "title": "近距离前倾与肩部转向",
+      "src": "assets/inspiration/483925922476766082.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/483925922476766082/",
+      "originalUrl": "",
+      "attribution": "原作者待核实",
+      "reason": "人物靠近镜头、肩部轻转，白底中的姿态清楚，可补充前倾人物的变化。",
+      "difference": "服装与妆容偏时装大片；只参考动作和机位，不延用人物造型。",
+      "tags": [
+        "前倾姿态",
+        "肩部转向"
+      ],
+      "sampleId": "240:86892",
+      "collectedAt": "2026-09-07"
+    },
+    {
+      "id": "pinterest-241083386294885268",
+      "category": "character-action",
+      "title": "指向镜头的近大远小",
+      "src": "assets/inspiration/241083386294885268.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/241083386294885268/",
+      "originalUrl": "",
+      "attribution": "原帖链接标注 Digital Camera World",
+      "reason": "前伸手指建立强烈的近大远小关系，可作为互动手势和镜头距离的参考。",
+      "difference": "暗背景与戏剧光影不属于本类目标，只取指向动作和手部透视。",
+      "tags": [
+        "指向镜头",
+        "手部透视"
+      ],
+      "sampleId": "240:86883",
+      "collectedAt": "2026-09-07"
+    },
+    {
+      "id": "pinterest-791718809529700604",
+      "category": "model-launch-background",
+      "title": "紫粉色团与蓝青流动",
+      "src": "assets/inspiration/791718809529700604.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/791718809529700604/",
+      "originalUrl": null,
+      "attribution": "Pinterest 公开帖子，原作者待核实",
+      "reason": "紫粉色团与少量青蓝相互穿插，可以参考冷暖比例和柔和的过渡边缘。",
+      "difference": "明度变化较多，放文字时需要留出更平静的区域。",
+      "tags": [
+        "紫粉青蓝",
+        "柔焦色场"
+      ],
+      "sampleId": "1:49",
+      "collectedAt": "2026-09-07"
+    },
+    {
+      "id": "pinterest-194147433928847643",
+      "category": "model-launch-background",
+      "title": "青红边缘与中央亮场",
+      "src": "assets/inspiration/194147433928847643.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/194147433928847643/",
+      "originalUrl": null,
+      "attribution": "Pinterest 公开帖子，原作者待核实",
+      "reason": "青色与红色从边缘进入，中心保留明亮区域，适合研究渐变与文案留白的关系。",
+      "difference": "红青反差比精选样本更强，作为配色扩展候选。",
+      "tags": [
+        "青红",
+        "柔焦色场"
+      ],
+      "sampleId": "1:3",
+      "collectedAt": "2026-09-07"
+    },
+    {
+      "id": "pinterest-387239267965190992",
+      "category": "model-launch-background",
+      "title": "粉蓝交汇的柔亮色场",
+      "src": "assets/inspiration/387239267965190992.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/387239267965190992/",
+      "originalUrl": null,
+      "attribution": "Pinterest 公开帖子，原作者待核实",
+      "reason": "粉色、淡蓝和少量奶黄色自然衔接，颜色轻盈，能参考大面积色场的融合。",
+      "difference": "整体更偏粉色，实际设计要按品牌色重新分配比例。",
+      "tags": [
+        "粉蓝奶黄",
+        "柔焦色场"
+      ],
+      "sampleId": "1:16",
+      "collectedAt": "2026-09-07"
+    },
+    {
+      "id": "pinterest-550283648234413376",
+      "category": "model-launch-background",
+      "title": "浅粉与淡蓝的轻柔过渡",
+      "src": "assets/inspiration/550283648234413376.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/550283648234413376/",
+      "originalUrl": null,
+      "attribution": "Pinterest 公开帖子，原作者待核实",
+      "reason": "大块浅粉、淡蓝与暖白交错，过渡平缓，适合参考低复杂度背景的层次。",
+      "difference": "饱和度低于部分精选样本，需要判断是否足够有活力。",
+      "tags": [
+        "粉蓝奶黄",
+        "柔焦色场"
+      ],
+      "sampleId": "1:6",
+      "collectedAt": "2026-09-07"
+    },
+    {
+      "id": "pinterest-273945589825142658",
+      "category": "model-launch-background",
+      "title": "玫红与青蓝的斜向交汇",
+      "src": "assets/inspiration/273945589825142658.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/273945589825142658/",
+      "originalUrl": null,
+      "attribution": "Pinterest 公开帖子，原作者待核实",
+      "reason": "玫红色场从左下延展，与青蓝形成清晰方向，适合研究颜色的动势。",
+      "difference": "红蓝反差较强，色场交界也比样本更集中。",
+      "tags": [
+        "玫红青蓝",
+        "柔焦色场"
+      ],
+      "sampleId": "1:34",
+      "collectedAt": "2026-09-07"
+    },
+    {
+      "id": "pinterest-773493304797723210",
+      "category": "model-launch-background",
+      "title": "深黑底上的电蓝光带",
+      "src": "assets/inspiration/773493304797723210.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/773493304797723210/",
+      "originalUrl": null,
+      "attribution": "Pinterest 公开帖子，原作者待核实",
+      "reason": "电蓝亮部沿弯曲方向铺开，能参考深色背景中的发光层次。",
+      "difference": "大面积黑底比精选样本更暗，作为深色方向的探索。",
+      "tags": [
+        "电蓝黑",
+        "流动光带"
+      ],
+      "sampleId": "1:34",
+      "collectedAt": "2026-09-07"
+    },
+    {
+      "id": "pinterest-209769295135811817",
+      "category": "model-launch-background",
+      "title": "荧光绿与紫粉的流动色场",
+      "src": "assets/inspiration/209769295135811817.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/209769295135811817/",
+      "originalUrl": null,
+      "attribution": "Pinterest 公开帖子，原作者待核实",
+      "reason": "绿色、紫色和粉色以曲线连接，适合参考高饱和度色块的相互渗透。",
+      "difference": "荧光绿占比更高，配色需要经过品牌适配。",
+      "tags": [
+        "荧光绿紫粉",
+        "柔焦色场"
+      ],
+      "sampleId": "1:28",
+      "collectedAt": "2026-09-07"
+    },
+    {
+      "id": "pinterest-344806915227642398",
+      "category": "character-action",
+      "title": "低机位坐姿与前景膝部",
+      "src": "assets/inspiration/344806915227642398.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/344806915227642398/",
+      "originalUrl": null,
+      "attribution": "Pinterest 公开帖子，原作者待核实",
+      "reason": "低机位让膝部和手部位于前景，身体形成三角支撑，可参考坐姿的透视与稳定感。",
+      "difference": "户外建筑背景较复杂，只参考人物动作和机位。",
+      "tags": [
+        "坐姿展开肢体",
+        "低机位仰拍"
+      ],
+      "sampleId": "240:86886",
+      "collectedAt": "2026-09-07"
+    },
+    {
+      "id": "pinterest-30821578696484103",
+      "category": "character-action",
+      "title": "双手前伸形成近距离互动",
+      "src": "assets/inspiration/30821578696484103.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/30821578696484103/",
+      "originalUrl": null,
+      "attribution": "Pinterest 公开帖子，原作者待核实",
+      "reason": "双手靠近镜头形成明显的近大远小，身体后退，动作具有画面互动感。",
+      "difference": "黑白处理和深色服装偏冷峻，只参考手势与透视关系。",
+      "tags": [
+        "手掌伸向镜头",
+        "广角近拍"
+      ],
+      "sampleId": "240:86883",
+      "collectedAt": "2026-09-07"
+    },
+    {
+      "id": "pinterest-761249143283520305",
+      "category": "character-action",
+      "title": "侧身蹲姿与手臂前伸",
+      "src": "assets/inspiration/761249143283520305.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/761249143283520305/",
+      "originalUrl": null,
+      "attribution": "Pinterest 公开帖子，原作者待核实",
+      "reason": "侧身下蹲、手臂自然向前，轮廓清晰，可作为站姿之外的动作参考。",
+      "difference": "画面为黑白，镜头夸张程度较低，活力表达主要来自动作。",
+      "tags": [
+        "侧身蹲姿",
+        "平视侧拍"
+      ],
+      "sampleId": "240:86868",
+      "collectedAt": "2026-09-07"
+    }
+  ]
+}

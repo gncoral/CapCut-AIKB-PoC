@@ -1,0 +1,14 @@
+{
+  "version": "9.7v01",
+  "source": "verified handoff archive",
+  "files": {
+    "gradient-editor.html": "c34156a2682a52e73474d7657b92e0bda12af5e9d3de1a51dc19302160060f03",
+    "gradient-field.js": "124d75ebf0fbc4a2d66ed36f589e8ae864153aff1359233df1553f587b3fab49",
+    "gradient-oil-brush.js": "3f86d63603dbac65041383cd44f18904100c68fcf56d67249f5ff44ba4a1658b",
+    "gradient-petal-9.2v1-shader.js": "65801c2306ca5daed577df500629969b857d5e73e2a0cfec27df39d8c25e27e5",
+    "gradient-preference-model.json": "a633a018c5dc51754371c98a19c26014c32ebd8e9c0a6952978f8562d3f1baa6",
+    "gradient-preference-workbench.md": "49eda6dec9760520d012fc8b4d7c6dcd2273daf5e06e04a20fdf2cc7d8f24029",
+    "gradient-preference.js": "1bd5b86b3e29a1af09daf8e9074f1394473c8b5410ac9f2e153fac56a108d54f",
+    "gradient-tree-shadow.js": "24a959704f31dbd60e6080c45943f8dbe1eeb347809486b7801a6a934dc4282d"
+  }
+}

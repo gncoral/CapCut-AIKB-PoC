@@ -1,5 +1,6 @@
 const CATEGORY_MODEL_LAUNCH = 'model-launch-background';
 const CATEGORY_CHARACTER = 'character-library';
+const CATEGORY_ACTION = 'character-action';
 
 
 const state = {
@@ -234,6 +235,7 @@ document.querySelector('.tabs').addEventListener('click', event => {
     view.hidden = view.id !== `${tab.dataset.view}-view`;
   });
   if (tab.dataset.view === 'design-tools') showToolGallery();
+  if (location.hash !== `#${tab.dataset.view}`) history.replaceState(null, '', `#${tab.dataset.view}`);
 });
 
 function showToolGallery() {
@@ -269,6 +271,7 @@ function safeText(value) {
 
 
 function sourceLabel(image) {
+  if (image.category === CATEGORY_ACTION) return 'Figma · 人物动作库';
   if (image.source === 'figma') return 'Figma · 模型上新背景';
   return image.source || image.platform || '参考素材';
 }
@@ -323,6 +326,7 @@ function openPreview(image) {
 function makeCard(image) {
   const card = document.createElement('article');
   card.className = 'card';
+  if (image.category === CATEGORY_ACTION) card.classList.add('action-card');
   card.tabIndex = 0;
   card.setAttribute('aria-label', `预览 ${image.title || '图片'}`);
 
@@ -624,6 +628,9 @@ function render() {
     ...filteredCharacters.map(makeCharacterCard),
   ];
   gallery.classList.toggle('character-gallery', state.category === CATEGORY_CHARACTER);
+  document.querySelector('.status-hint').textContent = state.category === CATEGORY_ACTION
+    ? '人物动作库 · Figma 快照 2026.09.07'
+    : 'Figma 素材由安全的定时任务更新';
   gallery.replaceChildren(...cards);
   empty.hidden = cards.length !== 0;
   resultCount.textContent = state.category === CATEGORY_CHARACTER
@@ -632,6 +639,7 @@ function render() {
   totalCount.textContent = state.images.length + state.characters.length;
   modelLaunchCount.textContent = state.images.filter(image => image.category === CATEGORY_MODEL_LAUNCH).length;
   characterCount.textContent = state.characters.length;
+  document.querySelector('#character-action-count').textContent = state.images.filter(image => image.category === CATEGORY_ACTION).length;
   document.querySelectorAll('[data-brand-count]').forEach(count => {
     const brand = count.dataset.brandCount;
     count.textContent = state.images.filter(image => image.category === CATEGORY_MODEL_LAUNCH && (image.brand === brand || (image.tags || []).includes(brand))).length;
@@ -777,6 +785,14 @@ async function load() {
     const images = await imageResponse.json();
     if (!Array.isArray(images)) throw new Error('图库数据格式错误');
     state.images = images;
+    let actionLoadFailed = false;
+    try {
+      const actionResponse = await fetch('data/character-actions.json');
+      if (!actionResponse.ok) throw new Error('人物动作库读取失败');
+      const actions = await actionResponse.json();
+      if (!Array.isArray(actions)) throw new Error('人物动作库数据格式错误');
+      state.images = [...images, ...actions];
+    } catch (error) { actionLoadFailed = true; console.error(error); }
     const figmaCount = images.filter(image => image.source === 'figma').length;
     syncState.textContent = figmaCount ? `已同步 ${figmaCount} 张图片 · 人物加载中…` : '等待首次 Figma 同步';
     render();
@@ -787,7 +803,7 @@ async function load() {
       if (!Array.isArray(characters)) throw new Error('人物数据格式错误');
       state.characters = characters;
       syncState.textContent = figmaCount || characters.length
-        ? `已同步 ${figmaCount} 张图片 · ${characters.length} 个人物`
+        ? `已同步 ${figmaCount} 张背景 · ${state.images.length - images.length} 张动作 · ${characters.length} 个人物${actionLoadFailed ? ' · 动作库读取失败' : ''}`
         : '等待首次 Figma 同步';
       render();
     } catch (characterError) {

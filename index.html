@@ -4,7 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CapCut M&amp;UG Design Library</title>
-  <link rel="stylesheet" href="styles.css?v=background-brand-filter-1">
+  <link rel="stylesheet" href="styles.css?v=9.7v01">
+  <link rel="stylesheet" href="inspiration.css?v=9.7v01-public-2">
+  <link rel="stylesheet" href="main-navigation.css?v=9.7v01">
 </head>
 <body>
   <header class="site-header">
@@ -18,6 +20,7 @@
 
   <nav class="tabs" aria-label="主导航">
     <button class="tab active" type="button" data-view="library">视觉库 <span id="total-count">0</span></button>
+    <button class="tab" type="button" data-view="inspiration">灵感探索 <span id="inspo-total-count">20</span></button>
     <button class="tab" type="button" data-view="brand-guidelines">品牌规范</button>
     <button class="tab" type="button" data-view="design-tools">设计工具</button>
     <button class="tab" type="button" disabled>收藏 <span id="saved-count">0</span></button>
@@ -26,8 +29,8 @@
 
   <main>
     <section class="view" id="library-view">
-      <section class="toolbar" aria-label="图库筛选">
-        <div class="chips" id="category-chips">
+      <section class="toolbar section-toolbar" aria-label="图库筛选">
+        <div class="chips section-tabs" id="category-chips" aria-label="视觉库分类">
           <button class="chip active" type="button" data-category="all">全部</button>
           <button class="chip model-launch" type="button" data-category="model-launch-background">
             模型上新背景 <span id="model-launch-count">0</span>
@@ -35,6 +38,7 @@
           <button class="chip" type="button" data-category="character-library">
             人物素材库 <span id="character-count">0</span>
           </button>
+          <button class="chip" type="button" data-category="character-action">人物动作库 <span id="character-action-count">0</span></button>
         </div>
         <label class="search-wrap">
           <span class="sr-only">搜索图库</span>
@@ -78,8 +82,29 @@
     </section>
 
 
+    <section class="view inspo" id="inspiration-view" hidden aria-labelledby="inspo-title">
+      <h1 id="inspo-title" class="sr-only">找点儿灵感</h1>
+      <section class="section-toolbar" aria-label="灵感筛选">
+        <div class="section-tabs" id="inspo-categories" aria-label="灵感分类"></div>
+        <label class="search-wrap"><span class="sr-only">搜索本类候选</span><input type="search" id="inspo-search" placeholder="搜索本类候选"></label>
+      </section>
+      <section class="inspo-reference-bar" aria-label="本类参考标准">
+        <p id="inspo-focus"></p>
+        <button type="button" id="inspo-show-seeds"><span class="inspo-seed-stack" id="inspo-seed-stack"></span><span>查看精选样本 ↗</span></button>
+      </section>
+      <div class="inspo-toolbar">
+        <span class="inspo-kicker">视觉参考</span>
+        <div class="inspo-filters"><label><span class="sr-only">来源平台</span><select id="inspo-source"><option value="all">全部来源</option><option>Pinterest</option><option>Behance</option><option>Dribbble</option><option>X</option></select></label></div>
+      </div>
+      <div class="inspo-result-row"><span id="inspo-result" aria-live="polite">正在读取候选…</span><span>候选参考 · 尚未进入精选视觉库</span></div>
+      <div class="inspo-grid" id="inspo-grid"></div>
+      <div class="inspo-empty" id="inspo-empty" hidden><h2 id="inspo-empty-title">这里还没有候选</h2><p id="inspo-empty-description"></p><button type="button" id="inspo-reset">重置筛选</button></div>
+      <footer class="inspo-footer">图片用于视觉参考，使用范围以原作者说明为准。</footer>
+      
+    </section>
+
     <section class="view brand-guidelines-view" id="brand-guidelines-view" hidden>
-      <nav class="brand-family-nav" aria-label="品牌分组">
+      <nav class="brand-family-nav section-tabs" aria-label="品牌分组">
         <button class="brand-family active" type="button" data-brand-family="jianying-capcut">剪映 / CapCut</button>
         <button class="brand-family" type="button" data-brand-family="jimeng-dreamina">即梦 / Dreamina</button>
         <button class="brand-family" type="button" data-brand-family="xingtu-hypic">醒图 / Hypic</button>
@@ -126,7 +151,7 @@
             <span class="tool-showcase-visual"><img src="assets/tools/multilingual-design/output-figma-locales.jpg" alt="多语言设计延展案例预览"></span>
             <span class="tool-showcase-copy"><i class="tool-nav-icon">文</i><span><strong>多语言设计延展</strong><small>Figma 批量适配、检查与导出</small></span><b>查看工具详情 →</b></span>
           </button>
-          <a class="tool-showcase-card" href="gradient-editor.html?v=brand-workbench-9-1">
+          <a class="tool-showcase-card" href="gradient-editor.html?v=9.7v01">
             <span class="tool-showcase-visual tool-showcase-gradient"><img src="assets/model-launch-backgrounds/1-37.png" alt="品牌渐变背景工具预览"></span>
             <span class="tool-showcase-copy"><i class="tool-nav-icon tool-nav-gradient">渐</i><span><strong>品牌渐变背景</strong><small>模板、品牌色、文字安全区与导出</small></span><b>进入编辑器 →</b></span>
           </a>
@@ -262,6 +287,7 @@
   </dialog>
 
 
-  <script type="module" src="app.js?v=background-brand-filter-1"></script>
+  <script type="module" src="app.js?v=9.7v01"></script>
+  <script type="module" src="inspiration-public.js?v=9.7v01-public-2"></script>
 </body>
 </html>

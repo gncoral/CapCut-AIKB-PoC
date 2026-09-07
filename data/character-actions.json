@@ -1,0 +1,164 @@
+[
+  {
+    "id": "figma:HjEFKtMBDJm6Eessye8GjP:240:86868",
+    "title": "持相机前倾俯拍",
+    "category": "character-action",
+    "source": "figma",
+    "src": "assets/character-actions/240-86868.png",
+    "cardSrc": "assets/character-actions/240-86868.jpg",
+    "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/?node-id=240-86868",
+    "figmaFileKey": "HjEFKtMBDJm6Eessye8GjP",
+    "figmaNodeId": "240:86868",
+    "tags": [
+      "人物动作",
+      "持相机前倾俯拍",
+      "广角透视"
+    ],
+    "syncedAt": "2026-09-07",
+    "syncMethod": "本次 Figma 只读导出快照"
+  },
+  {
+    "id": "figma:HjEFKtMBDJm6Eessye8GjP:240:86871",
+    "title": "扶墨镜前倾",
+    "category": "character-action",
+    "source": "figma",
+    "src": "assets/character-actions/240-86871.png",
+    "cardSrc": "assets/character-actions/240-86871.jpg",
+    "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/?node-id=240-86871",
+    "figmaFileKey": "HjEFKtMBDJm6Eessye8GjP",
+    "figmaNodeId": "240:86871",
+    "tags": [
+      "人物动作",
+      "扶墨镜前倾",
+      "广角透视"
+    ],
+    "syncedAt": "2026-09-07",
+    "syncMethod": "本次 Figma 只读导出快照"
+  },
+  {
+    "id": "figma:HjEFKtMBDJm6Eessye8GjP:240:86874",
+    "title": "抬手靠近镜头",
+    "category": "character-action",
+    "source": "figma",
+    "src": "assets/character-actions/240-86874.png",
+    "cardSrc": "assets/character-actions/240-86874.jpg",
+    "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/?node-id=240-86874",
+    "figmaFileKey": "HjEFKtMBDJm6Eessye8GjP",
+    "figmaNodeId": "240:86874",
+    "tags": [
+      "人物动作",
+      "抬手靠近镜头",
+      "广角透视"
+    ],
+    "syncedAt": "2026-09-07",
+    "syncMethod": "本次 Figma 只读导出快照"
+  },
+  {
+    "id": "figma:HjEFKtMBDJm6Eessye8GjP:240:86877",
+    "title": "扶帽沿俯拍",
+    "category": "character-action",
+    "source": "figma",
+    "src": "assets/character-actions/240-86877.png",
+    "cardSrc": "assets/character-actions/240-86877.jpg",
+    "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/?node-id=240-86877",
+    "figmaFileKey": "HjEFKtMBDJm6Eessye8GjP",
+    "figmaNodeId": "240:86877",
+    "tags": [
+      "人物动作",
+      "扶帽沿俯拍",
+      "广角透视"
+    ],
+    "syncedAt": "2026-09-07",
+    "syncMethod": "本次 Figma 只读导出快照"
+  },
+  {
+    "id": "figma:HjEFKtMBDJm6Eessye8GjP:240:86880",
+    "title": "单手前伸",
+    "category": "character-action",
+    "source": "figma",
+    "src": "assets/character-actions/240-86880.png",
+    "cardSrc": "assets/character-actions/240-86880.jpg",
+    "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/?node-id=240-86880",
+    "figmaFileKey": "HjEFKtMBDJm6Eessye8GjP",
+    "figmaNodeId": "240:86880",
+    "tags": [
+      "人物动作",
+      "单手前伸",
+      "广角透视"
+    ],
+    "syncedAt": "2026-09-07",
+    "syncMethod": "本次 Figma 只读导出快照"
+  },
+  {
+    "id": "figma:HjEFKtMBDJm6Eessye8GjP:240:86883",
+    "title": "双手交错前伸",
+    "category": "character-action",
+    "source": "figma",
+    "src": "assets/character-actions/240-86883.png",
+    "cardSrc": "assets/character-actions/240-86883.jpg",
+    "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/?node-id=240-86883",
+    "figmaFileKey": "HjEFKtMBDJm6Eessye8GjP",
+    "figmaNodeId": "240:86883",
+    "tags": [
+      "人物动作",
+      "双手交错前伸",
+      "广角透视"
+    ],
+    "syncedAt": "2026-09-07",
+    "syncMethod": "本次 Figma 只读导出快照"
+  },
+  {
+    "id": "figma:HjEFKtMBDJm6Eessye8GjP:240:86886",
+    "title": "双手框景俯拍",
+    "category": "character-action",
+    "source": "figma",
+    "src": "assets/character-actions/240-86886.png",
+    "cardSrc": "assets/character-actions/240-86886.jpg",
+    "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/?node-id=240-86886",
+    "figmaFileKey": "HjEFKtMBDJm6Eessye8GjP",
+    "figmaNodeId": "240:86886",
+    "tags": [
+      "人物动作",
+      "双手框景俯拍",
+      "广角透视"
+    ],
+    "syncedAt": "2026-09-07",
+    "syncMethod": "本次 Figma 只读导出快照"
+  },
+  {
+    "id": "figma:HjEFKtMBDJm6Eessye8GjP:240:86889",
+    "title": "双手背后前倾",
+    "category": "character-action",
+    "source": "figma",
+    "src": "assets/character-actions/240-86889.png",
+    "cardSrc": "assets/character-actions/240-86889.jpg",
+    "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/?node-id=240-86889",
+    "figmaFileKey": "HjEFKtMBDJm6Eessye8GjP",
+    "figmaNodeId": "240:86889",
+    "tags": [
+      "人物动作",
+      "双手背后前倾",
+      "广角透视"
+    ],
+    "syncedAt": "2026-09-07",
+    "syncMethod": "本次 Figma 只读导出快照"
+  },
+  {
+    "id": "figma:HjEFKtMBDJm6Eessye8GjP:240:86892",
+    "title": "托腮前倾",
+    "category": "character-action",
+    "source": "figma",
+    "src": "assets/character-actions/240-86892.png",
+    "cardSrc": "assets/character-actions/240-86892.jpg",
+    "url": "https://www.figma.com/design/HjEFKtMBDJm6Eessye8GjP/?node-id=240-86892",
+    "figmaFileKey": "HjEFKtMBDJm6Eessye8GjP",
+    "figmaNodeId": "240:86892",
+    "tags": [
+      "人物动作",
+      "托腮前倾",
+      "广角透视"
+    ],
+    "syncedAt": "2026-09-07",
+    "syncMethod": "本次 Figma 只读导出快照"
+  }
+]

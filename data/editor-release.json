@@ -1,14 +1,21 @@
 {
-  "version": "9.8v01",
+  "version": "9.9v01",
   "files": {
-    "gradient-batch.js": "ced9b47b8874804983efb6dd90776a62f3cf7985c2daf01a8d91dbc2199332e1",
-    "gradient-editor.html": "d17451ff66b3183046b514c52fef390c7acbb61e3a854d88c75564cfd11d918f",
+    "gradient-assets/fonts/Noto-Serif-SC-OFL.txt": "5e0da210fb04058a8c0087985d2d456b931c2579811a49655721d3cf0c36b6d6",
+    "gradient-assets/fonts/noto-serif-sc-copy-0.ttf": "2013403fc5cc04d52a2d7a65d1d38e43e0ec01ddacdd888384255e286cbee6e0",
+    "gradient-assets/fonts/noto-serif-sc-copy-1.ttf": "ebe6e8443157281275571398699b806b0b48723c71db5c2d66a8f87515654f50",
+    "gradient-assets/fonts/noto-serif-sc.css": "8d9fb6ba896cea265cef79b16427180a4d0018e36e8a2f7dd67ace1150b79717",
+    "gradient-assets/seedance-wordmark.svg": "139cab99ac3d7859e7ad6dcbad0a775f50e6574b54a3adcdaa63d664cf8bec4d",
+    "gradient-batch.js": "4a3cc9e823f4df13f002b3b445c4fa24c2fc7481b96746511235cd229e0a9508",
+    "gradient-copy-layouts.js": "3ffba807d5c4c77b508adddcfd186ad8301b612e76060e5ae99a955bfc91f8d5",
+    "gradient-copy.js": "668aa3c599164f3f22dbc7b8dee5e2414d8c11dce30a6d9f20d3fd68f4f3de2c",
+    "gradient-editor.html": "373523216d73f17c76217f112505de74b151cda9cb56730be1c885588aa37d8b",
     "gradient-field.js": "b570670d51c12345d8a00cf29981646d5cc92d0ec8f716580006938f827b417f",
     "gradient-oil-brush.js": "8b1239dc7d5951999493bedd6db4b2657efa003dfc816e5ef3258bdc4388b9d2",
     "gradient-petal-9.2v1-shader.js": "65801c2306ca5daed577df500629969b857d5e73e2a0cfec27df39d8c25e27e5",
     "gradient-preference-model.json": "a633a018c5dc51754371c98a19c26014c32ebd8e9c0a6952978f8562d3f1baa6",
-    "gradient-preference-workbench.md": "49eda6dec9760520d012fc8b4d7c6dcd2273daf5e06e04a20fdf2cc7d8f24029",
     "gradient-preference.js": "55cb25a905ada83ca6350a117a7ad0eb9e2d9a16f7db2da90c1c047c54d44e70",
+    "gradient-scenes.js": "e2bb34cca63696da3e1b72a892a5de0873a9dd94af2bcb9245282ba792b5d464",
     "gradient-tree-shadow.js": "a64a20793f8ca97ea306333a3121ebd737c734ba6b94cc95fc856679307e9040",
     "gradient-workspace.js": "aa50135ef88b68e19a1d79d1160f576beab3790900eab760869b69edb718250e"
   }

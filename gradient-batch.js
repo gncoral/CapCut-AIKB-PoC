@@ -19,12 +19,12 @@
  const dialog=document.createElement('dialog');dialog.id='batch-dialog';dialog.setAttribute('aria-labelledby','batch-dialog-title');
  dialog.innerHTML='<div class="batch-dialog-head"><h3 id="batch-dialog-title"></h3><select aria-label="预览尺寸" id="batch-dialog-scene"></select><button class="button" id="batch-close">关闭</button></div><p class="batch-help">仅预览，不改变当前选图。切换尺寸仍是同一批候选。</p><div class="batch-dialog-stage"></div><div class="batch-dialog-actions"><button class="button" id="batch-prev">上一张</button><button class="button primary" id="batch-apply">使用这张</button><button class="button" id="batch-next">下一张</button></div>';
  document.body.append(dialog);
- const sceneSelect=dialog.querySelector('select');for(const [key,sc] of Object.entries(scenes)){const o=document.createElement('option');o.value=key;o.textContent=`${sc.name} · ${sc.size.join(' × ')}`;sceneSelect.append(o);}
+ const sceneSelect=dialog.querySelector('select');function syncSceneOptions(){sceneSelect.replaceChildren();for(const [key,sc] of gradientSceneEntries()){const o=document.createElement('option');o.value=key;o.textContent=`${sc.name} · ${sc.size.join(' × ')}`;sceneSelect.append(o);}}syncSceneOptions();
  function snapshot(){return {state:clone(state),profiles:clone(fieldProfiles),extensions:Object.fromEntries(Object.entries(adapters).map(([k,a])=>[k,a.get()]))};}
  function restore(s){Object.assign(state,clone(s.state));Object.assign(fieldProfiles,clone(s.profiles));for(const [k,v] of Object.entries(s.extensions))adapters[k].set(v);}
  function refresh(){
   const key=[group(),state.brand].join(':');
-  if(key!==context){context=key;epoch++;choices=[];applied=-1;grid.replaceChildren();dialog.close();}
+  if(key!==context){syncSceneOptions();context=key;epoch++;choices=[];applied=-1;grid.replaceChildren();dialog.close();}
   if(sceneContext!==state.scene){sceneContext=state.scene;epoch++;clearTimeout(refreshTimer);refreshTimer=setTimeout(()=>{drawCards();if(dialog.open)drawLarge();},0);}
   document.querySelector('.templates .section-head span').textContent='6 类背景模板';
   const soft=document.querySelector('.template[data-template="soft"]');soft.classList.toggle('active',group()==='soft');
@@ -40,6 +40,7 @@
   state.angle=Math.round(-20+Math.random()*40);state.scale=Math.round(75+Math.random()*55);
  }
  function copyOverlay(stage){
+  if(window.gradientCopyOverlay?.(stage))return;
   const c=document.querySelector('#copy').cloneNode(true);c.querySelectorAll('[id]').forEach(n=>n.removeAttribute('id'));c.removeAttribute('id');
   c.querySelectorAll('h2,p').forEach(n=>{n.style.fontSize='';if(state.template==='oilBrush')n.style.color='#10151c';});
   const accent=getComputedStyle(frame).getPropertyValue('--copy-accent');stage.style.setProperty('--copy-accent',accent);
@@ -48,10 +49,10 @@
  }
  function stageFor(choice,large=false){
   const current=snapshot(),sceneKey=state.scene,sc=scenes[sceneKey];
-  const stage=document.createElement('div');stage.className='batch-preview';stage.dataset.scene=sceneKey;stage.style.aspectRatio=sc.size.join('/');
+  const stage=document.createElement('div');stage.className='batch-preview';stage.dataset.scene=sceneKey;stage.dataset.layout=sc.layout||'product';stage.style.aspectRatio=sc.size.join('/');
   const c=document.createElement('canvas');
   try{restore(choice);state.scene=sceneKey;render(c,sceneKey,Math.min(large?2:1,(large?1600:400)/sc.size[0]));}finally{restore(current);}
-  stage.append(c);copyOverlay(stage);
+  stage.append(c);copyOverlay(stage);gradientFitCopy(stage);
   if(large)stage.style.width=`min(100%, ${Math.min(1040,sc.size[0]/sc.size[1]*window.innerHeight*.58)}px)`;
   return stage;
  }

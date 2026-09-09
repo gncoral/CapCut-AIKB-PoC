@@ -394,24 +394,6 @@
       "collectedAt": "2026-09-07"
     },
     {
-      "id": "pinterest-194147433928847643",
-      "category": "model-launch-background",
-      "title": "青红边缘与中央亮场",
-      "src": "assets/inspiration/194147433928847643.jpg",
-      "source": "Pinterest",
-      "sourceUrl": "https://www.pinterest.com/pin/194147433928847643/",
-      "originalUrl": null,
-      "attribution": "Pinterest 公开帖子，原作者待核实",
-      "reason": "青色与红色从边缘进入，中心保留明亮区域，适合研究渐变与文案留白的关系。",
-      "difference": "红青反差比精选样本更强，作为配色扩展候选。",
-      "tags": [
-        "青红",
-        "柔焦色场"
-      ],
-      "sampleId": "1:3",
-      "collectedAt": "2026-09-07"
-    },
-    {
       "id": "pinterest-387239267965190992",
       "category": "model-launch-background",
       "title": "粉蓝交汇的柔亮色场",
@@ -592,24 +574,6 @@
       "collectedAt": "2026-09-08"
     },
     {
-      "id": "pinterest-614319205429899822",
-      "category": "character-action",
-      "title": "高机位前倾与放大的头部",
-      "src": "assets/inspiration/614319205429899822.jpg",
-      "source": "Pinterest",
-      "sourceUrl": "https://www.pinterest.com/pin/614319205429899822/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
-      "reason": "高机位下人物向前探身，头部靠近镜头、腿部向后缩短。",
-      "difference": "头部透视较夸张，需控制真实人物的变形程度。",
-      "tags": [
-        "前倾靠近镜头",
-        "高机位俯拍"
-      ],
-      "sampleId": "240:86871",
-      "collectedAt": "2026-09-08"
-    },
-    {
       "id": "pinterest-614319205429900259",
       "category": "character-action",
       "title": "抬膝站姿与手肘折线",
@@ -754,24 +718,6 @@
       "collectedAt": "2026-09-08"
     },
     {
-      "id": "pinterest-319896379797354484",
-      "category": "character-action",
-      "title": "腾空前伸与抛物动势",
-      "src": "assets/inspiration/319896379797354484.jpg",
-      "source": "Pinterest",
-      "sourceUrl": "https://www.pinterest.com/pin/319896379797354484/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
-      "reason": "手掌向镜头伸出、双腿分开收起，腾空姿态表现明显的空间深度。",
-      "difference": "漂浮配件较多，只参考人物与手掌的关系。",
-      "tags": [
-        "腾空展开肢体",
-        "广角近拍"
-      ],
-      "sampleId": "240:86880",
-      "collectedAt": "2026-09-08"
-    },
-    {
       "id": "pinterest-319896379801449513",
       "category": "character-action",
       "title": "坐姿抬腿靠近镜头",
@@ -844,24 +790,6 @@
       "collectedAt": "2026-09-08"
     },
     {
-      "id": "pinterest-27795722693588081",
-      "category": "model-launch-background",
-      "title": "紫色底上的暖橙光晕",
-      "src": "assets/inspiration/27795722693588081.jpg",
-      "source": "Pinterest",
-      "sourceUrl": "https://www.pinterest.com/pin/27795722693588081/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
-      "reason": "暖橙亮部由中心向紫色边缘扩散，可参考光晕半径和冷暖过渡。",
-      "difference": "中心色团较集中，文案应避开亮度变化最大的区域。",
-      "tags": [
-        "紫粉暖橙",
-        "柔焦色场"
-      ],
-      "sampleId": "1:3",
-      "collectedAt": "2026-09-08"
-    },
-    {
       "id": "pinterest-815221970065052993",
       "category": "model-launch-background",
       "title": "紫蓝与橙粉的旋转色场",
@@ -877,24 +805,6 @@
         "柔焦色场"
       ],
       "sampleId": "1:49",
-      "collectedAt": "2026-09-08"
-    },
-    {
-      "id": "pinterest-260575528432883727",
-      "category": "model-launch-background",
-      "title": "黑底青色光带的柔和转折",
-      "src": "assets/inspiration/260575528432883727.jpg",
-      "source": "Pinterest",
-      "sourceUrl": "https://www.pinterest.com/pin/260575528432883727/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
-      "reason": "青色光带在黑底形成柔软弧线，参考光带的宽度与明暗交界。",
-      "difference": "整体较暗，用于上新背景时需增加文案区域亮度。",
-      "tags": [
-        "青绿黑",
-        "流动光带"
-      ],
-      "sampleId": "1:13",
       "collectedAt": "2026-09-08"
     },
     {
@@ -1006,22 +916,599 @@
       "collectedAt": "2026-09-08"
     },
     {
-      "id": "pinterest-623185667217365786",
-      "category": "model-launch-background",
-      "title": "紫灰底与橙黄光峰",
-      "src": "assets/inspiration/623185667217365786.jpg",
+      "id": "pinterest-725853664984482165",
+      "category": "character-action",
+      "title": "蹲姿托腮与手臂垂落",
+      "src": "assets/inspiration/725853664984482165.jpg",
       "source": "Pinterest",
-      "sourceUrl": "https://www.pinterest.com/pin/623185667217365786/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
-      "reason": "橙黄亮部呈连续起伏，紫灰底与暖色边缘之间过渡自然。",
-      "difference": "亮部走势较具象，实际背景应降低重复形态感。",
+      "sourceUrl": "https://www.pinterest.com/pin/725853664984482165/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "屈膝下蹲，一手托腮、一手自然下伸，可参考紧凑姿势与手臂长短关系。",
+      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
       "tags": [
-        "紫粉暖橙",
-        "流动光带"
+        "收腿蹲姿",
+        "低机位仰拍"
       ],
-      "sampleId": "1:49",
-      "collectedAt": "2026-09-08"
+      "sampleId": "240:86892",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-725853664984482159",
+      "category": "character-action",
+      "title": "扶镜俯身看向镜头",
+      "src": "assets/inspiration/725853664984482159.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/725853664984482159/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "一手扶墨镜，身体前倾，头肩与脚部形成清晰俯拍缩短关系。",
+      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
+      "tags": [
+        "前倾靠近镜头",
+        "高机位俯拍"
+      ],
+      "sampleId": "240:86871",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-725853664984482134",
+      "category": "character-action",
+      "title": "抬脚朝镜头的坐姿",
+      "src": "assets/inspiration/725853664984482134.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/725853664984482134/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "抬起的鞋底成为前景，上身靠后，完整身体便于理解脚与躯干的透视。",
+      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
+      "tags": [
+        "坐姿抬腿",
+        "低机位仰拍"
+      ],
+      "sampleId": "240:86889",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-725853664984482147",
+      "category": "character-action",
+      "title": "伸腿坐地的广角透视",
+      "src": "assets/inspiration/725853664984482147.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/725853664984482147/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "双腿向镜头方向展开，鞋底放大而肩部收小，构图完整且背景简洁。",
+      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
+      "tags": [
+        "坐姿展开肢体",
+        "广角近拍"
+      ],
+      "sampleId": "240:86889",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-725853664984482168",
+      "category": "character-action",
+      "title": "俯拍屈腿与双臂侧展",
+      "src": "assets/inspiration/725853664984482168.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/725853664984482168/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "一腿弯起、另一腿伸出，手臂向侧后方打开，形成清楚的俯拍动作。",
+      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
+      "tags": [
+        "坐姿展开肢体",
+        "高机位俯拍"
+      ],
+      "sampleId": "240:86877",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-725853664984482152",
+      "category": "character-action",
+      "title": "撑地坐姿与单脚前伸",
+      "src": "assets/inspiration/725853664984482152.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/725853664984482152/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "一手撑地、另一手搭膝，鞋底靠近镜头，支撑关系和腿部方向容易复用。",
+      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
+      "tags": [
+        "坐姿展开肢体",
+        "低机位仰拍"
+      ],
+      "sampleId": "240:86889",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-725853664984482136",
+      "category": "character-action",
+      "title": "坐于方块的抬腿姿势",
+      "src": "assets/inspiration/725853664984482136.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/725853664984482136/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "一脚抬向镜头、另一脚落地，双手分别搭膝，让身体支点清楚可见。",
+      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
+      "tags": [
+        "坐姿抬腿",
+        "低机位仰拍"
+      ],
+      "sampleId": "240:86889",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-725853664984482217",
+      "category": "character-action",
+      "title": "俯卧撑地与双腿后屈",
+      "src": "assets/inspiration/725853664984482217.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/725853664984482217/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "前臂支撑身体，双膝屈起、鞋底朝上，完整展示俯卧时的肢体关系。",
+      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
+      "tags": [
+        "俯卧屈腿",
+        "广角近拍"
+      ],
+      "sampleId": "240:86889",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-725853664984482219",
+      "category": "character-action",
+      "title": "侧向撑地的伸腿坐姿",
+      "src": "assets/inspiration/725853664984482219.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/725853664984482219/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "双手向后支撑，上身微后仰，两腿向侧前方伸展，姿势清楚且背景干净。",
+      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
+      "tags": [
+        "坐姿展开肢体",
+        "平视侧拍"
+      ],
+      "sampleId": "240:86889",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-725853664984482145",
+      "category": "character-action",
+      "title": "分腿坐姿与掌心向上",
+      "src": "assets/inspiration/725853664984482145.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/725853664984482145/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "双膝打开、双臂展开且掌心向上，鞋部近大远小，形成开放的动作。",
+      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
+      "tags": [
+        "坐姿展开肢体",
+        "低机位仰拍"
+      ],
+      "sampleId": "240:86883",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-725853664984482182",
+      "category": "character-action",
+      "title": "双手框景的俯拍动作",
+      "src": "assets/inspiration/725853664984482182.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/725853664984482182/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "戴手套的双手在头部前方形成框景，掌面和身体缩短关系明确。",
+      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
+      "tags": [
+        "双臂框住头部",
+        "高机位俯拍"
+      ],
+      "sampleId": "240:86886",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-725853664984482214",
+      "category": "character-action",
+      "title": "后仰坐姿与前伸长腿",
+      "src": "assets/inspiration/725853664984482214.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/725853664984482214/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "身体后仰，一条腿向镜头伸出，另一条腿弯起，可参考腿部透视与上身反向平衡。",
+      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
+      "tags": [
+        "坐姿抬腿",
+        "低机位仰拍"
+      ],
+      "sampleId": "240:86889",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-725853664984482210",
+      "category": "character-action",
+      "title": "分腿低坐与双手撑膝",
+      "src": "assets/inspiration/725853664984482210.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/725853664984482210/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "两腿向左右伸展，双手支撑在膝部附近，身体重心与展开方向清晰。",
+      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
+      "tags": [
+        "坐姿展开肢体",
+        "平视侧拍"
+      ],
+      "sampleId": "240:86889",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-908460556100365934",
+      "category": "character-action",
+      "title": "俯身撑膝与侧向伸臂",
+      "src": "assets/inspiration/908460556100365934.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/908460556100365934/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "前倾身体，一手撑膝、另一手侧伸，靴子在近景被放大，动作框架完整。",
+      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
+      "tags": [
+        "侧倾撑膝",
+        "低机位仰拍"
+      ],
+      "sampleId": "240:86874",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-908460556100365843",
+      "category": "character-action",
+      "title": "单腿抬膝与扶髋平衡",
+      "src": "assets/inspiration/908460556100365843.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/908460556100365843/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "站立腿支撑身体，另一腿向前抬起，一手扶髋，可研究单腿平衡与低机位透视。",
+      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
+      "tags": [
+        "单腿抬膝",
+        "低机位仰拍"
+      ],
+      "sampleId": "240:86877",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-908460556100365944",
+      "category": "character-action",
+      "title": "屈膝坐姿与侧向撑地",
+      "src": "assets/inspiration/908460556100365944.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/908460556100365944/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "一手撑地、另一手搭膝，双腿一曲一伸，可清楚观察坐姿支点与肩部倾斜。",
+      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
+      "tags": [
+        "坐姿展开肢体",
+        "平视侧拍"
+      ],
+      "sampleId": "240:86889",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-389491067794533317",
+      "category": "model-launch-background",
+      "title": "黄色亮场向暖白扩散",
+      "src": "assets/inspiration/389491067794533317.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/389491067794533317/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "黄色从右侧自然向暖白扩散，低细节区域适合安排文字。",
+      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
+      "tags": [
+        "明黄暖白",
+        "柔焦色场"
+      ],
+      "sampleId": "1:67",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-389491067790184160",
+      "category": "model-launch-background",
+      "title": "荧光粉向深紫下沉",
+      "src": "assets/inspiration/389491067790184160.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/389491067790184160/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "高饱和粉色向底部深紫连续过渡，可参考上下亮度层级。",
+      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
+      "tags": [
+        "紫粉",
+        "柔焦色场"
+      ],
+      "sampleId": "93:3",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-389491067790184187",
+      "category": "model-launch-background",
+      "title": "柠檬黄与浅绿的柔和弧场",
+      "src": "assets/inspiration/389491067790184187.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/389491067790184187/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "黄色与浅绿色沿宽弧自然融合，整幅色场明亮且没有前景图形。",
+      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
+      "tags": [
+        "青绿奶黄",
+        "柔焦色场"
+      ],
+      "sampleId": "1:46",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-1118370519948909668",
+      "category": "model-launch-background",
+      "title": "青绿纵向柔焦色场",
+      "src": "assets/inspiration/1118370519948909668.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/1118370519948909668/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "青绿深浅自然交融，纵向流动方向明确，可用于配色与留白探索。",
+      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
+      "tags": [
+        "青绿",
+        "柔焦色场"
+      ],
+      "sampleId": "1:6",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-1118370519949900230",
+      "category": "model-launch-background",
+      "title": "玫红青蓝与暖黄的交汇",
+      "src": "assets/inspiration/1118370519949900230.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/1118370519949900230/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "大面积玫红、青蓝和暖黄通过模糊边界融合，适合参考多色分布。",
+      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
+      "tags": [
+        "玫红青蓝暖黄",
+        "柔焦色场"
+      ],
+      "sampleId": "1:3",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-1118370519949900229",
+      "category": "model-launch-background",
+      "title": "青绿紫蓝与玫红的连续色场",
+      "src": "assets/inspiration/1118370519949900229.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/1118370519949900229/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "青绿、紫蓝和玫红分布在不同角落，通过宽阔柔焦过渡连接。",
+      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
+      "tags": [
+        "青绿紫粉",
+        "柔焦色场"
+      ],
+      "sampleId": "1:6",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-1118370519949913581",
+      "category": "model-launch-background",
+      "title": "紫蓝层叠的柔焦亮场",
+      "src": "assets/inspiration/1118370519949913581.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/1118370519949913581/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "紫色与蓝色以宽幅云状过渡交融，画面保留柔和且连续的亮度变化。",
+      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
+      "tags": [
+        "紫蓝",
+        "柔焦色场"
+      ],
+      "sampleId": "93:3",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-576812664820154286",
+      "category": "model-launch-background",
+      "title": "红橙与亮黄的双向光场",
+      "src": "assets/inspiration/576812664820154286.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/576812664820154286/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "橙红在两侧收拢，亮黄自然铺向中心，适合研究暖色背景的视觉重心。",
+      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
+      "tags": [
+        "红橙亮黄",
+        "柔焦色场"
+      ],
+      "sampleId": "1:67",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-644437027941844452",
+      "category": "model-launch-background",
+      "title": "玫红与蜜桃金的柔亮渐变",
+      "src": "assets/inspiration/644437027941844452.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/644437027941844452/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "玫红、桃色和暖黄交汇，颜色干净且亮部充分，可参考文案区的暖光。",
+      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
+      "tags": [
+        "玫红蜜桃金",
+        "柔焦色场"
+      ],
+      "sampleId": "1:3",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-400468591859724004",
+      "category": "model-launch-background",
+      "title": "青绿暖黄与紫红的斜向融合",
+      "src": "assets/inspiration/400468591859724004.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/400468591859724004/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "绿色与暖黄沿斜向连接到橙红和紫色，可参考完整色场的冷暖布局。",
+      "difference": "此图保留来源预览水印，仅参考配色和过渡关系；用于设计时需重新制作背景。",
+      "tags": [
+        "青绿黄紫红",
+        "柔焦色场"
+      ],
+      "sampleId": "1:6",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-316237205097846023",
+      "category": "model-launch-background",
+      "title": "暖黄亮核与粉绿柔焦交汇",
+      "src": "assets/inspiration/316237205097846023.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/316237205097846023/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "暖黄集中在中央，粉色与绿色在边缘自然相接，适合参考明亮背景的色彩重心。",
+      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
+      "tags": [
+        "粉绿奶黄",
+        "柔焦色场"
+      ],
+      "sampleId": "1:67",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-294563631894095934",
+      "category": "character-action",
+      "title": "分腿坐姿与前倾撑膝",
+      "src": "assets/inspiration/294563631894095934.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/294563631894095934/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "双脚向两侧打开，上身前倾并用手支撑，重心与关节关系清晰。",
+      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
+      "tags": [
+        "坐姿展开肢体",
+        "平视侧拍"
+      ],
+      "sampleId": "240:86889",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-1075867798495688264",
+      "category": "character-action",
+      "title": "单腿抬起的托腮坐姿",
+      "src": "assets/inspiration/1075867798495688264.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/1075867798495688264/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "一腿侧抬搭凳，手肘撑膝并托腮，完整构图便于拆解身体支点。",
+      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
+      "tags": [
+        "坐姿抬腿",
+        "平视侧拍"
+      ],
+      "sampleId": "240:86892",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-320177854769685208",
+      "category": "character-action",
+      "title": "大步前行与双臂后展",
+      "src": "assets/inspiration/320177854769685208.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/320177854769685208/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "长步幅和向后展开的手臂形成运动张力，四肢完整且轮廓清晰。",
+      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
+      "tags": [
+        "迈步展开肢体",
+        "平视侧拍"
+      ],
+      "sampleId": "240:86874",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-791718809540229346",
+      "category": "model-launch-background",
+      "title": "紫蓝与青色的底部亮场",
+      "src": "assets/inspiration/791718809540229346.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/791718809540229346/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "紫色与蓝色在顶部柔和展开，青色在底部形成亮场，过渡连续且无前景图形。",
+      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
+      "tags": [
+        "青蓝深紫",
+        "柔焦色场"
+      ],
+      "sampleId": "93:3",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-791718809529439100",
+      "category": "model-launch-background",
+      "title": "粉紫与青蓝的柔光交汇",
+      "src": "assets/inspiration/791718809529439100.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/791718809529439100/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "粉紫和青蓝在整幅背景里自然相接，暖亮区域点缀其中，适合观察柔光过渡。",
+      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
+      "tags": [
+        "粉蓝奶黄",
+        "柔焦色场"
+      ],
+      "sampleId": "1:3",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-791718809529439121",
+      "category": "model-launch-background",
+      "title": "青蓝底部与粉橙亮带",
+      "src": "assets/inspiration/791718809529439121.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/791718809529439121/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "粉橙亮带沿画面向下展开，青蓝保留在边缘，适合研究大块留白与色彩分布。",
+      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
+      "tags": [
+        "蓝紫暖橙",
+        "柔焦色场"
+      ],
+      "sampleId": "1:3",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-791718809539528824",
+      "category": "model-launch-background",
+      "title": "暖橙粉紫与浅青的柔焦色场",
+      "src": "assets/inspiration/791718809539528824.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/791718809539528824/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "暖橙与粉紫在上下错位，浅青在中间自然衔接，颜色明快且整幅可作背景。",
+      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
+      "tags": [
+        "蓝紫暖橙",
+        "柔焦色场"
+      ],
+      "sampleId": "1:3",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "pinterest-791718809538597256",
+      "category": "model-launch-background",
+      "title": "青蓝与明黄环绕中央亮区",
+      "src": "assets/inspiration/791718809538597256.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/791718809538597256/",
+      "attribution": "Pinterest 公开原帖预览；原作者待核实",
+      "reason": "青蓝与明黄从四周进入，中央保持干净亮度，便于参考文案安全区。",
+      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
+      "tags": [
+        "青蓝明黄",
+        "柔焦色场"
+      ],
+      "sampleId": "1:6",
+      "collectedAt": "2026-09-09"
     }
   ]
 }

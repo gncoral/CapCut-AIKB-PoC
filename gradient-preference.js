@@ -619,6 +619,12 @@
     return selected;
   }
 
+  window.gradientBatchFloral=()=>{
+    if(!activeModel)return;
+    const random=prefRng(Math.floor(Math.random()*1e9));
+    const params=sampleParams(random,activeModel.templates[PILOT_TEMPLATE]);
+    writeCandidateToProfile({params,nodes:makeNodes(params,random),phase:random(),warp:.028+random()*.045,seed:Math.floor(random()*1e9)});
+  };
   function snapshotProfile(templateKey) {
     const profile = fieldProfiles[templateKey];
     return {

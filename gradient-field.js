@@ -851,7 +851,7 @@ function renderContinuousField(target, sceneKey, outputScale, useLegacyPetal = f
   fieldGL.uniform2f(uniform('res'), fieldWidth, fieldHeight);
   profile.nodes.forEach((node, index) => fieldGL.uniform2f(uniform(`n${index}`), node[0], node[1]));
   colors.forEach((color, index) => fieldGL.uniform3f(uniform(`c${index}`), color[0], color[1], color[2]));
-  const livePhase = target === canvas ? fieldMotion : 0;
+  const livePhase = target === canvas && !state.batchStatic ? fieldMotion : 0;
   fieldGL.uniform1f(uniform('phase'), profile.phase + (state.seed % 997) / 997 + livePhase);
   fieldGL.uniform1f(uniform('warp'), profile.warp * (.72 + state.blur / 140));
   fieldGL.uniform1f(uniform('softness'), state.blur / 100);
@@ -1105,7 +1105,7 @@ const animateField = now => {
   const elapsed = Math.min(80, now - fieldAnimationTime);
   fieldAnimationTime = now;
   const isMacroFloral = ['petalStack', 'treeShadow', 'oilBrush'].includes(state.template);
-  if (!isMacroFloral && !document.hidden && !fieldDragging && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if (!state.batchStatic && !isMacroFloral && !document.hidden && !fieldDragging && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     fieldMotion = (fieldMotion + elapsed * .000075) % 1;
     const useLegacyPetal = state.template === 'petal' || state.template === 'petalShadow';
     renderContinuousField(canvas, state.scene, 2, useLegacyPetal);

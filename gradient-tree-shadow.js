@@ -249,6 +249,12 @@
     out.drawImage(result, 0, 0);
   }
 
+  window.gradientBatchAdapters=window.gradientBatchAdapters||{};
+  window.gradientBatchAdapters[KEY]={
+    get:()=>({settings:{...settings},seed,selectedPreset}),
+    set:v=>{settings={...v.settings};seed=v.seed;selectedPreset=v.selectedPreset;syncPanel();},
+    vary:()=>{seed=Math.floor(Math.random()*1e9);selectedPreset=-1;for(const [k,,min,max] of controls){if(k==='quiet')continue;settings[k]=Math.round(clamp(settings[k]+(Math.random()-.5)*(max-min)*.45,min,max));}syncPanel();}
+  };
   const previousRender = render;
   render = function(target = canvas, sceneKey = state.scene, outputScale = 1) {
     if (state.template !== KEY) return previousRender(target, sceneKey, outputScale);

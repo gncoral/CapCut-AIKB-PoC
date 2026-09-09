@@ -171,6 +171,12 @@
   panel.querySelector('#oil-shuffle').onclick=shuffle;
   const priorRandom=document.getElementById('random').onclick;document.getElementById('random').onclick=e=>state.template===KEY?shuffle():priorRandom(e);
   const priorReset=fieldReset.onclick;fieldReset.onclick=e=>{if(state.template!==KEY)return priorReset(e);params={...defaults};seed=82731;selected=0;syncPanel();render();thumbnail();toast('已恢复油画笔触默认效果');};
+  window.gradientBatchAdapters=window.gradientBatchAdapters||{};
+  window.gradientBatchAdapters[KEY]={
+    get:()=>({params:{...params},seed,selected}),
+    set:v=>{params={...v.params};seed=v.seed;selected=v.selected;syncPanel();},
+    vary:()=>{seed=Math.floor(Math.random()*1e9);selected=-1;for(const [k,,min,max] of controls){if(k==='quiet')continue;params[k]=Math.round(clamp(params[k]+(Math.random()-.5)*(max-min)*.45,min,max));}syncPanel();}
+  };
   syncPanel();sync();thumbnail();
   if(new URLSearchParams(location.search).get('template')===KEY){
     if(new URLSearchParams(location.search).get('oilPreset')==='soft'){params={...presets[2][1]};selected=2;syncPanel();}

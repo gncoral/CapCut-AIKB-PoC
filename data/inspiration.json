@@ -304,21 +304,658 @@
   ],
   "items": [
     {
+      "id": "openai-openai-joins-ports-pike-project",
+      "category": "model-launch-background",
+      "title": "粉紫色场中的暖金亮部",
+      "src": "assets/inspiration/openai-openai-joins-ports-pike-project.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/openai-joins-ports-pike-project/",
+      "reason": "粉紫铺底，暖金在角落自然透出，适合参考柔和多色之间的亮度层次。",
+      "tags": [
+        "粉紫暖金",
+        "柔焦色场",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，粉紫暖金配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-builders-guide-to-gpt-5-6",
+      "category": "model-launch-background",
+      "title": "桃粉与青柠的弯曲交汇",
+      "src": "assets/inspiration/openai-builders-guide-to-gpt-5-6.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/builders-guide-to-gpt-5-6/",
+      "reason": "粉色光带弯曲穿过桃色区域，底部少量青柠色带来清新的冷暖变化。",
+      "tags": [
+        "桃粉青柠",
+        "弧形色带",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，桃粉青柠配色，弧形色带，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-previewing-ultrafast",
+      "category": "model-launch-background",
+      "title": "浅蓝与青绿的放射光带",
+      "src": "assets/inspiration/openai-previewing-ultrafast.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/previewing-ultrafast/",
+      "reason": "浅蓝宽光带从左下向外展开，绿色位于边缘，适合观察方向性和留白。",
+      "tags": [
+        "蓝绿青柠",
+        "放射光带",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，蓝绿青柠配色，放射光带，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-how-enterprises-put-ai-to-work",
+      "category": "model-launch-background",
+      "title": "蓝紫色中的柔软弧光",
+      "src": "assets/inspiration/openai-how-enterprises-put-ai-to-work.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/how-enterprises-put-ai-to-work/",
+      "reason": "浅紫色弧面在蓝色底上柔和展开，亮区层叠但没有明显前景物件。",
+      "tags": [
+        "蓝紫色",
+        "弧形柔光",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，蓝紫色配色，弧形柔光，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-building-an-ai-native-finance-function",
+      "category": "model-launch-background",
+      "title": "粉紫到亮蓝的斜向融合",
+      "src": "assets/inspiration/openai-building-an-ai-native-finance-function.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/building-an-ai-native-finance-function/",
+      "reason": "粉紫亮区自然融入青蓝，细腻颗粒和斜向色带形成轻盈的过渡。",
+      "tags": [
+        "粉紫亮蓝",
+        "斜向柔光",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，粉紫亮蓝配色，斜向柔光，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-putting-frontier-cyber-models-in-more-trusted-hands",
+      "category": "model-launch-background",
+      "title": "杏橙色的层叠暖光",
+      "src": "assets/inspiration/openai-putting-frontier-cyber-models-in-more-trusted-hands.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/putting-frontier-cyber-models-in-more-trusted-hands/",
+      "reason": "杏色与橙色沿柔和曲线层叠，局部亮带让同色系背景保留变化。",
+      "tags": [
+        "杏橙暖色",
+        "层叠柔光",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，杏橙暖色配色，层叠柔光，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-premium-seats-chatgpt-business",
+      "category": "model-launch-background",
+      "title": "浅紫与奶油桃色的微光",
+      "src": "assets/inspiration/openai-premium-seats-chatgpt-business.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/premium-seats-chatgpt-business/",
+      "reason": "淡紫与奶油桃色交融，低对比亮部细腻，可作为浅色背景的配色参考。",
+      "tags": [
+        "浅紫奶油桃",
+        "柔焦色场",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，浅紫奶油桃配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-responding-next-frontier-critical-cyber-capabilities",
+      "category": "model-launch-background",
+      "title": "青柠色穿过天蓝光场",
+      "src": "assets/inspiration/openai-responding-next-frontier-critical-cyber-capabilities.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/responding-next-frontier-critical-cyber-capabilities/",
+      "reason": "高饱和青柠色与宽幅天蓝光带交替，柔边保留清晰的流向和节奏。",
+      "tags": [
+        "天蓝青柠",
+        "斜向光带",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，天蓝青柠配色，斜向光带，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-openai-and-apa-partner-to-advance-responsible-ai",
+      "category": "model-launch-background",
+      "title": "蓝紫放射与柔白亮场",
+      "src": "assets/inspiration/openai-openai-and-apa-partner-to-advance-responsible-ai.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/openai-and-apa-partner-to-advance-responsible-ai/",
+      "reason": "蓝紫光线从左侧展开，柔白区域占据右侧，形成明显的视觉重心和留白。",
+      "tags": [
+        "蓝紫柔白",
+        "放射光场",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，蓝紫柔白配色，放射光场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-apple-is-getting-this-wrong",
+      "category": "model-launch-background",
+      "title": "青色光场中的斜向留白",
+      "src": "assets/inspiration/openai-apple-is-getting-this-wrong.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/apple-is-getting-this-wrong/",
+      "reason": "青色深浅在纵向融合，底部白色斜光带为画面增加透亮的空间。",
+      "tags": [
+        "青蓝色",
+        "斜向柔光",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，青蓝色配色，斜向柔光，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-building-abundant-intelligence",
+      "category": "model-launch-background",
+      "title": "蓝色叠光与顶部亮场",
+      "src": "assets/inspiration/openai-building-abundant-intelligence.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/building-abundant-intelligence/",
+      "reason": "顶部浅蓝亮区融入多层蓝色光幕，适合观察蓝色层次和纵向走势。",
+      "tags": [
+        "青蓝色",
+        "层叠光场",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，青蓝色配色，层叠光场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-how-ai-is-expanding-what-people-do-at-work",
+      "category": "model-launch-background",
+      "title": "青柠绿向奶油亮部扩散",
+      "src": "assets/inspiration/openai-how-ai-is-expanding-what-people-do-at-work.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/how-ai-is-expanding-what-people-do-at-work/",
+      "reason": "饱和青柠绿形成大块柔和色域，边缘奶油亮部自然过渡，参考清爽配色。",
+      "tags": [
+        "青柠奶黄",
+        "弧形柔光",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，青柠奶黄配色，弧形柔光，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-how-news-organizations-are-using-ai",
+      "category": "model-launch-background",
+      "title": "浅青绿的交错柔光",
+      "src": "assets/inspiration/openai-how-news-organizations-are-using-ai.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/how-news-organizations-are-using-ai/",
+      "reason": "浅青色光带与薄荷绿阴影交错，宽幅虚化让层次保持轻柔。",
+      "tags": [
+        "浅青薄荷",
+        "交错柔光",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，浅青薄荷配色，交错柔光，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-hugging-face-model-evaluation-security-incident",
+      "category": "model-launch-background",
+      "title": "青绿色中的柔焦曲面",
+      "src": "assets/inspiration/openai-hugging-face-model-evaluation-security-incident.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/hugging-face-model-evaluation-security-incident/",
+      "reason": "浅色弧光与饱和青绿交织，参考曲面走势和局部阴影的尺度。",
+      "tags": [
+        "青绿色",
+        "弧形色带",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，青绿色配色，弧形色带，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-safety-alignment-long-horizon-models",
+      "category": "model-launch-background",
+      "title": "粉蓝色场与奶白流光",
+      "src": "assets/inspiration/openai-safety-alignment-long-horizon-models.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/safety-alignment-long-horizon-models/",
+      "reason": "奶白弧光穿过粉蓝色域，宽窄变化形成连续的画面节奏。",
+      "tags": [
+        "粉蓝柔白",
+        "弧形柔光",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，粉蓝柔白配色，弧形柔光，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-a-scorecard-for-the-ai-age",
+      "category": "model-launch-background",
+      "title": "蓝紫光幕中的粉色细光",
+      "src": "assets/inspiration/openai-a-scorecard-for-the-ai-age.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/a-scorecard-for-the-ai-age/",
+      "reason": "蓝紫光幕沿纵向展开，粉色细光带在右侧形成柔和的层次变化。",
+      "tags": [
+        "蓝紫粉色",
+        "纵向光幕",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，蓝紫粉色配色，纵向光幕，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-managing-ai-investments-in-agentic-era",
+      "category": "model-launch-background",
+      "title": "天蓝色的纵向柔光",
+      "src": "assets/inspiration/openai-managing-ai-investments-in-agentic-era.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/managing-ai-investments-in-agentic-era/",
+      "reason": "天蓝底上浅色光带纵向流动，少量深蓝控制画面重心。",
+      "tags": [
+        "天蓝色",
+        "纵向柔光",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，天蓝色配色，纵向柔光，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-gpt-5-6-preferred-model-microsoft-365-copilot",
+      "category": "model-launch-background",
+      "title": "浅蓝交错的斜向光带",
+      "src": "assets/inspiration/openai-gpt-5-6-preferred-model-microsoft-365-copilot.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/gpt-5-6-preferred-model-microsoft-365-copilot/",
+      "reason": "浅蓝与淡紫在多条斜向光带间自然融合，适合参考流动层次。",
+      "tags": [
+        "浅蓝淡紫",
+        "交错光带",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，浅蓝淡紫配色，交错光带，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-bio-bug-bounty",
+      "category": "model-launch-background",
+      "title": "薄荷青与浅绿的透亮弧场",
+      "src": "assets/inspiration/openai-bio-bug-bounty.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/bio-bug-bounty/",
+      "reason": "浅绿色弧场融入薄荷青，细长亮带带来轻盈的方向变化。",
+      "tags": [
+        "薄荷浅绿",
+        "弧形色场",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，薄荷浅绿配色，弧形色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-how-agents-are-transforming-work",
+      "category": "model-launch-background",
+      "title": "浅蓝留白与底部青蓝弧光",
+      "src": "assets/inspiration/openai-how-agents-are-transforming-work.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/how-agents-are-transforming-work/",
+      "reason": "大面积浅蓝保持通透，底部青蓝弧光与窄幅深色形成柔和起伏，可参考留白和视觉重心。",
+      "tags": [
+        "浅蓝青色",
+        "弧形柔光",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，浅蓝青色配色，弧形柔光，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-codex-quantum-computing-experiments",
+      "category": "model-launch-background",
+      "title": "粉绿交织的斜向柔光",
+      "src": "assets/inspiration/openai-codex-quantum-computing-experiments.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/codex-quantum-computing-experiments/",
+      "reason": "粉色铺底，浅绿光带斜向穿过；多层虚化边缘带来轻盈的流动感。",
+      "tags": [
+        "粉绿暖色",
+        "斜向柔光",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，粉绿暖色配色，斜向柔光，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-the-work-now-within-reach",
+      "category": "model-launch-background",
+      "title": "粉黄相融的明亮色场",
+      "src": "assets/inspiration/openai-the-work-now-within-reach.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/the-work-now-within-reach/",
+      "reason": "粉色与柠檬黄从两端自然融合，中央亮区可参考为标题留白。",
+      "tags": [
+        "粉黄暖色",
+        "柔焦色场",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，粉黄暖色配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-navier-stokes-solution",
+      "category": "model-launch-background",
+      "title": "淡紫蓝与白色弧光",
+      "src": "assets/inspiration/openai-navier-stokes-solution.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/navier-stokes-solution/",
+      "reason": "大面积浅蓝淡紫承接柔白弧光，适合观察低对比层次和亮部留白。",
+      "tags": [
+        "浅蓝淡紫",
+        "弧形柔光",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，浅蓝淡紫配色，弧形柔光，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-teen-development-research-grants",
+      "category": "model-launch-background",
+      "title": "橙金纵向光幕",
+      "src": "assets/inspiration/openai-teen-development-research-grants.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/teen-development-research-grants/",
+      "reason": "深浅橙色沿纵向展开，奶油色亮带构成柔和起伏，保留暖色的饱和度。",
+      "tags": [
+        "橙金暖色",
+        "纵向光幕",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，橙金暖色配色，纵向光幕，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-supporting-journalism-from-classrooms-to-newsrooms",
+      "category": "model-launch-background",
+      "title": "湛蓝斜向柔焦层次",
+      "src": "assets/inspiration/openai-supporting-journalism-from-classrooms-to-newsrooms.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/supporting-journalism-from-classrooms-to-newsrooms/",
+      "reason": "天蓝到高饱和蓝的宽幅过渡形成斜向走势，没有前景元素抢占背景。",
+      "tags": [
+        "青蓝色",
+        "斜向柔光",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，青蓝色配色，斜向柔光，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-research-acceleration-view-inside-openai",
+      "category": "model-launch-background",
+      "title": "青柠绿与蓝色的转折光场",
+      "src": "assets/inspiration/openai-research-acceleration-view-inside-openai.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/research-acceleration-view-inside-openai/",
+      "reason": "绿色从左上向蓝色区域展开，转折处的虚实变化可作为色场结构参考。",
+      "tags": [
+        "蓝绿青柠",
+        "转折色场",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，蓝绿青柠配色，转折色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-daybreak-for-frontline-defenders",
+      "category": "model-launch-background",
+      "title": "橙色包裹的奶油柔光",
+      "src": "assets/inspiration/openai-daybreak-for-frontline-defenders.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/daybreak-for-frontline-defenders/",
+      "reason": "奶油亮区被暖橙包围，弧形边界自然虚化，适合观察暖色层次。",
+      "tags": [
+        "橙金暖色",
+        "弧形柔光",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，橙金暖色配色，弧形柔光，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-safety-overview-gpt-6-astra",
+      "category": "model-launch-background",
+      "title": "淡紫与青蓝的斜向光带",
+      "src": "assets/inspiration/openai-safety-overview-gpt-6-astra.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/safety-overview-gpt-6-astra/",
+      "reason": "淡紫色上方留白与青蓝斜带相接，亮部宽阔，过渡清透。",
+      "tags": [
+        "蓝紫青色",
+        "斜向光带",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，蓝紫青色配色，斜向光带，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-ai-native-company-workflows",
+      "category": "model-launch-background",
+      "title": "青蓝底上的柠檬黄边光",
+      "src": "assets/inspiration/openai-ai-native-company-workflows.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/ai-native-company-workflows/",
+      "reason": "大面积青蓝保持干净，左下黄绿色边光为色场增加小面积冷暖变化。",
+      "tags": [
+        "青蓝柠檬黄",
+        "边缘柔光",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，青蓝柠檬黄配色，边缘柔光，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-path-to-astra",
+      "category": "model-launch-background",
+      "title": "橙金流动的柔和明暗",
+      "src": "assets/inspiration/openai-path-to-astra.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/path-to-astra/",
+      "reason": "金黄与橙色呈纵向缓慢变化，可参考同色系渐变的层次控制。",
+      "tags": [
+        "橙金暖色",
+        "柔焦色场",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，橙金暖色配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-supporting-california-bill-advance-ai-youth-safety",
+      "category": "model-launch-background",
+      "title": "薄荷绿与翠绿的柔焦融合",
+      "src": "assets/inspiration/openai-supporting-california-bill-advance-ai-youth-safety.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/supporting-california-bill-advance-ai-youth-safety/",
+      "reason": "薄荷浅绿与饱和翠绿连续交融，下方亮区留出轻盈的视觉空间。",
+      "tags": [
+        "薄荷翠绿",
+        "柔焦色场",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，薄荷翠绿配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-expanding-access-to-ai-with-chatgpt-ads",
+      "category": "model-launch-background",
+      "title": "浅蓝淡紫的宽幅柔光",
+      "src": "assets/inspiration/openai-expanding-access-to-ai-with-chatgpt-ads.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/expanding-access-to-ai-with-chatgpt-ads/",
+      "reason": "浅蓝底部与淡紫光带相接，微量粉色点缀让轻色场保留变化。",
+      "tags": [
+        "浅蓝淡紫",
+        "斜向柔光",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，浅蓝淡紫配色，斜向柔光，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-our-decision-on-cursor-following-its-acquisition-by-spacex",
+      "category": "model-launch-background",
+      "title": "蜜桃橙与奶白的斜向光幕",
+      "src": "assets/inspiration/openai-our-decision-on-cursor-following-its-acquisition-by-spacex.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/",
+      "reason": "奶白亮带斜向穿过蜜桃橙，明暗层次柔和，暖色清晰而不浑浊。",
+      "tags": [
+        "蜜桃橙色",
+        "斜向光幕",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，蜜桃橙色配色，斜向光幕，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-supporting-next-generation-ai-startups-thailand",
+      "category": "model-launch-background",
+      "title": "桃粉交织的柔焦光幕",
+      "src": "assets/inspiration/openai-supporting-next-generation-ai-startups-thailand.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/supporting-next-generation-ai-startups-thailand/",
+      "reason": "粉红、浅紫与桃色轻柔叠加，竖向色带适合观察暖色背景的节奏。",
+      "tags": [
+        "桃粉暖色",
+        "纵向光幕",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，桃粉暖色配色，纵向光幕，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-what-students-gain-from-chatgpt-critical-thinking-training",
+      "category": "model-launch-background",
+      "title": "天蓝与浅绿的流动色带",
+      "src": "assets/inspiration/openai-what-students-gain-from-chatgpt-critical-thinking-training.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/what-students-gain-from-chatgpt-critical-thinking-training/",
+      "reason": "蓝色从绿色之间弯曲展开，宽幅柔边带来连续流动感。",
+      "tags": [
+        "天蓝浅绿",
+        "弧形色带",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，天蓝浅绿配色，弧形色带，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-expanding-our-presence-in-brazil",
+      "category": "model-launch-background",
+      "title": "青色与浅黄的透亮层次",
+      "src": "assets/inspiration/openai-expanding-our-presence-in-brazil.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/expanding-our-presence-in-brazil/",
+      "reason": "浅青、薄荷与淡黄柔和交融，弧形亮带形成通透而细腻的层次。",
+      "tags": [
+        "浅青淡黄",
+        "弧形柔光",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，浅青淡黄配色，弧形柔光，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-bringing-chatgpt-for-teachers-to-more-us-school-districts",
+      "category": "model-launch-background",
+      "title": "亮蓝光场的折叠层次",
+      "src": "assets/inspiration/openai-bringing-chatgpt-for-teachers-to-more-us-school-districts.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/bringing-chatgpt-for-teachers-to-more-us-school-districts/",
+      "reason": "高饱和蓝沿斜向展开，底部柔亮带形成第二层空间走势。",
+      "tags": [
+        "青蓝色",
+        "转折色场",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，青蓝色配色，转折色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-learning-never-stops",
+      "category": "model-launch-background",
+      "title": "浅蓝与湛蓝的柔光起伏",
+      "src": "assets/inspiration/openai-learning-never-stops.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/learning-never-stops/",
+      "reason": "浅蓝亮区沿斜向融入深蓝，色场完整，可参考蓝色明暗的自然衔接。",
+      "tags": [
+        "青蓝色",
+        "斜向柔光",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，青蓝色配色，斜向柔光，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-the-full-stack-behind-abundant-intelligence",
+      "category": "model-launch-background",
+      "title": "柠檬黄与薄荷青的交汇",
+      "src": "assets/inspiration/openai-the-full-stack-behind-abundant-intelligence.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/the-full-stack-behind-abundant-intelligence/",
+      "reason": "黄绿与薄荷青在多条柔边光带间交汇，饱和亮区保持清晰。",
+      "tags": [
+        "柠檬黄薄荷青",
+        "交汇光场",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，柠檬黄薄荷青配色，交汇光场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
+      "id": "openai-introducing-admin-plugin",
+      "category": "model-launch-background",
+      "title": "奶油黄与浅蓝的轻盈光带",
+      "src": "assets/inspiration/openai-introducing-admin-plugin.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/introducing-admin-plugin/",
+      "reason": "浅蓝从奶油黄中透出，细长柔光带提供轻盈的冷暖层次。",
+      "tags": [
+        "奶油黄浅蓝",
+        "斜向光带",
+        "OpenAI 新闻"
+      ],
+      "prompt": "抽象渐变背景，奶油黄浅蓝配色，斜向光带，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
+      "collectedAt": "2026-09-09"
+    },
+    {
       "id": "pinterest-377317275052306750",
       "category": "model-launch-background",
       "title": "紫蓝与暖橙的柔焦交汇",
       "src": "assets/inspiration/377317275052306750.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/377317275052306750/",
-      "originalUrl": "https://www.freepik.com/premium-psd/soft-gradient-background-web-social-media_418854640.htm",
-      "attribution": "来源标注 Freepik，原作者待核实",
       "reason": "青蓝、紫色与暖橙自然融合，亮部可以作为文案区域的配色参考。",
-      "difference": "画面包含资源包标题，只参考底层色场；正式设计需替换为品牌色。",
       "tags": [
         "柔焦色场",
         "冷暖交汇"
       ],
-      "sampleId": "1:3",
+      "prompt": "抽象渐变背景，蓝紫暖橙配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-07"
     },
     {
@@ -328,15 +965,12 @@
       "src": "assets/inspiration/398427898298855102.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/398427898298855102/",
-      "originalUrl": "https://creativemarket.com/feelthis/10882280-Waves-Liquid-Gradient-Textures",
-      "attribution": "来源链接标注 feelthis / Creative Market",
       "reason": "紫色波形与粉橙亮部形成柔和起伏，可参考色块的走势和暖色落点。",
-      "difference": "原图有文字且为竖版；用于横幅时需要重新安排留白。",
       "tags": [
         "流动渐变",
         "暖色落点"
       ],
-      "sampleId": "1:49",
+      "prompt": "抽象渐变背景，紫粉暖橙配色，流动光带，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-07"
     },
     {
@@ -346,15 +980,12 @@
       "src": "assets/inspiration/723038915191404823.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/723038915191404823/",
-      "originalUrl": "https://www.teahub.io/viewwp/TRxJxb_neon-colors-gradient-blur-colorful-wallpaper-blurred-background/",
-      "attribution": "原作者待核实",
       "reason": "青蓝光带从深色背景中自然浮现，可参考高饱和冷色之间的融合。",
-      "difference": "整体比多数上新样本更暗，只取光带关系，不照搬明暗比例。",
       "tags": [
         "冷色渐变",
         "纵向光带"
       ],
-      "sampleId": "1:34",
+      "prompt": "抽象渐变背景，青蓝深紫配色，流动光带，深色高对比，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-07"
     },
     {
@@ -364,15 +995,12 @@
       "src": "assets/inspiration/474989091969747795.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/474989091969747795/",
-      "originalUrl": "",
-      "attribution": "原作者待核实",
       "reason": "人物前倾靠近镜头，头部与身体形成清楚的透视差，白底保持动作突出。",
-      "difference": "透视比样本更夸张；重点参考前倾姿态，不照搬五官变形。",
       "tags": [
         "前倾俯拍",
         "干净背景"
       ],
-      "sampleId": "240:86871",
+      "prompt": "商业时尚人物摄影，前倾靠近镜头，高机位俯拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-07"
     },
     {
@@ -382,15 +1010,12 @@
       "src": "assets/inspiration/76420524923441183.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/76420524923441183/",
-      "originalUrl": "https://www.yhansonphotography.ca/",
-      "attribution": "原帖署名 Y Hanson Photography",
       "reason": "手掌靠近镜头、身体后撤，前后层次明确；与样本中的前伸手势方向接近。",
-      "difference": "原图带室内布景和遮挡，可只取手掌角度与身体关系。",
       "tags": [
         "手掌前伸",
         "广角透视"
       ],
-      "sampleId": "240:86874",
+      "prompt": "商业时尚人物摄影，手掌伸向镜头，广角近拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-07"
     },
     {
@@ -400,15 +1025,12 @@
       "src": "assets/inspiration/387239267965190992.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/387239267965190992/",
-      "originalUrl": null,
-      "attribution": "Pinterest 公开帖子，原作者待核实",
       "reason": "粉色、淡蓝和少量奶黄色自然衔接，颜色轻盈，能参考大面积色场的融合。",
-      "difference": "整体更偏粉色，实际设计要按品牌色重新分配比例。",
       "tags": [
         "粉蓝奶黄",
         "柔焦色场"
       ],
-      "sampleId": "1:16",
+      "prompt": "抽象渐变背景，粉蓝奶黄配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-07"
     },
     {
@@ -418,15 +1040,12 @@
       "src": "assets/inspiration/550283648234413376.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/550283648234413376/",
-      "originalUrl": null,
-      "attribution": "Pinterest 公开帖子，原作者待核实",
       "reason": "大块浅粉、淡蓝与暖白交错，过渡平缓，适合参考低复杂度背景的层次。",
-      "difference": "饱和度低于部分精选样本，需要判断是否足够有活力。",
       "tags": [
         "粉蓝奶黄",
         "柔焦色场"
       ],
-      "sampleId": "1:6",
+      "prompt": "抽象渐变背景，粉蓝奶黄配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-07"
     },
     {
@@ -436,15 +1055,12 @@
       "src": "assets/inspiration/773493304797723210.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/773493304797723210/",
-      "originalUrl": null,
-      "attribution": "Pinterest 公开帖子，原作者待核实",
       "reason": "电蓝亮部沿弯曲方向铺开，能参考深色背景中的发光层次。",
-      "difference": "大面积黑底比精选样本更暗，作为深色方向的探索。",
       "tags": [
         "电蓝黑",
         "流动光带"
       ],
-      "sampleId": "1:34",
+      "prompt": "抽象渐变背景，电蓝黑配色，流动光带，深色高对比，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-07"
     },
     {
@@ -454,15 +1070,12 @@
       "src": "assets/inspiration/209769295135811817.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/209769295135811817/",
-      "originalUrl": null,
-      "attribution": "Pinterest 公开帖子，原作者待核实",
       "reason": "绿色、紫色和粉色以曲线连接，适合参考高饱和度色块的相互渗透。",
-      "difference": "荧光绿占比更高，配色需要经过品牌适配。",
       "tags": [
         "荧光绿紫粉",
         "柔焦色场"
       ],
-      "sampleId": "1:28",
+      "prompt": "抽象渐变背景，荧光绿紫粉配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-07"
     },
     {
@@ -472,15 +1085,12 @@
       "src": "assets/inspiration/344806915227642398.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/344806915227642398/",
-      "originalUrl": null,
-      "attribution": "Pinterest 公开帖子，原作者待核实",
       "reason": "低机位让膝部和手部位于前景，身体形成三角支撑，可参考坐姿的透视与稳定感。",
-      "difference": "户外建筑背景较复杂，只参考人物动作和机位。",
       "tags": [
         "坐姿展开肢体",
         "低机位仰拍"
       ],
-      "sampleId": "240:86886",
+      "prompt": "商业时尚人物摄影，坐姿展开肢体，低机位仰拍，户外建筑，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-07"
     },
     {
@@ -490,15 +1100,12 @@
       "src": "assets/inspiration/761249143283520305.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/761249143283520305/",
-      "originalUrl": null,
-      "attribution": "Pinterest 公开帖子，原作者待核实",
       "reason": "侧身下蹲、手臂自然向前，轮廓清晰，可作为站姿之外的动作参考。",
-      "difference": "画面为黑白，镜头夸张程度较低，活力表达主要来自动作。",
       "tags": [
         "侧身蹲姿",
         "平视侧拍"
       ],
-      "sampleId": "240:86868",
+      "prompt": "商业时尚人物摄影，侧身蹲姿，平视侧拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-07"
     },
     {
@@ -508,15 +1115,12 @@
       "src": "assets/inspiration/614319205429899627.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/614319205429899627/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
       "reason": "身体侧倾、两腿错开，肩胯方向形成清楚的折线。",
-      "difference": "黑白造型偏时装感，参考身体重心和轮廓。",
       "tags": [
         "侧倾撑膝",
         "平视侧拍"
       ],
-      "sampleId": "240:86889",
+      "prompt": "商业时尚人物摄影，侧倾撑膝，平视侧拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-08"
     },
     {
@@ -526,15 +1130,12 @@
       "src": "assets/inspiration/614319205429900085.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/614319205429900085/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
       "reason": "双臂前伸、腿部后收，腾空姿态形成鲜明的横向动势。",
-      "difference": "紫蓝打光与运动造型较强，主要参考肢体展开方向。",
       "tags": [
         "腾空展开肢体",
         "低机位仰拍"
       ],
-      "sampleId": "240:86883",
+      "prompt": "商业时尚人物摄影，腾空展开肢体，低机位仰拍，彩色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-08"
     },
     {
@@ -544,15 +1145,12 @@
       "src": "assets/inspiration/614319205429899551.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/614319205429899551/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
       "reason": "一只手落在头顶、另一侧手臂围住下颌，形成松弛的手臂框景。",
-      "difference": "景别更紧，适合作为手臂构图变化。",
       "tags": [
         "双臂框住头部",
         "平视近拍"
       ],
-      "sampleId": "240:86886",
+      "prompt": "商业时尚人物摄影，双臂框住头部，平视近拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-08"
     },
     {
@@ -562,15 +1160,12 @@
       "src": "assets/inspiration/614319205430125355.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/614319205430125355/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
       "reason": "上身下压、手臂向地面延伸，头肩朝向与腿部形成反向关系。",
-      "difference": "绿色服装与背景相近，实际使用需提高人物轮廓对比。",
       "tags": [
         "俯身侧撑",
         "广角近拍"
       ],
-      "sampleId": "240:86889",
+      "prompt": "商业时尚人物摄影，俯身侧撑，广角近拍，彩色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-08"
     },
     {
@@ -580,15 +1175,12 @@
       "src": "assets/inspiration/614319205429900259.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/614319205429900259/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
       "reason": "抬膝与手肘形成两组方向明确的折线，可扩展全身动作。",
-      "difference": "时装造型和灰底更严肃，只借鉴站姿。",
       "tags": [
         "单腿抬膝",
         "平视侧拍"
       ],
-      "sampleId": "240:86868",
+      "prompt": "商业时尚人物摄影，单腿抬膝，平视侧拍，深色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-08"
     },
     {
@@ -598,15 +1190,12 @@
       "src": "assets/inspiration/614319205429899523.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/614319205429899523/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
       "reason": "人物抬头向镜头靠近、手部贴近下颌，肩部收拢强化互动感。",
-      "difference": "整体明度稍暗，可在浅底中重建动作。",
       "tags": [
         "前倾托腮",
         "高机位俯拍"
       ],
-      "sampleId": "240:86892",
+      "prompt": "商业时尚人物摄影，前倾托腮，高机位俯拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-08"
     },
     {
@@ -616,15 +1205,12 @@
       "src": "assets/inspiration/614319205429899862.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/614319205429899862/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
       "reason": "双腿在前景展开、手臂向两侧拉开，姿态有活力且层次明确。",
-      "difference": "服装色彩较多，只参考四肢方向与镜头距离。",
       "tags": [
         "坐姿展开肢体",
         "广角近拍"
       ],
-      "sampleId": "240:86883",
+      "prompt": "商业时尚人物摄影，坐姿展开肢体，广角近拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-08"
     },
     {
@@ -634,15 +1220,12 @@
       "src": "assets/inspiration/614319205429899526.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/614319205429899526/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
       "reason": "手托下巴向镜头前倾，头部与下方身体形成清晰的近大远小。",
-      "difference": "条纹服装抢眼，画面造型需要品牌化简化。",
       "tags": [
         "前倾托腮",
         "高机位俯拍"
       ],
-      "sampleId": "240:86892",
+      "prompt": "商业时尚人物摄影，前倾托腮，高机位俯拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-08"
     },
     {
@@ -652,15 +1235,12 @@
       "src": "assets/inspiration/614319205429899521.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/614319205429899521/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
       "reason": "双腿向两侧伸展、双手落地，清晰展示坐姿的支撑关系。",
-      "difference": "画面横向占比大，更适合宽幅构图。",
       "tags": [
         "坐姿展开肢体",
         "平视侧拍"
       ],
-      "sampleId": "240:86868",
+      "prompt": "商业时尚人物摄影，坐姿展开肢体，平视侧拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-08"
     },
     {
@@ -670,15 +1250,12 @@
       "src": "assets/inspiration/614319205429899855.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/614319205429899855/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
       "reason": "身体斜向倾斜、一只手臂向外张开，俯拍下保留完整人物轮廓。",
-      "difference": "头肩近大远小明显，可适当减弱镜头畸变。",
       "tags": [
         "侧倾展开手臂",
         "高机位俯拍"
       ],
-      "sampleId": "240:86886",
+      "prompt": "商业时尚人物摄影，侧倾展开手臂，高机位俯拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-08"
     },
     {
@@ -688,15 +1265,12 @@
       "src": "assets/inspiration/614319205429899820.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/614319205429899820/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
       "reason": "双手在镜头前形成框景，手、脸、身体有三层空间关系。",
-      "difference": "黑色上衣与表情较冷，只参考手势与透视。",
       "tags": [
         "手掌伸向镜头",
         "高机位俯拍"
       ],
-      "sampleId": "240:86883",
+      "prompt": "商业时尚人物摄影，手掌伸向镜头，高机位俯拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-08"
     },
     {
@@ -706,15 +1280,12 @@
       "src": "assets/inspiration/319896379801449512.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/319896379801449512/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
       "reason": "双膝靠近身体、双手向下支撑，蹲姿轮廓集中，适合紧凑构图。",
-      "difference": "紫蓝色光占比较高，参考动作时可替换为干净白底。",
       "tags": [
         "收腿蹲姿",
         "广角近拍"
       ],
-      "sampleId": "240:86868",
+      "prompt": "商业时尚人物摄影，收腿蹲姿，广角近拍，彩色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-08"
     },
     {
@@ -724,15 +1295,12 @@
       "src": "assets/inspiration/319896379801449513.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/319896379801449513/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
       "reason": "一条腿向上靠近镜头、另一腿保持支撑，强化前景与人物的距离差。",
-      "difference": "服装图案和灯光较强，需要简化成品牌视觉语言。",
       "tags": [
         "坐姿抬腿",
         "低机位仰拍"
       ],
-      "sampleId": "240:86883",
+      "prompt": "商业时尚人物摄影，坐姿抬腿，低机位仰拍，彩色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-08"
     },
     {
@@ -742,15 +1310,12 @@
       "src": "assets/inspiration/319896379795062563.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/319896379795062563/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
       "reason": "人物收腿蹲下并前倾，手臂环绕膝盖，身体轮廓集中且清楚。",
-      "difference": "身体压缩程度较大，需要保留手脚辨识度。",
       "tags": [
         "收腿蹲姿",
         "高机位俯拍"
       ],
-      "sampleId": "240:86868",
+      "prompt": "商业时尚人物摄影，收腿蹲姿，高机位俯拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-08"
     },
     {
@@ -760,15 +1325,12 @@
       "src": "assets/inspiration/691232242861791631.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/691232242861791631/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
       "reason": "上身向前探出、手肘向后收，肩背形成清晰的倾斜线。",
-      "difference": "黑白剪影偏克制，可结合精选样本的活力服装。",
       "tags": [
         "前倾靠近镜头",
         "平视侧拍"
       ],
-      "sampleId": "240:86889",
+      "prompt": "商业时尚人物摄影，前倾靠近镜头，平视侧拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-08"
     },
     {
@@ -778,15 +1340,12 @@
       "src": "assets/inspiration/1069745717753335769.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/1069745717753335769/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
       "reason": "暖橙与玫红以宽幅柔和过渡连接，可参考暖色落点和连续色域。",
-      "difference": "颜色偏暖，需按品牌要求补足冷色与留白。",
       "tags": [
         "橙粉",
         "柔焦色场"
       ],
-      "sampleId": "1:3",
+      "prompt": "抽象渐变背景，橙粉配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-08"
     },
     {
@@ -796,15 +1355,12 @@
       "src": "assets/inspiration/815221970065052993.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/815221970065052993/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
       "reason": "紫蓝暗部与橙粉亮部沿弯曲方向流动，适合研究色场的转折与比例。",
-      "difference": "暖色占比更高，实际设计需要重新匹配品牌色。",
       "tags": [
         "蓝紫暖橙",
         "柔焦色场"
       ],
-      "sampleId": "1:49",
+      "prompt": "抽象渐变背景，蓝紫暖橙配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-08"
     },
     {
@@ -814,15 +1370,12 @@
       "src": "assets/inspiration/837810336943494531.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/837810336943494531/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
       "reason": "奶黄色亮部在青蓝底上横向铺开，适合观察浅色层次的连贯过渡。",
-      "difference": "低饱和处理较轻柔，需要按品牌调节活力。",
       "tags": [
         "青绿奶黄",
         "柔焦色场"
       ],
-      "sampleId": "1:6",
+      "prompt": "抽象渐变背景，青绿奶黄配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-08"
     },
     {
@@ -832,15 +1385,12 @@
       "src": "assets/inspiration/837810336942617418.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/837810336942617418/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
       "reason": "粉色带穿过浅绿色块，边缘平缓，适合研究不规则色场的走向。",
-      "difference": "画面较淡，需要检查实际文案对比和色彩强度。",
       "tags": [
         "粉绿奶黄",
         "柔焦色场"
       ],
-      "sampleId": "1:6",
+      "prompt": "抽象渐变背景，粉绿奶黄配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-08"
     },
     {
@@ -850,15 +1400,12 @@
       "src": "assets/inspiration/837810336942566992.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/837810336942566992/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
       "reason": "浅蓝色带在白底弯曲延展，适合参考明亮背景的动势与大块留白。",
-      "difference": "对比度较低，需按不同品牌补充色彩力度。",
       "tags": [
         "蓝白",
         "柔焦色场"
       ],
-      "sampleId": "1:9",
+      "prompt": "抽象渐变背景，蓝白配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-08"
     },
     {
@@ -868,15 +1415,12 @@
       "src": "assets/inspiration/623185667217365757.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/623185667217365757/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
       "reason": "暖橙包围深紫色团，交界处有粉色过渡，适合研究色团分布。",
-      "difference": "深紫区域较暗，文字需要避开过渡边缘。",
       "tags": [
         "紫粉暖橙",
         "柔焦色场"
       ],
-      "sampleId": "1:49",
+      "prompt": "抽象渐变背景，紫粉暖橙配色，柔焦色场，深色高对比，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-08"
     },
     {
@@ -886,15 +1430,12 @@
       "src": "assets/inspiration/623185667217365755.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/623185667217365755/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
       "reason": "粉橙亮部与淡绿色块相互穿插，可参考连续色场与中心文字区域的关系。",
-      "difference": "版式和文字不作为分类依据，只借鉴背景色域。",
       "tags": [
         "粉绿暖橙",
         "柔焦色场"
       ],
-      "sampleId": "1:3",
+      "prompt": "抽象渐变背景，粉绿暖橙配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-08"
     },
     {
@@ -904,15 +1445,12 @@
       "src": "assets/inspiration/623185667217365751.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/623185667217365751/",
-      "originalUrl": "",
-      "attribution": "Pinterest 公开帖子；原作者待核实",
       "reason": "青绿、紫粉和黄色沿弯曲路径流动，可参考高饱和渐变的方向性。",
-      "difference": "颜色跨度和局部对比较强，需按品牌减少颜色数量。",
       "tags": [
         "荧光绿紫粉",
         "流动光带"
       ],
-      "sampleId": "1:28",
+      "prompt": "抽象渐变背景，荧光绿紫粉配色，流动光带，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-08"
     },
     {
@@ -922,14 +1460,12 @@
       "src": "assets/inspiration/725853664984482165.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/725853664984482165/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "屈膝下蹲，一手托腮、一手自然下伸，可参考紧凑姿势与手臂长短关系。",
-      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
       "tags": [
         "收腿蹲姿",
         "低机位仰拍"
       ],
-      "sampleId": "240:86892",
+      "prompt": "商业时尚人物摄影，收腿蹲姿，低机位仰拍，彩色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-09"
     },
     {
@@ -939,14 +1475,12 @@
       "src": "assets/inspiration/725853664984482159.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/725853664984482159/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "一手扶墨镜，身体前倾，头肩与脚部形成清晰俯拍缩短关系。",
-      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
       "tags": [
         "前倾靠近镜头",
         "高机位俯拍"
       ],
-      "sampleId": "240:86871",
+      "prompt": "商业时尚人物摄影，前倾靠近镜头，高机位俯拍，彩色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-09"
     },
     {
@@ -956,14 +1490,12 @@
       "src": "assets/inspiration/725853664984482134.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/725853664984482134/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "抬起的鞋底成为前景，上身靠后，完整身体便于理解脚与躯干的透视。",
-      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
       "tags": [
         "坐姿抬腿",
         "低机位仰拍"
       ],
-      "sampleId": "240:86889",
+      "prompt": "商业时尚人物摄影，坐姿抬腿，低机位仰拍，彩色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-09"
     },
     {
@@ -973,14 +1505,12 @@
       "src": "assets/inspiration/725853664984482147.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/725853664984482147/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "双腿向镜头方向展开，鞋底放大而肩部收小，构图完整且背景简洁。",
-      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
       "tags": [
         "坐姿展开肢体",
         "广角近拍"
       ],
-      "sampleId": "240:86889",
+      "prompt": "商业时尚人物摄影，坐姿展开肢体，广角近拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-09"
     },
     {
@@ -990,14 +1520,12 @@
       "src": "assets/inspiration/725853664984482168.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/725853664984482168/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "一腿弯起、另一腿伸出，手臂向侧后方打开，形成清楚的俯拍动作。",
-      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
       "tags": [
         "坐姿展开肢体",
         "高机位俯拍"
       ],
-      "sampleId": "240:86877",
+      "prompt": "商业时尚人物摄影，坐姿展开肢体，高机位俯拍，彩色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1007,14 +1535,12 @@
       "src": "assets/inspiration/725853664984482152.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/725853664984482152/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "一手撑地、另一手搭膝，鞋底靠近镜头，支撑关系和腿部方向容易复用。",
-      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
       "tags": [
         "坐姿展开肢体",
         "低机位仰拍"
       ],
-      "sampleId": "240:86889",
+      "prompt": "商业时尚人物摄影，坐姿展开肢体，低机位仰拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1024,14 +1550,12 @@
       "src": "assets/inspiration/725853664984482136.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/725853664984482136/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "一脚抬向镜头、另一脚落地，双手分别搭膝，让身体支点清楚可见。",
-      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
       "tags": [
         "坐姿抬腿",
         "低机位仰拍"
       ],
-      "sampleId": "240:86889",
+      "prompt": "商业时尚人物摄影，坐姿抬腿，低机位仰拍，彩色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1041,14 +1565,12 @@
       "src": "assets/inspiration/725853664984482217.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/725853664984482217/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "前臂支撑身体，双膝屈起、鞋底朝上，完整展示俯卧时的肢体关系。",
-      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
       "tags": [
         "俯卧屈腿",
         "广角近拍"
       ],
-      "sampleId": "240:86889",
+      "prompt": "商业时尚人物摄影，俯卧屈腿，广角近拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1058,14 +1580,12 @@
       "src": "assets/inspiration/725853664984482219.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/725853664984482219/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "双手向后支撑，上身微后仰，两腿向侧前方伸展，姿势清楚且背景干净。",
-      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
       "tags": [
         "坐姿展开肢体",
         "平视侧拍"
       ],
-      "sampleId": "240:86889",
+      "prompt": "商业时尚人物摄影，坐姿展开肢体，平视侧拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1075,14 +1595,12 @@
       "src": "assets/inspiration/725853664984482145.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/725853664984482145/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "双膝打开、双臂展开且掌心向上，鞋部近大远小，形成开放的动作。",
-      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
       "tags": [
         "坐姿展开肢体",
         "低机位仰拍"
       ],
-      "sampleId": "240:86883",
+      "prompt": "商业时尚人物摄影，坐姿展开肢体，低机位仰拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1092,14 +1610,12 @@
       "src": "assets/inspiration/725853664984482182.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/725853664984482182/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "戴手套的双手在头部前方形成框景，掌面和身体缩短关系明确。",
-      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
       "tags": [
         "双臂框住头部",
         "高机位俯拍"
       ],
-      "sampleId": "240:86886",
+      "prompt": "商业时尚人物摄影，双臂框住头部，高机位俯拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1109,14 +1625,12 @@
       "src": "assets/inspiration/725853664984482214.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/725853664984482214/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "身体后仰，一条腿向镜头伸出，另一条腿弯起，可参考腿部透视与上身反向平衡。",
-      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
       "tags": [
         "坐姿抬腿",
         "低机位仰拍"
       ],
-      "sampleId": "240:86889",
+      "prompt": "商业时尚人物摄影，坐姿抬腿，低机位仰拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1126,14 +1640,12 @@
       "src": "assets/inspiration/725853664984482210.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/725853664984482210/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "两腿向左右伸展，双手支撑在膝部附近，身体重心与展开方向清晰。",
-      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
       "tags": [
         "坐姿展开肢体",
         "平视侧拍"
       ],
-      "sampleId": "240:86889",
+      "prompt": "商业时尚人物摄影，坐姿展开肢体，平视侧拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1143,14 +1655,12 @@
       "src": "assets/inspiration/908460556100365934.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/908460556100365934/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "前倾身体，一手撑膝、另一手侧伸，靴子在近景被放大，动作框架完整。",
-      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
       "tags": [
         "侧倾撑膝",
         "低机位仰拍"
       ],
-      "sampleId": "240:86874",
+      "prompt": "商业时尚人物摄影，侧倾撑膝，低机位仰拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1160,14 +1670,12 @@
       "src": "assets/inspiration/908460556100365843.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/908460556100365843/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "站立腿支撑身体，另一腿向前抬起，一手扶髋，可研究单腿平衡与低机位透视。",
-      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
       "tags": [
         "单腿抬膝",
         "低机位仰拍"
       ],
-      "sampleId": "240:86877",
+      "prompt": "商业时尚人物摄影，单腿抬膝，低机位仰拍，彩色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1177,14 +1685,12 @@
       "src": "assets/inspiration/908460556100365944.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/908460556100365944/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "一手撑地、另一手搭膝，双腿一曲一伸，可清楚观察坐姿支点与肩部倾斜。",
-      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
       "tags": [
         "坐姿展开肢体",
         "平视侧拍"
       ],
-      "sampleId": "240:86889",
+      "prompt": "商业时尚人物摄影，坐姿展开肢体，平视侧拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1194,14 +1700,12 @@
       "src": "assets/inspiration/389491067794533317.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/389491067794533317/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "黄色从右侧自然向暖白扩散，低细节区域适合安排文字。",
-      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
       "tags": [
         "明黄暖白",
         "柔焦色场"
       ],
-      "sampleId": "1:67",
+      "prompt": "抽象渐变背景，明黄暖白配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1211,14 +1715,12 @@
       "src": "assets/inspiration/389491067790184160.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/389491067790184160/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "高饱和粉色向底部深紫连续过渡，可参考上下亮度层级。",
-      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
       "tags": [
         "紫粉",
         "柔焦色场"
       ],
-      "sampleId": "93:3",
+      "prompt": "抽象渐变背景，紫粉配色，柔焦色场，深色高对比，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1228,14 +1730,12 @@
       "src": "assets/inspiration/389491067790184187.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/389491067790184187/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "黄色与浅绿色沿宽弧自然融合，整幅色场明亮且没有前景图形。",
-      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
       "tags": [
         "青绿奶黄",
         "柔焦色场"
       ],
-      "sampleId": "1:46",
+      "prompt": "抽象渐变背景，青绿奶黄配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1245,14 +1745,12 @@
       "src": "assets/inspiration/1118370519948909668.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/1118370519948909668/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "青绿深浅自然交融，纵向流动方向明确，可用于配色与留白探索。",
-      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
       "tags": [
         "青绿",
         "柔焦色场"
       ],
-      "sampleId": "1:6",
+      "prompt": "抽象渐变背景，青绿配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1262,14 +1760,12 @@
       "src": "assets/inspiration/1118370519949900230.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/1118370519949900230/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "大面积玫红、青蓝和暖黄通过模糊边界融合，适合参考多色分布。",
-      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
       "tags": [
         "玫红青蓝暖黄",
         "柔焦色场"
       ],
-      "sampleId": "1:3",
+      "prompt": "抽象渐变背景，玫红青蓝暖黄配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1279,14 +1775,12 @@
       "src": "assets/inspiration/1118370519949900229.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/1118370519949900229/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "青绿、紫蓝和玫红分布在不同角落，通过宽阔柔焦过渡连接。",
-      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
       "tags": [
         "青绿紫粉",
         "柔焦色场"
       ],
-      "sampleId": "1:6",
+      "prompt": "抽象渐变背景，青绿紫粉配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1296,14 +1790,12 @@
       "src": "assets/inspiration/1118370519949913581.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/1118370519949913581/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "紫色与蓝色以宽幅云状过渡交融，画面保留柔和且连续的亮度变化。",
-      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
       "tags": [
         "紫蓝",
         "柔焦色场"
       ],
-      "sampleId": "93:3",
+      "prompt": "抽象渐变背景，紫蓝配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1313,14 +1805,12 @@
       "src": "assets/inspiration/576812664820154286.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/576812664820154286/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "橙红在两侧收拢，亮黄自然铺向中心，适合研究暖色背景的视觉重心。",
-      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
       "tags": [
         "红橙亮黄",
         "柔焦色场"
       ],
-      "sampleId": "1:67",
+      "prompt": "抽象渐变背景，红橙亮黄配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1330,14 +1820,12 @@
       "src": "assets/inspiration/644437027941844452.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/644437027941844452/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "玫红、桃色和暖黄交汇，颜色干净且亮部充分，可参考文案区的暖光。",
-      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
       "tags": [
         "玫红蜜桃金",
         "柔焦色场"
       ],
-      "sampleId": "1:3",
+      "prompt": "抽象渐变背景，玫红蜜桃金配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1347,14 +1835,12 @@
       "src": "assets/inspiration/400468591859724004.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/400468591859724004/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "绿色与暖黄沿斜向连接到橙红和紫色，可参考完整色场的冷暖布局。",
-      "difference": "此图保留来源预览水印，仅参考配色和过渡关系；用于设计时需重新制作背景。",
       "tags": [
         "青绿黄紫红",
         "柔焦色场"
       ],
-      "sampleId": "1:6",
+      "prompt": "抽象渐变背景，青绿黄紫红配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1364,14 +1850,12 @@
       "src": "assets/inspiration/316237205097846023.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/316237205097846023/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "暖黄集中在中央，粉色与绿色在边缘自然相接，适合参考明亮背景的色彩重心。",
-      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
       "tags": [
         "粉绿奶黄",
         "柔焦色场"
       ],
-      "sampleId": "1:67",
+      "prompt": "抽象渐变背景，粉绿奶黄配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1381,14 +1865,12 @@
       "src": "assets/inspiration/294563631894095934.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/294563631894095934/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "双脚向两侧打开，上身前倾并用手支撑，重心与关节关系清晰。",
-      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
       "tags": [
         "坐姿展开肢体",
         "平视侧拍"
       ],
-      "sampleId": "240:86889",
+      "prompt": "商业时尚人物摄影，坐姿展开肢体，平视侧拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1398,14 +1880,12 @@
       "src": "assets/inspiration/1075867798495688264.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/1075867798495688264/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "一腿侧抬搭凳，手肘撑膝并托腮，完整构图便于拆解身体支点。",
-      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
       "tags": [
         "坐姿抬腿",
         "平视侧拍"
       ],
-      "sampleId": "240:86892",
+      "prompt": "商业时尚人物摄影，坐姿抬腿，平视侧拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1415,14 +1895,12 @@
       "src": "assets/inspiration/320177854769685208.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/320177854769685208/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "长步幅和向后展开的手臂形成运动张力，四肢完整且轮廓清晰。",
-      "difference": "仅参考动作与机位；人物外貌、服装与道具不作为品牌标准。",
       "tags": [
         "迈步展开肢体",
         "平视侧拍"
       ],
-      "sampleId": "240:86874",
+      "prompt": "商业时尚人物摄影，迈步展开肢体，平视侧拍，浅色纯背景，动作关系清晰，关键手臂和腿部完整留在画面内，人物轮廓明确，年轻潮流造型，棚拍柔光，适合品牌海报的人物动作参考，3:4 构图，无文字，无标志",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1432,14 +1910,12 @@
       "src": "assets/inspiration/791718809540229346.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/791718809540229346/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "紫色与蓝色在顶部柔和展开，青色在底部形成亮场，过渡连续且无前景图形。",
-      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
       "tags": [
         "青蓝深紫",
         "柔焦色场"
       ],
-      "sampleId": "93:3",
+      "prompt": "抽象渐变背景，青蓝深紫配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1449,14 +1925,12 @@
       "src": "assets/inspiration/791718809529439100.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/791718809529439100/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "粉紫和青蓝在整幅背景里自然相接，暖亮区域点缀其中，适合观察柔光过渡。",
-      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
       "tags": [
         "粉蓝奶黄",
         "柔焦色场"
       ],
-      "sampleId": "1:3",
+      "prompt": "抽象渐变背景，粉蓝奶黄配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1466,14 +1940,12 @@
       "src": "assets/inspiration/791718809529439121.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/791718809529439121/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "粉橙亮带沿画面向下展开，青蓝保留在边缘，适合研究大块留白与色彩分布。",
-      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
       "tags": [
         "蓝紫暖橙",
         "柔焦色场"
       ],
-      "sampleId": "1:3",
+      "prompt": "抽象渐变背景，蓝紫暖橙配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1483,14 +1955,12 @@
       "src": "assets/inspiration/791718809539528824.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/791718809539528824/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "暖橙与粉紫在上下错位，浅青在中间自然衔接，颜色明快且整幅可作背景。",
-      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
       "tags": [
         "蓝紫暖橙",
         "柔焦色场"
       ],
-      "sampleId": "1:3",
+      "prompt": "抽象渐变背景，蓝紫暖橙配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-09"
     },
     {
@@ -1500,14 +1970,12 @@
       "src": "assets/inspiration/791718809538597256.jpg",
       "source": "Pinterest",
       "sourceUrl": "https://www.pinterest.com/pin/791718809538597256/",
-      "attribution": "Pinterest 公开原帖预览；原作者待核实",
       "reason": "青蓝与明黄从四周进入，中央保持干净亮度，便于参考文案安全区。",
-      "difference": "配色仍需按品牌规范重建；竖版参考用于横幅时需重新安排色场与文案留白。",
       "tags": [
         "青蓝明黄",
         "柔焦色场"
       ],
-      "sampleId": "1:6",
+      "prompt": "抽象渐变背景，青蓝明黄配色，柔焦色场，明亮柔和，颜色自然融合，柔和连续的色场走势，大面积干净留白，细腻光感，适合 AI 模型上新主视觉，4:3 构图，无文字，无标志，无人物，无界面，无具体物体",
       "collectedAt": "2026-09-09"
     }
   ]

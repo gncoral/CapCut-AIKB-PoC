@@ -60,6 +60,12 @@
 .inspo-detail-panel h3 { font-size: 12px; margin: 23px 0 8px; color: #d4d4dc; }.inspo-detail-panel p { font-size: 12px; line-height: 1.9; color: #a7a7b3; margin: 0; }
 .inspo-detail-panel a, .inspo-seeds-header a { color: #91ddd4; font-size: 12px; text-decoration: none; }
 .inspo-detail-panel > a { display: inline-block; margin-top: 14px; }
+.inspo-prompt-panel { display: flex; flex-direction: column; justify-content: center; }
+.inspo-prompt-panel h2 { margin-top: 0; }
+.inspo-prompt-panel .inspo-prompt-text { padding: 18px; border: 1px solid #393941; border-radius: 10px; background: #121216; color: #e1e1e7; font-size: 14px; line-height: 1.9; }
+.inspo-copy-prompt { align-self: flex-start; margin-top: 14px; min-height: 38px; padding: 9px 15px; border: 1px solid #4b4b55; border-radius: 8px; background: #2b2b32; }
+.inspo-copy-prompt:hover { background: #383840; }
+.inspo-prompt-panel > a.inspo-prompt-source { margin-top: 24px; color: #9999a4; }
 .inspo-comparison { display: flex; gap: 12px; align-items: center; padding: 10px; margin-top: 10px; border: 1px solid #36363e; border-radius: 8px; }
 .inspo-comparison img { width: 62px; height: 66px; object-fit: cover; border-radius: 5px; flex-shrink: 0; }
 .inspo-comparison a { display: block; margin-top: 5px; }

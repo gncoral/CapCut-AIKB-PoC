@@ -20,7 +20,7 @@
 
   <nav class="tabs" aria-label="主导航">
     <button class="tab active" type="button" data-view="library">视觉库 <span id="total-count">0</span></button>
-    <button class="tab" type="button" data-view="inspiration">灵感探索 <span id="inspo-total-count">69</span></button>
+    <button class="tab" type="button" data-view="inspiration">灵感探索 <span id="inspo-total-count">109</span></button>
     <button class="tab" type="button" data-view="brand-guidelines">品牌规范</button>
     <button class="tab" type="button" data-view="design-tools">设计工具</button>
     <button class="tab" type="button" disabled>收藏 <span id="saved-count">0</span></button>
@@ -86,17 +86,13 @@
       <h1 id="inspo-title" class="sr-only">找点儿灵感</h1>
       <section class="section-toolbar" aria-label="灵感筛选">
         <div class="section-tabs" id="inspo-categories" aria-label="灵感分类"></div>
-        <label class="search-wrap"><span class="sr-only">搜索本类候选</span><input type="search" id="inspo-search" placeholder="搜索本类候选"></label>
+        <label class="search-wrap"><span class="sr-only">搜索本类参考</span><input type="search" id="inspo-search" placeholder="搜索本类参考"></label>
       </section>
       <section class="inspo-reference-bar" aria-label="本类参考标准">
         <p id="inspo-focus"></p>
         <button type="button" id="inspo-show-seeds"><span class="inspo-seed-stack" id="inspo-seed-stack"></span><span>查看精选样本 ↗</span></button>
       </section>
-      <div class="inspo-toolbar">
-        <span class="inspo-kicker">视觉参考</span>
-        <div class="inspo-filters"><label><span class="sr-only">来源平台</span><select id="inspo-source"><option value="all">全部来源</option><option>Pinterest</option><option>Behance</option><option>Dribbble</option><option>X</option></select></label></div>
-      </div>
-      <div class="inspo-result-row"><span id="inspo-result" aria-live="polite">正在读取候选…</span><span>候选参考 · 尚未进入精选视觉库</span></div>
+      <div class="inspo-toolbar inspo-result-row"><span id="inspo-result" aria-live="polite">正在读取参考…</span><div class="inspo-filters"><label><span class="sr-only">来源平台</span><select id="inspo-source"><option value="all">全部来源</option><option>Pinterest</option><option>OpenAI</option><option>Behance</option><option>Dribbble</option><option>X</option></select></label></div></div>
       <div class="inspo-grid" id="inspo-grid"></div>
       <div class="inspo-empty" id="inspo-empty" hidden><h2 id="inspo-empty-title">这里还没有候选</h2><p id="inspo-empty-description"></p><button type="button" id="inspo-reset">重置筛选</button></div>
       <footer class="inspo-footer">图片用于视觉参考，使用范围以原作者说明为准。</footer>
@@ -288,6 +284,6 @@
 
 
   <script type="module" src="app.js?v=9.7v01"></script>
-  <script type="module" src="inspiration-public.js?v=9.7v01-public-2"></script>
+  <script type="module" src="inspiration-public.js?v=144b72203ad4"></script>
 </body>
 </html>

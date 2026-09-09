@@ -68,14 +68,16 @@ function modalContent(content, compact = false) {
 function openCandidate(item) {
   modal.dataset.itemId = item.id;
   const layout = el('div', 'inspo-detail'); const visual = el('div', 'inspo-detail-media'); visual.append(picture(item.src, item.title, true));
-  const panel = el('div', 'inspo-detail-panel');
-  const heading = el('h2', '', item.title); heading.id = 'inspo-detail-title'; modal.setAttribute('aria-labelledby', heading.id);
-  panel.append(el('small', '', category().name), heading, el('h3', '', '值得参考'), el('p', '', item.reason), el('h3', '', '与样本的差别'), el('p', '', item.difference));
-  const sample = category().samples.find(s => s.id === item.sampleId) || category().samples[0];
-  const comparison = el('div', 'inspo-comparison'); const sampleCopy = el('div'); sampleCopy.append(el('p', '', `对照样本 · ${sample.title}`), link('打开 Figma 样本 ↗', sample.url)); comparison.append(picture(sample.src, sample.title), sampleCopy);
-  panel.append(el('h3', '', '本次对照'), comparison, el('h3', '', '图片来源'), el('p', '', `${item.source} · ${item.attribution}`), link('打开原帖 ↗', item.sourceUrl));
-  if (item.originalUrl) panel.append(el('span', '', '　'), link('查看原帖标注的来源 ↗', item.originalUrl));
-  panel.append(el('p', '', '仅作为视觉参考，使用范围以原作者说明为准。'));
+  const panel = el('div', 'inspo-detail-panel inspo-prompt-panel');
+  const heading = el('h2', '', 'AI 提示词'); heading.id = 'inspo-detail-title'; modal.setAttribute('aria-labelledby', heading.id);
+  const prompt = el('p', 'inspo-prompt-text', item.prompt);
+  const copy = el('button', 'inspo-copy-prompt', '复制提示词'); copy.type = 'button';
+  copy.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(item.prompt); copy.textContent = '已复制'; }
+    catch { copy.textContent = '请长按提示词复制'; }
+  });
+  const source = link(`${item.source} 原图来源 ↗`, item.sourceUrl); source.className = 'inspo-prompt-source';
+  panel.append(heading, prompt, copy, source);
   layout.append(visual, panel); modalContent(layout);
 }
 function openSeeds() {
@@ -91,9 +93,14 @@ $('#inspo-search').addEventListener('input', e => { state.search = e.target.valu
 $('#inspo-show-seeds').addEventListener('click', () => { if (state.data) openSeeds(); });
 $('#inspo-reset').addEventListener('click', () => { state.source = 'all'; state.search = ''; $('#inspo-search').value = ''; $('#inspo-source').value = 'all'; if (state.data) render(); else location.reload(); });
 try {
-  const response = await fetch('data/inspiration.json'); if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  const response = await fetch('data/inspiration.json', { cache: 'no-cache' }); if (!response.ok) throw new Error(`HTTP ${response.status}`);
   const data = await response.json(); if (!Array.isArray(data.categories) || !Array.isArray(data.items)) throw new Error('数据格式不正确');
-  state.data = data; render();
+  state.data = data;
+  const requestedSource = new URLSearchParams(location.search).get('inspirationSource');
+  if (data.items.some(i => i.source === requestedSource)) {
+    state.source = requestedSource; $('#inspo-source').value = requestedSource;
+  }
+  render();
 } catch (error) {
   $('#inspo-result').textContent = '参考读取失败'; $('#inspo-empty').hidden = false; $('#inspo-empty-title').textContent = '暂时无法读取灵感参考'; $('#inspo-empty-description').textContent = '请刷新后重试。'; console.error(error);
 }

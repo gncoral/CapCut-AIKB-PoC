@@ -1027,6 +1027,8 @@
   document.querySelector('#sub-input').addEventListener('input', refreshCandidateCopy);
   syncCopyFieldVisibility();
 
+  window.gradientSyncFloralControls=syncPetalControlPanel;
+
   fetch('./gradient-preference-model.json?v=organic-rhythm-1')
     .then(response => {
       if (!response.ok) throw new Error(`Preference model HTTP ${response.status}`);

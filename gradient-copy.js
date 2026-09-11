@@ -18,9 +18,11 @@
   const spec=layout();if(!spec)return null;
   const layer=document.createElement('div');layer.className='figma-copy-layer';layer.dataset.copyKey=key();layer.setAttribute('aria-label',`${scenes[state.scene].name}设计稿文案`);
   for(const item of spec.items){
-   const el=document.createElement(item.type==='svg'?'img':'div');el.className=`figma-copy-${item.type}`;el.dataset.copyNode=item.id;
+   const isSeedanceSymbol=item.id==='I338:56454;338:56476';
+   const el=document.createElement(item.type==='svg'||isSeedanceSymbol?'img':'div');el.className=`figma-copy-${item.type}`;el.dataset.copyNode=item.id;
    Object.assign(el.style,{left:item.x/spec.w*100+'%',top:item.y/spec.h*100+'%',width:item.w/spec.w*100+'%',height:item.h/spec.h*100+'%'});
-   if(item.type==='svg'){el.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(item.svg);el.alt='';}
+   if(isSeedanceSymbol){el.src='./gradient-assets/seedance-symbol.png';el.alt='Seedance 标志';el.className='figma-copy-symbol';el.style.objectFit='contain';}
+   else if(item.type==='svg'){el.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(item.svg);el.alt='';}
    else if(item.type==='box'){
     const paints=item.fills||[];el.style.background=paints.length?rgba(paints.at(-1)):'transparent';
     el.style.borderRadius=(item.radius||0)/spec.w*100+'cqw';el.style.opacity=item.opacity??1;
@@ -63,7 +65,8 @@
  Array.from(group.children).filter(n=>n.tagName!=='H3'&&n.id!=='copy-source-note').forEach(n=>n.hidden=true);
  const editor=document.createElement('div');editor.className='figma-copy-editor';group.querySelector('h3').after(editor);
  const reset=document.createElement('button');reset.type='button';reset.className='button';reset.textContent='恢复设计稿文案与字色';group.append(reset);
- reset.onclick=()=>{edits.delete(key());colorEdits.delete(key());renderEditor();updateAll();updateContrast();};
+ window.gradientResetCopy=()=>{edits.delete(key());colorEdits.delete(key());renderEditor();updateAll();updateContrast();};
+ reset.onclick=window.gradientResetCopy;
  let editorKey='';
  function renderEditor(){
   const spec=layout();if(!spec)return;editorKey=key();editor.replaceChildren();

@@ -14,8 +14,29 @@
  panel.innerHTML='<div class="batch-head"><h3>批量候选 · 先选再调</h3><select aria-label="批量候选数量" id="batch-count"><option>6</option><option selected>10</option><option>20</option></select><button class="button primary" id="batch-generate">生成候选</button></div><p class="batch-note">围绕当前设置生成变化，保留品牌、文字和暖色强度。虚实光场包含原基础渐变的多种结构。</p><div class="batch-grid"></div>';
  document.querySelector('.templates').after(panel);
  const grid=panel.querySelector('.batch-grid'),button=panel.querySelector('button');
+ const compactScenes=new Set(['popup','retain','leave','app']);
+ function fitCandidateRow(reveal=false){
+  const shelf=panel.closest('.workspace-shelf');
+  if(!shelf||!choices.length)return;
+  if(window.innerWidth>900&&compactScenes.has(state.scene)){
+   const [w,h]=scenes[state.scene].size,gap=14;
+   const rowHeight=Math.max(1,Math.min(220,(shelf.clientHeight-24-gap)/2));
+   const columns=Math.max(1,Math.min(Math.ceil(choices.length/2),Math.ceil((grid.clientWidth+gap)/(rowHeight*w/h+2+gap))));
+   const cardWidth=Math.min(rowHeight*w/h+2,(grid.clientWidth-gap*(columns-1))/columns);
+   const value=`repeat(${columns},minmax(0,${cardWidth}px))`;
+   grid.style.justifyContent='center';
+   if(grid.style.gridTemplateColumns!==value)grid.style.gridTemplateColumns=value;
+  }else{grid.style.removeProperty('grid-template-columns');grid.style.removeProperty('justify-content');}
+  if(reveal&&window.innerWidth>900&&compactScenes.has(state.scene)){
+   shelf.scrollTop+=grid.getBoundingClientRect().top-shelf.getBoundingClientRect().top-5;
+  }
+ }
+ let layoutFrame=0;
+ const queueCandidateLayout=()=>{cancelAnimationFrame(layoutFrame);layoutFrame=requestAnimationFrame(()=>fitCandidateRow());};
+ requestAnimationFrame(()=>{const shelf=panel.closest('.workspace-shelf');if(shelf){const observer=new ResizeObserver(queueCandidateLayout);observer.observe(shelf);observer.observe(grid);}});
+ window.addEventListener('resize',queueCandidateLayout);
  let context='',sceneContext='',epoch=0,busy=false,choices=[],applied=-1,viewIndex=0,refreshTimer=0;
- style.textContent+=`.batch-preview[role="button"]{cursor:zoom-in}.batch-preview:focus-visible{outline:3px solid #62d7fc;outline-offset:-3px}#batch-dialog{background:#17191f;color:#fff;border:1px solid #454954;border-radius:16px;padding:20px;width:min(1100px,94vw);max-height:94vh;overflow:auto}#batch-dialog::backdrop{background:#000b}.batch-dialog-head,.batch-dialog-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.batch-dialog-head h3{margin:0 auto 0 0}.batch-dialog-stage{display:flex;justify-content:center;align-items:center;min-height:160px;margin:20px 0}.batch-dialog-actions{justify-content:center}#batch-dialog select{background:#242730;color:#fff;padding:8px;border-radius:6px}.batch-help{font-size:12px;color:#aaa}`;
+ style.textContent+=`.batch-preview[role="button"]{cursor:pointer}.batch-preview:focus-visible{outline:3px solid #62d7fc;outline-offset:-3px}#batch-dialog{background:#17191f;color:#fff;border:1px solid #454954;border-radius:16px;padding:20px;width:min(1100px,94vw);max-height:94vh;overflow:auto}#batch-dialog::backdrop{background:#000b}.batch-dialog-head,.batch-dialog-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.batch-dialog-head h3{margin:0 auto 0 0}.batch-dialog-stage{display:flex;justify-content:center;align-items:center;min-height:160px;margin:20px 0}.batch-dialog-actions{justify-content:center}#batch-dialog select{background:#242730;color:#fff;padding:8px;border-radius:6px}.batch-help{font-size:12px;color:#aaa}`;
  const dialog=document.createElement('dialog');dialog.id='batch-dialog';dialog.setAttribute('aria-labelledby','batch-dialog-title');
  dialog.innerHTML='<div class="batch-dialog-head"><h3 id="batch-dialog-title"></h3><select aria-label="预览尺寸" id="batch-dialog-scene"></select><button class="button" id="batch-close">关闭</button></div><p class="batch-help">仅预览，不改变当前选图。切换尺寸仍是同一批候选。</p><div class="batch-dialog-stage"></div><div class="batch-dialog-actions"><button class="button" id="batch-prev">上一张</button><button class="button primary" id="batch-apply">使用这张</button><button class="button" id="batch-next">下一张</button></div>';
  document.body.append(dialog);
@@ -26,7 +47,7 @@
   const key=[group(),state.brand].join(':');
   if(key!==context){syncSceneOptions();context=key;epoch++;choices=[];applied=-1;grid.replaceChildren();dialog.close();}
   if(sceneContext!==state.scene){sceneContext=state.scene;epoch++;clearTimeout(refreshTimer);refreshTimer=setTimeout(()=>{drawCards();if(dialog.open)drawLarge();},0);}
-  document.querySelector('.templates .section-head span').textContent='6 类背景模板';
+  document.querySelector('.templates .section-head span').textContent=window.gradientStudiesEnabled?'6 类背景 + 3 个试验':'6 类背景模板';
   const soft=document.querySelector('.template[data-template="soft"]');soft.classList.toggle('active',group()==='soft');
  }
  function vary(index){
@@ -60,7 +81,9 @@
   if(busy||!choices[index])return;
   const sceneKey=state.scene,exportScale=state.exportScale;
   restore(choices[index]);state.scene=sceneKey;state.exportScale=exportScale;
-  const selected=snapshot();paintUI();restore(selected);state.batchStatic=true;
+  // Applying a candidate stays within the current family. Avoid rebuilding the
+  // template UI and triggering unrelated thumbnail/selection refreshes on every click.
+  state.batchStatic=true;window.gradientSyncFloralControls?.();
   for(const k of ['scale','angle','blur','sat','accent','noise','grainSize','exportScale'])document.getElementById(k).value=state[k];
   syncValues();fit();applyCopy();render();applied=index;markApplied();
   if(dialog.open)dialog.close();toast('已应用候选，可在右侧继续微调');
@@ -77,16 +100,17 @@
  function markApplied(){grid.querySelectorAll('.batch-card').forEach((card,i)=>{
   card.classList.toggle('active',applied===i);
   card.querySelector('[role="button"]').setAttribute('aria-pressed',String(applied===i));
-  card.querySelector('.batch-actions span').textContent=`候选 ${String(i+1).padStart(2,'0')} · ${applied===i?'正在使用':'单击上屏'}`;
+  card.title=`候选 ${String(i+1).padStart(2,'0')}${applied===i?' · 正在使用':''}`;
  });}
  function drawCards(){
   grid.replaceChildren();
   choices.forEach((choice,i)=>{
-   const card=document.createElement('article');card.className='batch-card'+(applied===i?' active':'');card.dataset.candidate=String(choice.state.seed);
-   const stage=stageFor(choice);stage.setAttribute('role','button');stage.tabIndex=0;stage.style.cursor='pointer';stage.setAttribute('aria-label',`应用候选 ${i+1}`);stage.onclick=()=>applyChoice(i);stage.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();applyChoice(i);}};card.append(stage);
-   const actions=document.createElement('div');actions.className='batch-actions';const label=document.createElement('span');const zoom=document.createElement('button');zoom.className='button batch-zoom';zoom.textContent='放大';zoom.setAttribute('aria-label',`放大预览候选 ${i+1}`);zoom.onclick=()=>openLarge(i);actions.append(label,zoom);card.append(actions);grid.append(card);
+   const card=document.createElement('article');card.className='batch-card'+(applied===i?' active':'');card.dataset.candidate=String(choice.state.seed);card.style.cursor='pointer';card.onclick=()=>applyChoice(i);
+   const stage=stageFor(choice);stage.setAttribute('role','button');stage.tabIndex=0;stage.style.cursor='pointer';stage.setAttribute('aria-label',`应用候选 ${i+1}`);stage.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();applyChoice(i);}};card.append(stage);
+   grid.append(card);
   });
   markApplied();
+  fitCandidateRow(true);
  }
  dialog.querySelector('#batch-close').onclick=()=>dialog.close();
  dialog.onclick=e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}};
@@ -106,8 +130,9 @@
    }
   }catch(e){console.error(e);toast('候选生成失败，请重试');}finally{drawCards();busy=false;button.disabled=false;button.textContent='生成候选';}
  }
+ window.gradientResetCandidateSelection=()=>{epoch++;applied=-1;markApplied();dialog.close();};
  button.onclick=generate;
- for(const id of ['templates','brands','scenes','scene-list'])document.getElementById(id)?.addEventListener('click',refresh);
+ for(const id of ['templates','brands','scenes','scene-list'])document.getElementById(id)?.addEventListener('click',()=>{if(id==='templates'||id==='brands')state.batchStatic=false;refresh();});
  document.querySelector('.side').addEventListener('input',()=>{applied=-1;markApplied();});
  const oldPaint=paintUI;paintUI=function(){oldPaint();refresh();};
  refresh();

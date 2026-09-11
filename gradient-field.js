@@ -1104,7 +1104,7 @@ let fieldAnimationFrame = 0;
 const animateField = now => {
   const elapsed = Math.min(80, now - fieldAnimationTime);
   fieldAnimationTime = now;
-  const isMacroFloral = ['petalStack', 'treeShadow', 'oilBrush'].includes(state.template);
+  const isMacroFloral = ['petalStack', 'treeShadow', 'oilBrush', 'studyFlow', 'studySky', 'studyAurora', 'featuredImage'].includes(state.template);
   if (!state.batchStatic && !isMacroFloral && !document.hidden && !fieldDragging && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     fieldMotion = (fieldMotion + elapsed * .000075) % 1;
     const useLegacyPetal = state.template === 'petal' || state.template === 'petalShadow';

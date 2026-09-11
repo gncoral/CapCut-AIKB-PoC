@@ -39,6 +39,7 @@ const toolImagePreview = document.querySelector('#tool-image-preview');
 const toolImageTitle = document.querySelector('#tool-image-title');
 const toolGallery = document.querySelector('#tool-gallery');
 const multilingualToolDetail = document.querySelector('#multilingual-tool-detail');
+const fashionMakeoverToolDetail = document.querySelector('#fashion-makeover-tool-detail');
 const backgroundStyles = ['柔焦色场', '抽象扩散', '极简3D'];
 const backgroundBrands = ['即梦', '小云雀'];
 const characterAssetsCache = new Map();
@@ -241,16 +242,30 @@ document.querySelector('.tabs').addEventListener('click', event => {
 function showToolGallery() {
   toolGallery.hidden = false;
   multilingualToolDetail.hidden = true;
+  fashionMakeoverToolDetail.hidden = true;
 }
 
 function showMultilingualTool() {
   toolGallery.hidden = true;
   multilingualToolDetail.hidden = false;
+  fashionMakeoverToolDetail.hidden = true;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showFashionMakeoverTool() {
+  toolGallery.hidden = true;
+  multilingualToolDetail.hidden = true;
+  fashionMakeoverToolDetail.hidden = false;
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 document.querySelector('#open-multilingual-tool').addEventListener('click', showMultilingualTool);
+document.querySelector('#open-fashion-makeover-tool').addEventListener('click', showFashionMakeoverTool);
 document.querySelector('#back-to-tool-gallery').addEventListener('click', () => {
+  showToolGallery();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+document.querySelector('#back-from-fashion-makeover').addEventListener('click', () => {
   showToolGallery();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
@@ -762,7 +777,7 @@ toolImageDialog.addEventListener('click', event => {
 
 
 async function copyToolCommand(button) {
-  const command = document.querySelector('#tool-command').textContent.trim();
+  const command = document.querySelector(button.dataset.commandTarget || '#tool-command').textContent.trim();
   try {
     await navigator.clipboard.writeText(command);
     const original = button.textContent;
@@ -776,6 +791,10 @@ async function copyToolCommand(button) {
 
 document.querySelector('#copy-tool-command').addEventListener('click', event => copyToolCommand(event.currentTarget));
 document.querySelector('#copy-tool-command-inline').addEventListener('click', event => copyToolCommand(event.currentTarget));
+document.querySelector('#copy-fashion-command').dataset.commandTarget = '#fashion-tool-command';
+document.querySelector('#copy-fashion-command-inline').dataset.commandTarget = '#fashion-tool-command';
+document.querySelector('#copy-fashion-command').addEventListener('click', event => copyToolCommand(event.currentTarget));
+document.querySelector('#copy-fashion-command-inline').addEventListener('click', event => copyToolCommand(event.currentTarget));
 
 
 async function load() {

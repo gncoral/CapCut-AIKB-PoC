@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CapCut M&amp;UG Design Library</title>
-  <link rel="stylesheet" href="styles.css?v=9.7v01">
+  <link rel="stylesheet" href="styles.css?v=tools-20260911-1">
   <link rel="stylesheet" href="inspiration.css?v=9.7v01-public-2">
   <link rel="stylesheet" href="main-navigation.css?v=9.7v01">
 </head>
@@ -143,14 +143,18 @@
           <p>将可复用的设计流程沉淀为工具。先选择一个工具，再进入案例说明或实际编辑器。</p>
         </header>
         <div class="tool-gallery-grid">
+          <a class="tool-showcase-card" href="gradient-editor.html?v=910-v02">
+            <span class="tool-showcase-visual tool-showcase-gradient"><img src="assets/tools/gradient-editor/abstract-diffusion-cover.png" alt="模型上新背景工具预览"></span>
+            <span class="tool-showcase-copy"><span><strong>模型上新背景</strong><small>模板、品牌色、文字安全区与导出</small></span><b>进入编辑器 →</b></span>
+          </a>
           <button class="tool-showcase-card" id="open-multilingual-tool" type="button">
             <span class="tool-showcase-visual"><img src="assets/tools/multilingual-design/output-figma-locales.jpg" alt="多语言设计延展案例预览"></span>
-            <span class="tool-showcase-copy"><i class="tool-nav-icon">文</i><span><strong>多语言设计延展</strong><small>Figma 批量适配、检查与导出</small></span><b>查看工具详情 →</b></span>
+            <span class="tool-showcase-copy"><span><strong>多语言设计延展</strong><small>Figma 批量适配、检查与导出</small></span><b>查看工具详情 →</b></span>
           </button>
-          <a class="tool-showcase-card" href="gradient-editor.html?v=910-v02">
-            <span class="tool-showcase-visual tool-showcase-gradient"><img src="assets/model-launch-backgrounds/1-37.png" alt="品牌渐变背景工具预览"></span>
-            <span class="tool-showcase-copy"><i class="tool-nav-icon tool-nav-gradient">渐</i><span><strong>品牌渐变背景</strong><small>模板、品牌色、文字安全区与导出</small></span><b>进入编辑器 →</b></span>
-          </a>
+          <button class="tool-showcase-card" id="open-fashion-makeover-tool" type="button">
+            <span class="tool-showcase-visual"><img src="assets/tools/fashion-makeover/cover.webp" alt="人物潮流换装案例预览"></span>
+            <span class="tool-showcase-copy"><span><strong>人物潮流换装</strong><small>一键给人物换多套潮流服饰</small></span><b>查看工具详情 →</b></span>
+          </button>
         </div>
         <p class="tool-gallery-note">更多经过真实项目验证的设计工具会逐步加入。</p>
       </div>
@@ -222,6 +226,53 @@
             </div>
           </section>
         </article>
+
+        <article class="tool-detail" id="fashion-makeover-tool-detail" hidden>
+          <button class="tool-detail-back" id="back-from-fashion-makeover" type="button">← 返回全部工具</button>
+          <header class="tool-hero">
+            <div>
+              <span class="tool-eyebrow">IMAGE SKILL</span>
+              <h1>人物潮流换装</h1>
+              <p>一键给人物换多套潮流服饰，在保留人物身份和五官的基础上，完成服装、妆发、配饰、动作与摄影质感的整体造型。</p>
+              <div class="tool-actions">
+                <a class="tool-button primary" href="assets/tools/fashion-makeover/high-street-mix-makeover.zip" download>下载 Skill</a>
+                <button class="tool-button secondary" id="copy-fashion-command" type="button">复制调用语句</button>
+              </div>
+            </div>
+            <div class="tool-flow" aria-label="工作流程">
+              <span>人物照片</span><i>→</i><span>身份保留</span><i>→</i><span>潮流造型</span><i>→</i><span>多套成片</span>
+            </div>
+          </header>
+
+          <section class="tool-section">
+            <div class="tool-section-heading">
+              <div><span>01</span><h2>潮流造型示例</h2></div>
+              <p>从服装廓形、妆发和配饰出发，为同一人物探索不同造型方向。</p>
+            </div>
+            <figure class="tool-case-card fashion-tool-cover">
+              <figcaption><span>效果示例</span><strong>多套人物潮流换装</strong></figcaption>
+              <button class="tool-image-button" type="button" data-tool-image="assets/tools/fashion-makeover/cover.webp" data-tool-title="人物潮流换装｜效果示例"><img src="assets/tools/fashion-makeover/cover.webp" alt="三套人物潮流换装效果示例"></button>
+            </figure>
+          </section>
+
+          <section class="tool-section tool-usage">
+            <div class="tool-section-heading"><div><span>02</span><h2>怎么使用</h2></div></div>
+            <div class="tool-usage-grid">
+              <div class="tool-code-card">
+                <div class="tool-code-label">在 Codex 新任务里输入</div>
+                <pre id="fashion-tool-command">使用 $high-street-mix-makeover。
+
+请基于我提供的人物照片，生成一组人物身份一致、服装各不相同的潮流换装成片。</pre>
+                <button id="copy-fashion-command-inline" type="button">复制</button>
+              </div>
+              <ol class="tool-steps">
+                <li><span>1</span><div><strong>提供人物照片</strong><p>选择五官清晰、人物主体完整的照片。</p></div></li>
+                <li><span>2</span><div><strong>说明造型方向</strong><p>可以指定色彩、服装风格、妆发或希望避开的元素。</p></div></li>
+                <li><span>3</span><div><strong>获得多套成片</strong><p>保持人物身份一致，探索不同服饰、动作和整体造型。</p></div></li>
+              </ol>
+            </div>
+          </section>
+        </article>
     </section>
   </main>
 
@@ -283,7 +334,7 @@
   </dialog>
 
 
-  <script type="module" src="app.js?v=9.7v01"></script>
+  <script type="module" src="app.js?v=tools-20260911-2"></script>
   <script type="module" src="inspiration-public.js?v=144b72203ad4"></script>
 </body>
 </html>

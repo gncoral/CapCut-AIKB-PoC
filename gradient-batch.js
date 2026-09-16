@@ -2,16 +2,15 @@
 (()=>{
  const families=['soft','diffuse','horizon','halo','fold','focus','ripple','prism'];
  const clone=v=>JSON.parse(JSON.stringify(v));
- const group=()=>families.includes(state.template)?'soft':state.template;
+ const group=()=>state.template;
  const adapters=window.gradientBatchAdapters;
  const style=document.createElement('style');
  style.textContent=`#preference-lab{display:none!important}
- ${families.slice(1).map(k=>`.template[data-template="${k}"]`).join(',')}{display:none!important}
  .batch-panel{margin-top:24px;border-top:1px solid #30333a;padding-top:20px}.batch-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.batch-head h3{margin-right:auto}.batch-note{color:#8d919b;font-size:12px;line-height:1.6}.batch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.batch-card{background:#15171d;border:1px solid #343741;border-radius:12px;overflow:hidden}.batch-card.active{outline:2px solid #fff}.batch-preview{position:relative;container-type:inline-size;overflow:hidden;isolation:isolate}.batch-preview canvas{width:100%;height:100%;display:block}.batch-preview .mock-copy{position:absolute}.batch-preview .countdown{position:absolute}.batch-preview h2,.batch-preview p{font-size:2.9cqw!important}.batch-preview[data-scene]:not([data-scene="banner"]) .mock-copy{align-items:center;justify-content:center;text-align:center}.batch-preview:not([data-scene="banner"]) .banner-copy,.batch-preview:not([data-scene="banner"]) .preview-badges{display:none!important}.batch-preview:not([data-scene="banner"]) .product-lockup{display:flex;flex-direction:column;align-items:center;gap:3.25cqw}.batch-actions{display:flex;gap:8px;padding:10px;align-items:center}.batch-actions span{font-size:12px;color:#b3b8c4;margin-right:auto}.batch-actions button{padding:6px 12px}.batch-grid:empty:after{content:'选择一个模板，点击“生成候选”；选好后可在右侧继续微调。';color:#8d919b;font-size:13px;padding:20px 0}@media(max-width:900px){.batch-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}`;
  style.textContent+='#batch-count{background:#191b22;color:#eee;border:1px solid #343741;border-radius:8px;padding:10px 14px}';
  document.head.append(style);
  const panel=document.createElement('section');panel.className='batch-panel';panel.id='gradient-batch';
- panel.innerHTML='<div class="batch-head"><h3>批量候选 · 先选再调</h3><select aria-label="批量候选数量" id="batch-count"><option>6</option><option selected>10</option><option>20</option></select><button class="button primary" id="batch-generate">生成候选</button></div><p class="batch-note">围绕当前设置生成变化，保留品牌、文字和暖色强度。虚实光场包含原基础渐变的多种结构。</p><div class="batch-grid"></div>';
+ panel.innerHTML='<div class="batch-head"><h3>批量候选 · 先选再调</h3><select aria-label="批量候选数量" id="batch-count"><option>6</option><option selected>10</option><option>20</option></select><button class="button primary" id="batch-generate">生成候选</button></div><p class="batch-note">围绕当前设置生成变化，保留品牌、文字和暖色强度。候选保持当前模板的结构特点。</p><div class="batch-grid"></div>';
  document.querySelector('.templates').after(panel);
  const grid=panel.querySelector('.batch-grid'),button=panel.querySelector('button');
  const compactScenes=new Set(['popup','retain','leave','app']);
@@ -47,14 +46,14 @@
   const key=[group(),state.brand].join(':');
   if(key!==context){syncSceneOptions();context=key;epoch++;choices=[];applied=-1;grid.replaceChildren();dialog.close();}
   if(sceneContext!==state.scene){sceneContext=state.scene;epoch++;clearTimeout(refreshTimer);refreshTimer=setTimeout(()=>{drawCards();if(dialog.open)drawLarge();},0);}
-  document.querySelector('.templates .section-head span').textContent=window.gradientStudiesEnabled?'6 类背景 + 3 个试验':'6 类背景模板';
+  document.querySelector('.templates .section-head span').textContent=window.gradientTemplateSummary?.()||'背景模板';
   const soft=document.querySelector('.template[data-template="soft"]');soft.classList.toggle('active',group()==='soft');
  }
  function vary(index){
   state.seed=Math.floor(Math.random()*1e9);
   if(adapters[state.template]){adapters[state.template].vary();return;}
   if(state.template==='petalStack'&&window.gradientBatchFloral){window.gradientBatchFloral();return;}
-  if(group()==='soft')state.template=families[index%families.length];
+  // Keep each restored preset independent when generating variations.
   const p=fieldProfiles[state.template];
   p.phase=Math.random();p.warp=.08+Math.random()*.15;
   p.nodes=p.nodes.map(n=>n.map((v,i)=>i<2?Math.max(.02,Math.min(.98,v+(Math.random()-.5)*.4)):v));

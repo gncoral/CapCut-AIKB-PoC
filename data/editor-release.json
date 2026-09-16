@@ -1,20 +1,20 @@
 {
-  "version": "9.16-v01",
+  "version": "9.16-v02",
   "files": {
-    "gradient-editor.html": "2a178412c8e47d17aa0431284a0e7868e275f821f347705675287bcf6a5e6ce5",
-    "gradient-batch.js": "7b4be4089934df8bf64bfd88eea788e0069c12325015fdc067c18b295e158bc0",
+    "gradient-editor.html": "c6a9cbfe2a0efdf9a7e36e21d14cad0a781db91a78e865d068541dc732551047",
+    "gradient-batch.js": "6afe4ed3210fb6a9165289a62b7e01144436cdca00523dad2be6c074500e5be1",
     "gradient-copy-layouts.js": "3ffba807d5c4c77b508adddcfd186ad8301b612e76060e5ae99a955bfc91f8d5",
     "gradient-copy-layouts.json": "80a5c2ee048405e9345460c44f94273777cc6b85ad446a64d921d569e3a0c8b1",
-    "gradient-copy.js": "5e851cedec714a71b27deb1c484bfddd9df369c8cbfde53e6ce6462e2f7680a1",
-    "gradient-featured.js": "5360dfcdae7103c67b76f2957985a579849002ce3f1ff05ded85c9a37b9b7536",
+    "gradient-copy.js": "ce55bb2e7f6caa8d08b0a3e9bc956a5b51db1af77f24107e258982218e009fe6",
+    "gradient-featured.js": "f4bdff2ae99651ce527b053cab24cd7854cbe986b63066e11db95f6605ec6b73",
     "gradient-field.js": "8de8b6829bebddce165bd47e6cfaca774657b723cef965f6415ee66db7b5f237",
     "gradient-oil-brush.js": "8b1239dc7d5951999493bedd6db4b2657efa003dfc816e5ef3258bdc4388b9d2",
     "gradient-petal-9.2v1-shader.js": "65801c2306ca5daed577df500629969b857d5e73e2a0cfec27df39d8c25e27e5",
     "gradient-preference-model.json": "a633a018c5dc51754371c98a19c26014c32ebd8e9c0a6952978f8562d3f1baa6",
     "gradient-preference.js": "640eb3b5009526ba13a43ed4565f7a5f4ec0e887047d6628eaec43a7a2a15ed5",
-    "gradient-reset.js": "ff67ea3d5e914ec9c430fbce0fc02664f6e390bb3e196c4758f18bdc63743773",
+    "gradient-reset.js": "ecbec08b9eef0fb0bd391885aacd1d608d6787c542012e06dc4cc86d709fc76a",
     "gradient-scenes.js": "e2bb34cca63696da3e1b72a892a5de0873a9dd94af2bcb9245282ba792b5d464",
-    "gradient-studies.js": "03e1930a3fae3eeaaadc63fcebe7640d484ba5b675d8bf364367f4a28199250c",
+    "gradient-studies.js": "b7f09129fd4174caf1a8452baae141d0b0f3477fb3e98050e8db15eec643e086",
     "gradient-tree-shadow.js": "a64a20793f8ca97ea306333a3121ebd737c734ba6b94cc95fc856679307e9040",
     "gradient-workspace.js": "aa50135ef88b68e19a1d79d1160f576beab3790900eab760869b69edb718250e",
     "gradient-assets/featured/dreamina-soft-curtain.png": "e065001adbb52b3358606a4eea55af40cf2ff9ab560437ca126d25f559f8242c",
@@ -42,6 +42,9 @@
     "gradient-assets/fonts/noto-serif-sc-copy-1.ttf": "ebe6e8443157281275571398699b806b0b48723c71db5c2d66a8f87515654f50",
     "gradient-assets/fonts/noto-serif-sc.css": "8d9fb6ba896cea265cef79b16427180a4d0018e36e8a2f7dd67ace1150b79717",
     "gradient-assets/seedance-symbol.png": "01582c83135206f8ce9b896140d884dc8afa02e098a6bb0d56225af4b7067532",
-    "gradient-assets/seedance-wordmark.svg": "139cab99ac3d7859e7ad6dcbad0a775f50e6574b54a3adcdaa63d664cf8bec4d"
+    "gradient-assets/seedance-wordmark.svg": "139cab99ac3d7859e7ad6dcbad0a775f50e6574b54a3adcdaa63d664cf8bec4d",
+    "gradient-curation.js": "33e09375157612f06b6093432f992ab7e79b67f508c7e367f564d6d648cd82b3",
+    "gradient-featured-defaults.js": "803ce088950fef6c018db754e54899256899a1ca0b16d2b7901abac3065f9b07",
+    "gradient-floral-default.js": "fd8da6c71c2e41d51056db8568c90292e6b3b570564bd2f3da19c9255aef3553"
   }
 }

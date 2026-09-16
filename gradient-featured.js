@@ -18,7 +18,7 @@
  }
  function defaults(asset,scene){
   const strip=scenes[scene].size[0]/scenes[scene].size[1]>12;
-  return {mode:strip?'left':'full',fit:'stretch',zoom:100,x:50,y:50,flip:strip,span:26,feather:48,clean:0,cleanOrigin:'top-right',noise:0,baseRevision:1,base:asset.brand==='pippit'?'#958CFA':'#05C6FB'};
+  return {mode:strip?'left':'full',fit:'stretch',zoom:100,x:50,y:50,flip:strip,span:26,feather:48,clean:0,cleanOrigin:'top-right',noise:0,baseRevision:1,base:asset.brand==='pippit'?'#958CFA':'#05C6FB',...window.gradientFeaturedDefaults?.[layoutKey(asset,scene)]};
  }
  function settings(asset,scene){return {...defaults(asset,scene),...layouts.get(layoutKey(asset,scene))};}
  function save(){try{localStorage.setItem(STORAGE,JSON.stringify(Object.fromEntries(layouts)));}catch{toast('调整暂未保存，浏览器存储空间不足');}}
@@ -48,9 +48,12 @@
  body[data-featured-active="true"] [data-field-anchor],body[data-featured-active="true"] [data-color-anchor],body[data-featured-active="true"] #curve-toggle,body[data-featured-active="true"] #curve-overlay{display:none!important}
  body[data-featured-active="true"] .side .workspace-effects:not(#featured-settings){display:none!important}
  `;document.head.append(style);
+ // Publisher gallery order; stable IDs keep personal compositions attached to their images.
+ const featuredOrder=new Map(["85f1f5aa-c2d1-442b-9cc8-753420c6726e", "6c54e955-12d2-4c89-bd15-a3e17cb7b2f6", "05d58f39-2590-4c42-971a-8f03b45138f1", "4f7f10c7-2ebe-40a9-9a55-d665dab3a343", "acde6d03-f7fe-46f2-9c34-65e6f1d4f098", "9bb4e16e-a291-472a-939f-ff62058e5fb6", "dreamina-soft-curtain", "14dd9e06-e7f0-49ff-aa4a-f7a88c7ac9bf", "3a8f6d8c-7425-469a-a3a6-924bdbb25a11", "596c010d-463b-44e0-85cd-5561281d33b5"].map((id,index)=>[id,index]));
+ featuredOrder.set('c30adc2c-4ac8-41f5-9df8-f9787b9f0f8f',-1);
  function drawGallery(){
   const grid=gallery.querySelector('.featured-grid');grid.replaceChildren();
-  for(const asset of assets.values()){
+  for(const asset of [...assets.values()].sort((a,b)=>(featuredOrder.get(a.id)??1000)-(featuredOrder.get(b.id)??1000))){
    if(asset.brand!==state.brand)continue;
    const item=document.createElement('div');item.className='featured-item';
    const card=document.createElement('button');card.className='featured-card'+(active()&&state.featuredId===asset.id?' active':'');card.setAttribute('aria-label','使用精选模板 '+asset.name);

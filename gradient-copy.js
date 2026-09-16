@@ -1,7 +1,13 @@
 /* Scene-specific Figma foreground. Background renderers and downloads stay independent. */
 (()=>{
+ const themed=()=>state.brand==='pippit'&&state.template==='featuredImage'&&state.featuredId==='52ceeccc-ec44-476c-be56-b5264988f9a3';
+ const editKey=()=>key()+(themed()?':mist-song':'');
  const originals=new Map(gradientCopyLayouts.map(x=>[`${x.brand}:${x.scene}`,x]));
  const edits=new Map(),colorEdits=new Map(),richEdits=new Map(),variants=new Map();
+ const BOX_STORAGE='gradient-copy-box-colors-v1';
+ const boxColors=new Map();
+ try{for(const entry of Object.entries(JSON.parse(localStorage.getItem(BOX_STORAGE)||'{}')))boxColors.set(...entry);}catch{}
+ function saveBoxColors(){try{localStorage.setItem(BOX_STORAGE,JSON.stringify(Object.fromEntries(boxColors)));}catch{toast('底色调整暂未保存');}}
  const clone=x=>JSON.parse(JSON.stringify(x));
  for(const spec of originals.values())if(spec.scene==='banner'){
   spec.items=spec.items.flatMap(item=>{
@@ -12,7 +18,7 @@
    });
   });
  }
- function richKey(item){return key()+':'+item.id}
+ function richKey(item){return editKey()+':'+item.id}
  function styledChars(item){return richEdits.get(richKey(item))||Array.from({length:item.text.length},(_,i)=>({...clone(item.segments.find(s=>s.start<=i&&s.end>i)||item.segments[0])}));}
  function segmentsFor(item){
   const text=content(item),chars=styledChars(item),out=[];
@@ -27,7 +33,7 @@
   while(end<old.length-start&&end<value.length-start&&old[old.length-1-end]===value[value.length-1-end])end++;
   const seed=chars[start]||chars[start-1]||item.segments[0];
   richEdits.set(richKey(item),[...chars.slice(0,start),...Array.from({length:value.length-start-end},()=>({...seed})),...chars.slice(old.length-end)]);
-  const changes=edits.get(key())||{};changes[item.id]=value;edits.set(key(),changes);
+  const changes=edits.get(editKey())||{};changes[item.id]=value;edits.set(editKey(),changes);
  }
  const presetNames=[['source','设计稿'],['short','单行 · 4–6 字'],['double','双行 · 7–10 字'],['discount','主推折扣'],['price','主推价格'],['floor','主推触底价']];
  function setPreset(name,keepEdits=false){
@@ -47,20 +53,34 @@
    const reference=originals.get(state.brand+':popup').items.filter(i=>i.type==='text')[3];const sub=clone(reference||title);sub.id='copy-subtitle';sub.label='副文案';sub.text='30秒视频直出 50个全模态参考素材';sub.x=60;sub.w=spec.w-120;sub.y=210;sub.h=24;sub.segments=[{...clone((reference||title).segments[0]),text:sub.text,start:0,end:sub.text.length,size:14,line:{unit:'PIXELS',value:24}}];spec.items.push(sub);
   }
   if(name!=='source'&&texts[3]){texts[3].y=214;texts[3].h=24;texts[3].label='副文案';}
-  variants.set(key(),{name,spec,subtitle:name==='source'?!!texts[3]:!['double','floor'].includes(name)});
-  if(!keepEdits){edits.delete(key());colorEdits.delete(key());for(const k of richEdits.keys())if(k.startsWith(key()+':'))richEdits.delete(k);}
+  variants.set(editKey(),{name,spec,subtitle:name==='source'?!!texts[3]:!['double','floor'].includes(name)});
+  if(!keepEdits){edits.delete(editKey());colorEdits.delete(editKey());for(const k of richEdits.keys())if(k.startsWith(editKey()+':'))richEdits.delete(k);}
   renderEditor();updateAll();updateContrast();
  }
- const palettes={dreamina:[['黑','#000000'],['白','#FFFFFF'],['黄','#FFEF61'],['橙','#FF6A00']],pippit:[['黑','#000000'],['白','#FFFFFF'],['紫','#7040FF']]};
- const chosenColor=item=>colorEdits.get(key())?.[item.id];
+ const palettes={dreamina:[['黑','#000000'],['白','#FFFFFF'],['黄','#FFEF61'],['橙','#FF6A00']],pippit:[['黑','#000000'],['白','#FFFFFF'],['紫','#7040FF'],['黄','#FFDE36']]};
+ const chosenColor=item=>colorEdits.get(editKey())?.[item.id];
  function textPaint(item,seg){
   const hex=seg.colorOverride||chosenColor(item);if(!hex)return seg.fills?.find(p=>p.type==='SOLID'&&p.visible!==false);
   return {type:'SOLID',opacity:1,color:{r:parseInt(hex.slice(1,3),16)/255,g:parseInt(hex.slice(3,5),16)/255,b:parseInt(hex.slice(5,7),16)/255}};
  }
  const key=()=>`${state.brand}:${state.scene}`;
  const layout=()=>{
-  const v=variants.get(key()),source=v?.spec||originals.get(key());if(!source)return null;
+  const v=variants.get(editKey()),source=v?.spec||originals.get(key());if(!source)return null;
   let spec={...source,items:source.items.filter(i=>!v||v.subtitle||i!==source.items.filter(x=>x.type==='text')[3])};
+  if(themed()){
+   const boxes=spec.items.filter(i=>i.type==='box');
+   const paint=hex=>({type:'SOLID',opacity:1,color:{r:parseInt(hex.slice(1,3),16)/255,g:parseInt(hex.slice(3,5),16)/255,b:parseInt(hex.slice(5,7),16)/255}});
+   spec={...spec,items:spec.items.map(item=>{
+    if(item.type==='box')return {...item,fills:[paint('#FFFFFF')]};
+    if(item.type!=='text')return item;
+    const onBox=boxes.some(b=>item.x>=b.x-1&&item.y>=b.y-1&&item.x+item.w<=b.x+b.w+1&&item.y+item.h<=b.y+b.h+1);
+    return {...item,segments:item.segments.map(seg=>{
+     const c=seg.fills?.find(p=>p.type==='SOLID')?.color;
+     const highlight=c&&Math.max(c.r,c.g,c.b)-Math.min(c.r,c.g,c.b)>.15;
+     return {...seg,fills:[paint(onBox?'#000000':highlight?'#FFDE36':'#FFFFFF')]};
+    })};
+   })};
+  }
   if(['popup','retain','leave'].includes(state.scene)){
    const texts=spec.items.filter(i=>i.type==='text'),badge=texts[1],model=texts[0];
    if(badge&&content(badge)!==badge.text){
@@ -68,12 +88,16 @@
     const extra=Math.max(0,Math.min(120,measure.measureText(content(badge)).width)-badge.w);
     spec={...spec,items:spec.items.map(i=>i===model?{...i,x:i.x-extra/2}:i===badge?{...i,x:i.x-extra/2,w:i.w+extra}:i.type==='box'&&i.x<=badge.x&&i.x+i.w>=badge.x+badge.w&&i.y<=badge.y&&i.y+i.h>=badge.y+badge.h?{...i,x:i.x-extra/2,w:i.w+extra}:i)};
    }
-  }return spec;
+  }
+  return {...spec,items:spec.items.map(item=>{
+   const hex=boxColors.get(editKey())?.[item.id];
+   return item.type==='box'&&hex?{...item,fills:[{type:'SOLID',opacity:item.fills?.at(-1)?.opacity??1,color:{r:parseInt(hex.slice(1,3),16)/255,g:parseInt(hex.slice(3,5),16)/255,b:parseInt(hex.slice(5,7),16)/255}}]}:item;
+  })};
  };
  const rgba=p=>{const c=p?.color;return c?`rgba(${Math.round(c.r*255)},${Math.round(c.g*255)},${Math.round(c.b*255)},${p.opacity??1})`:'transparent'};
  const weight=font=>font?.variationSettings?.wght||(/semibold|demibold/i.test(font?.style)?600:/bold/i.test(font?.style)?700:/medium/i.test(font?.style)?500:/light/i.test(font?.style)?300:400);
  const family=font=>`"${font?.family||'PingFang SC'}",${font?.family==='Byte Sans'?'"CapCut Sans Text",':font?.family?.includes('Serif')?'"Songti SC",':font?.family?.includes('YaShiSong')?'"Songti SC",':''}"PingFang SC",sans-serif`;
- function content(item){return edits.get(key())?.[item.id]??item.text}
+ function content(item){return edits.get(editKey())?.[item.id]??item.text}
  function makeLayer(){
   const spec=layout();if(!spec)return null;
   const layer=document.createElement('div');layer.className='figma-copy-layer';layer.dataset.copyKey=key();layer.setAttribute('aria-label',`${scenes[state.scene].name}设计稿文案`);
@@ -104,7 +128,7 @@
     el.append(line);
     if(!richEdits.has(richKey(item))&&!changed&&item.text==='Seedance'&&item.segments[0].font.family==='Byte Sans'){
      line.style.visibility='hidden';const mark=document.createElement('span');mark.setAttribute('role','img');mark.setAttribute('aria-label','Seedance');mark.className='figma-seedance-mark';
-     mark.style.backgroundColor=chosenColor(item)||'#000000';mark.style.mask='url("./gradient-assets/seedance-wordmark.svg") center / 100% 100% no-repeat';mark.style.webkitMask=mark.style.mask;
+     mark.style.backgroundColor=chosenColor(item)||(themed()?'#FFFFFF':'#000000');mark.style.mask='url("./gradient-assets/seedance-wordmark.svg") center / 100% 100% no-repeat';mark.style.webkitMask=mark.style.mask;
      const scale=item.segments[0].size/20;
      Object.assign(mark.style,{position:'absolute',left:.796875*scale/item.w*100+'%',top:(6.51953125*scale+(item.h-28*scale)/2)/item.h*100+'%',width:98.15234375*scale/item.w*100+'%',height:14.98046875*scale/item.h*100+'%'});el.append(mark);
     }
@@ -124,18 +148,18 @@
  const group=document.getElementById('title-input').closest('.group');
  Array.from(group.children).filter(n=>n.tagName!=='H3'&&n.id!=='copy-source-note').forEach(n=>n.hidden=true);
  const editor=document.createElement('div');editor.className='figma-copy-editor';group.querySelector('h3').textContent='文案编辑';group.querySelector('h3').after(editor);
- const reset=document.createElement('button');reset.type='button';reset.className='button';reset.textContent='恢复设计稿文案与字色';group.append(reset);
- window.gradientResetCopy=()=>{edits.delete(key());colorEdits.delete(key());variants.delete(key());for(const k of richEdits.keys())if(k.startsWith(key()+':'))richEdits.delete(k);renderEditor();updateAll();updateContrast();};
+ const reset=document.createElement('button');reset.type='button';reset.className='button';reset.textContent='恢复设计稿文案与颜色';group.append(reset);
+ window.gradientResetCopy=()=>{boxColors.delete(editKey());saveBoxColors();edits.delete(editKey());colorEdits.delete(editKey());variants.delete(editKey());for(const k of richEdits.keys())if(k.startsWith(editKey()+':'))richEdits.delete(k);renderEditor();updateAll();updateContrast();};
  reset.onclick=window.gradientResetCopy;
  let editorKey='';
  function renderEditor(){
-  const spec=layout();if(!spec)return;editorKey=key();editor.replaceChildren();
+  const spec=layout();if(!spec)return;editorKey=editKey();editor.replaceChildren();
   if(['popup','retain','leave'].includes(state.scene)){
    const panel=document.createElement('div');panel.className='figma-copy-field';
    const label=document.createElement('span');label.textContent='文案版式';const select=document.createElement('select');select.className='text-input';select.setAttribute('aria-label','文案版式');
-   for(const [value,title]of presetNames){const option=new Option(title,value);select.add(option);}select.value=variants.get(key())?.name||'source';select.onchange=()=>setPreset(select.value);
-   const toggle=document.createElement('label'),check=document.createElement('input');check.type='checkbox';check.checked=variants.get(key())?.subtitle??spec.items.filter(x=>x.type==='text').length>3;
-   check.onchange=()=>{if(!variants.has(key()))setPreset('source',true);variants.get(key()).subtitle=check.checked;renderEditor();updateAll();updateContrast();};toggle.append(check,' 显示副文案');panel.append(label,select,toggle);editor.append(panel);
+   for(const [value,title]of presetNames){const option=new Option(title,value);select.add(option);}select.value=variants.get(editKey())?.name||'source';select.onchange=()=>setPreset(select.value);
+   const toggle=document.createElement('label'),check=document.createElement('input');check.type='checkbox';check.checked=variants.get(editKey())?.subtitle??spec.items.filter(x=>x.type==='text').length>3;
+   check.onchange=()=>{if(!variants.has(editKey()))setPreset('source',true);variants.get(editKey()).subtitle=check.checked;renderEditor();updateAll();updateContrast();};toggle.append(check,' 显示副文案');panel.append(label,select,toggle);editor.append(panel);
   }
   const textItems=spec.items.filter(x=>x.type==='text'&&!(['banner','webStrip'].includes(state.scene)&&/^(?:\d{2}|:|天|小时|分钟|秒)$/.test(x.text)));
   for(const [i,item]of textItems.entries()){
@@ -148,7 +172,7 @@
    function applyColor(hex,button,a=input.selectionStart,b=input.selectionEnd){
     if(!field.isConnected)return;
     if(b>a){const chars=styledChars(item);for(let n=a;n<b;n++){chars[n]={...chars[n]};if(hex)chars[n].colorOverride=hex;else{const fill=chars[n].fills?.find(p=>p.type==='SOLID'&&p.visible!==false)?.color;chars[n].colorOverride=fill?'#'+[fill.r,fill.g,fill.b].map(c=>Math.round(c*255).toString(16).padStart(2,'0')).join(''):undefined;}}richEdits.set(richKey(item),chars);}
-    else{const changes=colorEdits.get(key())||{};if(hex)changes[item.id]=hex;else delete changes[item.id];colorEdits.set(key(),changes);const chars=styledChars(item);chars.forEach(c=>delete c.colorOverride);richEdits.set(richKey(item),chars);}
+    else{const changes=colorEdits.get(editKey())||{};if(hex)changes[item.id]=hex;else delete changes[item.id];colorEdits.set(editKey(),changes);const chars=styledChars(item);chars.forEach(c=>delete c.colorOverride);richEdits.set(richKey(item),chars);}
     colors.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
     custom.dataset.active=String(button===custom);updateAll();updateContrast();
    }
@@ -168,6 +192,32 @@
    picker.addEventListener('input',pickColor);picker.addEventListener('change',pickColor);
    custom.append(document.createTextNode('自定义'),picker);colors.append(custom);
    field.append(label,input,hint,colors);editor.append(field);
+  }
+  const boxes=spec.items.filter(item=>item.type==='box');
+  for(const [index,item] of boxes.entries()){
+   const inside=spec.items.filter(t=>t.type==='text'&&t.x>=item.x-1&&t.y>=item.y-1&&t.x+t.w<=item.x+item.w+1&&t.y+t.h<=item.y+item.h+1);
+   const title=(inside.map(t=>content(t)).join(' ').trim()||`色块 ${index+1}`)+' · 背景色';
+   const field=document.createElement('div');field.className='figma-copy-field';
+   const label=document.createElement('span');label.textContent=title;
+   const colors=document.createElement('div');colors.className='figma-copy-colors';colors.setAttribute('role','group');colors.setAttribute('aria-label',title);
+   const selected=boxColors.get(editKey())?.[item.id];
+   const apply=hex=>{
+    const values={...boxColors.get(editKey())};if(hex)values[item.id]=hex;else delete values[item.id];
+    boxColors.set(editKey(),values);saveBoxColors();
+    colors.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.color===(hex||'source'))));
+    custom.dataset.active=String(!!hex&&!palettes[state.brand].some(([,value])=>value===hex));
+    updateAll();updateContrast();
+   };
+   for(const [name,hex] of [['原稿',null],...palettes[state.brand]]){
+    const button=document.createElement('button');button.type='button';button.className='figma-copy-color';button.dataset.color=hex||'source';button.setAttribute('aria-pressed',String((selected||null)===hex));button.title=name+(hex?' '+hex:'');
+    if(hex){button.classList.add('figma-copy-swatch');button.setAttribute('aria-label',name+' '+hex);const chip=document.createElement('span');chip.className='figma-color-chip';chip.style.background=hex;button.append(chip);}else button.textContent=name;
+    button.onclick=()=>apply(hex);colors.append(button);
+   }
+   const custom=document.createElement('label');custom.className='figma-copy-color figma-copy-custom';custom.textContent='自定义';custom.dataset.active=String(!!selected&&!palettes[state.brand].some(([,hex])=>hex===selected));
+   const picker=document.createElement('input');picker.type='color';picker.className='figma-copy-picker';picker.setAttribute('aria-label',title+'自定义');
+   const c=item.fills?.at(-1)?.color;picker.value=selected||(c?'#'+[c.r,c.g,c.b].map(v=>Math.round(v*255).toString(16).padStart(2,'0')).join(''):'#000000');
+   picker.oninput=()=>apply(picker.value.toUpperCase());picker.onchange=picker.oninput;
+   custom.append(picker);colors.append(custom);field.append(label,colors);editor.append(field);
   }
   document.getElementById('copy-source-note').textContent='按当前资源位的设计稿显示文案与排版；可逐项修改内容和字色，切换资源位保留本页修改。「原稿」保留原有多色排版。';
  }
@@ -189,8 +239,8 @@
   }
   if(!Number.isFinite(ratio))return;$('#ratio').textContent=ratio.toFixed(1)+' : 1';$('#advice').textContent='按当前字色评估';$('#grade').textContent=ratio>=4.5?'AA 通过':ratio>=3?'仅大字通过':'对比度不足';$('#score-dot').style.background=ratio>=4.5?'var(--ok)':ratio>=3?'var(--warn)':'var(--bad)';
  };
- const oldApply=applyCopy;applyCopy=function(){oldApply();if(editorKey!==key())renderEditor();updateAll();};
- const oldFit=fit;fit=function(){oldFit();if(editorKey!==key())renderEditor();updateAll();};
+ const oldApply=applyCopy;applyCopy=function(){oldApply();if(editorKey!==editKey())renderEditor();updateAll();};
+ const oldFit=fit;fit=function(){oldFit();if(editorKey!==editKey())renderEditor();updateAll();};
  const style=document.createElement('style');style.textContent=`
  @font-face{font-family:FZYaShiSongS;src:local('FZYASSS-L--GB1-0');font-weight:300}
  @font-face{font-family:FZYaShiSongS;src:local('FZYASSS-M--GB1-0');font-weight:500}

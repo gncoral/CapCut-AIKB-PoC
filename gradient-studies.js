@@ -97,11 +97,11 @@
   if(target===canvas)lastDisplayedTime=state.studyTime||0;
   if(target===canvas&&performance.now()-lastContrast>300){lastContrast=performance.now();updateContrast();}
  };
- const priorPaint=paintUI;paintUI=function(){priorPaint();document.querySelector('.templates .section-head span').textContent='6 类背景 + 3 个试验';};
+ const priorPaint=paintUI;paintUI=function(){priorPaint();document.querySelector('.templates .section-head span').textContent=window.gradientTemplateSummary?.()||'背景模板';};
  const style=document.createElement('style');style.textContent='.toolbar{flex-wrap:wrap}.toolbar-left,.toolbar-right{flex-wrap:wrap;min-width:0}.toolbar-right>.meta{display:none}#study-motion[hidden]{display:none!important}body[data-study-active="true"] #curve-toggle,body[data-study-active="true"] [data-field-anchor],body[data-study-active="true"] [data-color-anchor]{display:none!important}';document.head.append(style);
  const priorCopy=applyCopy;applyCopy=function(){priorCopy();document.body.dataset.studyActive=String(entries.some(([k])=>k===state.template));};
  const priorRandom=document.getElementById('random').onclick;document.getElementById('random').onclick=e=>{if(!entries.some(([k])=>k===state.template))return priorRandom(e);state.seed=Math.floor(Math.random()*1e8);fieldProfiles[state.template].phase=Math.random()*2;render();paintThumbs();};
- for(const id of ['templates','brands','scenes'])document.getElementById(id).addEventListener('click',()=>{document.querySelector('.templates .section-head span').textContent='6 类背景 + 3 个试验';document.body.dataset.studyActive=String(entries.some(([k])=>k===state.template));});
+ for(const id of ['templates','brands','scenes'])document.getElementById(id).addEventListener('click',()=>{document.querySelector('.templates .section-head span').textContent=window.gradientTemplateSummary?.()||'背景模板';document.body.dataset.studyActive=String(entries.some(([k])=>k===state.template));});
  const panel=document.createElement('div');panel.className='group workspace-effects';panel.id='study-motion';
  panel.innerHTML='<h3>流动调节</h3><button class="button" id="study-play" type="button">暂停流动</button><div id="study-motion-fields"></div>';
  document.querySelector('.workspace-tabs').after(panel);

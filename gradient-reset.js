@@ -10,10 +10,11 @@
  fieldReset.title='恢复当前模板效果、调节参数、导出倍率及当前资源位文案和字色';
  fieldReset.onclick=event=>{
   window.gradientResetCandidateSelection?.();
-  if(softFamily.includes(state.template))state.template='soft';
+  // Each curated gradient now has its own independent default.
   Object.assign(state,defaults,{seed:18,batchStatic:false,studyTime:0,autoText:true});
   if(profiles[state.template])fieldProfiles[state.template]=clone(profiles[state.template]);
   if(state.sceneTemplateControls[state.scene])state.sceneTemplateControls[state.scene]=cloneTemplateControls();
+  window.gradientApplyFloralDefault?.();
   for(const k of controls)document.getElementById(k).value=state[k];
   syncValues();
   // Extension reset handlers also restore their private seeds, presets and sliders.

@@ -18,10 +18,19 @@
  }
  function defaults(asset,scene){
   const strip=scenes[scene].size[0]/scenes[scene].size[1]>12;
-  return {mode:strip?'left':'full',fit:'stretch',zoom:100,x:50,y:50,flip:strip,span:26,feather:48,clean:strip?0:35,noise:0,base:asset.brand==='pippit'?'#958CFA':strip?'#13A9F5':'#62D7FC'};
+  return {mode:strip?'left':'full',fit:'stretch',zoom:100,x:50,y:50,flip:strip,span:26,feather:48,clean:0,cleanOrigin:'top-right',noise:0,baseRevision:1,base:asset.brand==='pippit'?'#958CFA':'#05C6FB'};
  }
  function settings(asset,scene){return {...defaults(asset,scene),...layouts.get(layoutKey(asset,scene))};}
  function save(){try{localStorage.setItem(STORAGE,JSON.stringify(Object.fromEntries(layouts)));}catch{toast('调整暂未保存，浏览器存储空间不足');}}
+ // Upgrade saved Dreamina defaults once; preserve composition and custom colors.
+ let baseMigrated=false;
+ for(const [key,cfg] of layouts){
+  if(key.split(':')[1]!=='dreamina'||!cfg||cfg.baseRevision>=1)continue;
+  const next={...cfg,baseRevision:1};
+  if(['#62d7fc','#13a9f5'].includes(String(cfg.base).toLowerCase()))next.base='#05C6FB';
+  layouts.set(key,next);baseMigrated=true;
+ }
+ if(baseMigrated)save();
  const shelf=document.querySelector('.workspace-shelf'),generated=document.querySelector('.templates'),batch=document.querySelector('#gradient-batch');
  const tabs=document.createElement('div');tabs.className='featured-tabs';tabs.setAttribute('role','group');tabs.setAttribute('aria-label','背景来源');
  tabs.innerHTML='<button class="button" data-source="generated">生成背景</button><button class="button" data-source="featured">精选模板</button>';
@@ -83,11 +92,12 @@
   const row=document.createElement('label');row.className='featured-check';const flip=document.createElement('input');flip.type='checkbox';flip.checked=cfg.flip;flip.setAttribute('aria-label','水平翻转');flip.onchange=()=>update('flip',flip.checked);row.append(flip,document.createTextNode('水平翻转'));panel.append(row);
   if(cfg.mode!=='full'){range('点缀占宽','span',10,65);range('边缘过渡','feather',10,90);}
   range('文字区纯净度','clean',0,100);
+  selectField('纯净渐变方向','cleanOrigin',[['top-right','右上 → 左下'],['top-left','左上 → 右下']]);
   range('噪点质感','noise',0,100);
   const baseRow=document.createElement('label');baseRow.textContent='留白底色';const color=document.createElement('input');color.type='color';color.value=cfg.base;color.setAttribute('aria-label','留白底色');color.oninput=()=>update('base',color.value);baseRow.append(color);panel.append(baseRow);
   const scaleRow=document.createElement('label');scaleRow.textContent='导出倍率';const scale=document.createElement('select');scale.setAttribute('aria-label','精选模板导出倍率');for(const n of [1,2,3]){const o=document.createElement('option');o.value=n;o.textContent=n+'×';scale.append(o);}scale.value=state.exportScale;scale.onchange=()=>{state.exportScale=Number(scale.value);document.getElementById('exportScale').value=scale.value;syncValues();fit();};scaleRow.append(scale);panel.append(scaleRow);
   const reset=document.createElement('button');reset.className='button';reset.textContent='恢复此尺寸构图';reset.onclick=()=>{layouts.delete(layoutKey(asset,state.scene));save();drawPanel();render();};panel.append(reset);
-  const help=document.createElement('p');help.className='help';help.textContent='取景位置在缩放或裁切后生效。纯净度用留白底色柔和覆盖文字区域；噪点为黑白细颗粒，0% 关闭。各尺寸独立保存，套图导出沿用各自设置。';panel.append(help);
+  const help=document.createElement('p');help.className='help';help.textContent='取景位置在缩放或裁切后生效。纯净度用留白底色从所选上角向对侧下方渐隐，越靠近下方越透明；噪点为黑白细颗粒，0% 关闭。各尺寸独立保存，套图导出沿用各自设置。';panel.append(help);
  }
  function paintImage(context,asset,cfg,w,h){
   const image=asset.image,iw=image.naturalWidth,ih=image.naturalHeight;
@@ -141,12 +151,16 @@
    c.drawImage(layer,cfg.mode==='right'?w-layer.width:0,0);
   }
   if(cfg.clean>0){
-   c.save();c.translate(w*.5,h*.5);c.scale(w*.62,h*.44);
-   const gradient=c.createRadialGradient(0,0,0,0,0,1);
+   // Normalize the coordinates so diagonal coverage is consistent across aspect ratios.
+   c.save();c.scale(w,h);
+   const fromLeft=cfg.cleanOrigin==='top-left';
+   const gradient=c.createLinearGradient(fromLeft?0:1,0,fromLeft?1:0,1);
    const rgb=[1,3,5].map(i=>parseInt(cfg.base.slice(i,i+2),16)).join(',');
-   gradient.addColorStop(0,'rgba('+rgb+','+cfg.clean/100+')');
-   gradient.addColorStop(.45,'rgba('+rgb+','+cfg.clean/100+')');
-   gradient.addColorStop(1,'rgba('+rgb+',0)');c.fillStyle=gradient;c.fillRect(-1,-1,2,2);c.restore();
+   const strength=Math.max(0,Math.min(100,cfg.clean))/100;
+   gradient.addColorStop(0,'rgba('+rgb+','+strength+')');
+   gradient.addColorStop(.5,'rgba('+rgb+','+(strength*.45)+')');
+   gradient.addColorStop(1,'rgba('+rgb+',0)');
+   c.fillStyle=gradient;c.fillRect(0,0,1,1);c.restore();
   }
   paintGrain(c,cfg.noise,w,h,factor);
   return raster;

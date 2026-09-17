@@ -1,0 +1,9 @@
+/* Full character sets: edited copy must use the same typeface as the original. */
+@font-face{font-family:'FZYaShiHeiS';font-style:normal;font-weight:300;font-display:swap;src:url('./FZYaShiHeiS-Light.ttf') format('truetype')}
+@font-face{font-family:'FZYaShiHeiS';font-style:normal;font-weight:400;font-display:swap;src:url('./FZYaShiHeiS-Regular.ttf') format('truetype')}
+@font-face{font-family:'FZYaShiHeiS';font-style:normal;font-weight:500;font-display:swap;src:url('./FZYaShiHeiS-Medium.ttf') format('truetype')}
+@font-face{font-family:'Noto Serif SC';font-style:normal;font-weight:100 900;font-display:swap;src:url('./NotoSerifSC-variable.ttf') format('truetype')}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:100 900;font-display:swap;src:url('./Montserrat-variable.ttf') format('truetype')}
+@font-face{font-family:'PingFang SC';font-style:normal;font-weight:400;font-display:swap;src:url('./PingFangSC-Regular.ttf') format('truetype')}
+@font-face{font-family:'Byte Sans';font-style:normal;font-weight:400;font-display:swap;src:url('./ByteSans-Regular.ttf') format('truetype')}
+@font-face{font-family:'Byte Sans';font-style:normal;font-weight:500;font-display:swap;src:url('./ByteSans-Medium.ttf') format('truetype')}

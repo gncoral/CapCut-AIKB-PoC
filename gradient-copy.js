@@ -7,7 +7,7 @@
  const BOX_STORAGE='gradient-copy-box-colors-v1';
  const boxColors=new Map();
  try{for(const entry of Object.entries(JSON.parse(localStorage.getItem(BOX_STORAGE)||'{}')))boxColors.set(...entry);}catch{}
- function saveBoxColors(){try{localStorage.setItem(BOX_STORAGE,JSON.stringify(Object.fromEntries(boxColors)));}catch{toast('底色调整暂未保存');}}
+ function saveBoxColors(){if(previewing)return;try{localStorage.setItem(BOX_STORAGE,JSON.stringify(Object.fromEntries(boxColors)));}catch{toast('底色调整暂未保存');}}
  const clone=x=>JSON.parse(JSON.stringify(x));
  for(const spec of originals.values())if(spec.scene==='banner'){
   spec.items=spec.items.flatMap(item=>{
@@ -18,8 +18,44 @@
    });
   });
  }
+ // Popup defaults and the matching library choice share one audited Figma layout.
+ // Preserve legacy field IDs so saved copy and box colors remain addressable.
+ const canonicalOriginals=new Map();
+ for(const [brand,scene,preset]of [['dreamina','popup','short'],['pippit','popup','six'],['pippit','retain','offer']]){
+  const old=originals.get(brand+':'+scene);
+  const ref=window.gradientCopyTemplates?.find(f=>f.brand===brand&&f.preset===preset&&f.suffix==='numeric');
+  if(!old||!ref)continue;
+  const spec=clone(ref),counts={text:0,box:0},ids=new Map();
+  spec.w=old.w;spec.h=old.h;spec.scene=scene;spec.canonicalPreset=preset;
+  for(const item of spec.items){const oldItem=old.items.filter(i=>i.type===item.type)[counts[item.type]++];if(oldItem)ids.set(item.id,oldItem.id);item.x+=(old.w-ref.w)/2;item.y+=(old.h-ref.h)/2;}
+  spec.items.forEach(i=>{i.id=ids.get(i.id)||i.id;i.canonicalTypography=true;});spec.subtitleId=ids.get(spec.subtitleId)||spec.subtitleId;
+  canonicalOriginals.set(brand+':'+scene,spec);
+ }
+ const isCustom=()=>!!window.gradientCustomSizes?.is(state.scene);
+ const supportsTemplates=()=>['popup','retain','leave'].includes(state.scene)||isCustom();
+ function adaptCustom(spec){
+  const [w,h]=scenes[state.scene].size,k=Math.min(w/spec.w,h/spec.h),dx=(w-spec.w*k)/2,dy=(h-spec.h*k)/2;
+  const out=clone(spec);out.w=w;out.h=h;out.scene=state.scene;out.customLayout=true;out.customScale=k;
+  for(const i of out.items){i.x=i.x*k+dx;i.y=i.y*k+dy;i.w*=k;i.h*=k;if(i.radius)i.radius*=k;if(i.strokeWidth)i.strokeWidth*=k;if(i.paragraphSpacing)i.paragraphSpacing*=k;
+   for(const seg of i.segments||[]){seg.size*=k;if(seg.line?.unit==='PIXELS')seg.line.value*=k;if(seg.spacing?.unit==='PIXELS')seg.spacing.value*=k;}}
+  return out;
+ }
+ function customDefault(){
+  const [w,h]=scenes[state.scene].size;
+  if(w/h>=3){const base=clone(originals.get(`${state.brand}:${state.brand==='dreamina'?'appHome':'appSubscription'}`));base.exactTemplate=true;base.customWide=true;const texts=base.items.filter(i=>i.type==='text');if(state.brand==='dreamina'){base.subtitleId=texts[1]?.id;texts[0].label='主文案';texts[1].label='副文案';}return adaptCustom(base);}
+  return exactTemplate(state.brand==='dreamina'?'short':'six','numeric');
+ }
+ const canonicalName=(name,suffix='numeric')=>name==='source'&&isCustom()&&scenes[state.scene].size[0]/scenes[state.scene].size[1]<3?(state.brand==='dreamina'?'short':'six'):name==='source'&&canonicalOriginals.has(`${state.brand}:${state.scene}`)?canonicalOriginals.get(`${state.brand}:${state.scene}`).canonicalPreset:name==='double'&&suffix==='numeric'?'offer':name;
+ function availablePresets(suffix=variants.get(editKey())?.suffix||'numeric'){
+  if(!supportsTemplates())return [presetNames[0]];
+  return presetNames.filter(([id])=>!(id==='source'&&(canonicalOriginals.has(key())||isCustom()&&scenes[state.scene].size[0]/scenes[state.scene].size[1]<3))&&!(id==='double'&&suffix==='numeric')).map(p=>isCustom()&&p[0]==='source'?['source','自动排版']:p);
+ }
  function richKey(item){return editKey()+':'+item.id}
- function styledChars(item){return richEdits.get(richKey(item))||Array.from({length:item.text.length},(_,i)=>({...clone(item.segments.find(s=>s.start<=i&&s.end>i)||item.segments[0])}));}
+ function styledChars(item){
+  const saved=richEdits.get(richKey(item));
+  if(saved)return item.canonicalTypography?saved.map((s,i)=>{const base=item.segments.find(t=>t.start<=i&&t.end>i)||item.segments.at(-1);return {...s,font:base.font,size:base.size,line:base.line,spacing:base.spacing};}):saved;
+  return Array.from({length:item.text.length},(_,i)=>({...clone(item.segments.find(s=>s.start<=i&&s.end>i)||item.segments[0])}));
+ }
  function segmentsFor(item){
   const text=content(item),chars=styledChars(item),out=[];
   for(let i=0;i<text.length;i++){
@@ -35,25 +71,39 @@
   richEdits.set(richKey(item),[...chars.slice(0,start),...Array.from({length:value.length-start-end},()=>({...seed})),...chars.slice(old.length-end)]);
   const changes=edits.get(editKey())||{};changes[item.id]=value;edits.set(editKey(),changes);
  }
- const presetNames=[['source','设计稿'],['short','单行 · 4–6 字'],['double','双行 · 7–10 字'],['discount','主推折扣'],['price','主推价格'],['floor','主推触底价']];
- function setPreset(name,keepEdits=false){
-  const spec=clone(originals.get(key())),texts=spec.items.filter(i=>i.type==='text'),title=texts[2];
-  if(name!=='source'&&title){
-   const copy={short:'全球首发',double:'首发双福利\n限时开启',discount:'低至3.8折起',price:'低至0.11元/秒',floor:'触底价低至\n0.43元每秒'}[name];
-   const emphasis={short:'首发',double:'双福利',discount:'3.8',price:'0.11',floor:'0.43'}[name];
-   title.text=copy;title.x=60;title.w=spec.w-120;title.y=100;title.h=name==='double'||name==='floor'?98:68;title.align='CENTER';title.valign='CENTER';title.label='主文案';
-   const base=clone(title.segments[0]),highlight=clone(title.segments.find(s=>s.fills?.some(p=>p.color&&(p.color.r>.3||p.color.b>.3)))||base);
-   base.fills=[{type:'SOLID',opacity:1,color:{r:0,g:0,b:0}}];highlight.fills=[{type:'SOLID',opacity:1,color:state.brand==='pippit'?{r:112/255,g:64/255,b:1}:{r:1,g:106/255,b:0}}];
-   const size=name==='short'?56:name==='double'?44:42;
-   let a=copy.indexOf(emphasis),b=a+emphasis.length;
-   title.segments=[[0,a,base],[a,b,highlight],[b,copy.length,base]].filter(([a,b])=>a<b).map(([a,b,style])=>({...style,start:a,end:b,text:copy.slice(a,b),size,line:{unit:'PIXELS',value:name==='short'?68:49}}));
-   if(['discount','price'].includes(name))title.segments.forEach(seg=>{seg.size=seg.text===emphasis?54:27;});
+ const presetNames=[['source','设计稿'],['short','4 字＋副文案'],['five','5 字＋副文案'],['six','6 字＋副文案'],['offer','双行 · 首发优惠'],['double','双行 · 首发双福利'],['discount','主推折扣'],['price','主推价格'],['floor','主推触底价'],['shortOnly','4 字 · 无副文案'],['fiveOnly','5 字 · 无副文案']];
+ function exactTemplate(name,suffix='numeric'){
+  name=canonicalName(name,suffix);
+  const all=window.gradientCopyTemplates||[],matches=all.filter(f=>f.brand===state.brand&&f.preset===name);
+  const wanted=suffix==='numeric'?'numeric':'english';
+  const source=matches.find(f=>f.suffix===wanted)||matches[0];if(!source)return null;
+  const spec=clone(source);spec.scene=state.scene;if(!isCustom()){spec.h=scenes[state.scene].size[1];spec.w=scenes[state.scene].size[0];}
+  // The library frames are 472 × 263. Taller 472 × 266 slots keep typography
+  // unchanged and center the same composition with a 1.5 px vertical offset.
+  const dx=(spec.w-source.w)/2,dy=(spec.h-source.h)/2;
+  spec.items.forEach(i=>{i.x+=dx;i.y+=dy;});
+  if(source.suffix!==wanted){
+   const header=all.find(f=>f.brand===state.brand&&f.preset==='short'&&f.suffix===wanted);
+   if(header){const oldY=spec.items.find(i=>i.id==='copy-model').y,headerY=header.items.find(i=>i.id==='copy-model').y;
+    const headerItems=header.items.filter(i=>['copy-model','copy-badge','copy-box-0'].includes(i.id)).map(i=>({...clone(i),x:i.x+dx,y:i.y-headerY+oldY}));
+    spec.items=[...headerItems,...spec.items.filter(i=>!['copy-model','copy-badge','copy-box-0'].includes(i.id))];
+   }
   }
-  if(!texts[3]){
-   const reference=originals.get(state.brand+':popup').items.filter(i=>i.type==='text')[3];const sub=clone(reference||title);sub.id='copy-subtitle';sub.label='副文案';sub.text='30秒视频直出 50个全模态参考素材';sub.x=60;sub.w=spec.w-120;sub.y=210;sub.h=24;sub.segments=[{...clone((reference||title).segments[0]),text:sub.text,start:0,end:sub.text.length,size:14,line:{unit:'PIXELS',value:24}}];spec.items.push(sub);
+  if(suffix==='mini'){
+   const badge=spec.items.find(i=>i.id==='copy-badge');if(badge.text!=='Mini'){
+    const reference=all.find(f=>f.brand==='dreamina'&&f.preset==='price'&&f.suffix==='english');
+    const originalBadge=reference.items.find(i=>i.id==='copy-badge'),originalBox=reference.items.find(i=>i.id==='copy-box-0'),box=spec.items.find(i=>i.id==='copy-box-0'),model=spec.items.find(i=>i.id==='copy-model');
+    const shift=(originalBox.w-box.w)/2;model.x-=shift;box.x-=shift;box.w=originalBox.w;
+    Object.assign(badge,{text:originalBadge.text,w:originalBadge.w,x:box.x+originalBadge.x-originalBox.x,segments:clone(originalBadge.segments),glyph:originalBadge.glyph});
+   }
   }
-  if(name!=='source'&&texts[3]){texts[3].y=214;texts[3].h=24;texts[3].label='副文案';}
-  variants.set(editKey(),{name,spec,subtitle:name==='source'?!!texts[3]:!['double','floor'].includes(name)});
+  return isCustom()?adaptCustom(spec):spec;
+ }
+ function setPreset(name,keepEdits=false,suffix='numeric'){
+  name=canonicalName(name,suffix);
+  const spec=name==='source'?(isCustom()?customDefault():clone(originals.get(key()))):exactTemplate(name,suffix);if(!spec)return;
+  if(!spec.exactTemplate){const texts=spec.items.filter(i=>i.type==='text');spec.subtitleId=texts[3]?.id;}
+  variants.set(editKey(),{name,spec,suffix,subtitle:!!spec.subtitleId});
   if(!keepEdits){edits.delete(editKey());colorEdits.delete(editKey());for(const k of richEdits.keys())if(k.startsWith(editKey()+':'))richEdits.delete(k);}
   renderEditor();updateAll();updateContrast();
  }
@@ -65,8 +115,9 @@
  }
  const key=()=>`${state.brand}:${state.scene}`;
  const layout=()=>{
-  const v=variants.get(editKey()),source=v?.spec||originals.get(key());if(!source)return null;
-  let spec={...source,items:source.items.filter(i=>!v||v.subtitle||i!==source.items.filter(x=>x.type==='text')[3])};
+  const v=variants.get(editKey());
+  const source=v?.name==='double'&&v.suffix==='numeric'?exactTemplate('offer','numeric'):( !v||v.name==='source')&&canonicalOriginals.has(key())?canonicalOriginals.get(key()):v?.spec||(isCustom()?customDefault():originals.get(key()));if(!source)return null;
+  let spec={...source,items:source.items.filter(i=>!v||v.subtitle||i.id!==(source.exactTemplate?source.subtitleId:source.subtitleId||source.items.filter(x=>x.type==='text')[3]?.id))};
   if(themed()){
    const boxes=spec.items.filter(i=>i.type==='box');
    const paint=hex=>({type:'SOLID',opacity:1,color:{r:parseInt(hex.slice(1,3),16)/255,g:parseInt(hex.slice(3,5),16)/255,b:parseInt(hex.slice(5,7),16)/255}});
@@ -81,12 +132,14 @@
     })};
    })};
   }
-  if(['popup','retain','leave'].includes(state.scene)){
+  if(supportsTemplates()&&!spec.customWide){
    const texts=spec.items.filter(i=>i.type==='text'),badge=texts[1],model=texts[0];
-   if(badge&&content(badge)!==badge.text){
+   if(badge&&model&&(content(badge)!==badge.text||content(model)!==model.text)){
     const measure=document.createElement('canvas').getContext('2d'),font=badge.segments[0];measure.font=`${weight(font.font)} ${font.size}px ${family(font.font)}`;
-    const extra=Math.max(0,Math.min(120,measure.measureText(content(badge)).width)-badge.w);
-    spec={...spec,items:spec.items.map(i=>i===model?{...i,x:i.x-extra/2}:i===badge?{...i,x:i.x-extra/2,w:i.w+extra}:i.type==='box'&&i.x<=badge.x&&i.x+i.w>=badge.x+badge.w&&i.y<=badge.y&&i.y+i.h>=badge.y+badge.h?{...i,x:i.x-extra/2,w:i.w+extra}:i)};
+    const extra=Math.max(0,Math.min(120*(spec.customScale||1),measure.measureText(content(badge)).width)-badge.w);
+    const modelFont=model.segments[0];measure.font=`${weight(modelFont.font)} ${modelFont.size}px ${family(modelFont.font)}`;
+    const extraModel=Math.max(0,Math.min(240*(spec.customScale||1),measure.measureText(content(model)).width)-model.w),shift=(extra+extraModel)/2;
+    spec={...spec,items:spec.items.map(i=>i===model?{...i,x:i.x-shift,w:i.w+extraModel}:i===badge?{...i,x:i.x-shift+extraModel,w:i.w+extra}:i.type==='box'&&i.x<=badge.x&&i.x+i.w>=badge.x+badge.w&&i.y<=badge.y&&i.y+i.h>=badge.y+badge.h?{...i,x:i.x-shift+extraModel,w:i.w+extra}:i)};
    }
   }
   return {...spec,items:spec.items.map(item=>{
@@ -113,7 +166,7 @@
     if(item.strokes?.length)el.style.border=`${(item.strokeWidth||1)/spec.w*100}cqw solid ${rgba(item.strokes.at(-1))}`;
    }else{
     const line=document.createElement('div');line.className='figma-copy-lines';el.style.textAlign=item.align.toLowerCase();el.style.justifyContent=item.valign==='BOTTOM'?'flex-end':item.valign==='CENTER'?'center':'flex-start';
-    const text=content(item),changed=text!==item.text;
+    const text=content(item),changed=text!==item.text;el.dataset.edited=String(changed);
     // Preserve styled character ranges through insertions and deletions.
     const segments=segmentsFor(item);
     for(const seg of segments){
@@ -126,7 +179,9 @@
      line.append(span);
     }
     el.append(line);
-    if(!richEdits.has(richKey(item))&&!changed&&item.text==='Seedance'&&item.segments[0].font.family==='Byte Sans'){
+    if(item.glyph&&!changed&&!segmentsFor(item).some(s=>s.colorOverride)){
+     line.style.visibility='hidden';const mark=document.createElement('span');mark.className='figma-original-glyph';mark.setAttribute('role','img');mark.setAttribute('aria-label',item.text);mark.style.backgroundColor=rgba(textPaint(item,item.segments[0]));mark.style.mask=`url("${item.glyph}") center / 100% 100% no-repeat`;mark.style.webkitMask=mark.style.mask;el.append(mark);
+    }else if(!richEdits.has(richKey(item))&&!changed&&item.text==='Seedance'&&item.segments[0].font.family==='Byte Sans'){
      line.style.visibility='hidden';const mark=document.createElement('span');mark.setAttribute('role','img');mark.setAttribute('aria-label','Seedance');mark.className='figma-seedance-mark';
      mark.style.backgroundColor=chosenColor(item)||(themed()?'#FFFFFF':'#000000');mark.style.mask='url("./gradient-assets/seedance-wordmark.svg") center / 100% 100% no-repeat';mark.style.webkitMask=mark.style.mask;
      const scale=item.segments[0].size/20;
@@ -138,8 +193,19 @@
   return layer;
  }
  let fitPending=0;
- function queueFit(){if(fitPending)return;fitPending=requestAnimationFrame(()=>{fitPending=0;document.querySelectorAll('.figma-copy-text').forEach(el=>{const line=el.querySelector('.figma-copy-lines');line.style.transform='';const width=el.clientWidth;if(!width||!line.scrollWidth)return;const scale=Math.min(1,width/line.scrollWidth);line.style.transform=`scaleX(${scale})`;line.style.transformOrigin=el.style.textAlign==='center'?'center':el.style.textAlign==='right'?'right':'left';});});}
+ function queueFit(){if(fitPending)return;fitPending=requestAnimationFrame(()=>{
+  fitPending=0;let overflow=false;
+  document.querySelectorAll('.figma-copy-text').forEach(el=>{
+   const line=el.querySelector('.figma-copy-lines');if(!line)return;line.style.transform='';
+   const range=document.createRange();range.selectNodeContents(line);const bounds=range.getBoundingClientRect();
+   const tooWide=bounds.width>el.getBoundingClientRect().width+2;
+   el.classList.toggle('copy-overflow',tooWide);
+   if(el.closest('#frame')&&tooWide&&el.dataset.edited==='true')overflow=true;
+  });
+  const note=document.getElementById('copy-source-note');if(note){note.classList.toggle('copy-overflow-note',overflow);note.textContent=overflow?'文字超出设计稿文本框，请缩短文案或选择更合适的文字模板。字号和字形保持原样。':'选中文字可局部改色；编辑保留设计稿字号与字形，超长文案不会被压扁。';}
+ });}
  function updateAll(){
+  if(previewing)return;
   const main=frame.querySelector('.figma-copy-layer');const fresh=makeLayer();if(main)main.replaceWith(fresh);else if(fresh)frame.append(fresh);
   document.querySelectorAll('.batch-preview').forEach(stage=>{stage.querySelector('.figma-copy-layer')?.remove();const l=makeLayer();if(l)stage.append(l);});queueFit();
   document.getElementById('copy-source-note').textContent='选中文字后点击色块可局部改色；未选中时修改整段。各尺寸独立保留本页调整。';
@@ -153,13 +219,14 @@
  reset.onclick=window.gradientResetCopy;
  let editorKey='';
  function renderEditor(){
+  if(previewing)return;
   const spec=layout();if(!spec)return;editorKey=editKey();editor.replaceChildren();
-  if(['popup','retain','leave'].includes(state.scene)){
+  if(supportsTemplates()){
    const panel=document.createElement('div');panel.className='figma-copy-field';
    const label=document.createElement('span');label.textContent='文案版式';const select=document.createElement('select');select.className='text-input';select.setAttribute('aria-label','文案版式');
-   for(const [value,title]of presetNames){const option=new Option(title,value);select.add(option);}select.value=variants.get(editKey())?.name||'source';select.onchange=()=>setPreset(select.value);
-   const toggle=document.createElement('label'),check=document.createElement('input');check.type='checkbox';check.checked=variants.get(editKey())?.subtitle??spec.items.filter(x=>x.type==='text').length>3;
-   check.onchange=()=>{if(!variants.has(editKey()))setPreset('source',true);variants.get(editKey()).subtitle=check.checked;renderEditor();updateAll();updateContrast();};toggle.append(check,' 显示副文案');panel.append(label,select,toggle);editor.append(panel);
+   for(const [value,title]of availablePresets()){const option=new Option(title,value);select.add(option);}select.value=canonicalName(variants.get(editKey())?.name||'source',variants.get(editKey())?.suffix);select.onchange=()=>setPreset(select.value,false,variants.get(editKey())?.suffix||'numeric');
+   const toggle=document.createElement('label'),check=document.createElement('input');check.type='checkbox';check.checked=variants.get(editKey())?.subtitle??(!!spec.subtitleId||!spec.exactTemplate&&spec.items.filter(x=>x.type==='text').length>3);check.disabled=!!spec.exactTemplate&&!spec.subtitleId;
+   check.onchange=()=>{if(!variants.has(editKey()))variants.set(editKey(),{name:canonicalName('source'),spec:clone(spec),suffix:'numeric',subtitle:true});variants.get(editKey()).subtitle=check.checked;renderEditor();updateAll();updateContrast();};toggle.append(check,' 显示副文案');panel.append(toggle);editor.append(panel);
   }
   const textItems=spec.items.filter(x=>x.type==='text'&&!(['banner','webStrip'].includes(state.scene)&&/^(?:\d{2}|:|天|小时|分钟|秒)$/.test(x.text)));
   for(const [i,item]of textItems.entries()){
@@ -221,8 +288,46 @@
   }
   document.getElementById('copy-source-note').textContent='按当前资源位的设计稿显示文案与排版；可逐项修改内容和字色，切换资源位保留本页修改。「原稿」保留原有多色排版。';
  }
+
+ const copyMaps={edits,colorEdits,richEdits,variants,boxColors};
+ const captureCopy=()=>Object.fromEntries(Object.entries(copyMaps).map(([name,map])=>[name,clone([...map])]));
+ function restoreCopy(snapshot,refresh=true){for(const [name,map]of Object.entries(copyMaps)){map.clear();for(const [k,v]of snapshot[name]||[])map.set(k,clone(v));}if(refresh){saveBoxColors();renderEditor();updateAll();updateContrast();}}
+ let previewing=false;
+ window.gradientCopyTools={
+  capture:captureCopy,restore:restoreCopy,
+  captureScene(){const k=editKey();return {key:k,maps:Object.fromEntries(Object.entries(copyMaps).map(([name,map])=>[name,clone([...map].filter(([id])=>name==='richEdits'?id.startsWith(k+':'):id===k))]))};},
+  restoreScene(snapshot){for(const [name,map]of Object.entries(copyMaps)){for(const id of map.keys())if(name==='richEdits'?id.startsWith(snapshot.key+':'):id===snapshot.key)map.delete(id);for(const [id,value]of snapshot.maps[name]||[])map.set(id,clone(value));}saveBoxColors();renderEditor();updateAll();updateContrast();},
+  supported:supportsTemplates,
+  list:availablePresets,
+  current:()=>canonicalName(variants.get(editKey())?.name||'source',variants.get(editKey())?.suffix),
+  suffix:()=>variants.get(editKey())?.suffix||'numeric',
+  setSuffix(value){
+   const spec=layout(),texts=spec.items.filter(i=>i.type==='text');
+   if(!supportsTemplates())return;
+   if(isCustom()&&this.current()==='source'){setPreset(state.brand==='dreamina'?'short':'six',false,value);return;}
+   const current=this.current();if(current!=='source'){setPreset(current,false,value);return;}
+   if(!variants.has(editKey()))setPreset('source',true);
+   variants.get(editKey()).suffix=value;
+   changeText(texts[0],value==='numeric'?'Seedance':'Seedance 2.0');
+   changeText(texts[1],value==='english'?'Fast':value==='mini'?'Mini':'2.5');
+   renderEditor();updateAll();updateContrast();
+  },
+  choose(name,suffix='numeric'){
+   name=canonicalName(name,suffix);
+   if(!this.list(suffix).some(([id])=>id===name))return;
+   if(this.supported()){setPreset(name,false,suffix);if(name==='source'&&!isCustom())this.setSuffix(suffix);}else window.gradientResetCopy();
+  },
+  preview(name,suffix){
+   if(name===this.current()&&suffix===this.suffix())return makeLayer();
+   const snapshot=captureCopy();previewing=true;
+   try{this.choose(name,suffix);return makeLayer();}finally{restoreCopy(snapshot,false);previewing=false;}
+  },
+  resolved(){const spec=layout();return clone({...spec,items:spec.items.map(item=>item.type!=='text'?item:{...item,text:content(item),glyph:content(item)===item.text&&!segmentsFor(item).some(s=>s.colorOverride)?item.glyph:null,glyphColor:rgba(textPaint(item,item.segments[0])),wordmark:!item.glyph&&!richEdits.has(richKey(item))&&content(item)===item.text&&item.text==='Seedance'&&item.segments[0].font.family==='Byte Sans',wordmarkColor:chosenColor(item)||(themed()?'#FFFFFF':'#000000'),segments:segmentsFor(item).map(seg=>({...seg,fills:[textPaint(item,seg)].filter(Boolean),cssFont:family(seg.font),weight:weight(seg.font)}))})});},
+  makeLayer
+ };
  const oldContrast=updateContrast;
  updateContrast=function(){
+  if(previewing)return;
   oldContrast();const spec=layout();if(!spec||!canvas.width||!canvas.height)return;
   let ratio=Infinity;const boxes=[];
   const blend=(base,paint)=>{const c=paint.color,a=paint.opacity??1;return base.map((v,i)=>v*(1-a)+[c.r,c.g,c.b][i]*255*a)};
@@ -237,7 +342,11 @@
     for(const paint of paints)ratio=Math.min(ratio,cr(lum(...bg),lum(...blend(bg,paint))));
    }
   }
-  if(!Number.isFinite(ratio))return;$('#ratio').textContent=ratio.toFixed(1)+' : 1';$('#advice').textContent='按当前字色评估';$('#grade').textContent=ratio>=4.5?'AA 通过':ratio>=3?'仅大字通过':'对比度不足';$('#score-dot').style.background=ratio>=4.5?'var(--ok)':ratio>=3?'var(--warn)':'var(--bad)';
+  // This coarse minimum mixes segment colors across the whole text box;
+  // it is diagnostic data, not a reliable pass/fail verdict for the artwork.
+  $('#ratio').textContent='';$('#advice').textContent='';
+  $('#grade').textContent='预览已就绪';$('#score-dot').style.background='var(--ok)';
+  $('#grade').parentElement.title='预览已生成；文字可读性请结合实际尺寸检查。';
  };
  const oldApply=applyCopy;applyCopy=function(){oldApply();if(editorKey!==editKey())renderEditor();updateAll();};
  const oldFit=fit;fit=function(){oldFit();if(editorKey!==editKey())renderEditor();updateAll();};
@@ -247,7 +356,9 @@
  .figma-copy-layer{position:absolute;inset:0;pointer-events:none;z-index:7;overflow:hidden}
  .figma-copy-layer>div,.figma-copy-layer>img{position:absolute;box-sizing:border-box}
  .figma-copy-text{display:flex;flex-direction:column;overflow:visible}
- .figma-copy-lines{width:100%;white-space:pre;line-height:0;font-synthesis:none}
+ .figma-copy-lines{width:100%;white-space:pre;font-size:0;line-height:0;font-synthesis:none}
+ .figma-original-glyph{position:absolute;inset:0}
+ .copy-overflow-note{color:#ffbc7e!important}
  .figma-copy-lines span{font-kerning:normal}
  #frame>.mock{display:none!important}
  #frame.background-only>.figma-copy-layer,#frame.preview-off>.figma-copy-layer{display:none}

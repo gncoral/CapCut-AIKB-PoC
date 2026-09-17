@@ -1,12 +1,12 @@
 {
-  "version": "9.16-v02",
+  "version": "9.17-v01",
   "files": {
-    "gradient-editor.html": "c6a9cbfe2a0efdf9a7e36e21d14cad0a781db91a78e865d068541dc732551047",
+    "gradient-editor.html": "1cd9a024a2f33167fc36d2848ff27a7b3a3d7f4e23d1d3158fcbabd8c07630e8",
     "gradient-batch.js": "6afe4ed3210fb6a9165289a62b7e01144436cdca00523dad2be6c074500e5be1",
     "gradient-copy-layouts.js": "3ffba807d5c4c77b508adddcfd186ad8301b612e76060e5ae99a955bfc91f8d5",
     "gradient-copy-layouts.json": "80a5c2ee048405e9345460c44f94273777cc6b85ad446a64d921d569e3a0c8b1",
-    "gradient-copy.js": "ce55bb2e7f6caa8d08b0a3e9bc956a5b51db1af77f24107e258982218e009fe6",
-    "gradient-featured.js": "f4bdff2ae99651ce527b053cab24cd7854cbe986b63066e11db95f6605ec6b73",
+    "gradient-copy.js": "3d64c3f0a229768afa3a421e0161001d7fa2ad0c6e44ba0060563f28e0d21a4a",
+    "gradient-featured.js": "0e558290e9d769efacf1e1dce72b967fc371dccfcdfeca49bffae8fbc494f764",
     "gradient-field.js": "8de8b6829bebddce165bd47e6cfaca774657b723cef965f6415ee66db7b5f237",
     "gradient-oil-brush.js": "8b1239dc7d5951999493bedd6db4b2657efa003dfc816e5ef3258bdc4388b9d2",
     "gradient-petal-9.2v1-shader.js": "65801c2306ca5daed577df500629969b857d5e73e2a0cfec27df39d8c25e27e5",
@@ -45,6 +45,35 @@
     "gradient-assets/seedance-wordmark.svg": "139cab99ac3d7859e7ad6dcbad0a775f50e6574b54a3adcdaa63d664cf8bec4d",
     "gradient-curation.js": "33e09375157612f06b6093432f992ab7e79b67f508c7e367f564d6d648cd82b3",
     "gradient-featured-defaults.js": "803ce088950fef6c018db754e54899256899a1ca0b16d2b7901abac3065f9b07",
-    "gradient-floral-default.js": "fd8da6c71c2e41d51056db8568c90292e6b3b570564bd2f3da19c9255aef3553"
+    "gradient-floral-default.js": "fd8da6c71c2e41d51056db8568c90292e6b3b570564bd2f3da19c9255aef3553",
+    "gradient-assets/copy-glyphs/379-44861.svg": "b297788ffe0cc2e233428f73a5935ac246428cd8848af059e77c540c828a4bdf",
+    "gradient-assets/copy-glyphs/379-44863.svg": "0dcbc035fad6a2bf29ee24f0819f8e892130a98817a4dbb0e358a1e7197ba2b3",
+    "gradient-assets/copy-glyphs/379-44886.svg": "70e74d37aca2ba9227fc05c8e4ce5d033a979ffd1aa040f336b0b5ae925eee49",
+    "gradient-assets/copy-glyphs/379-44937.svg": "e5faee0918ebfeb940b08ef3e65319831ddf1e3806829787ffdc345599a382a2",
+    "gradient-assets/copy-glyphs/379-44939.svg": "a524b7c80eb96fd023e3bb9574646942d902c504d809347390924244d8660616",
+    "gradient-assets/copy-glyphs/379-45067.svg": "cdb7abe8036e42146dacbf384e60f78484309f61b8c4fbff9d86de12503ce303",
+    "gradient-assets/copy-glyphs/379-45109.svg": "640273d7cdfbd1f14b618562bb7765960a05bd5d9852ca3be886170252eb7d16",
+    "gradient-assets/fonts/ByteSans-Medium.ttf": "215a6812c4ac5664f65c48aa0405bf31f0069692870cfa6693b72e42531903f0",
+    "gradient-assets/fonts/ByteSans-Regular.ttf": "5c32b2f6a8e453df5ec36d2dfc4626f822663ba6b24a32974bf5ca19ab8f02ff",
+    "gradient-assets/fonts/FZYaShiHeiS-DemiBold.ttf": "069a401843e08053fdb7ceafac0cb2e6da4048d35e7448d0365318d95dbd5c56",
+    "gradient-assets/fonts/FZYaShiHeiS-Light.ttf": "5d03e065f6fb04820b02ae2f5ef67343fde90aa8c20ce1c48e79d67f4537d7cc",
+    "gradient-assets/fonts/FZYaShiHeiS-Medium.ttf": "36aee58bfae7e9eb1651dbc24985c20e6410924865025d143493daf9c8337771",
+    "gradient-assets/fonts/FZYaShiHeiS-Regular.ttf": "de178b5b0cdba10913b49e887a0952a4d2387ebb859d38fbe42d1c29f2e50bb0",
+    "gradient-assets/fonts/Montserrat-OFL.txt": "8b7141c03fa4f8d44e6345d5d4931709290f0f67875e452e95ac1fd3a027802e",
+    "gradient-assets/fonts/Montserrat-variable.ttf": "0f7b311b2f3279e4eef9b2f968bcdbab6e28f4daeb1f049f4f278a902bcd82f7",
+    "gradient-assets/fonts/NotoSerifSC-variable.ttf": "050080d9255a86808f2945bffac582b31ef32bc36411ce29563b4961670c66f9",
+    "gradient-assets/fonts/PingFangSC-Regular.ttf": "26b017dfb34a8aa0059f47eda6f90d7ffd19a24912dc1129abc24867a1385353",
+    "gradient-assets/fonts/figma-copy-fonts.css": "80a2166fccd7c57f1688661b49877b9131363d4f6728e7912bbcb975b106cf07",
+    "gradient-copy-export.js": "c16ef8a9643bc39a4cd23efb2837b4add9ba680c6a6e69d3a2e0d2a592d4639a",
+    "gradient-copy-templates.js": "e4c9f884c1d9b1db2426cb020d9cc061d47c15a1972841dc7906a919b38d31af",
+    "gradient-custom-size.js": "0880372d578730c6421b59c340936917a80f27f355fe817f13946071c1e39f15",
+    "gradient-delivery.css": "490915b1fade8361b92824117b87cb6fc098984c05411a27db179dd374e0dfd3",
+    "gradient-delivery.js": "d7ec88361a109308da40361aaa45098c6db8da57fcdb641a5b2cc95a0afe414f",
+    "gradient-loading.js": "491984bfa6e3dfedaa6f529e3313b7607931c692db9f96df9d99b2f0ee8589e7",
+    "gradient-loading.css": "db6969e39c1e418381841d9677d9168e848a2092b2740ef6b8446c3d6e003622"
+  },
+  "integrationNotes": {
+    "loading-0917-1": "Main-site approved startup polish: early delivery CSS, featured/queue ready promises, font-ready reveal with reduced-motion and timeout fallback.",
+    "preview-status-0917-1": "Green preview-ready status replaces misleading coarse contrast verdict; does not assert accessibility compliance."
   }
 }

@@ -51,10 +51,10 @@
  // Publisher gallery order; stable IDs keep personal compositions attached to their images.
  const featuredOrder=new Map(["85f1f5aa-c2d1-442b-9cc8-753420c6726e", "6c54e955-12d2-4c89-bd15-a3e17cb7b2f6", "05d58f39-2590-4c42-971a-8f03b45138f1", "4f7f10c7-2ebe-40a9-9a55-d665dab3a343", "acde6d03-f7fe-46f2-9c34-65e6f1d4f098", "9bb4e16e-a291-472a-939f-ff62058e5fb6", "dreamina-soft-curtain", "14dd9e06-e7f0-49ff-aa4a-f7a88c7ac9bf", "3a8f6d8c-7425-469a-a3a6-924bdbb25a11", "596c010d-463b-44e0-85cd-5561281d33b5"].map((id,index)=>[id,index]));
  featuredOrder.set('c30adc2c-4ac8-41f5-9df8-f9787b9f0f8f',-1);
+ const orderedAssets=()=>[...assets.values()].filter(asset=>asset.brand===state.brand).sort((a,b)=>(featuredOrder.get(a.id)??1000)-(featuredOrder.get(b.id)??1000));
  function drawGallery(){
   const grid=gallery.querySelector('.featured-grid');grid.replaceChildren();
-  for(const asset of [...assets.values()].sort((a,b)=>(featuredOrder.get(a.id)??1000)-(featuredOrder.get(b.id)??1000))){
-   if(asset.brand!==state.brand)continue;
+  for(const asset of orderedAssets()){
    const item=document.createElement('div');item.className='featured-item';
    const card=document.createElement('button');card.className='featured-card'+(active()&&state.featuredId===asset.id?' active':'');card.setAttribute('aria-label','使用精选模板 '+asset.name);
    const img=document.createElement('img');img.src=asset.url;img.alt='';const label=document.createElement('span');label.textContent=asset.name;card.append(img,label);card.onclick=()=>select(asset);item.append(card);
@@ -81,7 +81,7 @@
   drawGallery();
  }
  tabs.onclick=e=>{const b=e.target.closest('[data-source]');if(!b)return;tab=b.dataset.source;
-  if(tab==='generated'&&active()){state.template=lastTemplate;state.batchStatic=false;paintUI();fit();applyCopy();render();}else sync();
+  if(tab==='generated'&&active()){state.template=lastTemplate;state.batchStatic=false;paintUI();fit();applyCopy();render();}else if(tab==='featured'&&!active()&&orderedAssets()[0])select(orderedAssets()[0]);else sync();
  };
  function drawPanel(){
   const asset=current();if(!asset)return;const sc=scenes[state.scene],cfg=settings(asset,state.scene);
@@ -178,10 +178,16 @@
   const c=target.getContext('2d');c.clearRect(0,0,w,h);c.drawImage(compose(asset,cfg,w,h,factor),0,0);
   if(target===canvas)updateContrast();
  };
- const originalPaint=paintUI;paintUI=function(){if(active()&&current()?.brand!==state.brand)state.template=lastTemplate;originalPaint();sync();};
+ const originalPaint=paintUI;paintUI=function(){if(active()&&current()?.brand!==state.brand){const first=orderedAssets()[0];if(first)state.featuredId=first.id;else state.template=lastTemplate;}originalPaint();sync();};
  const originalApply=applyCopy;applyCopy=function(){originalApply();sync();};
  for(const id of ['templates','brands','scenes','scene-list'])document.getElementById(id)?.addEventListener('click',()=>{if(id==='templates')tab='generated';sync();});
- const oldReset=document.getElementById('curve-reset').onclick;document.getElementById('curve-reset').onclick=e=>{if(!active())return oldReset(e);layouts.delete(layoutKey(current(),state.scene));save();window.gradientResetCopy?.();state.exportScale=3;document.getElementById('exportScale').value=3;syncValues();fit();drawPanel();render();toast('已恢复此尺寸构图、文案与字色');};
+ const oldReset=document.getElementById('curve-reset').onclick;document.getElementById('curve-reset').onclick=e=>{if(!active())return oldReset(e);layouts.delete(layoutKey(current(),state.scene));save();window.gradientResetCopy?.();state.exportScale=scenes[state.scene]?.custom?1:3;document.getElementById('exportScale').value=state.exportScale;syncValues();fit();drawPanel();render();toast('已恢复此尺寸构图、文案与字色');};
+ window.gradientFeaturedHasAsset=id=>assets.has(id);
+ window.gradientFeaturedRestoreComposition=(info,scene)=>{
+  if(!info||!assets.has(info.id))return false;
+  if(info.composition?.[scene]){layouts.set(layoutKey(assets.get(info.id),scene),{...info.composition[scene]});save();}
+  select(assets.get(info.id));return true;
+ };
  window.gradientFeaturedExportInfo=()=>active()&&current()?{name:current().name,id:current().id,source:'精选模板',originalSize:[current().image.naturalWidth,current().image.naturalHeight],composition:Object.fromEntries(gradientSceneEntries().map(([key])=>[key,settings(current(),key)]))}:null;
  function transaction(mode,action){return new Promise((resolve,reject)=>{const tx=db.transaction('images',mode),request=action(tx.objectStore('images'));tx.oncomplete=()=>resolve(request?.result);tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error);});}
  async function load(asset){const image=new Image();image.src=asset.url;await image.decode();asset.image=image;assets.set(asset.id,asset);return asset;}
@@ -214,7 +220,8 @@
    if(renamed.length)try{await transaction('readwrite',store=>{for(const r of renamed)store.put(r);});}catch{toast('图片已加载，模板名称暂未保存');}
    for(const r of records){if(assets.has(r.id))continue;try{await load({...r,name:r.generatedName,url:URL.createObjectURL(r.blob)});}catch{}}
   }catch{}
-  if(new URLSearchParams(location.search).get('featured')==='1'&&!state.featuredId&&assets.has(builtin.id)&&state.brand==='dreamina')select(assets.get(builtin.id));else sync();
+  const first=orderedAssets()[0];
+  if(new URLSearchParams(location.search).get('featured')!=='0'&&!state.featuredId&&first)select(first);else sync();
  }
- sync();init();
+ sync();window.gradientFeaturedReady=init();
 })();

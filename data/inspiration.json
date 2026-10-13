@@ -304,6 +304,637 @@
   ],
   "items": [
     {
+      "id": "openai-trustworthy-third-party-evaluations-foundations",
+      "category": "model-launch-background",
+      "title": "青绿光场中的柔白曲带",
+      "src": "assets/inspiration-inbox/59f45c0ac8f5921dddc345bacaa23609e8ca78f81ef197e73b66ed9e143e9569.png",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/trustworthy-third-party-evaluations-foundations/",
+      "reason": "浅色柔光沿斜向穿过青绿色场，深浅青绿形成连续层次；参考底层渐变配色与走势，原图上的标题或标志不影响入选。",
+      "tags": [
+        "青绿、浅青、奶白",
+        "渐变背景参考"
+      ],
+      "prompt": "抽象渐变背景，采用青绿、浅青、奶白配色，浅色柔光沿斜向穿过青绿色场，深浅青绿形成连续层次。色彩干净，明暗自然连续过渡，柔焦边缘与细微均匀颗粒，中央留出低细节区域供文案排版。完整色场铺满画面，宽幅构图，可适配横幅与卡片。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-10-13"
+    },
+    {
+      "id": "openai-helping-build-shared-standards-for-advanced-ai",
+      "category": "model-launch-background",
+      "title": "粉紫色场中的横向亮光",
+      "src": "assets/inspiration-inbox/0ccdefcd3eaf482d887640f0305d63dbf9feda0f863a34290c14601311953b5d.png",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/helping-build-shared-standards-for-advanced-ai/",
+      "reason": "左侧柔亮粉光横向融入右侧紫色，宽幅柔焦光带形成自然过渡；参考底层渐变配色与走势，原图上的标题或标志不影响入选。",
+      "tags": [
+        "粉红、浅紫、暖白",
+        "渐变背景参考"
+      ],
+      "prompt": "抽象渐变背景，采用粉红、浅紫、暖白配色，左侧柔亮粉光横向融入右侧紫色，宽幅柔焦光带形成自然过渡。色彩干净，明暗自然连续过渡，柔焦边缘与细微均匀颗粒，中央留出低细节区域供文案排版。完整色场铺满画面，宽幅构图，可适配横幅与卡片。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-10-13"
+    },
+    {
+      "id": "openai-retiring-gpt-4o-and-older-models",
+      "category": "model-launch-background",
+      "title": "橙金色的明亮柔焦层次",
+      "src": "assets/inspiration-inbox/78b45fd0b1a526bae1390431a870c2ba247e72150a70dbb7848f5966e7ecd748.png",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/retiring-gpt-4o-and-older-models/",
+      "reason": "橙色满幅展开，浅黄色从左上融入右侧橙色，微弱斜向层次保持简洁；参考底层渐变配色与走势，原图上的标题或标志不影响入选。",
+      "tags": [
+        "暖橙、金黄、浅杏",
+        "渐变背景参考"
+      ],
+      "prompt": "抽象渐变背景，采用暖橙、金黄、浅杏配色，橙色满幅展开，浅黄色从左上融入右侧橙色，微弱斜向层次保持简洁。色彩干净，明暗自然连续过渡，柔焦边缘与细微均匀颗粒，中央留出低细节区域供文案排版。完整色场铺满画面，宽幅构图，可适配横幅与卡片。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-10-13"
+    },
+    {
+      "id": "openai-edu-for-countries",
+      "category": "model-launch-background",
+      "title": "青蓝与薄荷色的宽幅交融",
+      "src": "assets/inspiration-inbox/d759da1e0b35b1c5cc4150398d229bfeedb0132e4d51b45a20c74fa7c1fd7131.png",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/edu-for-countries/",
+      "reason": "青蓝在左侧展开，薄荷色在右侧形成柔和亮区，中央保持宽缓过渡；参考底层渐变配色与走势，原图上的标题或标志不影响入选。",
+      "tags": [
+        "青蓝、薄荷青、浅蓝",
+        "渐变背景参考"
+      ],
+      "prompt": "抽象渐变背景，采用青蓝、薄荷青、浅蓝配色，青蓝在左侧展开，薄荷色在右侧形成柔和亮区，中央保持宽缓过渡。色彩干净，明暗自然连续过渡，柔焦边缘与细微均匀颗粒，中央留出低细节区域供文案排版。完整色场铺满画面，宽幅构图，可适配横幅与卡片。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-10-13"
+    },
+    {
+      "id": "openai-ai-education-opportunity",
+      "category": "model-launch-background",
+      "title": "青蓝与淡紫的倾斜交汇",
+      "src": "assets/inspiration-inbox/0a7f013011915229e92d320049769c0161e4b7853451a52a76872dbf902d02a9.png",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/ai-education-opportunity/",
+      "reason": "左侧青蓝亮区斜向连接右下淡紫柔光，右上青绿阴影增加层次；参考底层渐变配色与走势，原图上的标题或标志不影响入选。",
+      "tags": [
+        "青蓝、青绿、淡紫",
+        "渐变背景参考"
+      ],
+      "prompt": "抽象渐变背景，采用青蓝、青绿、淡紫配色，左侧青蓝亮区斜向连接右下淡紫柔光，右上青绿阴影增加层次。色彩干净，明暗自然连续过渡，柔焦边缘与细微均匀颗粒，中央留出低细节区域供文案排版。完整色场铺满画面，宽幅构图，可适配横幅与卡片。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-10-13"
+    },
+    {
+      "id": "openai-introducing-child-safety-blueprint",
+      "category": "model-launch-background",
+      "title": "青绿底上的薄荷柔波",
+      "src": "assets/inspiration-inbox/9ee96f0138654a15534381da31b06faf5c3a5bbf443b9c16e3ced153f690f459.png",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/introducing-child-safety-blueprint/",
+      "reason": "浅绿柔波从左上弯曲伸展，奶白亮带沿左下横向融入青绿色场；参考底层渐变配色与走势，原图上的标题或标志不影响入选。",
+      "tags": [
+        "青绿、薄荷青、浅绿、奶白",
+        "渐变背景参考"
+      ],
+      "prompt": "抽象渐变背景，采用青绿、薄荷青、浅绿、奶白配色，浅绿柔波从左上弯曲伸展，奶白亮带沿左下横向融入青绿色场。色彩干净，明暗自然连续过渡，柔焦边缘与细微均匀颗粒，中央留出低细节区域供文案排版。完整色场铺满画面，宽幅构图，可适配横幅与卡片。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-10-13"
+    },
+    {
+      "id": "openai-next-chapter-of-microsoft-openai-partnership",
+      "category": "model-launch-background",
+      "title": "天蓝光场中的浅蓝弧光",
+      "src": "assets/inspiration-inbox/ef79208830555009a865ed7766da40c69e2b98120e58c9d381829941932cc817.png",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/pt-BR/index/next-chapter-of-microsoft-openai-partnership/",
+      "reason": "浅蓝宽光带沿斜向弯曲交汇，明亮背景保持连续起伏和大面积留白；参考底层渐变配色与走势，原图上的标题或标志不影响入选。",
+      "tags": [
+        "天蓝、浅蓝、青蓝",
+        "渐变背景参考"
+      ],
+      "prompt": "抽象渐变背景，采用天蓝、浅蓝、青蓝配色，浅蓝宽光带沿斜向弯曲交汇，明亮背景保持连续起伏和大面积留白。色彩干净，明暗自然连续过渡，柔焦边缘与细微均匀颗粒，中央留出低细节区域供文案排版。完整色场铺满画面，宽幅构图，可适配横幅与卡片。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-10-13"
+    },
+    {
+      "id": "openai-scaling-ai-for-everyone",
+      "category": "model-launch-background",
+      "title": "金黄与蓝粉色的柔焦融合",
+      "src": "assets/inspiration-inbox/089181053b8d2a10b3dd8cef406a0a03a1286aba365ae8f065ed963a747e2f66.png",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/scaling-ai-for-everyone/",
+      "reason": "左侧金黄色场向中央浅粉融入，右侧天蓝宽光自然展开，柔焦边缘交织；参考底层渐变配色与走势，原图上的标题或标志不影响入选。",
+      "tags": [
+        "金黄、浅粉、天蓝、淡紫",
+        "渐变背景参考"
+      ],
+      "prompt": "抽象渐变背景，采用金黄、浅粉、天蓝、淡紫配色，左侧金黄色场向中央浅粉融入，右侧天蓝宽光自然展开，柔焦边缘交织。色彩干净，明暗自然连续过渡，柔焦边缘与细微均匀颗粒，中央留出低细节区域供文案排版。完整色场铺满画面，宽幅构图，可适配横幅与卡片。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-10-13"
+    },
+    {
+      "id": "openai-introducing-the-teen-safety-blueprint",
+      "category": "model-launch-background",
+      "title": "青蓝底上的紫色斜向光幕",
+      "src": "assets/inspiration-inbox/c4577c8e13d5ab54552afcebca064bde3318cff1b47a7c5b4741aded100c58c6.png",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/ko-KR/index/introducing-the-teen-safety-blueprint/",
+      "reason": "淡紫宽光带斜向贯穿画面，青蓝亮区分布两侧，层次柔和连续；参考底层渐变配色与走势，原图上的标题或标志不影响入选。",
+      "tags": [
+        "青蓝、浅蓝、淡紫",
+        "渐变背景参考"
+      ],
+      "prompt": "抽象渐变背景，采用青蓝、浅蓝、淡紫配色，淡紫宽光带斜向贯穿画面，青蓝亮区分布两侧，层次柔和连续。色彩干净，明暗自然连续过渡，柔焦边缘与细微均匀颗粒，中央留出低细节区域供文案排版。完整色场铺满画面，宽幅构图，可适配横幅与卡片。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-10-13"
+    },
+    {
+      "id": "openai-election-safeguards-2026",
+      "category": "model-launch-background",
+      "title": "薄荷青与嫩绿的浅色交汇",
+      "src": "assets/inspiration-inbox/6f40a3174494cb305aa4d05e195730d4cbc4b25fc846735cc29b7a1c7429c991.png",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/sk-SK/index/election-safeguards-2026/",
+      "reason": "嫩绿光从左下斜向融入薄荷色场，右侧青色弧面自然展开；参考底层渐变配色与走势，原图上的标题或标志不影响入选。",
+      "tags": [
+        "薄荷青、嫩绿、浅青白",
+        "渐变背景参考"
+      ],
+      "prompt": "抽象渐变背景，采用薄荷青、嫩绿、浅青白配色，嫩绿光从左下斜向融入薄荷色场，右侧青色弧面自然展开。色彩干净，明暗自然连续过渡，柔焦边缘与细微均匀颗粒，中央留出低细节区域供文案排版。完整色场铺满画面，宽幅构图，可适配横幅与卡片。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-10-13"
+    },
+    {
+      "id": "openai-trusted-access-for-cyber",
+      "category": "model-launch-background",
+      "title": "蓝紫色中的宽幅柔白弧光",
+      "src": "assets/inspiration-inbox/8d2264724965cf7c9012784b20b61b037afe8b893531a5d212a7487566af3357.png",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/trusted-access-for-cyber/",
+      "reason": "暖白宽光从顶部向左侧弯曲下落，蓝紫色场占据中下部形成缓和明暗；参考底层渐变配色与走势，原图上的标题或标志不影响入选。",
+      "tags": [
+        "蓝紫、浅蓝、暖白",
+        "渐变背景参考"
+      ],
+      "prompt": "抽象渐变背景，采用蓝紫、浅蓝、暖白配色，暖白宽光从顶部向左侧弯曲下落，蓝紫色场占据中下部形成缓和明暗。色彩干净，明暗自然连续过渡，柔焦边缘与细微均匀颗粒，中央留出低细节区域供文案排版。完整色场铺满画面，宽幅构图，可适配横幅与卡片。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-10-13"
+    },
+    {
+      "id": "openai-hp-frontier-partnership",
+      "category": "model-launch-background",
+      "title": "浅蓝色场中的青绿微光",
+      "src": "assets/inspiration-inbox/4cb63261db79740751ecb52ac88bdacfc70de2e9d68cbff4be7631b5955e9976.png",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/fr-FR/index/hp-frontier-partnership/",
+      "reason": "青绿微光位于下方中央，浅蓝宽幅亮场从右上弯曲伸展，保留通透层次；参考底层渐变配色与走势，原图上的标题或标志不影响入选。",
+      "tags": [
+        "浅蓝、天蓝、少量薄荷绿",
+        "渐变背景参考"
+      ],
+      "prompt": "抽象渐变背景，采用浅蓝、天蓝、少量薄荷绿配色，青绿微光位于下方中央，浅蓝宽幅亮场从右上弯曲伸展，保留通透层次。色彩干净，明暗自然连续过渡，柔焦边缘与细微均匀颗粒，中央留出低细节区域供文案排版。完整色场铺满画面，宽幅构图，可适配横幅与卡片。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-10-13"
+    },
+    {
+      "id": "openai-introducing-chatgpt-go",
+      "category": "model-launch-background",
+      "title": "蓝紫与浅蓝的柔和斜光",
+      "src": "assets/inspiration-inbox/aeaff2ee243c6c8eac653c8bd169c5517f6dd4096aca2bed0aaa23df594f2606.png",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/introducing-chatgpt-go/",
+      "reason": "浅蓝从顶部沿斜向融入紫色中央，宽幅柔光过渡和细微均匀颗粒；参考底层渐变配色与走势，原图上的标题或标志不影响入选。",
+      "tags": [
+        "蓝紫、淡紫、浅蓝",
+        "渐变背景参考"
+      ],
+      "prompt": "抽象渐变背景，采用蓝紫、淡紫、浅蓝配色，浅蓝从顶部沿斜向融入紫色中央，宽幅柔光过渡和细微均匀颗粒。色彩干净，明暗自然连续过渡，柔焦边缘与细微均匀颗粒，中央留出低细节区域供文案排版。完整色场铺满画面，宽幅构图，可适配横幅与卡片。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-10-13"
+    },
+    {
+      "id": "openai-unlocking-new-ways-of-working",
+      "category": "model-launch-background",
+      "title": "青绿与蓝色的清透斜向过渡",
+      "src": "assets/inspiration-inbox/0284adba56723eaf83de18ea545786bf599dafd02cbbe715552ee718da13beae.png",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/unlocking-new-ways-of-working/",
+      "reason": "左上青绿色域斜向融入右侧蓝色，浅青亮光沿中下部自然展开；参考底层渐变配色与走势，原图上的标题或标志不影响入选。",
+      "tags": [
+        "青绿、蓝色、浅青",
+        "渐变背景参考"
+      ],
+      "prompt": "抽象渐变背景，采用青绿、蓝色、浅青配色，左上青绿色域斜向融入右侧蓝色，浅青亮光沿中下部自然展开。色彩干净，明暗自然连续过渡，柔焦边缘与细微均匀颗粒，中央留出低细节区域供文案排版。完整色场铺满画面，宽幅构图，可适配横幅与卡片。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-10-13"
+    },
+    {
+      "id": "openai-the-next-chapter-for-ai-in-the-eu",
+      "category": "model-launch-background",
+      "title": "蓝色与金黄的柔焦交织",
+      "src": "assets/inspiration-inbox/45877a063a621aa5f41198df3d02227f97e70e0b271cc4183824b305bc953e6e.png",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/the-next-chapter-for-ai-in-the-eu/",
+      "reason": "金黄柔光沿两侧起伏展开，中央天蓝横向贯穿，色场交汇边缘自然虚化；参考底层渐变配色与走势，原图上的标题或标志不影响入选。",
+      "tags": [
+        "天蓝、金黄、浅杏",
+        "渐变背景参考"
+      ],
+      "prompt": "抽象渐变背景，采用天蓝、金黄、浅杏配色，金黄柔光沿两侧起伏展开，中央天蓝横向贯穿，色场交汇边缘自然虚化。色彩干净，明暗自然连续过渡，柔焦边缘与细微均匀颗粒，中央留出低细节区域供文案排版。完整色场铺满画面，宽幅构图，可适配横幅与卡片。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-10-13"
+    },
+    {
+      "id": "openai-building-the-compute-infrastructure-for-the-intelligence-age",
+      "category": "model-launch-background",
+      "title": "青柠绿与青蓝的明亮流光",
+      "src": "assets/inspiration-inbox/5e4d090ae0d739874cf665f4f9e1c3e2c7c105ce1f9c1a8178735753e72b426b.png",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/building-the-compute-infrastructure-for-the-intelligence-age/",
+      "reason": "青柠绿从左上融入中央翠绿，青蓝光带在右侧纵向弯曲，浅蓝在底部自然散开；参考底层渐变配色与走势，原图上的标题或标志不影响入选。",
+      "tags": [
+        "青柠绿、翠绿、青蓝、浅蓝",
+        "渐变背景参考"
+      ],
+      "prompt": "抽象渐变背景，采用青柠绿、翠绿、青蓝、浅蓝配色，青柠绿从左上融入中央翠绿，青蓝光带在右侧纵向弯曲，浅蓝在底部自然散开。色彩干净，明暗自然连续过渡，柔焦边缘与细微均匀颗粒，中央留出低细节区域供文案排版。完整色场铺满画面，宽幅构图，可适配横幅与卡片。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-10-13"
+    },
+    {
+      "id": "openai-our-approach-to-localization",
+      "category": "model-launch-background",
+      "title": "青蓝底上的嫩绿柔光",
+      "src": "assets/inspiration-inbox/9f835705f805c76024a55f1e6fbf7d561356947b7f815b2e8e1f3e3b1ecb0ed4.png",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/our-approach-to-localization/",
+      "reason": "青蓝柔光铺满中央，嫩绿光从左上和右侧融入，底部蓝色形成弧形层次；参考底层渐变配色与走势，原图上的标题或标志不影响入选。",
+      "tags": [
+        "青蓝、天蓝、嫩绿",
+        "渐变背景参考"
+      ],
+      "prompt": "抽象渐变背景，采用青蓝、天蓝、嫩绿配色，青蓝柔光铺满中央，嫩绿光从左上和右侧融入，底部蓝色形成弧形层次。色彩干净，明暗自然连续过渡，柔焦边缘与细微均匀颗粒，中央留出低细节区域供文案排版。完整色场铺满画面，宽幅构图，可适配横幅与卡片。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-10-13"
+    },
+    {
+      "id": "openai-advancing-responsible-ai-across-europe",
+      "category": "model-launch-background",
+      "title": "浅青与淡紫的斜向光幕",
+      "src": "assets/inspiration-inbox/2fdfcf001438613ae9a1dd53b97ef7d73dcfc7a0312f9afed006b3ec743acbfb.png",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/advancing-responsible-ai-across-europe/",
+      "reason": "多条宽幅柔光沿斜向交错，淡紫阴影衬托浅青亮场，边界连续自然；参考底层渐变配色与走势，原图上的标题或标志不影响入选。",
+      "tags": [
+        "浅青、浅蓝、淡紫",
+        "渐变背景参考"
+      ],
+      "prompt": "抽象渐变背景，采用浅青、浅蓝、淡紫配色，多条宽幅柔光沿斜向交错，淡紫阴影衬托浅青亮场，边界连续自然。色彩干净，明暗自然连续过渡，柔焦边缘与细微均匀颗粒，中央留出低细节区域供文案排版。完整色场铺满画面，宽幅构图，可适配横幅与卡片。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-10-13"
+    },
+    {
+      "id": "openai-supporting-eu-trustworthy-ai-ecosystem",
+      "category": "model-launch-background",
+      "title": "浅蓝色中的通透青色弧光",
+      "src": "assets/inspiration-inbox/f4644bc2d62fe9b2f7bf855bc35d41d1bc71af09cef9e6875c10b785c3c8049d.png",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/supporting-eu-trustworthy-ai-ecosystem/",
+      "reason": "浅青弧光自左上自然伸展，中央浅蓝亮场保持低细节留白，边缘微微层叠；参考底层渐变配色与走势，原图上的标题或标志不影响入选。",
+      "tags": [
+        "浅蓝、浅青、奶白",
+        "渐变背景参考"
+      ],
+      "prompt": "抽象渐变背景，采用浅蓝、浅青、奶白配色，浅青弧光自左上自然伸展，中央浅蓝亮场保持低细节留白，边缘微微层叠。色彩干净，明暗自然连续过渡，柔焦边缘与细微均匀颗粒，中央留出低细节区域供文案排版。完整色场铺满画面，宽幅构图，可适配横幅与卡片。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-10-13"
+    },
+    {
+      "id": "openai-merge-labs-related-card",
+      "category": "model-launch-background",
+      "title": "暖桃与天蓝的柔焦斜向交汇",
+      "src": "assets/inspiration-inbox/ca5cc30d027d7de387a69259cf919fc016c45c25a0379c69892c76a5df80994c.png",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/providing-chatgpt-to-the-entire-us-federal-workforce/",
+      "reason": "暖桃光从右上斜向展开，天蓝色场从左侧穿过中央，边缘柔焦自然融合；完整无字色场，可参考配色、纹理与文案留白。",
+      "tags": [
+        "天蓝、浅紫、柔粉与暖桃橙",
+        "柔焦色场"
+      ],
+      "prompt": "抽象渐变背景，采用天蓝、浅紫、柔粉与暖桃橙配色，暖桃光从右上斜向展开，天蓝色场从左侧穿过中央，边缘柔焦自然融合。明亮干净、色彩区分清楚，明暗自然连续过渡，细微均匀颗粒质感，中央保持低细节区域与文案留白，完整连续色场铺满画面，宽幅构图。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-10-13"
+    },
+    {
+      "id": "openai-open-weights-and-ai-for-all",
+      "category": "model-launch-background",
+      "title": "青蓝与浅紫的斜向流光",
+      "src": "assets/inspiration-inbox/f3c9082a8a64714145b024f3f3e592723abbcc2aca6f4a1fc9c1b5d92e9adfe8.png",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/global-affairs/open-weights-and-ai-for-all/",
+      "reason": "多条宽幅柔光斜向穿过画面，蓝紫色带自然衔接，轻微均匀颗粒；完整无字色场，可参考配色、纹理与文案留白。",
+      "tags": [
+        "明亮青蓝、浅蓝、淡紫与少量暖白",
+        "柔焦色场"
+      ],
+      "prompt": "抽象渐变背景，采用明亮青蓝、浅蓝、淡紫与少量暖白配色，多条宽幅柔光斜向穿过画面，蓝紫色带自然衔接，轻微均匀颗粒。明亮干净、色彩区分清楚，明暗自然连续过渡，细微均匀颗粒质感，中央保持低细节区域与文案留白，完整连续色场铺满画面，宽幅构图。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-10-13"
+    },
+    {
+      "id": "behance-235843447-image-1",
+      "category": "character-action",
+      "title": "坐姿伸腿形成的横向动作线",
+      "src": "assets/inspiration/behance-235843447-image-1.jpg",
+      "source": "Behance",
+      "sourceUrl": "https://www.behance.net/gallery/235843447/Editorial-Black",
+      "reason": "人物侧坐在纯白影棚地面，一侧膝部抬起、另一条腿沿画面横向伸展，手臂自然搭在膝上，腿部斜线与宽松西装形成清楚的肢体关系；横向画幅完整呈现动作，适合参考坐姿轮廓和腿部延伸。",
+      "tags": [
+        "侧坐抬膝并向外伸腿",
+        "横向全身构图",
+        "白色影棚"
+      ],
+      "prompt": "时尚摄影参考：成年女性模特在纯白无缝影棚中侧坐于地面，一侧膝盖弯起，另一条腿沿画面横向自然伸展，一只手轻搭弯曲的膝部，身体微微后靠，动作松弛但肢体关系清楚。横向平视中远景，完整呈现人物、双腿和鞋履，人物置于画面中央偏右，周围留出适度空白；柔和均匀棚灯，干净浅灰白背景。保持人体比例自然、手脚完整、关节结构正确；无文字、无标志、无水印、无额外人物。",
+      "collectedAt": "2026-10-10"
+    },
+    {
+      "id": "openai-two-years-of-openai-academy",
+      "category": "model-launch-background",
+      "title": "青蓝与薄荷绿的清透流光",
+      "src": "assets/inspiration-inbox/829f4a7cef6b6601687caf6b8c255abfd1cc808feea84b7eb14e7ceb87a836f0.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/two-years-of-openai-academy/",
+      "reason": "青蓝、薄荷绿、少量嫩黄绿自然衔接，宽幅青蓝色带斜向穿过中央，浅绿亮光沿两端柔和展开；上方浅青区域保留低细节留白，适合参考背景配色及走势。",
+      "tags": [
+        "青蓝、薄荷绿、少量嫩黄绿",
+        "宽幅青蓝色带斜向穿过中央，浅绿亮光沿两端柔和展开"
+      ],
+      "prompt": "抽象渐变背景，采用青蓝、薄荷绿、少量嫩黄绿配色，宽幅青蓝色带斜向穿过中央，浅绿亮光沿两端柔和展开。色彩清楚、明暗自然渐变，柔焦边缘与细微均匀颗粒质感，上方浅青区域保留低细节留白。完整连续色场铺满画面，方形构图，可延展为横幅。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-09-24"
+    },
+    {
+      "id": "openai-sam-altman-un-security-council-remarks",
+      "category": "model-launch-background",
+      "title": "紫色与蜜桃粉的柔光交汇",
+      "src": "assets/inspiration-inbox/cd2c3eeb7328622060910696ad2b5ddb7efddd08f3e4e9167b0240db3a081daa.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/sam-altman-un-security-council-remarks/",
+      "reason": "紫罗兰紫、淡紫、蜜桃粉自然衔接，左侧紫色向右侧桃粉色缓慢过渡，细腻柔光沿斜向自然融合；右上浅桃色区域提供柔亮留白，适合参考背景配色及走势。",
+      "tags": [
+        "紫罗兰紫、淡紫、蜜桃粉",
+        "左侧紫色向右侧桃粉色缓慢过渡，细腻柔光沿斜向自然融合"
+      ],
+      "prompt": "抽象渐变背景，采用紫罗兰紫、淡紫、蜜桃粉配色，左侧紫色向右侧桃粉色缓慢过渡，细腻柔光沿斜向自然融合。色彩清楚、明暗自然渐变，柔焦边缘与细微均匀颗粒质感，右上浅桃色区域提供柔亮留白。完整连续色场铺满画面，方形构图，可延展为横幅。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-09-24"
+    },
+    {
+      "id": "openai-chatgpt-ads-expands-southeast-asia-taiwan",
+      "category": "model-launch-background",
+      "title": "粉紫弧面中的桃色亮光",
+      "src": "assets/inspiration-inbox/781ee35165fe9d00b989c6c2f37ef54eeabef741c03ce5937852cfd20ce4073c.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+      "reason": "薰衣草紫、粉紫、蜜桃粉自然衔接，宽阔紫色柔光弯曲上扬，右侧粉色亮区形成柔软弧面交界；右下粉色亮部保持宽阔留白，适合参考背景配色及走势。",
+      "tags": [
+        "薰衣草紫、粉紫、蜜桃粉",
+        "宽阔紫色柔光弯曲上扬，右侧粉色亮区形成柔软弧面交界"
+      ],
+      "prompt": "抽象渐变背景，采用薰衣草紫、粉紫、蜜桃粉配色，宽阔紫色柔光弯曲上扬，右侧粉色亮区形成柔软弧面交界。色彩清楚、明暗自然渐变，柔焦边缘与细微均匀颗粒质感，右下粉色亮部保持宽阔留白。完整连续色场铺满画面，方形构图，可延展为横幅。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-09-24"
+    },
+    {
+      "id": "openai-airbnb-gpt-6-astra",
+      "category": "model-launch-background",
+      "title": "薄荷青中的翠绿柔波",
+      "src": "assets/inspiration-inbox/1f921556a1273fc47e89cba2b7a110faf467421f44a0057708e26509ab0a2742.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/airbnb-gpt-6-astra/",
+      "reason": "翠绿、薄荷青、浅青白自然衔接，青白光带沿纵向柔和下落，绿色起伏形成宽缓明暗层次；顶部及中右侧浅青区域保持留白，适合参考背景配色及走势。",
+      "tags": [
+        "翠绿、薄荷青、浅青白",
+        "青白光带沿纵向柔和下落，绿色起伏形成宽缓明暗层次"
+      ],
+      "prompt": "抽象渐变背景，采用翠绿、薄荷青、浅青白配色，青白光带沿纵向柔和下落，绿色起伏形成宽缓明暗层次。色彩清楚、明暗自然渐变，柔焦边缘与细微均匀颗粒质感，顶部及中右侧浅青区域保持留白。完整连续色场铺满画面，方形构图，可延展为横幅。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-09-24"
+    },
+    {
+      "id": "openai-priorities-principles-third-party-assessments",
+      "category": "model-launch-background",
+      "title": "青绿与湖蓝的柔和融光",
+      "src": "assets/inspiration-inbox/547c2355e3ff922928119d3268c8c15180acf043a40d055880938824421bb14c.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/priorities-principles-third-party-assessments/",
+      "reason": "翠绿、青绿与湖蓝自然衔接，蓝色自右上缓慢融入青绿色场；中央与下方保持均匀低细节留白，适合参考配色、明暗和背景走势。",
+      "tags": [
+        "翠绿、青绿与湖蓝",
+        "蓝色自右上缓慢融入青绿色场"
+      ],
+      "prompt": "抽象渐变背景，采用翠绿、青绿与湖蓝配色，蓝色自右上缓慢融入青绿色场。色彩清透且有明确层次，明暗缓慢过渡，柔焦光场与细微均匀颗粒，无坚硬边缘；中央与下方保持均匀低细节留白。完整连续色场铺满画面，方形构图，可延展为横幅。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-09-23"
+    },
+    {
+      "id": "openai-introducing-intelligence-age",
+      "category": "model-launch-background",
+      "title": "冰蓝色场中的青色横流",
+      "src": "assets/inspiration-inbox/5de3fe641ba9dfa43eacbd06874b2722812a66ba79c5e6259bb17d8b43a3eb30.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/introducing-intelligence-age/",
+      "reason": "冰蓝、浅紫与青色自然衔接，横向青色光带穿过中部，浅紫柔光在上方自然铺展；上下浅蓝区域留有安静文案空间，适合参考配色、明暗和背景走势。",
+      "tags": [
+        "冰蓝、浅紫与青色",
+        "横向青色光带穿过中部，浅紫柔光在上方自然铺展"
+      ],
+      "prompt": "抽象渐变背景，采用冰蓝、浅紫与青色配色，横向青色光带穿过中部，浅紫柔光在上方自然铺展。色彩清透且有明确层次，明暗缓慢过渡，柔焦光场与细微均匀颗粒，无坚硬边缘；上下浅蓝区域留有安静文案空间。完整连续色场铺满画面，方形构图，可延展为横幅。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-09-23"
+    },
+    {
+      "id": "openai-chatgpt-ads-expands-across-europe",
+      "category": "model-launch-background",
+      "title": "浅蓝弧光的轻盈留白",
+      "src": "assets/inspiration-inbox/ab4b3c679fa656b45be2ba2be1c8037faba9c2e7b27532730e710724a3a6e7aa.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/chatgpt-ads-expands-across-europe/",
+      "reason": "天蓝、长春花蓝与乳白自然衔接，乳白弧形光晕沿顶部横向展开，蓝色缓慢向下过渡；画面中下部以连续浅蓝色场留白，适合参考配色、明暗和背景走势。",
+      "tags": [
+        "天蓝、长春花蓝与乳白",
+        "乳白弧形光晕沿顶部横向展开，蓝色缓慢向下过渡"
+      ],
+      "prompt": "抽象渐变背景，采用天蓝、长春花蓝与乳白配色，乳白弧形光晕沿顶部横向展开，蓝色缓慢向下过渡。色彩清透且有明确层次，明暗缓慢过渡，柔焦光场与细微均匀颗粒，无坚硬边缘；画面中下部以连续浅蓝色场留白。完整连续色场铺满画面，方形构图，可延展为横幅。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-09-23"
+    },
+    {
+      "id": "openai-pacing-model-development-cyber-capabilities",
+      "category": "model-launch-background",
+      "title": "粉紫与钴蓝的柔软交界",
+      "src": "assets/inspiration-inbox/fabb1898550a4af29a2066afd814827e057c7f00e345f8992993576146279d94.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/pacing-model-development-cyber-capabilities/",
+      "reason": "粉红、浅紫、钴蓝与淡青自然衔接，粉色亮区从左上融入紫色，底部蓝色沿柔软弧线上扬；中部浅紫蓝区域提供低细节留白，适合参考配色、明暗和背景走势。",
+      "tags": [
+        "粉红、浅紫、钴蓝与淡青",
+        "粉色亮区从左上融入紫色，底部蓝色沿柔软弧线上扬"
+      ],
+      "prompt": "抽象渐变背景，采用粉红、浅紫、钴蓝与淡青配色，粉色亮区从左上融入紫色，底部蓝色沿柔软弧线上扬。色彩清透且有明确层次，明暗缓慢过渡，柔焦光场与细微均匀颗粒，无坚硬边缘；中部浅紫蓝区域提供低细节留白。完整连续色场铺满画面，方形构图，可延展为横幅。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-09-23"
+    },
+    {
+      "id": "openai-advisory-group-on-mathematics-and-ai",
+      "category": "model-launch-background",
+      "title": "蓝紫柔光的斜向层叠",
+      "src": "assets/inspiration-inbox/d3da6bd1ac78879d76909a1705c8e2ca5dd4667518c7a37a6aa30e53d2481323.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/advisory-group-on-mathematics-and-ai/",
+      "reason": "矢车菊蓝、淡紫、少量粉白自然过渡，柔和斜向色带与右上方弧形亮区；中部蓝色区域保持低细节留白，适合参考渐变配色和背景走势。",
+      "tags": [
+        "矢车菊蓝、淡紫、少量粉白",
+        "柔和斜向色带与右上方弧形亮区"
+      ],
+      "prompt": "抽象渐变背景，采用矢车菊蓝、淡紫、少量粉白配色，柔和斜向色带与右上方弧形亮区。光线柔和，色彩清楚但交界自然，没有硬边，带极细微颗粒质感；中部蓝色区域保持低细节留白。完整连续色场铺满画面，方形构图，可延展为横幅。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-09-22"
+    },
+    {
+      "id": "openai-expanding-openai-academy-with-new-learning-paths",
+      "category": "model-launch-background",
+      "title": "淡紫与雾蓝的倾斜色场",
+      "src": "assets/inspiration-inbox/a3de627f320d422bff293daf0d088b7d43fb2a52af031eeedc7d912469c878d0.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/",
+      "reason": "浅紫、雾蓝、蓝紫自然过渡，左上至右下的宽幅斜向过渡和轻微颗粒；右侧保留浅色开阔留白，适合参考渐变配色和背景走势。",
+      "tags": [
+        "浅紫、雾蓝、蓝紫",
+        "左上至右下的宽幅斜向过渡和轻微颗粒"
+      ],
+      "prompt": "抽象渐变背景，采用浅紫、雾蓝、蓝紫配色，左上至右下的宽幅斜向过渡和轻微颗粒。光线柔和，色彩清楚但交界自然，没有硬边，带极细微颗粒质感；右侧保留浅色开阔留白。完整连续色场铺满画面，方形构图，可延展为横幅。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-09-22"
+    },
+    {
+      "id": "openai-australian-youth-safety-blueprint",
+      "category": "model-launch-background",
+      "title": "杏橙色中的暖白弧光",
+      "src": "assets/inspiration-inbox/eda6c9839a19cc2843a7f1dc18a698a9d8e0f7432ef1743fe67637aae7b811a5.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/australian-youth-safety-blueprint/",
+      "reason": "杏橙、蜜桃橙、奶油白自然过渡，宽缓的暖白弧形光带横向穿过橙色底层；中上部留出柔和亮区，适合参考渐变配色和背景走势。",
+      "tags": [
+        "杏橙、蜜桃橙、奶油白",
+        "宽缓的暖白弧形光带横向穿过橙色底层"
+      ],
+      "prompt": "抽象渐变背景，采用杏橙、蜜桃橙、奶油白配色，宽缓的暖白弧形光带横向穿过橙色底层。光线柔和，色彩清楚但交界自然，没有硬边，带极细微颗粒质感；中上部留出柔和亮区。完整连续色场铺满画面，方形构图，可延展为横幅。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-09-22"
+    },
+    {
+      "id": "openai-astra-for-law",
+      "category": "model-launch-background",
+      "title": "青柠与冰蓝的斜向柔光",
+      "src": "assets/inspiration-inbox/1aaad001743593010d8cc3fb0d046435654b4778ecc5b6044060a0a230ba98d7.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/astra-for-law/",
+      "reason": "青柠绿、薄荷青、冰蓝自然过渡，由左上青柠亮区向右下冰蓝展开的斜向色场；中右部保留清透浅色留白，适合参考渐变配色和背景走势。",
+      "tags": [
+        "青柠绿、薄荷青、冰蓝",
+        "由左上青柠亮区向右下冰蓝展开的斜向色场"
+      ],
+      "prompt": "抽象渐变背景，采用青柠绿、薄荷青、冰蓝配色，由左上青柠亮区向右下冰蓝展开的斜向色场。光线柔和，色彩清楚但交界自然，没有硬边，带极细微颗粒质感；中右部保留清透浅色留白。完整连续色场铺满画面，方形构图，可延展为横幅。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-09-22"
+    },
+    {
+      "id": "openai-reimagining-advertising-with-ai",
+      "category": "model-launch-background",
+      "title": "粉紫向天蓝的柔和铺展",
+      "src": "assets/inspiration-inbox/b1389c13562ee35121b4c4cb865b2b50e6113dcd071bfb46bbda5952b0f48aa1.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/reimagining-advertising-with-ai/",
+      "reason": "淡粉、薰衣草紫、天蓝自然过渡，粉色从左下向蓝色右侧缓慢融合，边缘微微起伏；中部保留浅色大面积留白，适合参考渐变配色和背景走势。",
+      "tags": [
+        "淡粉、薰衣草紫、天蓝",
+        "粉色从左下向蓝色右侧缓慢融合，边缘微微起伏"
+      ],
+      "prompt": "抽象渐变背景，采用淡粉、薰衣草紫、天蓝配色，粉色从左下向蓝色右侧缓慢融合，边缘微微起伏。光线柔和，色彩清楚但交界自然，没有硬边，带极细微颗粒质感；中部保留浅色大面积留白。完整连续色场铺满画面，方形构图，可延展为横幅。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-09-22"
+    },
+    {
+      "id": "openai-how-to-connect-ai-usage-to-business-value",
+      "category": "model-launch-background",
+      "title": "翠绿与青色的弥散光场",
+      "src": "assets/inspiration-inbox/71e26ee7e07eae019b67126c7deb61bff04357a2cf28fa13867156e4cebfc118.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/how-to-connect-ai-usage-to-business-value/",
+      "reason": "翠绿、青绿、少量嫩黄绿自然过渡，左下嫩绿亮区融入上方青绿宽幅柔焦色场；上部及中部保留连续低细节色面，适合参考渐变配色和背景走势。",
+      "tags": [
+        "翠绿、青绿、少量嫩黄绿",
+        "左下嫩绿亮区融入上方青绿宽幅柔焦色场"
+      ],
+      "prompt": "抽象渐变背景，采用翠绿、青绿、少量嫩黄绿配色，左下嫩绿亮区融入上方青绿宽幅柔焦色场。光线柔和，色彩清楚但交界自然，没有硬边，带极细微颗粒质感；上部及中部保留连续低细节色面。完整连续色场铺满画面，方形构图，可延展为横幅。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-09-22"
+    },
+    {
+      "id": "openai-model-misalignment-reporting-framework",
+      "category": "model-launch-background",
+      "title": "粉紫光雾的斜向交叠",
+      "src": "assets/inspiration-inbox/fa2d60c2f03bf07fafda1db32d527696e877f7564022486a000d9712f4159574.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/model-misalignment-reporting-framework/",
+      "reason": "粉紫、浅桃粉、薰衣草紫自然过渡，淡粉亮带斜向穿过紫色底层，细微颗粒及柔和云雾过渡；中上部留出淡粉紫亮区，适合参考渐变配色和背景走势。",
+      "tags": [
+        "粉紫、浅桃粉、薰衣草紫",
+        "淡粉亮带斜向穿过紫色底层，细微颗粒及柔和云雾过渡"
+      ],
+      "prompt": "抽象渐变背景，采用粉紫、浅桃粉、薰衣草紫配色，淡粉亮带斜向穿过紫色底层，细微颗粒及柔和云雾过渡。光线柔和，色彩清楚但交界自然，没有硬边，带极细微颗粒质感；中上部留出淡粉紫亮区。完整连续色场铺满画面，方形构图，可延展为横幅。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-09-22"
+    },
+    {
+      "id": "openai-put-data-to-work",
+      "category": "model-launch-background",
+      "title": "嫩绿与浅蓝的宽幅融光",
+      "src": "assets/inspiration-inbox/ed70a8c64f91688be654bac5dfc279851aa763d1d4b2e6bcc11471b7e687b819.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/put-data-to-work/",
+      "reason": "嫩绿、薄荷青、浅蓝、乳白自然过渡，左下绿色向右上浅蓝渐变，宽缓斜向光带；右上保留浅蓝亮区，适合参考渐变配色和背景走势。",
+      "tags": [
+        "嫩绿、薄荷青、浅蓝、乳白",
+        "左下绿色向右上浅蓝渐变，宽缓斜向光带"
+      ],
+      "prompt": "抽象渐变背景，采用嫩绿、薄荷青、浅蓝、乳白配色，左下绿色向右上浅蓝渐变，宽缓斜向光带。光线柔和，色彩清楚但交界自然，没有硬边，带极细微颗粒质感；右上保留浅蓝亮区。完整连续色场铺满画面，方形构图，可延展为横幅。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-09-22"
+    },
+    {
+      "id": "openai-introducing-chatgpt-financial-services",
+      "category": "model-launch-background",
+      "title": "薄荷青中的奶白柔波",
+      "src": "assets/inspiration-inbox/9e8fd5ca1389487fb64bacfaca01221fc5ed4b343f96c4a15dcab4e660cff3fa.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/introducing-chatgpt-financial-services/",
+      "reason": "薄荷绿、浅青、奶白自然过渡，左侧奶白光带自然弯曲并融入大面积清透浅青；中右部低细节明亮留白，适合参考渐变配色和背景走势。",
+      "tags": [
+        "薄荷绿、浅青、奶白",
+        "左侧奶白光带自然弯曲并融入大面积清透浅青"
+      ],
+      "prompt": "抽象渐变背景，采用薄荷绿、浅青、奶白配色，左侧奶白光带自然弯曲并融入大面积清透浅青。光线柔和，色彩清楚但交界自然，没有硬边，带极细微颗粒质感；中右部低细节明亮留白。完整连续色场铺满画面，方形构图，可延展为横幅。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-09-22"
+    },
+    {
+      "id": "openai-introducing-gpt-live-1-in-the-api",
+      "category": "model-launch-background",
+      "title": "青绿与深蓝的斜向过渡",
+      "src": "assets/inspiration-inbox/5d1fc9e1ed2db6ad96966afac5c06f58f2e3f4b49ba50da6a0c9b7e6e760967b.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/introducing-gpt-live-1-in-the-api/",
+      "reason": "青绿、湖蓝、深蓝自然过渡，左下青绿亮带斜向扩散至右侧蓝色，宽幅柔焦层次；左侧亮部保留文案空间，适合参考渐变配色和背景走势。",
+      "tags": [
+        "青绿、湖蓝、深蓝",
+        "左下青绿亮带斜向扩散至右侧蓝色，宽幅柔焦层次"
+      ],
+      "prompt": "抽象渐变背景，采用青绿、湖蓝、深蓝配色，左下青绿亮带斜向扩散至右侧蓝色，宽幅柔焦层次。光线柔和，色彩清楚但交界自然，没有硬边，带极细微颗粒质感；左侧亮部保留文案空间。完整连续色场铺满画面，方形构图，可延展为横幅。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-09-22"
+    },
+    {
+      "id": "openai-introducing-the-agents-api",
+      "category": "model-launch-background",
+      "title": "钴蓝底上的冰蓝弧光",
+      "src": "assets/inspiration-inbox/3b0fc87dcc3e657b6bce4389e7866ae31ec8aef55e38bac922ad771f9db26cfa.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/introducing-the-agents-api/",
+      "reason": "钴蓝、宝蓝、冰蓝自然过渡，冰蓝柔和弧形光束从上方收窄后向右下展开，边界柔化；右下亮区保留文案空间，适合参考渐变配色和背景走势。",
+      "tags": [
+        "钴蓝、宝蓝、冰蓝",
+        "冰蓝柔和弧形光束从上方收窄后向右下展开，边界柔化"
+      ],
+      "prompt": "抽象渐变背景，采用钴蓝、宝蓝、冰蓝配色，冰蓝柔和弧形光束从上方收窄后向右下展开，边界柔化。光线柔和，色彩清楚但交界自然，没有硬边，带极细微颗粒质感；右下亮区保留文案空间。完整连续色场铺满画面，方形构图，可延展为横幅。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-09-22"
+    },
+    {
+      "id": "openai-paul-christiano-joins-openai-foundation-board",
+      "category": "model-launch-background",
+      "title": "薰衣草紫与青蓝的柔曲面",
+      "src": "assets/inspiration-inbox/c930de638461883e86dc9406e0bb7aa460c015b973ee385a9e67d5ffdb442a00.webp",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/zh-Hans-CN/index/paul-christiano-joins-openai-foundation-board/",
+      "reason": "薰衣草紫、淡蓝、青蓝自然过渡，纵向弯曲的宽幅亮带轻柔层叠，右下青蓝过渡；中上部浅紫留白，适合参考渐变配色和背景走势。",
+      "tags": [
+        "薰衣草紫、淡蓝、青蓝",
+        "纵向弯曲的宽幅亮带轻柔层叠，右下青蓝过渡"
+      ],
+      "prompt": "抽象渐变背景，采用薰衣草紫、淡蓝、青蓝配色，纵向弯曲的宽幅亮带轻柔层叠，右下青蓝过渡。光线柔和，色彩清楚但交界自然，没有硬边，带极细微颗粒质感；中上部浅紫留白。完整连续色场铺满画面，方形构图，可延展为横幅。无文字、无标志、无人物、无界面、无图表、无具体物体。",
+      "collectedAt": "2026-09-22"
+    },
+    {
       "id": "pinterest-196962183675196915",
       "category": "character-action",
       "title": "侧身跨步与抬手",

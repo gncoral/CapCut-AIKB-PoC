@@ -304,6 +304,96 @@
   ],
   "items": [
     {
+      "id": "openai-for-greece",
+      "category": "model-launch-background",
+      "title": "蓝白斜向柔焦光场",
+      "src": "assets/inspiration-inbox/8763a97a33a5275595c1757cbace600306cc49790eb635aa754b721d92f4f1dc.png",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/global-affairs/openai-for-greece/",
+      "reason": "宽缓斜向蓝色光带穿过浅蓝底，左右边缘形成雾白亮区；底层为完整渐变，原图文字或标志按用户最新标准保留。",
+      "tags": [
+        "青蓝、钴蓝、浅蓝、雾白",
+        "渐变背景参考"
+      ],
+      "prompt": "抽象渐变背景，采用青蓝、钴蓝、浅蓝、雾白配色，宽缓斜向蓝色光带穿过浅蓝底，左右边缘形成雾白亮区。柔和明亮光场，明暗自然连续过渡，柔焦边缘，细微均匀颗粒，中央保留低细节区域供文案排版；完整色场铺满横向画面，避免锐利物体轮廓和脏暗色块。无文字、无标志、无人物、无界面、无图表、无具象物体。",
+      "collectedAt": "2026-10-14"
+    },
+    {
+      "id": "pinterest-1059964462306710606",
+      "category": "character-action",
+      "title": "前倾叉腰的低机位站姿",
+      "src": "assets/inspiration-inbox/54c1de82865fa5d7c5f8ed5aa0fcd851cffedbf5486fa035208045ef015aca53.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/1059964462306710606/",
+      "reason": "双腿前后分开，双手叉腰，上身侧向前倾，贴近地面的仰拍广角全身；身体支点、重心和四肢方向清楚，白色无缝影棚便于提取人物。",
+      "tags": [
+        "双腿前后分开，双手叉腰，上身侧向前倾",
+        "贴近地面的仰拍广角全身"
+      ],
+      "prompt": "商业时尚人物摄影，成年模特双腿前后分开，双手叉腰，上身侧向前倾，贴近地面的仰拍广角全身，干净浅灰白无缝背景，柔和均匀棚灯，肢体关系清楚，关节结构自然。全身完整入画，双手、指尖、双腿和鞋履留在画面内，四周保留安全余量；年轻潮流服饰，主体轮廓清楚。无文字、无标志、无水印，无额外人物。",
+      "collectedAt": "2026-10-14"
+    },
+    {
+      "id": "behance-183388083-image-1",
+      "category": "character-action",
+      "title": "腾空张腿的鞋底透视",
+      "src": "assets/inspiration-inbox/19ab7af383b8d11bea02113cfe91be7fc70455c9c34ed6b3c088853be297c6fe.jpg",
+      "source": "Behance",
+      "sourceUrl": "https://www.behance.net/gallery/183388083/AS-ABOVE-SO-BELOW",
+      "reason": "腾空跳起，双腿向两侧张开，膝部弯曲，双臂分开保持平衡，超低机位广角仰拍全身，鞋底在近景放大；身体支点、重心和四肢方向清楚，浅灰白干净影棚便于提取人物。",
+      "tags": [
+        "腾空跳起，双腿向两侧张开，膝部弯曲，双臂分开保持平衡",
+        "超低机位广角仰拍全身，鞋底在近景放大"
+      ],
+      "prompt": "商业时尚人物摄影，成年模特腾空跳起，双腿向两侧张开，膝部弯曲，双臂分开保持平衡，超低机位广角仰拍全身，鞋底在近景放大，干净浅灰白无缝背景，柔和均匀棚灯，肢体关系清楚，关节结构自然。全身完整入画，双手、指尖、双腿和鞋履留在画面内，四周保留安全余量；年轻潮流服饰，主体轮廓清楚。无文字、无标志、无水印，无额外人物。",
+      "collectedAt": "2026-10-14"
+    },
+    {
+      "id": "pinterest-14073817578775240",
+      "category": "character-action",
+      "title": "双手扶头的俯拍透视",
+      "src": "assets/inspiration-inbox/3d21dfb409288c3b8ef81d83cbf1af18f9171fc6b63c85db7c5f13ad3ac0bf1a.jpg",
+      "source": "Pinterest",
+      "sourceUrl": "https://www.pinterest.com/pin/14073817578775240/",
+      "reason": "站立并微微前倾，双手抬起扶在头部两侧，双脚贴近，正上方鱼眼俯拍，头手近大、双腿向下延伸；身体支点、重心和四肢方向清楚，干净白色地面，原图带圆形鱼眼黑边便于提取人物。",
+      "tags": [
+        "站立并微微前倾，双手抬起扶在头部两侧，双脚贴近",
+        "正上方鱼眼俯拍，头手近大、双腿向下延伸"
+      ],
+      "prompt": "商业时尚人物摄影，成年模特站立并微微前倾，双手抬起扶在头部两侧，双脚贴近，正上方鱼眼俯拍，头手近大、双腿向下延伸，干净浅灰白无缝背景，柔和均匀棚灯，肢体关系清楚，关节结构自然。全身完整入画，双手、指尖、双腿和鞋履留在画面内，四周保留安全余量；年轻潮流服饰，主体轮廓清楚。无文字、无标志、无水印，无额外人物。",
+      "collectedAt": "2026-10-14"
+    },
+    {
+      "id": "openai-ukraine-cyber",
+      "category": "model-launch-background",
+      "title": "蓝黄颗粒色场的对角交融",
+      "src": "assets/inspiration-inbox/b074d5a6b9c68f28ef2cf5169c11226e70cd4803fe231230453243769eb20766.png",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/openai-extends-cyber-access-to-ukraine-for-civilian-defense/",
+      "reason": "黄色亮场与蓝色柔焦光带沿对角方向交融，细密颗粒铺满画面；底层为完整渐变，原图文字或标志按用户最新标准保留。",
+      "tags": [
+        "明黄、天蓝、钴蓝",
+        "渐变背景参考"
+      ],
+      "prompt": "抽象渐变背景，采用明黄、天蓝、钴蓝配色，黄色亮场与蓝色柔焦光带沿对角方向交融，细密颗粒铺满画面。明亮颗粒光场，明暗自然连续过渡，柔焦边缘，细微均匀颗粒，中央保留低细节区域供文案排版；完整色场铺满横向画面，避免锐利物体轮廓和脏暗色块。无文字、无标志、无人物、无界面、无图表、无具象物体。",
+      "collectedAt": "2026-10-14"
+    },
+    {
+      "id": "openai-new-ads-format",
+      "category": "model-launch-background",
+      "title": "天蓝底上的清透横向过渡",
+      "src": "assets/inspiration-inbox/0852a3cca05d7f53976ae571dd2bac2819cc84c5d50299847f6065e9d8c8bd80.png",
+      "source": "OpenAI",
+      "sourceUrl": "https://openai.com/index/new-chatgpt-ads-format-and-measurement/",
+      "reason": "浅蓝亮区与青蓝缓慢过渡，横向铺开的低细节色场；底层为完整渐变，原图文字或标志按用户最新标准保留。",
+      "tags": [
+        "天蓝、浅蓝、青蓝",
+        "渐变背景参考"
+      ],
+      "prompt": "抽象渐变背景，采用天蓝、浅蓝、青蓝配色，浅蓝亮区与青蓝缓慢过渡，横向铺开的低细节色场。清透柔光，明暗自然连续过渡，柔焦边缘，细微均匀颗粒，中央保留低细节区域供文案排版；完整色场铺满横向画面，避免锐利物体轮廓和脏暗色块。无文字、无标志、无人物、无界面、无图表、无具象物体。",
+      "collectedAt": "2026-10-14"
+    },
+    {
       "id": "openai-trustworthy-third-party-evaluations-foundations",
       "category": "model-launch-background",
       "title": "青绿光场中的柔白曲带",

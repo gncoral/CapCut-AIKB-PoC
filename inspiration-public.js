@@ -21,17 +21,43 @@ function picture(src, title, eager = false) {
 function category() { return state.data.categories.find(c => c.id === state.category); }
 function currentItems() { return state.data.items.filter(i => i.category === state.category); }
 
+
+function featuredSamples(categoryId = state.category) {
+  return categoryId === 'character-action' ? state.data.categories.find(c => c.id === categoryId).samples : [];
+}
+function matchingSamples() {
+  return featuredSamples().filter(s => (state.source === 'all' || state.source === 'Figma') &&
+    (!state.search || s.title.toLowerCase().includes(state.search.toLowerCase())));
+}
+function sampleCard(sample) {
+  const article = el('article', 'inspo-card'); article.dataset.sampleId = sample.id;
+  const open = el('button', 'inspo-card-image'); open.type = 'button'; open.setAttribute('aria-label', `查看精选：${sample.title}`);
+  open.append(picture(sample.src, sample.title, true));
+  open.addEventListener('click', () => openSample(sample));
+  const body = el('div', 'inspo-card-body'); const meta = el('div', 'inspo-card-meta');
+  meta.append(link('Figma ↗', sample.url), el('span', 'inspo-featured-label', '精选'));
+  body.append(meta, el('h3', '', sample.title)); article.append(open, body); return article;
+}
+function openSample(sample) {
+  delete modal.dataset.itemId;
+  const layout = el('div', 'inspo-detail'); const visual = el('div', 'inspo-detail-media'); visual.append(picture(sample.src, sample.title, true));
+  const panel = el('div', 'inspo-detail-panel'); const heading = el('h2', '', sample.title); heading.id = 'inspo-detail-title'; modal.setAttribute('aria-labelledby', heading.id);
+  panel.append(el('span', 'inspo-featured-label', '精选'), heading, link('打开 Figma 原图 ↗', sample.url));
+  layout.append(visual, panel); modalContent(layout);
+}
+
 function renderCategories() {
   $('#inspo-categories').replaceChildren(...state.data.categories.map(c => {
     const b = el('button', c.id === state.category ? 'active' : ''); b.type = 'button'; b.setAttribute('aria-pressed', String(c.id === state.category)); b.dataset.inspoCategory = c.id;
-    b.append(document.createTextNode(c.name), el('span', '', state.data.items.filter(i => i.category === c.id).length));
+    b.append(document.createTextNode(c.name), el('span', '', state.data.items.filter(i => i.category === c.id).length + featuredSamples(c.id).length));
     b.addEventListener('click', () => { state.category = c.id; state.source = 'all'; state.search = ''; $('#inspo-source').value = 'all'; $('#inspo-search').value = ''; render(); });
     return b;
   }));
   $('#inspo-focus').textContent = category().focus;
+  $('#inspo-show-seeds').hidden = state.category === 'character-action';
   $('#inspo-seed-stack').replaceChildren(...category().samples.slice(0, 3).map(s => picture(s.src, s.title, true)));
   $('#inspo-show-seeds > span:last-child').textContent = `${category().samples.length} 张精选样本 ↗`;
-  $('#inspo-total-count').textContent = state.data.items.length;
+  $('#inspo-total-count').textContent = state.data.items.length + featuredSamples('character-action').length;
 }
 
 function card(item) {
@@ -48,9 +74,10 @@ function render() {
   renderCategories();
   const items = currentItems().filter(i => (state.source === 'all' || i.source === state.source) && (!state.search || [i.title, i.reason, ...i.tags].join(' ').toLowerCase().includes(state.search.toLowerCase())));
   $('#inspo-grid').dataset.inspoGridCategory = state.category;
-  $('#inspo-grid').replaceChildren(...items.map(card));
-  $('#inspo-result').textContent = `${category().name} · ${items.length} 张参考`;
-  $('#inspo-empty').hidden = items.length > 0;
+  const samples = matchingSamples();
+  $('#inspo-grid').replaceChildren(...samples.map(sampleCard), ...items.map(card));
+  $('#inspo-result').textContent = `${category().name} · ${samples.length + items.length} 张参考${samples.length ? `（${samples.length} 张精选）` : ''}`;
+  $('#inspo-empty').hidden = samples.length + items.length > 0;
   $('#inspo-empty-title').textContent = '暂无符合条件的参考';
   $('#inspo-empty-description').textContent = '试试其他来源或关键词。';
 }

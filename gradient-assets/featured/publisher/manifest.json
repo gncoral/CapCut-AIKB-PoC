@@ -5,7 +5,18 @@
     "originalName": "飞书文档 - 图片 (11).png",
     "brand": "dreamina",
     "type": "image/png",
-    "file": "05d58f39-2590-4c42-971a-8f03b45138f1.png"
+    "file": "05d58f39-2590-4c42-971a-8f03b45138f1.hd3840.png",
+    "native": "05d58f39-2590-4c42-971a-8f03b45138f1.png",
+    "nativeSize": [
+      1280,
+      720
+    ],
+    "thumb": "05d58f39-2590-4c42-971a-8f03b45138f1.png",
+    "outputSize": [
+      3840,
+      2160
+    ],
+    "resolutionMethod": "System resampling to 3840px long edge; original preserved; no added native detail"
   },
   {
     "id": "0cd5b1d5-a4c4-434c-9b0a-082c4ef4f9a0",
@@ -13,7 +24,18 @@
     "originalName": "飞书文档 - 图片 (2).png",
     "brand": "pippit",
     "type": "image/png",
-    "file": "0cd5b1d5-a4c4-434c-9b0a-082c4ef4f9a0.png"
+    "file": "0cd5b1d5-a4c4-434c-9b0a-082c4ef4f9a0.hd3840.png",
+    "native": "0cd5b1d5-a4c4-434c-9b0a-082c4ef4f9a0.png",
+    "nativeSize": [
+      1280,
+      712
+    ],
+    "thumb": "0cd5b1d5-a4c4-434c-9b0a-082c4ef4f9a0.png",
+    "outputSize": [
+      3840,
+      2136
+    ],
+    "resolutionMethod": "System resampling to 3840px long edge; original preserved; no added native detail"
   },
   {
     "id": "14dd9e06-e7f0-49ff-aa4a-f7a88c7ac9bf",
@@ -21,7 +43,18 @@
     "originalName": "飞书文档 - 图片 (2)",
     "brand": "dreamina",
     "type": "image/png",
-    "file": "14dd9e06-e7f0-49ff-aa4a-f7a88c7ac9bf.png"
+    "file": "14dd9e06-e7f0-49ff-aa4a-f7a88c7ac9bf.hd3840.png",
+    "native": "14dd9e06-e7f0-49ff-aa4a-f7a88c7ac9bf.png",
+    "nativeSize": [
+      1280,
+      720
+    ],
+    "thumb": "14dd9e06-e7f0-49ff-aa4a-f7a88c7ac9bf.png",
+    "outputSize": [
+      3840,
+      2160
+    ],
+    "resolutionMethod": "System resampling to 3840px long edge; original preserved; no added native detail"
   },
   {
     "id": "32aea4a8-89ea-4df1-ad2e-40e2a1d5d760",
@@ -29,7 +62,18 @@
     "originalName": "飞书文档 - 图片 (7).png",
     "brand": "pippit",
     "type": "image/png",
-    "file": "32aea4a8-89ea-4df1-ad2e-40e2a1d5d760.png"
+    "file": "32aea4a8-89ea-4df1-ad2e-40e2a1d5d760.hd3840.png",
+    "native": "32aea4a8-89ea-4df1-ad2e-40e2a1d5d760.png",
+    "nativeSize": [
+      1280,
+      714
+    ],
+    "thumb": "32aea4a8-89ea-4df1-ad2e-40e2a1d5d760.png",
+    "outputSize": [
+      3840,
+      2142
+    ],
+    "resolutionMethod": "System resampling to 3840px long edge; original preserved; no added native detail"
   },
   {
     "id": "3a8f6d8c-7425-469a-a3a6-924bdbb25a11",
@@ -37,7 +81,18 @@
     "originalName": "飞书文档 - 图片 (4)",
     "brand": "dreamina",
     "type": "image/png",
-    "file": "3a8f6d8c-7425-469a-a3a6-924bdbb25a11.png"
+    "file": "3a8f6d8c-7425-469a-a3a6-924bdbb25a11.hd3840.png",
+    "native": "3a8f6d8c-7425-469a-a3a6-924bdbb25a11.png",
+    "nativeSize": [
+      1280,
+      720
+    ],
+    "thumb": "3a8f6d8c-7425-469a-a3a6-924bdbb25a11.png",
+    "outputSize": [
+      3840,
+      2160
+    ],
+    "resolutionMethod": "System resampling to 3840px long edge; original preserved; no added native detail"
   },
   {
     "id": "4f7f10c7-2ebe-40a9-9a55-d665dab3a343",
@@ -45,7 +100,18 @@
     "originalName": "飞书文档 - 图片 (1)",
     "brand": "dreamina",
     "type": "image/png",
-    "file": "4f7f10c7-2ebe-40a9-9a55-d665dab3a343.png"
+    "file": "4f7f10c7-2ebe-40a9-9a55-d665dab3a343.hd3840.png",
+    "native": "4f7f10c7-2ebe-40a9-9a55-d665dab3a343.png",
+    "nativeSize": [
+      1280,
+      720
+    ],
+    "thumb": "4f7f10c7-2ebe-40a9-9a55-d665dab3a343.png",
+    "outputSize": [
+      3840,
+      2160
+    ],
+    "resolutionMethod": "System resampling to 3840px long edge; original preserved; no added native detail"
   },
   {
     "id": "52ceeccc-ec44-476c-be56-b5264988f9a3",
@@ -53,7 +119,18 @@
     "originalName": "飞书文档 - 图片 (6).png",
     "brand": "pippit",
     "type": "image/png",
-    "file": "52ceeccc-ec44-476c-be56-b5264988f9a3.png"
+    "file": "52ceeccc-ec44-476c-be56-b5264988f9a3.hd3840.png",
+    "native": "52ceeccc-ec44-476c-be56-b5264988f9a3.png",
+    "nativeSize": [
+      1280,
+      714
+    ],
+    "thumb": "52ceeccc-ec44-476c-be56-b5264988f9a3.png",
+    "outputSize": [
+      3840,
+      2142
+    ],
+    "resolutionMethod": "System resampling to 3840px long edge; original preserved; no added native detail"
   },
   {
     "id": "52dedfec-9202-4f03-ac23-ef0e247757d1",
@@ -61,7 +138,18 @@
     "originalName": "飞书文档 - 图片 (8).png",
     "brand": "pippit",
     "type": "image/png",
-    "file": "52dedfec-9202-4f03-ac23-ef0e247757d1.png"
+    "file": "52dedfec-9202-4f03-ac23-ef0e247757d1.hd3840.png",
+    "native": "52dedfec-9202-4f03-ac23-ef0e247757d1.png",
+    "nativeSize": [
+      1280,
+      720
+    ],
+    "thumb": "52dedfec-9202-4f03-ac23-ef0e247757d1.png",
+    "outputSize": [
+      3840,
+      2160
+    ],
+    "resolutionMethod": "System resampling to 3840px long edge; original preserved; no added native detail"
   },
   {
     "id": "596c010d-463b-44e0-85cd-5561281d33b5",
@@ -69,7 +157,18 @@
     "originalName": "飞书文档 - 图片 (9).png",
     "brand": "dreamina",
     "type": "image/png",
-    "file": "596c010d-463b-44e0-85cd-5561281d33b5.png"
+    "file": "596c010d-463b-44e0-85cd-5561281d33b5.hd3840.png",
+    "native": "596c010d-463b-44e0-85cd-5561281d33b5.png",
+    "nativeSize": [
+      1280,
+      714
+    ],
+    "thumb": "596c010d-463b-44e0-85cd-5561281d33b5.png",
+    "outputSize": [
+      3840,
+      2142
+    ],
+    "resolutionMethod": "System resampling to 3840px long edge; original preserved; no added native detail"
   },
   {
     "id": "5b919911-470f-4aff-8e0b-866be68625d5",
@@ -77,7 +176,18 @@
     "originalName": "飞书文档 - 图片 (9).png",
     "brand": "pippit",
     "type": "image/png",
-    "file": "5b919911-470f-4aff-8e0b-866be68625d5.png"
+    "file": "5b919911-470f-4aff-8e0b-866be68625d5.hd3840.png",
+    "native": "5b919911-470f-4aff-8e0b-866be68625d5.png",
+    "nativeSize": [
+      1280,
+      720
+    ],
+    "thumb": "5b919911-470f-4aff-8e0b-866be68625d5.png",
+    "outputSize": [
+      3840,
+      2160
+    ],
+    "resolutionMethod": "System resampling to 3840px long edge; original preserved; no added native detail"
   },
   {
     "id": "6c47bd28-82b5-45da-9811-0e188ce4e876",
@@ -85,7 +195,18 @@
     "originalName": "飞书文档 - 图片 (8).png",
     "brand": "pippit",
     "type": "image/png",
-    "file": "6c47bd28-82b5-45da-9811-0e188ce4e876.png"
+    "file": "6c47bd28-82b5-45da-9811-0e188ce4e876.hd3840.png",
+    "native": "6c47bd28-82b5-45da-9811-0e188ce4e876.png",
+    "nativeSize": [
+      1280,
+      720
+    ],
+    "thumb": "6c47bd28-82b5-45da-9811-0e188ce4e876.png",
+    "outputSize": [
+      3840,
+      2160
+    ],
+    "resolutionMethod": "System resampling to 3840px long edge; original preserved; no added native detail"
   },
   {
     "id": "6c54e955-12d2-4c89-bd15-a3e17cb7b2f6",
@@ -93,7 +214,18 @@
     "originalName": "飞书文档 - 图片",
     "brand": "dreamina",
     "type": "image/png",
-    "file": "6c54e955-12d2-4c89-bd15-a3e17cb7b2f6.png"
+    "file": "6c54e955-12d2-4c89-bd15-a3e17cb7b2f6.hd3840.png",
+    "native": "6c54e955-12d2-4c89-bd15-a3e17cb7b2f6.png",
+    "nativeSize": [
+      1280,
+      667
+    ],
+    "thumb": "6c54e955-12d2-4c89-bd15-a3e17cb7b2f6.png",
+    "outputSize": [
+      3840,
+      2001
+    ],
+    "resolutionMethod": "System resampling to 3840px long edge; original preserved; no added native detail"
   },
   {
     "id": "85f1f5aa-c2d1-442b-9cc8-753420c6726e",
@@ -101,7 +233,18 @@
     "originalName": "飞书文档 - 图片 (12).png",
     "brand": "dreamina",
     "type": "image/png",
-    "file": "85f1f5aa-c2d1-442b-9cc8-753420c6726e.png"
+    "file": "85f1f5aa-c2d1-442b-9cc8-753420c6726e.hd3840.png",
+    "native": "85f1f5aa-c2d1-442b-9cc8-753420c6726e.png",
+    "nativeSize": [
+      1280,
+      720
+    ],
+    "thumb": "85f1f5aa-c2d1-442b-9cc8-753420c6726e.png",
+    "outputSize": [
+      3840,
+      2160
+    ],
+    "resolutionMethod": "System resampling to 3840px long edge; original preserved; no added native detail"
   },
   {
     "id": "9bb4e16e-a291-472a-939f-ff62058e5fb6",
@@ -109,7 +252,18 @@
     "originalName": "飞书文档 - 图片 (10).png",
     "brand": "dreamina",
     "type": "image/png",
-    "file": "9bb4e16e-a291-472a-939f-ff62058e5fb6.png"
+    "file": "9bb4e16e-a291-472a-939f-ff62058e5fb6.hd3840.png",
+    "native": "9bb4e16e-a291-472a-939f-ff62058e5fb6.png",
+    "nativeSize": [
+      1280,
+      714
+    ],
+    "thumb": "9bb4e16e-a291-472a-939f-ff62058e5fb6.png",
+    "outputSize": [
+      3840,
+      2142
+    ],
+    "resolutionMethod": "System resampling to 3840px long edge; original preserved; no added native detail"
   },
   {
     "id": "acde6d03-f7fe-46f2-9c34-65e6f1d4f098",
@@ -117,7 +271,18 @@
     "originalName": "飞书文档 - 图片 (5)",
     "brand": "dreamina",
     "type": "image/png",
-    "file": "acde6d03-f7fe-46f2-9c34-65e6f1d4f098.png"
+    "file": "acde6d03-f7fe-46f2-9c34-65e6f1d4f098.hd3840.png",
+    "native": "acde6d03-f7fe-46f2-9c34-65e6f1d4f098.png",
+    "nativeSize": [
+      1280,
+      720
+    ],
+    "thumb": "acde6d03-f7fe-46f2-9c34-65e6f1d4f098.png",
+    "outputSize": [
+      3840,
+      2160
+    ],
+    "resolutionMethod": "System resampling to 3840px long edge; original preserved; no added native detail"
   },
   {
     "id": "b8d88ece-34ef-45f1-b75d-4934f62f576c",
@@ -125,7 +290,18 @@
     "originalName": "飞书文档 - 图片_副本.png",
     "brand": "pippit",
     "type": "image/png",
-    "file": "b8d88ece-34ef-45f1-b75d-4934f62f576c.png"
+    "file": "b8d88ece-34ef-45f1-b75d-4934f62f576c.hd3840.png",
+    "native": "b8d88ece-34ef-45f1-b75d-4934f62f576c.png",
+    "nativeSize": [
+      1280,
+      720
+    ],
+    "thumb": "b8d88ece-34ef-45f1-b75d-4934f62f576c.png",
+    "outputSize": [
+      3840,
+      2160
+    ],
+    "resolutionMethod": "System resampling to 3840px long edge; original preserved; no added native detail"
   },
   {
     "id": "c30adc2c-4ac8-41f5-9df8-f9787b9f0f8f",
@@ -133,7 +309,18 @@
     "originalName": "飞书文档 - 图片 (5).png",
     "brand": "pippit",
     "type": "image/png",
-    "file": "c30adc2c-4ac8-41f5-9df8-f9787b9f0f8f.png"
+    "file": "c30adc2c-4ac8-41f5-9df8-f9787b9f0f8f.hd3840.png",
+    "native": "c30adc2c-4ac8-41f5-9df8-f9787b9f0f8f.png",
+    "nativeSize": [
+      1280,
+      720
+    ],
+    "thumb": "c30adc2c-4ac8-41f5-9df8-f9787b9f0f8f.png",
+    "outputSize": [
+      3840,
+      2160
+    ],
+    "resolutionMethod": "System resampling to 3840px long edge; original preserved; no added native detail"
   },
   {
     "id": "cd846781-cc3c-4e79-b29a-45202376bc06",
@@ -141,6 +328,17 @@
     "originalName": "飞书文档 - 图片 (1).png",
     "brand": "pippit",
     "type": "image/png",
-    "file": "cd846781-cc3c-4e79-b29a-45202376bc06.png"
+    "file": "cd846781-cc3c-4e79-b29a-45202376bc06.hd3840.png",
+    "native": "cd846781-cc3c-4e79-b29a-45202376bc06.png",
+    "nativeSize": [
+      1280,
+      720
+    ],
+    "thumb": "cd846781-cc3c-4e79-b29a-45202376bc06.png",
+    "outputSize": [
+      3840,
+      2160
+    ],
+    "resolutionMethod": "System resampling to 3840px long edge; original preserved; no added native detail"
   }
 ]

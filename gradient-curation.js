@@ -1,6 +1,7 @@
 /* Brand-specific presentation choices. Archived renderers remain recoverable. */
 (()=>{
  const allowed={
+  cc:['soft','horizon','petal','petalShadow','petalStack','oilBrush','studyFlow','studySky','studyAurora'],
   dreamina:['soft','horizon','petal','petalShadow','petalStack','oilBrush','studyFlow','studySky','studyAurora'],
   pippit:['soft','ripple','prism','petal','petalShadow'],
  };

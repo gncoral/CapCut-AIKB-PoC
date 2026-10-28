@@ -1,0 +1,71 @@
+/* Quiet workbench chrome. Artwork and exported scene geometry stay independent. */
+.header,.quick,.workspace>.side,.side>.group,.workspace-shelf{border:0!important}
+.header,.quick{background:#101115}
+.workspace>.side{background:#111216}
+.main>.status{display:none!important}
+.canvas-shell,#shell{border:0!important;border-radius:0;background:#0c0d10;box-shadow:none}
+.canvas-frame{box-shadow:none}
+.workspace-shelf{padding-top:16px}
+.button,.chip,.seg,.palette,.scene,.template,.template-random,.featured-card,
+.copy-template,.copy-template-card,.figma-copy-color,.text-input,
+#featured-settings select,.side select,.side input[type=text],.side input[type=number]{border-color:transparent!important;box-shadow:none}
+.button,.chip,.seg,.scene{background:#1b1d23}
+.button:hover,.chip:hover,.scene:hover{background:#252830}
+.button.primary,.chip.active,.workspace-tabs .button.active,.featured-tabs .button.active{background:#f4f5f7;color:#101115}
+.button:disabled{cursor:default}
+.template,.featured-card{background:#17191f}
+.template.active,.featured-card.active{background:#292c34;box-shadow:inset 0 0 0 1px #b5b9c4}
+.featured-card:hover{background:#24272e}
+.featured-dismiss{border:0;background:#12151ba6}
+.seg{background:transparent;padding:0;gap:4px}
+.seg button.active{background:#252830}
+.palette{border:0}
+.side>.group{margin-bottom:24px;padding-bottom:0}
+.workspace-tabs{background:#111216}
+.quick .row{gap:8px}
+.quick #copy-template-strip,.copy-template-strip{scrollbar-width:thin;scrollbar-color:#343740 transparent}
+.workspace-shelf,.side{scrollbar-width:thin;scrollbar-color:#343740 transparent}
+.button:focus-visible,.chip:focus-visible,.featured-card:focus-visible,.template:focus-visible,
+#featured-settings select:focus-visible{outline:2px solid #bec7db;outline-offset:3px}
+@media(min-width:901px){.main{grid-template-rows:auto minmax(160px,1fr) minmax(150px,30%);gap:12px}.quick{padding-bottom:16px}.side{padding-left:20px}}
+.copy-option,.delivery-card,.delivery-dialog,.delivery-dialog header,.delivery-controls,
+.library-filters,.delivery-footer,.custom-size-dialog header{border:0!important}
+.copy-option[aria-pressed="true"]{box-shadow:none!important;background:#2b2e37}
+.copy-option:hover{background:#24272e}
+.copy-template-row{scrollbar-width:thin;scrollbar-color:#343740 transparent}
+.copy-template-row::-webkit-scrollbar{height:4px}
+.copy-template-row::-webkit-scrollbar-thumb{background:#343740;border-radius:4px}
+/* Major regions keep a quiet divider for orientation. */
+.quick{border-bottom:1px solid #292c33!important}
+.workspace>.side{border-left:1px solid #292c33!important}
+.workspace-shelf{border-top:1px solid #292c33!important}
+@media(max-width:900px){.workspace>.side{border-left:0!important;border-top:1px solid #292c33!important}}
+/* Compact browsing: spend the available height on artwork. */
+.featured-dismiss{padding:0!important;font-size:0;line-height:1;display:block}
+.featured-dismiss::before,.featured-dismiss::after{content:'';position:absolute;width:12px;height:1.8px;left:50%;top:50%;border-radius:2px;background:currentColor;transform:translate(-50%,-50%) rotate(45deg)}
+.featured-dismiss::after{transform:translate(-50%,-50%) rotate(-45deg)}
+.featured-tabs{align-items:center;margin-bottom:10px;gap:6px}
+.featured-tabs .featured-toolbar-spacer{flex:1}
+#featured-gallery>.featured-head,#featured-gallery>.featured-actions,#featured-gallery>.help{display:none}
+#featured-gallery .featured-grid{margin-top:0;gap:10px}
+@media(min-width:901px){
+ .header{height:46px;padding:0 14px}
+ .quick{padding:6px 14px 8px;gap:5px 10px}
+ .quick-label{padding-top:6px}
+ .quick .chip{padding:6px 10px;font-size:10px}
+ .quick .copy-inline-option{padding:4px 5px}
+ .quick .copy-inline-viewport{height:46px!important}
+ .quick .copy-mini-stage{max-height:44px}
+ .quick .copy-option>span{font-size:9px}
+ .main{grid-template-rows:auto minmax(150px,.95fr) minmax(210px,1.05fr);gap:8px;padding:10px 12px}
+ #shell{padding:4px 12px}
+ .workspace-shelf{padding-top:10px}
+ .featured-tabs .button{padding:7px 10px}
+ .featured-card img{height:82px}
+}
+@media(min-width:901px){.quick .copy-inline-option .copy-mini-stage{width:auto!important;height:44px;max-width:100%;max-height:44px}}
+.featured-section-heading{grid-column:1/-1;font-size:11px;font-weight:600;color:#a5a9b4;padding:2px 2px 0}
+.featured-section-heading:not(:first-child){margin-top:8px}
+.featured-collections{display:flex;align-items:center;gap:6px;margin:0 0 10px}
+.featured-collections[hidden]{display:none}
+.featured-collections .chip{padding:6px 12px;font-size:11px}

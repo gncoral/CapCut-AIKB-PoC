@@ -3,6 +3,15 @@
  * Legacy scenes stay available to internal thumbnail renderers only.
  */
 const gradientSceneCatalog = {
+  cc: [
+    ['pcSubscription','PC 客户端 · 订阅页头图',480,270,'409:45477'],
+    ['pcPopup','PC 客户端 · 弹窗媒体图',443,500,'409:45383'],
+    ['webSubscription','Web 网页 · 订阅页头图',336,644,'409:45375'],
+    ['popup','Web 网页 · 弹窗媒体图',400,240,'409:45483'],
+    ['banner','PC / Web 通用 · 订阅页 Banner',1000,152,'409:46147','banner'],
+    ['retain','Web 网页 · 订阅挽留图',544,303,'409:46710'],
+    ['pcRetain','PC 客户端 · 订阅挽留图（线上沿用）',464,261,'409:46909'],
+  ],
   dreamina: [
     ['banner','Web 订阅页 Banner',1320,162,'338:56455','banner'],
     ['webStrip','Web 首页横条',1440,40,'338:56706','strip'],
@@ -27,6 +36,9 @@ const gradientSceneCatalog = {
     ['appSubscription','App 订阅页横幅',393,80,'338:67582','compact'],
   ],
 };
+// Explicit comparison URL only; the default CC catalog stays on its audited slots.
+window.gradientCCLegacySizes=new URLSearchParams(location.search).get('ccSizes')==='legacy';
+if(window.gradientCCLegacySizes)gradientSceneCatalog.cc=JSON.parse(JSON.stringify(gradientSceneCatalog.dreamina));
 function gradientCreateScenes(){
   const result={};
   for(const row of Object.values(gradientSceneCatalog).flat()){

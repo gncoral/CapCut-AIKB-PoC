@@ -18,6 +18,9 @@
      c.globalAlpha=item.opacity??1;c.beginPath();c.roundRect(item.x,item.y,item.w,item.h,item.radius||0);c.fillStyle=color(item.fills?.at(-1));c.fill();
      if(item.strokes?.length){const sw=item.strokeWidth||1;c.beginPath();c.roundRect(item.x+sw/2,item.y+sw/2,Math.max(0,item.w-sw),Math.max(0,item.h-sw),Math.max(0,(item.radius||0)-sw/2));c.strokeStyle=color(item.strokes.at(-1));c.lineWidth=sw;c.stroke();}continue;
     }
+    if(item.glyphLayers){
+     for(const glyph of item.glyphLayers){const im=await image(glyph.src),tmp=document.createElement('canvas');tmp.width=Math.ceil(item.w*4);tmp.height=Math.ceil(item.h*4);const t=tmp.getContext('2d');t.drawImage(im,0,0,tmp.width,tmp.height);t.globalCompositeOperation='source-in';t.fillStyle=glyph.color;t.fillRect(0,0,tmp.width,tmp.height);c.drawImage(tmp,item.x,item.y,item.w,item.h);}continue;
+    }
     if(item.glyph){
      const im=await image(item.glyph),tmp=document.createElement('canvas');tmp.width=Math.ceil(item.w*4);tmp.height=Math.ceil(item.h*4);const t=tmp.getContext('2d');t.drawImage(im,0,0,tmp.width,tmp.height);t.globalCompositeOperation='source-in';t.fillStyle=item.glyphColor;t.fillRect(0,0,tmp.width,tmp.height);c.drawImage(tmp,item.x,item.y,item.w,item.h);continue;
     }

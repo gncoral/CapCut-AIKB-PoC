@@ -1,15 +1,26 @@
 /* Scene-specific Figma foreground. Background renderers and downloads stay independent. */
 (()=>{
  const themed=()=>state.brand==='pippit'&&state.template==='featuredImage'&&state.featuredId==='52ceeccc-ec44-476c-be56-b5264988f9a3';
- const editKey=()=>key()+(themed()?':mist-song':'');
+ const ccOriginal=()=>state.brand==='cc'&&originals.get(key())?.ccOriginal;
+ const contextKey=()=>key()+':background:'+encodeURIComponent(state.template==='featuredImage'?state.featuredId||'none':state.template)+(ccOriginal()?':typography:cc-original-v1':'');
+ const editKey=()=>{const v=variants.get(contextKey());return contextKey()+':preset:'+canonicalName(v?.name||'source',v?.suffix||'numeric')+':suffix:'+(v?.suffix||'numeric')+(themed()?':mist-song':'');};
  const originals=new Map(gradientCopyLayouts.map(x=>[`${x.brand}:${x.scene}`,x]));
  const edits=new Map(),colorEdits=new Map(),richEdits=new Map(),variants=new Map();
+ const accentEdits=new Map();
+ const accentKey=()=>state.brand+':background:'+encodeURIComponent(state.template==='featuredImage'?state.featuredId||'none':state.template);
+ const localAccentKey=()=>accentKey()+':scene:'+state.scene;
+ let accentScope=window.gradientPublishedDefaults?.accentScope||'current';try{accentScope=localStorage.getItem('gradient-accent-scope')||accentScope;}catch{}
+ function applyAccent(hex){
+  if(accentScope==='all'){for(const id of accentEdits.keys())if(id.startsWith(accentKey()+':scene:'))accentEdits.delete(id);if(hex)accentEdits.set(accentKey(),hex);else accentEdits.delete(accentKey());}
+  else accentEdits.set(localAccentKey(),hex||'default');
+ }
+ const isAccent=seg=>{const c=seg?.fills?.find(p=>p.type==='SOLID'&&p.visible!==false)?.color;return !!c&&Math.max(c.r,c.g,c.b)-Math.min(c.r,c.g,c.b)>.15;};
  const BOX_STORAGE='gradient-copy-box-colors-v1';
- const boxColors=new Map();
+ const boxColors=new Map(window.gradientPublishedDefaults?.copyMaps?.boxColors||[]);
  try{for(const entry of Object.entries(JSON.parse(localStorage.getItem(BOX_STORAGE)||'{}')))boxColors.set(...entry);}catch{}
  function saveBoxColors(){if(previewing)return;try{localStorage.setItem(BOX_STORAGE,JSON.stringify(Object.fromEntries(boxColors)));}catch{toast('底色调整暂未保存');}}
  const clone=x=>JSON.parse(JSON.stringify(x));
- for(const spec of originals.values())if(spec.scene==='banner'){
+ for(const spec of originals.values())if(spec.scene==='banner'&&!spec.ccOriginal){
   spec.items=spec.items.flatMap(item=>{
    if(item.type!=='text'||!item.text.includes('\n'))return [item];
    let offset=0;return item.text.split('\n').map((text,i)=>{
@@ -21,10 +32,11 @@
  // Popup defaults and the matching library choice share one audited Figma layout.
  // Preserve legacy field IDs so saved copy and box colors remain addressable.
  const canonicalOriginals=new Map();
- for(const [brand,scene,preset]of [['dreamina','popup','short'],['pippit','popup','six'],['pippit','retain','offer']]){
+ for(const [brand,scene,preset]of [['cc','popup','short'],['dreamina','popup','short'],['pippit','popup','six'],['pippit','retain','offer']]){
   const old=originals.get(brand+':'+scene);
   const ref=window.gradientCopyTemplates?.find(f=>f.brand===brand&&f.preset===preset&&f.suffix==='numeric');
   if(!old||!ref)continue;
+  if(old.ccOriginal)continue; // The audited CC source already owns its typography.
   const spec=clone(ref),counts={text:0,box:0},ids=new Map();
   spec.w=old.w;spec.h=old.h;spec.scene=scene;spec.canonicalPreset=preset;
   for(const item of spec.items){const oldItem=old.items.filter(i=>i.type===item.type)[counts[item.type]++];if(oldItem)ids.set(item.id,oldItem.id);item.x+=(old.w-ref.w)/2;item.y+=(old.h-ref.h)/2;}
@@ -32,7 +44,7 @@
   canonicalOriginals.set(brand+':'+scene,spec);
  }
  const isCustom=()=>!!window.gradientCustomSizes?.is(state.scene);
- const supportsTemplates=()=>['popup','retain','leave'].includes(state.scene)||isCustom();
+ const supportsTemplates=()=>!ccOriginal()&&(['popup','retain','leave'].includes(state.scene)||isCustom());
  function adaptCustom(spec){
   const [w,h]=scenes[state.scene].size,k=Math.min(w/spec.w,h/spec.h),dx=(w-spec.w*k)/2,dy=(h-spec.h*k)/2;
   const out=clone(spec);out.w=w;out.h=h;out.scene=state.scene;out.customLayout=true;out.customScale=k;
@@ -42,11 +54,12 @@
  }
  function customDefault(){
   const [w,h]=scenes[state.scene].size;
-  if(w/h>=3){const base=clone(originals.get(`${state.brand}:${state.brand==='dreamina'?'appHome':'appSubscription'}`));base.exactTemplate=true;base.customWide=true;const texts=base.items.filter(i=>i.type==='text');if(state.brand==='dreamina'){base.subtitleId=texts[1]?.id;texts[0].label='主文案';texts[1].label='副文案';}return adaptCustom(base);}
-  return exactTemplate(state.brand==='dreamina'?'short':'six','numeric');
+  if(w/h>=3){const base=clone(originals.get(`${state.brand}:${state.brand!=='pippit'?'appHome':'appSubscription'}`));base.exactTemplate=true;base.customWide=true;const texts=base.items.filter(i=>i.type==='text');if(state.brand!=='pippit'){base.subtitleId=texts[1]?.id;texts[0].label='主文案';texts[1].label='副文案';}return adaptCustom(base);}
+  return exactTemplate(state.brand!=='pippit'?'short':'six','numeric');
  }
- const canonicalName=(name,suffix='numeric')=>name==='source'&&isCustom()&&scenes[state.scene].size[0]/scenes[state.scene].size[1]<3?(state.brand==='dreamina'?'short':'six'):name==='source'&&canonicalOriginals.has(`${state.brand}:${state.scene}`)?canonicalOriginals.get(`${state.brand}:${state.scene}`).canonicalPreset:name==='double'&&suffix==='numeric'?'offer':name;
- function availablePresets(suffix=variants.get(editKey())?.suffix||'numeric'){
+ const canonicalName=(name,suffix='numeric')=>name==='source'&&isCustom()&&scenes[state.scene].size[0]/scenes[state.scene].size[1]<3?(state.brand!=='pippit'?'short':'six'):name==='source'&&canonicalOriginals.has(`${state.brand}:${state.scene}`)?canonicalOriginals.get(`${state.brand}:${state.scene}`).canonicalPreset:name==='double'&&suffix==='numeric'?'offer':name;
+ function availablePresets(suffix=variants.get(contextKey())?.suffix||'numeric'){
+  if(ccOriginal())return [['source','设计稿']];
   if(!supportsTemplates())return [presetNames[0]];
   return presetNames.filter(([id])=>!(id==='source'&&(canonicalOriginals.has(key())||isCustom()&&scenes[state.scene].size[0]/scenes[state.scene].size[1]<3))&&!(id==='double'&&suffix==='numeric')).map(p=>isCustom()&&p[0]==='source'?['source','自动排版']:p);
  }
@@ -97,26 +110,38 @@
     Object.assign(badge,{text:originalBadge.text,w:originalBadge.w,x:box.x+originalBadge.x-originalBox.x,segments:clone(originalBadge.segments),glyph:originalBadge.glyph});
    }
   }
+  if(state.brand==='cc'&&!isCustom()){
+   // Start from the template's native geometry before fitting CC's portrait slots.
+   spec.items.forEach(i=>{i.x-=dx;i.y-=dy;});spec.w=source.w;spec.h=source.h;
+   return adaptCustom(spec);
+  }
   return isCustom()?adaptCustom(spec):spec;
  }
  function setPreset(name,keepEdits=false,suffix='numeric'){
   name=canonicalName(name,suffix);
   const spec=name==='source'?(isCustom()?customDefault():clone(originals.get(key()))):exactTemplate(name,suffix);if(!spec)return;
   if(!spec.exactTemplate){const texts=spec.items.filter(i=>i.type==='text');spec.subtitleId=texts[3]?.id;}
-  variants.set(editKey(),{name,spec,suffix,subtitle:!!spec.subtitleId});
-  if(!keepEdits){edits.delete(editKey());colorEdits.delete(editKey());for(const k of richEdits.keys())if(k.startsWith(editKey()+':'))richEdits.delete(k);}
+  variants.set(contextKey(),{name,spec,suffix,subtitle:!!spec.subtitleId});
+  // Choosing another foreground keeps each preset's existing edits intact.
   renderEditor();updateAll();updateContrast();
  }
- const palettes={dreamina:[['黑','#000000'],['白','#FFFFFF'],['黄','#FFEF61'],['橙','#FF6A00']],pippit:[['黑','#000000'],['白','#FFFFFF'],['紫','#7040FF'],['黄','#FFDE36']]};
+ const palettes={cc:[['黑','#000000'],['白','#FFFFFF'],['紫','#7040FF'],['黄','#FFEF61'],['橙','#FF6A00']],dreamina:[['黑','#000000'],['白','#FFFFFF'],['黄','#FFEF61'],['橙','#FF6A00']],pippit:[['黑','#000000'],['白','#FFFFFF'],['紫','#7040FF'],['黄','#FFDE36']]};
  const chosenColor=item=>colorEdits.get(editKey())?.[item.id];
  function textPaint(item,seg){
-  const hex=seg.colorOverride||chosenColor(item);if(!hex)return seg.fills?.find(p=>p.type==='SOLID'&&p.visible!==false);
+  const source=seg.fills?.find(p=>p.type==='SOLID'&&p.visible!==false);
+  const purpleDefault=state.brand==='cc'&&state.template==='featuredImage'&&state.featuredId?.startsWith('cc-cyan-purple-pink-');
+  const c=source?.color;
+  // Explicit scope rules own original highlights; other text edits remain independent.
+  const defaultAccent=state.brand==='pippit'?'#FFDE36':purpleDefault?'#7040FF':null;
+  const accent=defaultAccent&&c&&Math.max(c.r,c.g,c.b)-Math.min(c.r,c.g,c.b)>.15;
+  const accentRule=isAccent(seg)?accentEdits.get(localAccentKey())||accentEdits.get(accentKey()):null;
+  const hex=accentRule?(accentRule==='default'?defaultAccent:accentRule):seg.colorOverride||chosenColor(item)||(accent?defaultAccent:null);if(!hex)return source;
   return {type:'SOLID',opacity:1,color:{r:parseInt(hex.slice(1,3),16)/255,g:parseInt(hex.slice(3,5),16)/255,b:parseInt(hex.slice(5,7),16)/255}};
  }
  const key=()=>`${state.brand}:${state.scene}`;
  const layout=()=>{
-  const v=variants.get(editKey());
-  const source=v?.name==='double'&&v.suffix==='numeric'?exactTemplate('offer','numeric'):( !v||v.name==='source')&&canonicalOriginals.has(key())?canonicalOriginals.get(key()):v?.spec||(isCustom()?customDefault():originals.get(key()));if(!source)return null;
+  const v=variants.get(contextKey());
+ const source=ccOriginal()?originals.get(key()):v?.name==='double'&&v.suffix==='numeric'?exactTemplate('offer','numeric'):( !v||v.name==='source')&&canonicalOriginals.has(key())?exactTemplate(canonicalOriginals.get(key()).canonicalPreset,'numeric'):v?.spec||(isCustom()?customDefault():originals.get(key()));if(!source)return null;
   let spec={...source,items:source.items.filter(i=>!v||v.subtitle||i.id!==(source.exactTemplate?source.subtitleId:source.subtitleId||source.items.filter(x=>x.type==='text')[3]?.id))};
   if(themed()){
    const boxes=spec.items.filter(i=>i.type==='box');
@@ -179,7 +204,9 @@
      line.append(span);
     }
     el.append(line);
-    if(item.glyph&&!changed&&!segmentsFor(item).some(s=>s.colorOverride)){
+    if(item.glyphLayers&&!changed&&!segmentsFor(item).some(s=>s.colorOverride)){
+     line.style.visibility='hidden';for(const glyph of item.glyphLayers){const mark=document.createElement('span');mark.className='figma-original-glyph';mark.setAttribute('role','img');mark.setAttribute('aria-label',item.text);mark.style.backgroundColor=rgba(textPaint(item,item.segments[glyph.segment]));mark.style.mask=`url("${glyph.src}") center / 100% 100% no-repeat`;mark.style.webkitMask=mark.style.mask;el.append(mark);}
+    }else if(item.glyph&&!changed&&!segmentsFor(item).some(s=>s.colorOverride)){
      line.style.visibility='hidden';const mark=document.createElement('span');mark.className='figma-original-glyph';mark.setAttribute('role','img');mark.setAttribute('aria-label',item.text);mark.style.backgroundColor=rgba(textPaint(item,item.segments[0]));mark.style.mask=`url("${item.glyph}") center / 100% 100% no-repeat`;mark.style.webkitMask=mark.style.mask;el.append(mark);
     }else if(!richEdits.has(richKey(item))&&!changed&&item.text==='Seedance'&&item.segments[0].font.family==='Byte Sans'){
      line.style.visibility='hidden';const mark=document.createElement('span');mark.setAttribute('role','img');mark.setAttribute('aria-label','Seedance');mark.className='figma-seedance-mark';
@@ -206,27 +233,51 @@
  });}
  function updateAll(){
   if(previewing)return;
+  persistCopy();
   const main=frame.querySelector('.figma-copy-layer');const fresh=makeLayer();if(main)main.replaceWith(fresh);else if(fresh)frame.append(fresh);
   document.querySelectorAll('.batch-preview').forEach(stage=>{stage.querySelector('.figma-copy-layer')?.remove();const l=makeLayer();if(l)stage.append(l);});queueFit();
-  document.getElementById('copy-source-note').textContent='选中文字后点击色块可局部改色；未选中时修改整段。各尺寸独立保留本页调整。';
+  document.getElementById('copy-source-note').textContent='选中文字后点击色块可局部改色；未选中时修改整段。当前背景、尺寸和文字模板的调整自动保存。';
  }
  window.gradientCopyOverlay=stage=>{const layer=makeLayer();if(layer)stage.append(layer);queueFit();return Boolean(layer)};
  const group=document.getElementById('title-input').closest('.group');
  Array.from(group.children).filter(n=>n.tagName!=='H3'&&n.id!=='copy-source-note').forEach(n=>n.hidden=true);
  const editor=document.createElement('div');editor.className='figma-copy-editor';group.querySelector('h3').textContent='文案编辑';group.querySelector('h3').after(editor);
  const reset=document.createElement('button');reset.type='button';reset.className='button';reset.textContent='恢复设计稿文案与颜色';group.append(reset);
- window.gradientResetCopy=()=>{boxColors.delete(editKey());saveBoxColors();edits.delete(editKey());colorEdits.delete(editKey());variants.delete(editKey());for(const k of richEdits.keys())if(k.startsWith(editKey()+':'))richEdits.delete(k);renderEditor();updateAll();updateContrast();};
+ window.gradientResetCopy=()=>{
+  const context=contextKey(),oldKey=editKey();variants.delete(context);
+  const published=window.gradientPublishedDefaults?.copyMaps||{};
+  for(const [k,v]of published.variants||[])if(k===context)variants.set(k,clone(v));
+  const target=editKey();
+  for(const [name,map]of Object.entries({edits,colorEdits,richEdits,boxColors,accentEdits})){
+   const matches=k=>name==='accentEdits'?(k===accentKey()||k===localAccentKey()):name==='richEdits'?(k.startsWith(oldKey+':')||k.startsWith(target+':')):(k===oldKey||k===target);
+   for(const k of [...map.keys()])if(matches(k))map.delete(k);
+   for(const [k,v]of published[name]||[])if(matches(k))map.set(k,clone(v));
+  }
+  saveBoxColors();renderEditor();updateAll();updateContrast();
+ };
  reset.onclick=window.gradientResetCopy;
  let editorKey='';
  function renderEditor(){
   if(previewing)return;
   const spec=layout();if(!spec)return;editorKey=editKey();editor.replaceChildren();
+  const sharedPanel=document.createElement('div');sharedPanel.className='figma-copy-field';
+  const sharedLabel=document.createElement('span');sharedLabel.textContent='重点字色';
+  const scopeRow=document.createElement('div');scopeRow.className='figma-copy-colors';scopeRow.setAttribute('role','group');scopeRow.setAttribute('aria-label','重点色应用范围');
+  for(const [value,name]of [['current','仅当前尺寸'],['all','此底图所有尺寸']]){const button=document.createElement('button');button.type='button';button.className='figma-copy-color';button.textContent=name;button.setAttribute('aria-pressed',String(accentScope===value));button.onclick=()=>{accentScope=value;try{localStorage.setItem('gradient-accent-scope',value);}catch{}renderEditor();};scopeRow.append(button);}
+  const sharedColors=document.createElement('div');sharedColors.className='figma-copy-colors';
+  const activeAccent=accentEdits.get(localAccentKey())||accentEdits.get(accentKey())||'default';
+  for(const [name,hex]of [['默认',null],...palettes[state.brand]]){const button=document.createElement('button');button.type='button';button.className='figma-copy-color';button.textContent=name;button.setAttribute('aria-label','重点色 '+name);button.setAttribute('aria-pressed',String(activeAccent===(hex||'default')));button.onclick=()=>{applyAccent(hex);renderEditor();updateAll();updateContrast();};sharedColors.append(button);}
+  const sharedCustom=document.createElement('label');sharedCustom.className='figma-copy-color figma-copy-custom';sharedCustom.append(document.createTextNode('自定义'));
+  const sharedPicker=document.createElement('input');sharedPicker.type='color';sharedPicker.className='figma-copy-picker';sharedPicker.setAttribute('aria-label','重点色自定义');sharedPicker.value=activeAccent==='default'?'#7040FF':activeAccent;
+  sharedPicker.oninput=()=>{applyAccent(sharedPicker.value.toUpperCase());updateAll();updateContrast();};sharedPicker.onchange=()=>renderEditor();sharedCustom.append(sharedPicker);sharedColors.append(sharedCustom);
+  const scopeHint=document.createElement('span');scopeHint.textContent=accentScope==='all'?'改色将覆盖此底图各尺寸的重点色。':'只改当前尺寸，其他尺寸保持原样。';
+  sharedPanel.append(sharedLabel,scopeRow,sharedColors,scopeHint);editor.append(sharedPanel);
   if(supportsTemplates()){
    const panel=document.createElement('div');panel.className='figma-copy-field';
    const label=document.createElement('span');label.textContent='文案版式';const select=document.createElement('select');select.className='text-input';select.setAttribute('aria-label','文案版式');
-   for(const [value,title]of availablePresets()){const option=new Option(title,value);select.add(option);}select.value=canonicalName(variants.get(editKey())?.name||'source',variants.get(editKey())?.suffix);select.onchange=()=>setPreset(select.value,false,variants.get(editKey())?.suffix||'numeric');
-   const toggle=document.createElement('label'),check=document.createElement('input');check.type='checkbox';check.checked=variants.get(editKey())?.subtitle??(!!spec.subtitleId||!spec.exactTemplate&&spec.items.filter(x=>x.type==='text').length>3);check.disabled=!!spec.exactTemplate&&!spec.subtitleId;
-   check.onchange=()=>{if(!variants.has(editKey()))variants.set(editKey(),{name:canonicalName('source'),spec:clone(spec),suffix:'numeric',subtitle:true});variants.get(editKey()).subtitle=check.checked;renderEditor();updateAll();updateContrast();};toggle.append(check,' 显示副文案');panel.append(toggle);editor.append(panel);
+   for(const [value,title]of availablePresets()){const option=new Option(title,value);select.add(option);}select.value=canonicalName(variants.get(contextKey())?.name||'source',variants.get(contextKey())?.suffix);select.onchange=()=>setPreset(select.value,false,variants.get(contextKey())?.suffix||'numeric');
+   const toggle=document.createElement('label'),check=document.createElement('input');check.type='checkbox';check.checked=variants.get(contextKey())?.subtitle??(!!spec.subtitleId||!spec.exactTemplate&&spec.items.filter(x=>x.type==='text').length>3);check.disabled=!!spec.exactTemplate&&!spec.subtitleId;
+   check.onchange=()=>{if(!variants.has(contextKey()))variants.set(contextKey(),{name:canonicalName('source'),spec:clone(spec),suffix:'numeric',subtitle:true});variants.get(contextKey()).subtitle=check.checked;renderEditor();updateAll();updateContrast();};toggle.append(check,' 显示副文案');panel.append(toggle);editor.append(panel);
   }
   const textItems=spec.items.filter(x=>x.type==='text'&&!(['banner','webStrip'].includes(state.scene)&&/^(?:\d{2}|:|天|小时|分钟|秒)$/.test(x.text)));
   for(const [i,item]of textItems.entries()){
@@ -238,6 +289,8 @@
    const colors=document.createElement('div');colors.className='figma-copy-colors';colors.setAttribute('role','group');colors.setAttribute('aria-label',label.textContent+'字色');
    function applyColor(hex,button,a=input.selectionStart,b=input.selectionEnd){
     if(!field.isConnected)return;
+    const targetSegments=b>a?styledChars(item).slice(a,b):item.segments;
+    if(targetSegments.some(isAccent))applyAccent(hex);
     if(b>a){const chars=styledChars(item);for(let n=a;n<b;n++){chars[n]={...chars[n]};if(hex)chars[n].colorOverride=hex;else{const fill=chars[n].fills?.find(p=>p.type==='SOLID'&&p.visible!==false)?.color;chars[n].colorOverride=fill?'#'+[fill.r,fill.g,fill.b].map(c=>Math.round(c*255).toString(16).padStart(2,'0')).join(''):undefined;}}richEdits.set(richKey(item),chars);}
     else{const changes=colorEdits.get(editKey())||{};if(hex)changes[item.id]=hex;else delete changes[item.id];colorEdits.set(editKey(),changes);const chars=styledChars(item);chars.forEach(c=>delete c.colorOverride);richEdits.set(richKey(item),chars);}
     colors.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
@@ -286,33 +339,41 @@
    picker.oninput=()=>apply(picker.value.toUpperCase());picker.onchange=picker.oninput;
    custom.append(picker);colors.append(custom);field.append(label,colors);editor.append(field);
   }
-  document.getElementById('copy-source-note').textContent='按当前资源位的设计稿显示文案与排版；可逐项修改内容和字色，切换资源位保留本页修改。「原稿」保留原有多色排版。';
+  document.getElementById('copy-source-note').textContent='按当前资源位的设计稿显示文案与排版；可逐项修改内容和字色，重点字色按上方应用范围保存，其余文案和字色独立保留。「原稿」保留原有多色排版。';
  }
 
- const copyMaps={edits,colorEdits,richEdits,variants,boxColors};
+ const copyMaps={edits,colorEdits,richEdits,variants,boxColors,accentEdits};
  const captureCopy=()=>Object.fromEntries(Object.entries(copyMaps).map(([name,map])=>[name,clone([...map])]));
  function restoreCopy(snapshot,refresh=true){for(const [name,map]of Object.entries(copyMaps)){map.clear();for(const [k,v]of snapshot[name]||[])map.set(k,clone(v));}if(refresh){saveBoxColors();renderEditor();updateAll();updateContrast();}}
+ const COPY_STORAGE='gradient-copy-adjustments-v2';
+ let lastSavedCopy='';
+ for(const [name,map]of Object.entries(copyMaps)){if(name==='boxColors')continue;for(const [k,v]of window.gradientPublishedDefaults?.copyMaps?.[name]||[])map.set(k,clone(v));}
+ try{const saved=JSON.parse(localStorage.getItem(COPY_STORAGE)||'null');if(saved?.maps){for(const [name,map]of Object.entries(copyMaps)){for(const [k,v]of saved.maps[name]||[])map.set(k,clone(v));}}}catch{}
+ function persistCopy(){if(previewing)return;const maps=captureCopy(),signature=JSON.stringify(maps);if(signature===lastSavedCopy)return;try{localStorage.setItem(COPY_STORAGE,JSON.stringify({version:2,savedAt:new Date().toISOString(),maps}));lastSavedCopy=signature;}catch{toast('文字调整暂未保存，浏览器存储空间不足');}}
  let previewing=false;
+ window.addEventListener('pagehide',persistCopy);
+
  window.gradientCopyTools={
   capture:captureCopy,restore:restoreCopy,
-  captureScene(){const k=editKey();return {key:k,maps:Object.fromEntries(Object.entries(copyMaps).map(([name,map])=>[name,clone([...map].filter(([id])=>name==='richEdits'?id.startsWith(k+':'):id===k))]))};},
-  restoreScene(snapshot){for(const [name,map]of Object.entries(copyMaps)){for(const id of map.keys())if(name==='richEdits'?id.startsWith(snapshot.key+':'):id===snapshot.key)map.delete(id);for(const [id,value]of snapshot.maps[name]||[])map.set(id,clone(value));}saveBoxColors();renderEditor();updateAll();updateContrast();},
+  captureScene(){const k=editKey();return {key:k,contextKey:contextKey(),accentKey:accentKey(),maps:Object.fromEntries(Object.entries(copyMaps).map(([name,map])=>[name,clone([...map].filter(([id])=>name==='accentEdits'?(id===accentKey()||id.startsWith(accentKey()+':scene:')):name==='variants'?id===contextKey():name==='richEdits'?id.startsWith(k+':'):id===k))]))};},
+  restoreScene(snapshot){for(const [name,map]of Object.entries(copyMaps)){for(const id of map.keys())if(name==='accentEdits'?(id===snapshot.accentKey||id.startsWith(snapshot.accentKey+':scene:')):name==='variants'?id===(snapshot.contextKey||snapshot.key):name==='richEdits'?id.startsWith(snapshot.key+':'):id===snapshot.key)map.delete(id);for(const [id,value]of snapshot.maps[name]||[])map.set(id,clone(value));}saveBoxColors();renderEditor();updateAll();updateContrast();},
   supported:supportsTemplates,
   list:availablePresets,
-  current:()=>canonicalName(variants.get(editKey())?.name||'source',variants.get(editKey())?.suffix),
-  suffix:()=>variants.get(editKey())?.suffix||'numeric',
+  current:()=>canonicalName(variants.get(contextKey())?.name||'source',variants.get(contextKey())?.suffix),
+  suffix:()=>variants.get(contextKey())?.suffix||'numeric',
   setSuffix(value){
    const spec=layout(),texts=spec.items.filter(i=>i.type==='text');
    if(!supportsTemplates())return;
-   if(isCustom()&&this.current()==='source'){setPreset(state.brand==='dreamina'?'short':'six',false,value);return;}
+   if(isCustom()&&this.current()==='source'){setPreset(state.brand!=='pippit'?'short':'six',false,value);return;}
    const current=this.current();if(current!=='source'){setPreset(current,false,value);return;}
-   if(!variants.has(editKey()))setPreset('source',true);
-   variants.get(editKey()).suffix=value;
+   if(!variants.has(contextKey()))setPreset('source',true);
+   variants.get(contextKey()).suffix=value;
    changeText(texts[0],value==='numeric'?'Seedance':'Seedance 2.0');
    changeText(texts[1],value==='english'?'Fast':value==='mini'?'Mini':'2.5');
    renderEditor();updateAll();updateContrast();
   },
   choose(name,suffix='numeric'){
+   if(ccOriginal())return; // The source frame owns font sizes and explicit line breaks.
    name=canonicalName(name,suffix);
    if(!this.list(suffix).some(([id])=>id===name))return;
    if(this.supported()){setPreset(name,false,suffix);if(name==='source'&&!isCustom())this.setSuffix(suffix);}else window.gradientResetCopy();
@@ -322,7 +383,12 @@
    const snapshot=captureCopy();previewing=true;
    try{this.choose(name,suffix);return makeLayer();}finally{restoreCopy(snapshot,false);previewing=false;}
   },
-  resolved(){const spec=layout();return clone({...spec,items:spec.items.map(item=>item.type!=='text'?item:{...item,text:content(item),glyph:content(item)===item.text&&!segmentsFor(item).some(s=>s.colorOverride)?item.glyph:null,glyphColor:rgba(textPaint(item,item.segments[0])),wordmark:!item.glyph&&!richEdits.has(richKey(item))&&content(item)===item.text&&item.text==='Seedance'&&item.segments[0].font.family==='Byte Sans',wordmarkColor:chosenColor(item)||(themed()?'#FFFFFF':'#000000'),segments:segmentsFor(item).map(seg=>({...seg,fills:[textPaint(item,seg)].filter(Boolean),cssFont:family(seg.font),weight:weight(seg.font)}))})});},
+  previewResolved(name,suffix){
+   if(name===this.current()&&suffix===this.suffix())return this.resolved();
+   const snapshot=captureCopy();previewing=true;
+   try{this.choose(name,suffix);return this.resolved();}finally{restoreCopy(snapshot,false);previewing=false;}
+  },
+  resolved(){const spec=layout();return clone({...spec,items:spec.items.map(item=>item.type!=='text'?item:{...item,text:content(item),glyph:content(item)===item.text&&!segmentsFor(item).some(s=>s.colorOverride)?item.glyph:null,glyphColor:rgba(textPaint(item,item.segments[0])),glyphLayers:content(item)===item.text&&!segmentsFor(item).some(s=>s.colorOverride)?item.glyphLayers?.map(g=>({...g,color:rgba(textPaint(item,item.segments[g.segment]))})):null,wordmark:!item.glyph&&!richEdits.has(richKey(item))&&content(item)===item.text&&item.text==='Seedance'&&item.segments[0].font.family==='Byte Sans',wordmarkColor:chosenColor(item)||(themed()?'#FFFFFF':'#000000'),segments:segmentsFor(item).map(seg=>({...seg,fills:[textPaint(item,seg)].filter(Boolean),cssFont:family(seg.font),weight:weight(seg.font)}))})});},
   makeLayer
  };
  const oldContrast=updateContrast;

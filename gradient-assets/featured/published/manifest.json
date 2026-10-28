@@ -1,0 +1,514 @@
+[
+  {
+    "id": "intake-20261015-cc-01",
+    "name": "晴光流转",
+    "brand": "cc",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-cc-01.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-cc-01.jpg"
+  },
+  {
+    "id": "intake-20261015-dreamina-01",
+    "name": "冰河流光",
+    "brand": "dreamina",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-dreamina-01.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-dreamina-01.jpg"
+  },
+  {
+    "id": "intake-20261015-pippit-01",
+    "name": "紫雾轻绕",
+    "brand": "pippit",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-pippit-01.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-pippit-01.jpg"
+  },
+  {
+    "id": "intake-20261015-cc-02",
+    "name": "轻云漫叠",
+    "brand": "cc",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-cc-02.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-cc-02.jpg"
+  },
+  {
+    "id": "intake-20261015-dreamina-02",
+    "name": "云光漫映",
+    "brand": "dreamina",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-dreamina-02.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-dreamina-02.jpg"
+  },
+  {
+    "id": "intake-20261015-pippit-02",
+    "name": "暮光漫叠",
+    "brand": "pippit",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-pippit-02.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-pippit-02.jpg"
+  },
+  {
+    "id": "intake-20261015-cc-03",
+    "name": "晨雾融光",
+    "brand": "cc",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-cc-03.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-cc-03.jpg"
+  },
+  {
+    "id": "intake-20261015-dreamina-03",
+    "name": "晨曦柔影",
+    "brand": "dreamina",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-dreamina-03.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-dreamina-03.jpg"
+  },
+  {
+    "id": "intake-20261015-pippit-03",
+    "name": "柔紫晨曦",
+    "brand": "pippit",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-pippit-03.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-pippit-03.jpg"
+  },
+  {
+    "id": "intake-20261015-dreamina-04",
+    "name": "天光浅漾",
+    "brand": "dreamina",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-dreamina-04.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-dreamina-04.jpg"
+  },
+  {
+    "id": "intake-20261015-pippit-04",
+    "name": "浅梦浮云",
+    "brand": "pippit",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-pippit-04.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-pippit-04.jpg"
+  },
+  {
+    "id": "intake-20261015-dreamina-05",
+    "name": "清波斜照",
+    "brand": "dreamina",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-dreamina-05.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-dreamina-05.jpg"
+  },
+  {
+    "id": "intake-20261015-pippit-05",
+    "name": "流影如织",
+    "brand": "pippit",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-pippit-05.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-pippit-05.jpg"
+  },
+  {
+    "id": "intake-20261015-cc-06",
+    "name": "云湾轻涌",
+    "brand": "cc",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-cc-06.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-cc-06.jpg"
+  },
+  {
+    "id": "intake-20261015-dreamina-06",
+    "name": "月湾轻澜",
+    "brand": "dreamina",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-dreamina-06.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-dreamina-06.jpg"
+  },
+  {
+    "id": "intake-20261015-pippit-06",
+    "name": "月湾紫澜",
+    "brand": "pippit",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-pippit-06.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-pippit-06.jpg"
+  },
+  {
+    "id": "intake-20261015-cc-07",
+    "name": "晴空微澜",
+    "brand": "cc",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-cc-07.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-cc-07.jpg"
+  },
+  {
+    "id": "intake-20261015-dreamina-07",
+    "name": "晴蓝浮光",
+    "brand": "dreamina",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-dreamina-07.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-dreamina-07.jpg"
+  },
+  {
+    "id": "intake-20261015-pippit-07",
+    "name": "星河微光",
+    "brand": "pippit",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-pippit-07.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-pippit-07.jpg"
+  },
+  {
+    "id": "intake-20261015-cc-08",
+    "name": "暖光入梦",
+    "brand": "cc",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-cc-08.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-cc-08.jpg"
+  },
+  {
+    "id": "intake-20261015-dreamina-08",
+    "name": "霞光轻染",
+    "brand": "dreamina",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-dreamina-08.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-dreamina-08.jpg"
+  },
+  {
+    "id": "intake-20261015-pippit-08",
+    "name": "暮霞入梦",
+    "brand": "pippit",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-pippit-08.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-pippit-08.jpg"
+  },
+  {
+    "id": "intake-20261015-cc-09",
+    "name": "流霞轻舞",
+    "brand": "cc",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-cc-09.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-cc-09.jpg"
+  },
+  {
+    "id": "intake-20261015-cc-10",
+    "name": "薄荷晴岚",
+    "brand": "cc",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-cc-10.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-cc-10.jpg"
+  },
+  {
+    "id": "intake-20261015-dreamina-10",
+    "name": "清晨微风",
+    "brand": "dreamina",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-dreamina-10.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-dreamina-10.jpg"
+  },
+  {
+    "id": "intake-20261015-pippit-10",
+    "name": "云间微曦",
+    "brand": "pippit",
+    "url": "./gradient-assets/featured/candidates/intake-20261015-pippit-10.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/intake-20261015-pippit-10.jpg"
+  },
+  {
+    "id": "pilot-20261014-cc-0A",
+    "name": "晴光斜映",
+    "brand": "cc",
+    "url": "./gradient-assets/featured/candidates/pilot-20261014-cc-0A.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/pilot-20261014-cc-0A.jpg"
+  },
+  {
+    "id": "pilot-20261014-dreamina-0A",
+    "name": "天光斜映",
+    "brand": "dreamina",
+    "url": "./gradient-assets/featured/candidates/pilot-20261014-dreamina-0A.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/pilot-20261014-dreamina-0A.jpg"
+  },
+  {
+    "id": "pilot-20261014-pippit-0A",
+    "name": "紫光斜映",
+    "brand": "pippit",
+    "url": "./gradient-assets/featured/candidates/pilot-20261014-pippit-0A.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/pilot-20261014-pippit-0A.jpg"
+  },
+  {
+    "id": "pilot-20261014-cc-0B",
+    "name": "晨霞碎影",
+    "brand": "cc",
+    "url": "./gradient-assets/featured/candidates/pilot-20261014-cc-0B.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/pilot-20261014-cc-0B.jpg"
+  },
+  {
+    "id": "pilot-20261014-dreamina-0B",
+    "name": "星屑柔光",
+    "brand": "dreamina",
+    "url": "./gradient-assets/featured/candidates/pilot-20261014-dreamina-0B.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/pilot-20261014-dreamina-0B.jpg"
+  },
+  {
+    "id": "pilot-20261014-pippit-0B",
+    "name": "星尘微梦",
+    "brand": "pippit",
+    "url": "./gradient-assets/featured/candidates/pilot-20261014-pippit-0B.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/pilot-20261014-pippit-0B.jpg"
+  },
+  {
+    "id": "pilot-20261014-cc-0C",
+    "name": "清风微漾",
+    "brand": "cc",
+    "url": "./gradient-assets/featured/candidates/pilot-20261014-cc-0C.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/pilot-20261014-cc-0C.jpg"
+  },
+  {
+    "id": "pilot-20261014-dreamina-0C",
+    "name": "晴空浅映",
+    "brand": "dreamina",
+    "url": "./gradient-assets/featured/candidates/pilot-20261014-dreamina-0C.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/pilot-20261014-dreamina-0C.jpg"
+  },
+  {
+    "id": "pilot-20261014-pippit-0C",
+    "name": "浅紫流云",
+    "brand": "pippit",
+    "url": "./gradient-assets/featured/candidates/pilot-20261014-pippit-0C.png",
+    "thumbUrl": "./gradient-assets/featured/candidates/pilot-20261014-pippit-0C.jpg"
+  },
+  {
+    "id": "cc-cyan-purple-pink-20261015-01",
+    "name": "晴光流转",
+    "brand": "cc",
+    "paletteVersion": "cyan-purple-pink",
+    "url": "./gradient-assets/featured/cc-cyan-purple-pink/cc-cyan-purple-pink-20261015-01.png",
+    "thumbUrl": "./gradient-assets/featured/cc-cyan-purple-pink/cc-cyan-purple-pink-20261015-01.jpg",
+    "portraitUrl": "./gradient-assets/featured/cc-cyan-purple-pink/portrait/cc-cyan-purple-pink-20261015-01.portrait.native.png"
+  },
+  {
+    "id": "cc-cyan-purple-pink-20261015-02",
+    "name": "轻云漫叠",
+    "brand": "cc",
+    "paletteVersion": "cyan-purple-pink",
+    "url": "./gradient-assets/featured/cc-cyan-purple-pink/cc-cyan-purple-pink-20261015-02.png",
+    "thumbUrl": "./gradient-assets/featured/cc-cyan-purple-pink/cc-cyan-purple-pink-20261015-02.jpg",
+    "portraitUrl": "./gradient-assets/featured/cc-cyan-purple-pink/portrait/cc-cyan-purple-pink-20261015-02.portrait.native.png"
+  },
+  {
+    "id": "cc-cyan-purple-pink-20261015-03",
+    "name": "晨雾融光",
+    "brand": "cc",
+    "paletteVersion": "cyan-purple-pink",
+    "url": "./gradient-assets/featured/cc-cyan-purple-pink/cc-cyan-purple-pink-20261015-03.png",
+    "thumbUrl": "./gradient-assets/featured/cc-cyan-purple-pink/cc-cyan-purple-pink-20261015-03.jpg",
+    "portraitUrl": "./gradient-assets/featured/cc-cyan-purple-pink/portrait/cc-cyan-purple-pink-20261015-03.portrait.native.png"
+  },
+  {
+    "id": "cc-cyan-purple-pink-20261015-06",
+    "name": "云湾轻涌",
+    "brand": "cc",
+    "paletteVersion": "cyan-purple-pink",
+    "url": "./gradient-assets/featured/cc-cyan-purple-pink/cc-cyan-purple-pink-20261015-06.png",
+    "thumbUrl": "./gradient-assets/featured/cc-cyan-purple-pink/cc-cyan-purple-pink-20261015-06.jpg",
+    "portraitUrl": "./gradient-assets/featured/cc-cyan-purple-pink/portrait/cc-cyan-purple-pink-20261015-06.portrait.native.png"
+  },
+  {
+    "id": "cc-cyan-purple-pink-20261015-07",
+    "name": "晴空微澜",
+    "brand": "cc",
+    "paletteVersion": "cyan-purple-pink",
+    "url": "./gradient-assets/featured/cc-cyan-purple-pink/cc-cyan-purple-pink-20261015-07.png",
+    "thumbUrl": "./gradient-assets/featured/cc-cyan-purple-pink/cc-cyan-purple-pink-20261015-07.jpg",
+    "portraitUrl": "./gradient-assets/featured/cc-cyan-purple-pink/portrait/cc-cyan-purple-pink-20261015-07.portrait.native.png"
+  },
+  {
+    "id": "cc-cyan-purple-pink-20261015-08",
+    "name": "暖光入梦",
+    "brand": "cc",
+    "paletteVersion": "cyan-purple-pink",
+    "url": "./gradient-assets/featured/cc-cyan-purple-pink/cc-cyan-purple-pink-20261015-08.png",
+    "thumbUrl": "./gradient-assets/featured/cc-cyan-purple-pink/cc-cyan-purple-pink-20261015-08.jpg",
+    "portraitUrl": "./gradient-assets/featured/cc-cyan-purple-pink/portrait/cc-cyan-purple-pink-20261015-08.portrait.native.png"
+  },
+  {
+    "id": "cc-cyan-purple-pink-20261015-09",
+    "name": "流霞轻舞",
+    "brand": "cc",
+    "paletteVersion": "cyan-purple-pink",
+    "url": "./gradient-assets/featured/cc-cyan-purple-pink/cc-cyan-purple-pink-20261015-09.png",
+    "thumbUrl": "./gradient-assets/featured/cc-cyan-purple-pink/cc-cyan-purple-pink-20261015-09.jpg",
+    "portraitUrl": "./gradient-assets/featured/cc-cyan-purple-pink/portrait/cc-cyan-purple-pink-20261015-09.portrait.native.png"
+  },
+  {
+    "id": "cc-cyan-purple-pink-20261015-10",
+    "name": "薄荷晴岚",
+    "brand": "cc",
+    "paletteVersion": "cyan-purple-pink",
+    "url": "./gradient-assets/featured/cc-cyan-purple-pink/cc-cyan-purple-pink-20261015-10.png",
+    "thumbUrl": "./gradient-assets/featured/cc-cyan-purple-pink/cc-cyan-purple-pink-20261015-10.jpg",
+    "portraitUrl": "./gradient-assets/featured/cc-cyan-purple-pink/portrait/cc-cyan-purple-pink-20261015-10.portrait.native.png"
+  },
+  {
+    "id": "cc-cyan-purple-pink-20261015-11",
+    "name": "晴光斜映",
+    "brand": "cc",
+    "paletteVersion": "cyan-purple-pink",
+    "url": "./gradient-assets/featured/cc-cyan-purple-pink/cc-cyan-purple-pink-20261015-11.png",
+    "thumbUrl": "./gradient-assets/featured/cc-cyan-purple-pink/cc-cyan-purple-pink-20261015-11.jpg",
+    "portraitUrl": "./gradient-assets/featured/cc-cyan-purple-pink/portrait/cc-cyan-purple-pink-20261015-11.portrait.native.png"
+  },
+  {
+    "id": "cc-cyan-purple-pink-20261015-12",
+    "name": "晨霞碎影",
+    "brand": "cc",
+    "paletteVersion": "cyan-purple-pink",
+    "url": "./gradient-assets/featured/cc-cyan-purple-pink/cc-cyan-purple-pink-20261015-12.png",
+    "thumbUrl": "./gradient-assets/featured/cc-cyan-purple-pink/cc-cyan-purple-pink-20261015-12.jpg",
+    "portraitUrl": "./gradient-assets/featured/cc-cyan-purple-pink/portrait/cc-cyan-purple-pink-20261015-12.portrait.native.png"
+  },
+  {
+    "id": "cc-cyan-purple-pink-20261015-13",
+    "name": "清风微漾",
+    "brand": "cc",
+    "paletteVersion": "cyan-purple-pink",
+    "url": "./gradient-assets/featured/cc-cyan-purple-pink/cc-cyan-purple-pink-20261015-13.png",
+    "thumbUrl": "./gradient-assets/featured/cc-cyan-purple-pink/cc-cyan-purple-pink-20261015-13.jpg",
+    "portraitUrl": "./gradient-assets/featured/cc-cyan-purple-pink/portrait/cc-cyan-purple-pink-20261015-13.portrait.native.png"
+  },
+  {
+    "id": "dreamina-promotion-cyan-orange-expanded-20261015",
+    "name": "晴橙流光",
+    "brand": "dreamina",
+    "collection": "promotion",
+    "url": "./gradient-assets/featured/promotions/dreamina-promotion-cyan-orange-expanded-20261015.hd3840.png",
+    "thumbUrl": "./gradient-assets/featured/promotions/dreamina-cyan-orange-expanded.jpg"
+  },
+  {
+    "id": "promotion-20261015-01",
+    "name": "橙光斜映",
+    "brand": "dreamina",
+    "collection": "promotion",
+    "url": "./gradient-assets/featured/promotions/promotion-20261015-01.png",
+    "thumbUrl": "./gradient-assets/featured/promotions/promotion-20261015-01.jpg"
+  },
+  {
+    "id": "promotion-20261015-02",
+    "name": "青雾暖流",
+    "brand": "dreamina",
+    "collection": "promotion",
+    "url": "./gradient-assets/featured/promotions/promotion-20261015-02.png",
+    "thumbUrl": "./gradient-assets/featured/promotions/promotion-20261015-02.jpg"
+  },
+  {
+    "id": "promotion-20261015-03",
+    "name": "晴橙流影",
+    "brand": "dreamina",
+    "collection": "promotion",
+    "url": "./gradient-assets/featured/promotions/promotion-20261015-03.png",
+    "thumbUrl": "./gradient-assets/featured/promotions/promotion-20261015-03.jpg"
+  },
+  {
+    "id": "promotion-20261015-04",
+    "name": "橙晕浮光",
+    "brand": "dreamina",
+    "collection": "promotion",
+    "url": "./gradient-assets/featured/promotions/promotion-20261015-04.png",
+    "thumbUrl": "./gradient-assets/featured/promotions/promotion-20261015-04.jpg"
+  },
+  {
+    "id": "promotion-20261015-05",
+    "name": "暖霞柔幕",
+    "brand": "dreamina",
+    "collection": "promotion",
+    "url": "./gradient-assets/featured/promotions/promotion-20261015-05.png",
+    "thumbUrl": "./gradient-assets/featured/promotions/promotion-20261015-05.jpg"
+  },
+  {
+    "id": "promotion-20261015-06",
+    "name": "晨光漫染",
+    "brand": "dreamina",
+    "collection": "promotion",
+    "url": "./gradient-assets/featured/promotions/promotion-20261015-06.png",
+    "thumbUrl": "./gradient-assets/featured/promotions/promotion-20261015-06.jpg"
+  },
+  {
+    "id": "promotion-20261015-07",
+    "name": "青白逐光",
+    "brand": "dreamina",
+    "collection": "promotion",
+    "url": "./gradient-assets/featured/promotions/promotion-20261015-07.png",
+    "thumbUrl": "./gradient-assets/featured/promotions/promotion-20261015-07.jpg"
+  },
+  {
+    "id": "promotion-20261015-08",
+    "name": "橙辉碎影",
+    "brand": "dreamina",
+    "collection": "promotion",
+    "url": "./gradient-assets/featured/promotions/promotion-20261015-08.png",
+    "thumbUrl": "./gradient-assets/featured/promotions/promotion-20261015-08.jpg"
+  },
+  {
+    "id": "promotion-20261015-09",
+    "name": "晴空暖映",
+    "brand": "dreamina",
+    "collection": "promotion",
+    "url": "./gradient-assets/featured/promotions/promotion-20261015-09.png",
+    "thumbUrl": "./gradient-assets/featured/promotions/promotion-20261015-09.jpg"
+  },
+  {
+    "id": "promotion-20261015-10",
+    "name": "云湾橙光",
+    "brand": "dreamina",
+    "collection": "promotion",
+    "url": "./gradient-assets/featured/promotions/promotion-20261015-10.png",
+    "thumbUrl": "./gradient-assets/featured/promotions/promotion-20261015-10.jpg"
+  },
+  {
+    "id": "promotion-20261015-11",
+    "name": "霞色微漾",
+    "brand": "dreamina",
+    "collection": "promotion",
+    "url": "./gradient-assets/featured/promotions/promotion-20261015-11.png",
+    "thumbUrl": "./gradient-assets/featured/promotions/promotion-20261015-11.jpg"
+  },
+  {
+    "id": "promotion-20261015-12",
+    "name": "橙金薄雾",
+    "brand": "dreamina",
+    "collection": "promotion",
+    "url": "./gradient-assets/featured/promotions/promotion-20261015-12.png",
+    "thumbUrl": "./gradient-assets/featured/promotions/promotion-20261015-12.jpg"
+  },
+  {
+    "id": "promotion-20261015-13",
+    "name": "浅青融光",
+    "brand": "dreamina",
+    "collection": "promotion",
+    "url": "./gradient-assets/featured/promotions/promotion-20261015-13.png",
+    "thumbUrl": "./gradient-assets/featured/promotions/promotion-20261015-13.jpg"
+  },
+  {
+    "id": "promotion-20261015-14",
+    "name": "浮霞斜照",
+    "brand": "dreamina",
+    "collection": "promotion",
+    "url": "./gradient-assets/featured/promotions/promotion-20261015-14.png",
+    "thumbUrl": "./gradient-assets/featured/promotions/promotion-20261015-14.jpg"
+  },
+  {
+    "id": "promotion-20261015-15",
+    "name": "暖湾轻澜",
+    "brand": "dreamina",
+    "collection": "promotion",
+    "url": "./gradient-assets/featured/promotions/promotion-20261015-15.png",
+    "thumbUrl": "./gradient-assets/featured/promotions/promotion-20261015-15.jpg"
+  },
+  {
+    "id": "promotion-20261015-16",
+    "name": "青橙弧映",
+    "brand": "dreamina",
+    "collection": "promotion",
+    "url": "./gradient-assets/featured/promotions/promotion-20261015-16.png",
+    "thumbUrl": "./gradient-assets/featured/promotions/promotion-20261015-16.jpg"
+  },
+  {
+    "id": "promotion-20261015-17",
+    "name": "晴霞入梦",
+    "brand": "dreamina",
+    "collection": "promotion",
+    "url": "./gradient-assets/featured/promotions/promotion-20261015-17.png",
+    "thumbUrl": "./gradient-assets/featured/promotions/promotion-20261015-17.jpg"
+  },
+  {
+    "id": "promotion-20261015-18",
+    "name": "流光橙幕",
+    "brand": "dreamina",
+    "collection": "promotion",
+    "url": "./gradient-assets/featured/promotions/promotion-20261015-18.png",
+    "thumbUrl": "./gradient-assets/featured/promotions/promotion-20261015-18.jpg"
+  },
+  {
+    "id": "promotion-20261015-19",
+    "name": "柔光交映",
+    "brand": "dreamina",
+    "collection": "promotion",
+    "url": "./gradient-assets/featured/promotions/promotion-20261015-19.png",
+    "thumbUrl": "./gradient-assets/featured/promotions/promotion-20261015-19.jpg"
+  },
+  {
+    "id": "promotion-20261015-20",
+    "name": "晨曦轻舞",
+    "brand": "dreamina",
+    "collection": "promotion",
+    "url": "./gradient-assets/featured/promotions/promotion-20261015-20.png",
+    "thumbUrl": "./gradient-assets/featured/promotions/promotion-20261015-20.jpg"
+  }
+]

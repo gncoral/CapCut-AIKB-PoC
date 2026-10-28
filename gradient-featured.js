@@ -3,6 +3,21 @@
  const KEY='featuredImage', STORAGE='gradient-featured-layouts-v1';
  fieldProfiles[KEY]=JSON.parse(JSON.stringify(fieldProfiles.soft));
  const assets=new Map(),layouts=new Map();let tab='generated',lastTemplate=state.template,db=null;
+ let featuredCollection=new URLSearchParams(location.search).get('collection')==='promotion'?'promotion':'regular';
+ const reviewMode=new URLSearchParams(location.search).get('review')==='1';
+ let ccPalette=new URLSearchParams(location.search).get('palette')==='legacy'?'legacy':'purple';
+ const reviewKey='gradient-featured-review-v1',reviews={},undoKey='gradient-featured-review-undo-v1';let undoStack=[];
+ try{undoStack=JSON.parse(localStorage.getItem(undoKey)||'[]');if(!Array.isArray(undoStack))undoStack=[];}catch{}
+ try{Object.assign(reviews,JSON.parse(localStorage.getItem(reviewKey)||'{}'));}catch{}
+ function saveReviews(){try{localStorage.setItem(reviewKey,JSON.stringify(reviews));localStorage.setItem(undoKey,JSON.stringify(undoStack));}catch{toast('存储不足，请导出筛选清单保存');}}
+ const isReviewable=asset=>asset?.candidate&&['intake-20261015','promotion-20261015','cc-cyan-purple-pink-20261015'].includes(asset.batchId);
+ function rejectAsset(asset){
+  if(!isReviewable(asset))return;
+  undoStack.push({id:asset.id,previous:reviews[asset.id]??null});reviews[asset.id]='reject';saveReviews();
+  if(active()&&state.featuredId===asset.id){const next=orderedAssets()[0];if(next)select(next);else{selectionRequest++;state.template=lastTemplate;paintUI();fit();applyCopy();render();}}
+  drawGallery();
+ }
+ function undoReject(){const last=undoStack.pop();if(!last)return;if(!isReviewable(assets.get(last.id))){saveReviews();drawGallery();return;}if(last.previous===null)delete reviews[last.id];else reviews[last.id]=last.previous;saveReviews();const asset=assets.get(last.id);if(asset){state.brand=asset.brand;select(asset);}drawGallery();}
  try{for(const [k,v] of Object.entries(JSON.parse(localStorage.getItem(STORAGE)||'{}')))layouts.set(k,v);}catch{}
  const builtin={id:'dreamina-soft-curtain',name:'柔光织幕',brand:'dreamina',url:'./gradient-assets/featured/dreamina-soft-curtain.png',builtin:true};
  const active=()=>state.template===KEY;
@@ -18,9 +33,15 @@
  }
  function defaults(asset,scene){
   const strip=scenes[scene].size[0]/scenes[scene].size[1]>12;
-  return {mode:strip?'left':'full',fit:'stretch',zoom:100,x:50,y:50,flip:strip,span:26,feather:48,clean:0,cleanOrigin:'top-right',noise:0,baseRevision:1,base:asset.brand==='pippit'?'#958CFA':'#05C6FB',...window.gradientFeaturedDefaults?.[layoutKey(asset,scene)]};
+  const portrait=scenes[scene].size[0]<scenes[scene].size[1];
+  return {mode:strip?'left':'full',fit:portrait?'cover':'stretch',zoom:100,x:50,y:50,flip:strip,span:26,feather:48,clean:0,cleanOrigin:'top-right',noise:0,baseRevision:1,base:asset.brand==='pippit'?'#958CFA':asset.brand==='cc'?'#0AC9E9':'#05C6FB',...window.gradientFeaturedDefaults?.[layoutKey(asset,scene)]};
  }
- function settings(asset,scene){return {...defaults(asset,scene),...layouts.get(layoutKey(asset,scene))};}
+ function settings(asset,scene){
+  const cfg={...defaults(asset,scene),...layouts.get(layoutKey(asset,scene))};
+  // A saved legacy stretch setting must not squeeze a landscape texture into a portrait.
+  if(scenes[scene].size[0]<scenes[scene].size[1])cfg.fit='cover';
+  return cfg;
+ }
  function save(){try{localStorage.setItem(STORAGE,JSON.stringify(Object.fromEntries(layouts)));}catch{toast('调整暂未保存，浏览器存储空间不足');}}
  // Upgrade saved Dreamina defaults once; preserve composition and custom colors.
  let baseMigrated=false;
@@ -38,12 +59,27 @@
  const gallery=document.createElement('section');gallery.id='featured-gallery';gallery.hidden=true;
  gallery.innerHTML='<div class="featured-head"><strong>精选模板</strong><button class="button" id="featured-upload">上传图片</button></div><input id="featured-file" type="file" accept="image/png,image/jpeg,image/webp,image/avif" multiple hidden><p class="help">保留成图原色。上传图片仅保存在当前浏览器；每个尺寸单独记住构图。</p><div class="featured-grid"></div><p class="help" id="featured-empty"></p>';
  tabs.after(gallery);
+ const collectionTabs=document.createElement('div');collectionTabs.className='featured-collections';collectionTabs.setAttribute('role','group');collectionTabs.setAttribute('aria-label','即梦精选模板分类');
+ for(const [id,name]of [['regular','常规'],['promotion','促销感']]){const button=document.createElement('button');button.className='chip';button.dataset.collection=id;button.dataset.collectionBrand='dreamina';button.textContent=name;button.onclick=()=>{featuredCollection=id;drawGallery();const first=orderedAssets()[0];if(first)select(first);};collectionTabs.append(button);}
+ for(const [id,name]of [['purple','青紫粉'],['legacy','原青粉黄']]){const button=document.createElement('button');button.className='chip';button.dataset.collection=id;button.dataset.collectionBrand='cc';button.textContent=name;button.onclick=()=>{ccPalette=id;drawGallery();const first=orderedAssets()[0];if(first)select(first);};collectionTabs.append(button);}
+ gallery.querySelector('.featured-grid').before(collectionTabs);
+
+ if(reviewMode){
+  const controls=document.createElement('div');controls.className='featured-actions';
+  const undo=document.createElement('button');undo.className='button';undo.id='featured-undo';undo.textContent='撤回';undo.onclick=undoReject;
+  const exportButton=document.createElement('button');exportButton.className='button';exportButton.textContent='导出筛选清单';
+  exportButton.onclick=()=>{const candidates=[...assets.values()].map(a=>({id:a.id,brand:a.brand,name:a.name,sourceId:a.sourceId,status:isReviewable(a)&&reviews[a.id]==='reject'?'reject':'keep'}));const url=URL.createObjectURL(new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),candidates},null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='精选模板筛选清单.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);};
+  const count=document.createElement('span');count.id='featured-review-count';controls.append(undo,exportButton,count);gallery.querySelector('.featured-head').after(controls);
+ }
+ const spacer=document.createElement('span');spacer.className='featured-toolbar-spacer';tabs.append(spacer);
+ if(reviewMode)tabs.append(gallery.querySelector('#featured-undo'));
+ tabs.append(document.getElementById('featured-upload'));
  const panel=document.createElement('section');panel.id='featured-settings';panel.className='group workspace-effects';panel.hidden=true;
  document.querySelector('.workspace-tabs').after(panel);
  const style=document.createElement('style');style.textContent=`
  .featured-tabs{display:flex;gap:8px;margin-bottom:12px}.featured-tabs .active{background:#f5f6f8;color:#111}
  #featured-gallery[hidden],#featured-settings[hidden]{display:none!important}.featured-head{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px}
- .featured-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin:10px 0}.featured-item{min-width:0}.featured-card{width:100%;background:#15171d;border:1px solid #343741;border-radius:10px;padding:7px;text-align:left;color:inherit;cursor:pointer}.featured-card.active{border-color:white}.featured-card img{width:100%;height:62px;object-fit:cover;border-radius:5px;display:block;margin-bottom:6px}.featured-card span{font-size:11px;overflow-wrap:anywhere}.featured-remove{font-size:10px;background:none;color:#aaa;border:0;padding:6px;cursor:pointer}
+ .featured-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin:10px 0}.featured-item{min-width:0;position:relative}.featured-dismiss{position:absolute;right:11px;top:11px;width:26px;height:26px;border-radius:50%;border:1px solid #ffffff80;background:#12151bbf;color:#fff;font-size:21px;line-height:20px;cursor:pointer;display:grid;place-items:center}.featured-dismiss:hover{background:#111}.featured-dismiss:focus-visible{outline:2px solid white;outline-offset:2px}.featured-card{width:100%;background:#15171d;border:1px solid #343741;border-radius:10px;padding:7px;text-align:left;color:inherit;cursor:pointer}.featured-card.active{border-color:white}.featured-card img{width:100%;height:62px;object-fit:cover;border-radius:5px;display:block;margin-bottom:6px}.featured-card span{font-size:11px;overflow-wrap:anywhere}.featured-remove{font-size:10px;background:none;color:#aaa;border:0;padding:6px;cursor:pointer}
  #featured-settings label{display:grid;gap:7px;font-size:11px;margin:13px 0}#featured-settings select{width:100%;padding:8px;border-radius:7px;background:#191b22;color:white;border:1px solid #343741}#featured-settings input[type=range]{width:100%;accent-color:#fff}#featured-settings input[type=color]{width:100%;height:30px;border:0;background:none}.featured-check{display:flex!important;align-items:center}.featured-check input{margin:0}.featured-row{display:flex;justify-content:space-between;gap:8px}.featured-actions{display:flex;gap:8px;flex-wrap:wrap}
  body[data-featured-active="true"] [data-field-anchor],body[data-featured-active="true"] [data-color-anchor],body[data-featured-active="true"] #curve-toggle,body[data-featured-active="true"] #curve-overlay{display:none!important}
  body[data-featured-active="true"] .side .workspace-effects:not(#featured-settings){display:none!important}
@@ -51,22 +87,39 @@
  // Publisher gallery order; stable IDs keep personal compositions attached to their images.
  const featuredOrder=new Map(["85f1f5aa-c2d1-442b-9cc8-753420c6726e", "6c54e955-12d2-4c89-bd15-a3e17cb7b2f6", "05d58f39-2590-4c42-971a-8f03b45138f1", "4f7f10c7-2ebe-40a9-9a55-d665dab3a343", "acde6d03-f7fe-46f2-9c34-65e6f1d4f098", "9bb4e16e-a291-472a-939f-ff62058e5fb6", "dreamina-soft-curtain", "14dd9e06-e7f0-49ff-aa4a-f7a88c7ac9bf", "3a8f6d8c-7425-469a-a3a6-924bdbb25a11", "596c010d-463b-44e0-85cd-5561281d33b5"].map((id,index)=>[id,index]));
  featuredOrder.set('c30adc2c-4ac8-41f5-9df8-f9787b9f0f8f',-1);
- const orderedAssets=()=>[...assets.values()].filter(asset=>asset.brand===state.brand).sort((a,b)=>(featuredOrder.get(a.id)??1000)-(featuredOrder.get(b.id)??1000));
+ const orderedAssets=(includeRejected=false)=>[...assets.values()].filter(asset=>asset.brand===state.brand&&(state.brand!=='cc'||(asset.paletteVersion==='cyan-purple-pink'?'purple':'legacy')===ccPalette)&&(state.brand!=='dreamina'||(asset.collection==='promotion'?'promotion':'regular')===featuredCollection)&&(!reviewMode||includeRejected||!isReviewable(asset)||reviews[asset.id]!=='reject')).sort((a,b)=>((featuredOrder.get(a.id)??1000)-(featuredOrder.get(b.id)??1000))||(a.candidate&&b.candidate?a.id.localeCompare(b.id):0));
+ let gallerySignature='';
  function drawGallery(){
-  const grid=gallery.querySelector('.featured-grid');grid.replaceChildren();
-  for(const asset of orderedAssets()){
-   const item=document.createElement('div');item.className='featured-item';
-   const card=document.createElement('button');card.className='featured-card'+(active()&&state.featuredId===asset.id?' active':'');card.setAttribute('aria-label','使用精选模板 '+asset.name);
-   const img=document.createElement('img');img.src=asset.url;img.alt='';const label=document.createElement('span');label.textContent=asset.name;card.append(img,label);card.onclick=()=>select(asset);item.append(card);
-   if(!asset.builtin){const remove=document.createElement('button');remove.className='featured-remove';remove.textContent='移除';remove.setAttribute('aria-label','移除 '+asset.name);remove.onclick=async()=>{
+  collectionTabs.hidden=!['dreamina','cc'].includes(state.brand);collectionTabs.setAttribute('aria-label',state.brand==='cc'?'CC 精选模板配色':'即梦精选模板分类');collectionTabs.querySelectorAll('button').forEach(b=>{b.hidden=b.dataset.collectionBrand!==state.brand;b.classList.toggle('active',b.dataset.collection===(state.brand==='cc'?ccPalette:featuredCollection));});
+  const grid=gallery.querySelector('.featured-grid'),scrollTop=shelf.scrollTop;
+  const all=orderedAssets(true),remaining=orderedAssets();
+  const count=gallery.querySelector('#featured-review-count');if(count)count.textContent=`当前品牌剩余 ${remaining.length} 张 · 已移除 ${all.length-remaining.length} 张`;
+  const undo=tabs.querySelector('#featured-undo');if(undo)undo.disabled=!undoStack.length;
+  const signature=JSON.stringify([state.brand,featuredCollection,ccPalette,remaining.map(a=>[a.id,a.name])]);
+  if(signature===gallerySignature){grid.querySelectorAll('.featured-card').forEach(card=>card.classList.toggle('active',active()&&card.dataset.assetId===state.featuredId));return;}
+  gallerySignature=signature;grid.replaceChildren();
+  let section=null;
+  const grouped=reviewMode?[...remaining.filter(isReviewable),...remaining.filter(a=>!isReviewable(a))]:remaining;
+  for(const asset of grouped){
+   const group=isReviewable(asset)?'本批待审核':'已有模板';
+   if(reviewMode&&section!==group){section=group;const heading=document.createElement('div');heading.className='featured-section-heading';heading.textContent=group;grid.append(heading);}
+   const item=document.createElement('div');item.className='featured-item';item.dataset.reviewable=String(isReviewable(asset));
+   const card=document.createElement('button');card.className='featured-card'+(active()&&state.featuredId===asset.id?' active':'');card.dataset.assetId=asset.id;card.setAttribute('aria-label','使用精选模板 '+asset.name);
+   const img=document.createElement('img');img.src=asset.thumbUrl||asset.url;img.alt='';const label=document.createElement('span');label.textContent=asset.name;card.append(img,label);card.onclick=()=>select(asset);item.append(card);
+   if(reviewMode&&isReviewable(asset)){const dismiss=document.createElement('button');dismiss.className='featured-dismiss';dismiss.textContent='×';dismiss.setAttribute('aria-label','移除 '+asset.name);dismiss.title='移除此图，可撤回';dismiss.onclick=()=>rejectAsset(asset);item.append(dismiss);}
+   if(!reviewMode&&!asset.builtin){const remove=document.createElement('button');remove.className='featured-remove';remove.textContent='移除';remove.setAttribute('aria-label','移除 '+asset.name);remove.onclick=async()=>{
     try{if(db)await transaction('readwrite',store=>store.delete(asset.id));}catch{toast('移除失败，请重试');return;}
     assets.delete(asset.id);URL.revokeObjectURL(asset.url);for(const k of layouts.keys())if(k.startsWith(asset.id+':'))layouts.delete(k);save();
     if(active()&&state.featuredId===asset.id){state.template=lastTemplate;paintUI();fit();applyCopy();render();}drawGallery();
    };item.append(remove);}grid.append(item);
   }
-  gallery.querySelector('#featured-empty').textContent=grid.children.length?'':'当前品牌还没有精选模板，可以上传 PNG、JPG、WebP 或 AVIF。';
+  shelf.scrollTop=scrollTop;
+  gallery.querySelector('#featured-empty').textContent=grid.children.length?'':reviewMode?'当前品牌的图片已全部移除，可点击“撤回”恢复。':'当前品牌还没有精选模板，可以上传 PNG、JPG、WebP 或 AVIF。';
  }
- function select(asset){
+ let selectionRequest=0;
+ async function select(asset){
+  const request=++selectionRequest,brand=state.brand;
+  if(asset.candidate&&!asset.hdLoaded){try{const image=new Image();image.src=asset.url;await image.decode();if(request!==selectionRequest||state.brand!==brand)return;asset.image=image;asset.hdLoaded=true;}catch{toast('高清图片加载失败，请重试');return;}}
   if(!active())lastTemplate=state.template;
   state.template=KEY;state.featuredId=asset.id;state.batchStatic=true;tab='featured';
   window.gradientResetCandidateSelection?.();paintUI();fit();applyCopy();render();
@@ -89,7 +142,8 @@
   const update=(key,value)=>{const next=settings(asset,state.scene);next[key]=value;layouts.set(layoutKey(asset,state.scene),next);save();render();};
   function selectField(label,key,options){const row=document.createElement('label');row.textContent=label;const input=document.createElement('select');input.setAttribute('aria-label',label);for(const [value,text]of options){const option=document.createElement('option');option.value=value;option.textContent=text;input.append(option);}input.value=cfg[key];input.onchange=()=>{update(key,input.value);drawPanel();};row.append(input);panel.append(row);}
   selectField('构图方式','mode',[['full','整图构图'],['left','重点色在左侧'],['right','重点色在右侧']]);
-  selectField('图片适配','fit',[['stretch','适配画布（允许拉伸）'],['cover','等比裁切']]);
+  const portrait=sc.size[0]<sc.size[1];
+  selectField('图片适配','fit',portrait?[['cover',asset.portraitImage&&sc.size[0]/sc.size[1]<.75?'竖版专用构图（不变形）':'等比取景（不变形）']]:[['stretch','适配画布（允许拉伸）'],['cover','等比裁切']]);
   function range(label,key,min,max){const row=document.createElement('label'),head=document.createElement('span');head.className='featured-row';const name=document.createElement('span');name.textContent=label;const value=document.createElement('b');value.textContent=cfg[key]+'%';head.append(name,value);const input=document.createElement('input');input.type='range';input.min=min;input.max=max;input.value=cfg[key];input.setAttribute('aria-label',label);input.oninput=()=>{value.textContent=input.value+'%';update(key,Number(input.value));};row.append(head,input);panel.append(row);}
   range('图片缩放','zoom',100,240);range('取景位置 · 横向','x',0,100);range('取景位置 · 纵向','y',0,100);
   const row=document.createElement('label');row.className='featured-check';const flip=document.createElement('input');flip.type='checkbox';flip.checked=cfg.flip;flip.setAttribute('aria-label','水平翻转');flip.onchange=()=>update('flip',flip.checked);row.append(flip,document.createTextNode('水平翻转'));panel.append(row);
@@ -103,7 +157,7 @@
   const help=document.createElement('p');help.className='help';help.textContent='取景位置在缩放或裁切后生效。纯净度用留白底色从所选上角向对侧下方渐隐，越靠近下方越透明；噪点为黑白细颗粒，0% 关闭。各尺寸独立保存，套图导出沿用各自设置。';panel.append(help);
  }
  function paintImage(context,asset,cfg,w,h){
-  const image=asset.image,iw=image.naturalWidth,ih=image.naturalHeight;
+  const image=asset.portraitImage&&w/h<.75?asset.portraitImage:asset.image,iw=image.naturalWidth,ih=image.naturalHeight;
   let sw=iw/(cfg.zoom/100),sh=ih/(cfg.zoom/100);
   if(cfg.fit==='cover'){const aspect=w/h;if(sw/sh>aspect)sw=sh*aspect;else sh=sw/aspect;}
   const sx=(iw-sw)*cfg.x/100,sy=(ih-sh)*cfg.y/100;
@@ -178,7 +232,7 @@
   const c=target.getContext('2d');c.clearRect(0,0,w,h);c.drawImage(compose(asset,cfg,w,h,factor),0,0);
   if(target===canvas)updateContrast();
  };
- const originalPaint=paintUI;paintUI=function(){if(active()&&current()?.brand!==state.brand){const first=orderedAssets()[0];if(first)state.featuredId=first.id;else state.template=lastTemplate;}originalPaint();sync();};
+ const originalPaint=paintUI;paintUI=function(){let next=null;if(active()&&current()?.brand!==state.brand){const first=orderedAssets()[0];if(first){state.featuredId=first.id;if(first.candidate&&!first.hdLoaded)next=first;}else state.template=lastTemplate;}originalPaint();sync();if(next)select(next);};
  const originalApply=applyCopy;applyCopy=function(){originalApply();sync();};
  for(const id of ['templates','brands','scenes','scene-list'])document.getElementById(id)?.addEventListener('click',()=>{if(id==='templates')tab='generated';sync();});
  const oldReset=document.getElementById('curve-reset').onclick;document.getElementById('curve-reset').onclick=e=>{if(!active())return oldReset(e);layouts.delete(layoutKey(current(),state.scene));save();window.gradientResetCopy?.();state.exportScale=scenes[state.scene]?.custom?1:3;document.getElementById('exportScale').value=state.exportScale;syncValues();fit();drawPanel();render();toast('已恢复此尺寸构图、文案与字色');};
@@ -190,10 +244,12 @@
  };
  window.gradientFeaturedExportInfo=()=>active()&&current()?{name:current().name,id:current().id,source:'精选模板',originalSize:[current().image.naturalWidth,current().image.naturalHeight],composition:Object.fromEntries(gradientSceneEntries().map(([key])=>[key,settings(current(),key)]))}:null;
  function transaction(mode,action){return new Promise((resolve,reject)=>{const tx=db.transaction('images',mode),request=action(tx.objectStore('images'));tx.oncomplete=()=>resolve(request?.result);tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error);});}
- async function load(asset){const image=new Image();image.src=asset.url;await image.decode();asset.image=image;assets.set(asset.id,asset);return asset;}
- gallery.querySelector('#featured-upload').onclick=()=>gallery.querySelector('input').click();
+ async function load(asset){const image=new Image();image.src=asset.candidate?asset.thumbUrl:asset.url;await image.decode();asset.image=image;
+  if(asset.portraitUrl){try{const portrait=new Image();portrait.src=asset.portraitUrl;await portrait.decode();asset.portraitImage=portrait;}catch{console.warn('Portrait variant unavailable:',asset.id);}}
+  assets.set(asset.id,asset);return asset;}
+ document.getElementById('featured-upload').onclick=()=>gallery.querySelector('input').click();
  gallery.querySelector('input').onchange=async e=>{
-  const files=[...e.target.files],brand=state.brand;const button=gallery.querySelector('#featured-upload');button.disabled=true;let last;
+  const files=[...e.target.files],brand=state.brand;const button=document.getElementById('featured-upload');button.disabled=true;let last;
   for(const file of files){
    if(!['image/png','image/jpeg','image/webp','image/avif'].includes(file.type)||file.size>25*1024*1024){toast('请使用不超过 25 MB 的 PNG、JPG、WebP 或 AVIF');continue;}
    const id=crypto.randomUUID(),generatedName=assignName(id,new Set([...assets.values()].map(a=>a.name)));
@@ -210,6 +266,17 @@
    const records=await response.json();
    await Promise.all(records.map(async r=>{try{await load({id:r.id,name:r.name,originalName:r.originalName,brand:r.brand,builtin:true,url:'./gradient-assets/featured/publisher/'+encodeURIComponent(r.file)});}catch{toast('部分随包模板图片加载失败');}}));
   }catch{toast('随包精选图库加载失败，请通过本地预览网址打开');}
+  if(reviewMode){try{const response=await fetch('./gradient-assets/featured/promotions/manifest.json',{cache:'no-store'});if(!response.ok)throw Error('Promotion library unavailable');const records=await response.json();await Promise.all(records.filter(r=>!r.candidate||reviewMode).map(r=>{if(r.candidate)featuredOrder.set(r.id,-100);return load({...r,builtin:true,url:'./gradient-assets/featured/promotions/'+encodeURIComponent(r.file),thumbUrl:'./gradient-assets/featured/promotions/'+encodeURIComponent(r.thumb)});}));}catch{toast('促销感图库加载失败');}}
+  if(!reviewMode){try{
+   const response=await fetch('./gradient-assets/featured/published/manifest.json',{cache:'no-cache'});if(!response.ok)throw Error('Published library unavailable');
+   const records=await response.json();await Promise.all(records.map(async r=>{try{featuredOrder.set(r.id,-100);await load({...r,candidate:true,builtin:true});}catch{toast('精选图片加载失败：'+r.name);}}));
+  }catch{toast('精选图库加载失败，请刷新重试');}}
+  if(reviewMode){try{const response=await fetch('./gradient-assets/featured/cc-cyan-purple-pink/manifest.json',{cache:'no-store'});if(!response.ok)throw Error('CC recolor library unavailable');const records=await response.json();await Promise.all(records.map(r=>{featuredOrder.set(r.id,-100);return load({...r,builtin:true,portraitUrl:r.portrait?'./gradient-assets/featured/cc-cyan-purple-pink/'+r.portrait.native:null,url:'./gradient-assets/featured/cc-cyan-purple-pink/'+encodeURIComponent(r.file),thumbUrl:'./gradient-assets/featured/cc-cyan-purple-pink/'+encodeURIComponent(r.thumb)});}));}catch{toast('CC 青紫粉图库加载失败');}}
+  if(reviewMode){try{
+   const response=await fetch('./gradient-assets/featured/candidates/manifest.json',{cache:'no-store'});if(!response.ok)throw new Error('Candidate library unavailable');
+   const records=await response.json();
+   await Promise.all(records.map(async r=>{try{if(!Object.hasOwn(reviews,r.id)&&r.defaultReview==='keep')reviews[r.id]='keep';featuredOrder.set(r.id,r.batchId==='intake-20261015'?-100:-50);await load({...r,candidate:true,builtin:true,url:'./gradient-assets/featured/candidates/'+encodeURIComponent(r.file),thumbUrl:'./gradient-assets/featured/candidates/'+encodeURIComponent(r.thumb),sourceImage:'./'+r.sourceImage});}catch{toast('候选图片加载失败：'+r.name);}}));
+  }catch{toast('待筛选图库加载失败，请检查本地文件');}}
   try{
    db=await new Promise((resolve,reject)=>{const r=indexedDB.open('gradient-featured-v1',1);r.onupgradeneeded=()=>r.result.createObjectStore('images',{keyPath:'id'});r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});
    const records=await transaction('readonly',store=>store.getAll());
@@ -220,8 +287,10 @@
    if(renamed.length)try{await transaction('readwrite',store=>{for(const r of renamed)store.put(r);});}catch{toast('图片已加载，模板名称暂未保存');}
    for(const r of records){if(assets.has(r.id))continue;try{await load({...r,name:r.generatedName,url:URL.createObjectURL(r.blob)});}catch{}}
   }catch{}
-  const first=orderedAssets()[0];
-  if(new URLSearchParams(location.search).get('featured')!=='0'&&!state.featuredId&&first)select(first);else sync();
+  undoStack=undoStack.filter(entry=>isReviewable(assets.get(entry.id)));
+  const ordered=orderedAssets(),requestedAsset=new URLSearchParams(location.search).get('asset');
+  const first=ordered.find(asset=>asset.id===requestedAsset)||ordered[0];
+  if(new URLSearchParams(location.search).get('featured')!=='0'&&!state.featuredId&&first)await select(first);else sync();
  }
  sync();window.gradientFeaturedReady=init();
 })();

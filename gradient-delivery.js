@@ -98,6 +98,7 @@
   if(busy)return;await ready;if(!editing&&items.size>=40){toast('清单最多保存 40 张，请先导出或移除部分成图');return;}
   busy=true;sync();
   try{
+   await window.gradientFeaturedEnsureReady?.();
    const snapshot=captureSnapshot(),spec=copy.resolved(),sc=scenes[state.scene],size=[...sc.size],scale=state.exportScale||3;
    const meta={brand:state.brand,brandName:brands[state.brand].name,scene:state.scene,sceneName:sc.name,preset:copy.list().find(([id])=>id===copy.current())?.[1]||'设计稿',backgroundName:snapshot.featured?.name||templates.find(([id])=>id===state.template)?.[1]||state.template,size,scale};
    const bg=document.createElement('canvas');render(bg,state.scene,scale);

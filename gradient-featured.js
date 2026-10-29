@@ -105,7 +105,7 @@
    if(reviewMode&&section!==group){section=group;const heading=document.createElement('div');heading.className='featured-section-heading';heading.textContent=group;grid.append(heading);}
    const item=document.createElement('div');item.className='featured-item';item.dataset.reviewable=String(isReviewable(asset));
    const card=document.createElement('button');card.className='featured-card'+(active()&&state.featuredId===asset.id?' active':'');card.dataset.assetId=asset.id;card.setAttribute('aria-label','使用精选模板 '+asset.name);
-   const img=document.createElement('img');img.src=asset.thumbUrl||asset.url;img.alt='';const label=document.createElement('span');label.textContent=asset.name;card.append(img,label);card.onclick=()=>select(asset);item.append(card);
+   const img=document.createElement('img');img.loading='lazy';img.decoding='async';img.width=320;img.height=180;img.src=asset.thumbUrl||asset.url;img.alt='';img.onerror=()=>{if(img.dataset.retried)return;img.dataset.retried='1';setTimeout(()=>{if(img.isConnected)img.src=asset.thumbUrl||asset.url;},600);};const label=document.createElement('span');label.textContent=asset.name;card.append(img,label);card.onclick=()=>select(asset);item.append(card);
    if(reviewMode&&isReviewable(asset)){const dismiss=document.createElement('button');dismiss.className='featured-dismiss';dismiss.textContent='×';dismiss.setAttribute('aria-label','移除 '+asset.name);dismiss.title='移除此图，可撤回';dismiss.onclick=()=>rejectAsset(asset);item.append(dismiss);}
    if(!reviewMode&&!asset.builtin){const remove=document.createElement('button');remove.className='featured-remove';remove.textContent='移除';remove.setAttribute('aria-label','移除 '+asset.name);remove.onclick=async()=>{
     try{if(db)await transaction('readwrite',store=>store.delete(asset.id));}catch{toast('移除失败，请重试');return;}
@@ -116,14 +116,55 @@
   shelf.scrollTop=scrollTop;
   gallery.querySelector('#featured-empty').textContent=grid.children.length?'':reviewMode?'当前品牌的图片已全部移除，可点击“撤回”恢复。':'当前品牌还没有精选模板，可以上传 PNG、JPG、WebP 或 AVIF。';
  }
- let selectionRequest=0;
- async function select(asset){
-  const request=++selectionRequest,brand=state.brand;
-  if(asset.candidate&&!asset.hdLoaded){try{const image=new Image();image.src=asset.url;await image.decode();if(request!==selectionRequest||state.brand!==brand)return;asset.image=image;asset.hdLoaded=true;}catch{toast('高清图片加载失败，请重试');return;}}
-  if(!active())lastTemplate=state.template;
-  state.template=KEY;state.featuredId=asset.id;state.batchStatic=true;tab='featured';
-  window.gradientResetCandidateSelection?.();paintUI();fit();applyCopy();render();
+ // Register catalogs before fetching pixels. A slow unrelated image cannot hide the gallery.
+ const imageRequests=new Map();
+ function readImage(url){
+  if(imageRequests.has(url))return imageRequests.get(url);
+  const promise=(async()=>{
+   for(let attempt=0;attempt<2;attempt++){
+    const image=new Image();image.decoding='async';image.fetchPriority='high';
+    let timer;
+    try{
+     await Promise.race([new Promise((resolve,reject)=>{image.onload=resolve;image.onerror=()=>reject(new Error('图片加载失败'));image.src=url;}),new Promise((_,reject)=>{timer=setTimeout(()=>{image.src='';reject(new Error('图片加载超时'));},15000);})]);
+     await image.decode();return image;
+    }catch(error){if(attempt===1)throw error;await new Promise(resolve=>setTimeout(resolve,400));}
+    finally{clearTimeout(timer);}
+   }
+  })();imageRequests.set(url,promise);promise.catch(()=>imageRequests.delete(url));return promise;
  }
+ const needsPortrait=(asset,scene)=>asset.portraitUrl&&scenes[scene].size[0]/scenes[scene].size[1]<.75;
+ async function ensureImage(asset,scene){
+  const tasks=[];
+  if(!asset.hdLoaded)tasks.push(readImage(asset.url).then(image=>{asset.image=image;asset.hdLoaded=true;}));
+  if(needsPortrait(asset,scene)&&!asset.portraitImage)tasks.push(readImage(asset.portraitUrl).then(image=>{asset.portraitImage=image;}));
+  await Promise.all(tasks);
+ }
+ let selectionRequest=0,selectionPending=null,selectionError=null;
+ async function select(asset){
+  const request=++selectionRequest,brand=state.brand,scene=state.scene;selectionError=null;
+  const task=(async()=>{
+   try{
+    // Paint a light preview first; every download path still waits for original pixels.
+    if(!asset.image)asset.image=await readImage(needsPortrait(asset,scene)?asset.portraitUrl:asset.thumbUrl||asset.url);
+    if(request!==selectionRequest||state.brand!==brand||state.scene!==scene)return;
+    if(!active())lastTemplate=state.template;
+    state.template=KEY;state.featuredId=asset.id;state.batchStatic=true;tab='featured';
+    window.gradientResetCandidateSelection?.();paintUI();fit();applyCopy();render();
+    await ensureImage(asset,scene);
+    if(request!==selectionRequest||state.brand!==brand||state.scene!==scene)return;
+    drawPanel();render();
+   }catch(error){if(request===selectionRequest){selectionError=error;console.warn(error);toast('图片加载失败，点击此图可重试');}}
+  })();selectionPending=task;await task;if(selectionPending===task)selectionPending=null;
+ }
+ // Exports must never rasterize a thumbnail or a previously selected image.
+ window.gradientFeaturedEnsureReady=async(scene=state.scene)=>{
+  const request=selectionRequest,brand=state.brand,originalScene=state.scene;
+  if(selectionPending)await selectionPending;
+  if(request!==selectionRequest||brand!==state.brand||originalScene!==state.scene)throw new Error('选择已改变，请重新导出');
+  if(selectionError)throw selectionError;
+  if(active())await ensureImage(current(),scene);
+  if(request!==selectionRequest||brand!==state.brand||originalScene!==state.scene)throw new Error('选择已改变，请重新导出');
+ };
  function sync(){
   if(active()&&current()?.brand!==state.brand)state.template=lastTemplate;
   document.body.dataset.featuredActive=String(active());panel.hidden=!active();
@@ -226,13 +267,20 @@
  render=function(target=canvas,sceneKey=state.scene,scale=1){
   if(!active())return originalRender(target,sceneKey,scale);
   const asset=current();if(!asset?.image)return;
+  if(needsPortrait(asset,sceneKey)&&!asset.portraitImage){requestPortrait(asset,sceneKey);return;}
   const sc=scenes[sceneKey],cfg=settings(asset,sceneKey),factor=target===canvas&&scale===1?2:scale;
   const w=Math.max(1,Math.round(sc.size[0]*factor)),h=Math.max(1,Math.round(sc.size[1]*factor));
   if(target.width!==w)target.width=w;if(target.height!==h)target.height=h;
   const c=target.getContext('2d');c.clearRect(0,0,w,h);c.drawImage(compose(asset,cfg,w,h,factor),0,0);
   if(target===canvas)updateContrast();
  };
- const originalPaint=paintUI;paintUI=function(){let next=null;if(active()&&current()?.brand!==state.brand){const first=orderedAssets()[0];if(first){state.featuredId=first.id;if(first.candidate&&!first.hdLoaded)next=first;}else state.template=lastTemplate;}originalPaint();sync();if(next)select(next);};
+ const portraitRequests=new Map();
+ function requestPortrait(asset,scene){
+  if(portraitRequests.has(asset.id))return;
+  const task=ensureImage(asset,scene).then(()=>{if(active()&&current()===asset&&state.scene===scene){drawPanel();render();}}).catch(error=>{console.warn(error);toast('竖版图片加载失败，切换尺寸可重试');}).finally(()=>portraitRequests.delete(asset.id));
+  portraitRequests.set(asset.id,task);
+ }
+ const originalPaint=paintUI;paintUI=function(){let next=null;if(active()&&current()?.brand!==state.brand){const first=orderedAssets()[0];if(first){state.featuredId=first.id;if(!first.hdLoaded)next=first;}else state.template=lastTemplate;}originalPaint();sync();if(next)select(next);};
  const originalApply=applyCopy;applyCopy=function(){originalApply();sync();};
  for(const id of ['templates','brands','scenes','scene-list'])document.getElementById(id)?.addEventListener('click',()=>{if(id==='templates')tab='generated';sync();});
  const oldReset=document.getElementById('curve-reset').onclick;document.getElementById('curve-reset').onclick=e=>{if(!active())return oldReset(e);layouts.delete(layoutKey(current(),state.scene));save();window.gradientResetCopy?.();state.exportScale=scenes[state.scene]?.custom?1:3;document.getElementById('exportScale').value=state.exportScale;syncValues();fit();drawPanel();render();toast('已恢复此尺寸构图、文案与字色');};
@@ -242,11 +290,20 @@
   if(info.composition?.[scene]){layouts.set(layoutKey(assets.get(info.id),scene),{...info.composition[scene]});save();}
   select(assets.get(info.id));return true;
  };
- window.gradientFeaturedExportInfo=()=>active()&&current()?{name:current().name,id:current().id,source:'精选模板',originalSize:[current().image.naturalWidth,current().image.naturalHeight],composition:Object.fromEntries(gradientSceneEntries().map(([key])=>[key,settings(current(),key)]))}:null;
+ window.gradientFeaturedExportInfo=()=>active()&&current()?{name:current().name,id:current().id,source:'精选模板',originalSize:current().image?[current().image.naturalWidth,current().image.naturalHeight]:null,composition:Object.fromEntries(gradientSceneEntries().map(([key])=>[key,settings(current(),key)]))}:null;
  function transaction(mode,action){return new Promise((resolve,reject)=>{const tx=db.transaction('images',mode),request=action(tx.objectStore('images'));tx.oncomplete=()=>resolve(request?.result);tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error);});}
- async function load(asset){const image=new Image();image.src=asset.candidate?asset.thumbUrl:asset.url;await image.decode();asset.image=image;
-  if(asset.portraitUrl){try{const portrait=new Image();portrait.src=asset.portraitUrl;await portrait.decode();asset.portraitImage=portrait;}catch{console.warn('Portrait variant unavailable:',asset.id);}}
-  assets.set(asset.id,asset);return asset;}
+ async function load(asset){
+  if(!asset.builtin){asset.image=await readImage(asset.url);asset.hdLoaded=true;}
+  assets.set(asset.id,asset);return asset;
+ }
+ async function readCatalog(url){
+  for(let attempt=0;attempt<2;attempt++){
+   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),10000);
+   try{const response=await fetch(url,{signal:controller.signal});if(!response.ok)throw new Error('图库清单加载失败');return await response.json();}
+   catch(error){if(attempt===1)throw error;}
+   finally{clearTimeout(timer);}
+  }
+ }
  document.getElementById('featured-upload').onclick=()=>gallery.querySelector('input').click();
  gallery.querySelector('input').onchange=async e=>{
   const files=[...e.target.files],brand=state.brand;const button=document.getElementById('featured-upload');button.disabled=true;let last;
@@ -259,24 +316,35 @@
   e.target.value='';button.disabled=false;if(last&&state.brand===brand)select(last);else drawGallery();
  };
  async function init(){
-  try{await load(builtin);}catch{toast('精选模板图片加载失败');}
-  try{
-   const response=await fetch('./gradient-assets/featured/publisher/manifest.json');
-   if(!response.ok)throw new Error('Publisher library unavailable');
-   const records=await response.json();
-   await Promise.all(records.map(async r=>{try{await load({id:r.id,name:r.name,originalName:r.originalName,brand:r.brand,builtin:true,url:'./gradient-assets/featured/publisher/'+encodeURIComponent(r.file)});}catch{toast('部分随包模板图片加载失败');}}));
-  }catch{toast('随包精选图库加载失败，请通过本地预览网址打开');}
-  if(reviewMode){try{const response=await fetch('./gradient-assets/featured/promotions/manifest.json',{cache:'no-store'});if(!response.ok)throw Error('Promotion library unavailable');const records=await response.json();await Promise.all(records.filter(r=>!r.candidate||reviewMode).map(r=>{if(r.candidate)featuredOrder.set(r.id,-100);return load({...r,builtin:true,url:'./gradient-assets/featured/promotions/'+encodeURIComponent(r.file),thumbUrl:'./gradient-assets/featured/promotions/'+encodeURIComponent(r.thumb)});}));}catch{toast('促销感图库加载失败');}}
-  if(!reviewMode){try{
-   const response=await fetch('./gradient-assets/featured/published/manifest.json',{cache:'no-cache'});if(!response.ok)throw Error('Published library unavailable');
-   const records=await response.json();await Promise.all(records.map(async r=>{try{featuredOrder.set(r.id,-100);await load({...r,candidate:true,builtin:true});}catch{toast('精选图片加载失败：'+r.name);}}));
-  }catch{toast('精选图库加载失败，请刷新重试');}}
-  if(reviewMode){try{const response=await fetch('./gradient-assets/featured/cc-cyan-purple-pink/manifest.json',{cache:'no-store'});if(!response.ok)throw Error('CC recolor library unavailable');const records=await response.json();await Promise.all(records.map(r=>{featuredOrder.set(r.id,-100);return load({...r,builtin:true,portraitUrl:r.portrait?'./gradient-assets/featured/cc-cyan-purple-pink/'+r.portrait.native:null,url:'./gradient-assets/featured/cc-cyan-purple-pink/'+encodeURIComponent(r.file),thumbUrl:'./gradient-assets/featured/cc-cyan-purple-pink/'+encodeURIComponent(r.thumb)});}));}catch{toast('CC 青紫粉图库加载失败');}}
-  if(reviewMode){try{
-   const response=await fetch('./gradient-assets/featured/candidates/manifest.json',{cache:'no-store'});if(!response.ok)throw new Error('Candidate library unavailable');
-   const records=await response.json();
-   await Promise.all(records.map(async r=>{try{if(!Object.hasOwn(reviews,r.id)&&r.defaultReview==='keep')reviews[r.id]='keep';featuredOrder.set(r.id,r.batchId==='intake-20261015'?-100:-50);await load({...r,candidate:true,builtin:true,url:'./gradient-assets/featured/candidates/'+encodeURIComponent(r.file),thumbUrl:'./gradient-assets/featured/candidates/'+encodeURIComponent(r.thumb),sourceImage:'./'+r.sourceImage});}catch{toast('候选图片加载失败：'+r.name);}}));
-  }catch{toast('待筛选图库加载失败，请检查本地文件');}}
+  const catalogs=[
+   ['./gradient-assets/featured/publisher/manifest.json',r=>({...r,builtin:true,url:'./gradient-assets/featured/publisher/'+encodeURIComponent(r.file),thumbUrl:'./gradient-assets/featured/publisher/'+encodeURIComponent(r.thumb||r.file)})],
+   ...(reviewMode?[
+    ['./gradient-assets/featured/promotions/manifest.json',r=>({...r,builtin:true,url:'./gradient-assets/featured/promotions/'+encodeURIComponent(r.file),thumbUrl:'./gradient-assets/featured/promotions/'+encodeURIComponent(r.thumb)})],
+    ['./gradient-assets/featured/cc-cyan-purple-pink/manifest.json',r=>({...r,builtin:true,portraitUrl:r.portrait?'./gradient-assets/featured/cc-cyan-purple-pink/'+r.portrait.native:null,url:'./gradient-assets/featured/cc-cyan-purple-pink/'+encodeURIComponent(r.file),thumbUrl:'./gradient-assets/featured/cc-cyan-purple-pink/'+encodeURIComponent(r.thumb)})],
+    ['./gradient-assets/featured/candidates/manifest.json',r=>({...r,candidate:true,builtin:true,url:'./gradient-assets/featured/candidates/'+encodeURIComponent(r.file),thumbUrl:'./gradient-assets/featured/candidates/'+encodeURIComponent(r.thumb),sourceImage:'./'+r.sourceImage})]
+   ]:[['./gradient-assets/featured/published/manifest.json',r=>({...r,candidate:true,builtin:true})]])
+  ];
+  const requestedAsset=new URLSearchParams(location.search).get('asset');
+  let initialSelection=null;
+  const showCatalog=()=>{
+   // Keep the existing stable sort; promote the requested/default image without
+   // waiting for old publisher images, another brand, or IndexedDB.
+   sync();
+   if(new URLSearchParams(location.search).get('featured')==='0'||state.featuredId||initialSelection)return;
+   const ordered=orderedAssets(),first=ordered.find(asset=>asset.id===requestedAsset)||ordered[0];
+   if(first){initialSelection=select(first);}
+  };
+  await Promise.all(catalogs.map(async([url,convert])=>{
+   try{
+    const records=await readCatalog(url);
+    for(const record of records){const asset=convert(record);if(asset.candidate)featuredOrder.set(asset.id,-100);if(reviewMode&&!Object.hasOwn(reviews,asset.id)&&asset.defaultReview==='keep')reviews[asset.id]='keep';await load(asset);}
+    // Public release catalog is the primary library; do not initially pick an
+    // old publisher image just because its manifest arrived first.
+    if(reviewMode||url.includes('/published/'))showCatalog();
+   }catch(error){console.warn(error);toast('部分图库清单加载失败，请刷新重试');}
+  }));
+  await load(builtin);showCatalog();
+  // Saved uploads are local-only; reading them does not hold up the initial gallery.
   try{
    db=await new Promise((resolve,reject)=>{const r=indexedDB.open('gradient-featured-v1',1);r.onupgradeneeded=()=>r.result.createObjectStore('images',{keyPath:'id'});r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});
    const records=await transaction('readonly',store=>store.getAll());
@@ -288,7 +356,8 @@
    for(const r of records){if(assets.has(r.id))continue;try{await load({...r,name:r.generatedName,url:URL.createObjectURL(r.blob)});}catch{}}
   }catch{}
   undoStack=undoStack.filter(entry=>isReviewable(assets.get(entry.id)));
-  const ordered=orderedAssets(),requestedAsset=new URLSearchParams(location.search).get('asset');
+  await initialSelection;
+  const ordered=orderedAssets();
   const first=ordered.find(asset=>asset.id===requestedAsset)||ordered[0];
   if(new URLSearchParams(location.search).get('featured')!=='0'&&!state.featuredId&&first)await select(first);else sync();
  }

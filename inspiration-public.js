@@ -14,7 +14,7 @@ function link(text, url) {
   return a;
 }
 function picture(src, title, eager = false) {
-  const img = el('img'); img.src = src; img.alt = title; img.loading = eager ? 'eager' : 'lazy'; img.decoding = 'async';
+  const img = el('img'); img.src = src; img.alt = title; img.loading = eager ? 'eager' : 'lazy'; img.decoding = 'async'; img.fetchPriority = eager ? 'high' : 'auto';
   img.addEventListener('error', () => img.replaceWith(el('span', 'inspo-image-error', '预览暂不可用，请打开来源查看')), { once: true });
   return img;
 }
@@ -29,10 +29,10 @@ function matchingSamples() {
   return featuredSamples().filter(s => (state.source === 'all' || state.source === 'Figma') &&
     (!state.search || s.title.toLowerCase().includes(state.search.toLowerCase())));
 }
-function sampleCard(sample) {
+function sampleCard(sample, eager = false) {
   const article = el('article', 'inspo-card'); article.dataset.sampleId = sample.id;
   const open = el('button', 'inspo-card-image'); open.type = 'button'; open.setAttribute('aria-label', `查看精选：${sample.title}`);
-  open.append(picture(sample.src, sample.title, true));
+  open.append(picture(sample.src, sample.title, eager));
   open.addEventListener('click', () => openSample(sample));
   const body = el('div', 'inspo-card-body'); const meta = el('div', 'inspo-card-meta');
   meta.append(link('Figma ↗', sample.url), el('span', 'inspo-featured-label', '精选'));
@@ -60,10 +60,10 @@ function renderCategories() {
   $('#inspo-total-count').textContent = state.data.items.length + featuredSamples('character-action').length;
 }
 
-function card(item) {
+function card(item, eager = false) {
   const article = el('article', 'inspo-card'); article.dataset.candidateId = item.id;
   const open = el('button', 'inspo-card-image'); open.type = 'button'; open.setAttribute('aria-label', `查看候选：${item.title}`);
-  open.append(picture(item.src, item.title, true), el('span', 'inspo-image-hint', '查看参考点 ↗')); open.addEventListener('click', () => openCandidate(item));
+  open.append(picture(item.previewSrc || item.src, item.title, eager), el('span', 'inspo-image-hint', '查看参考点 ↗')); open.addEventListener('click', () => openCandidate(item));
   const body = el('div', 'inspo-card-body'); const meta = el('div', 'inspo-card-meta'); meta.append(link(`${item.source} ↗`, item.sourceUrl));
   const tags = el('div', 'inspo-card-tags'); item.tags.forEach(t => tags.append(el('span', '', t)));
   const actions = el('div', 'inspo-card-actions'); const why = el('button', '', '参考详情 ↗'); why.type = 'button'; why.addEventListener('click', () => openCandidate(item)); actions.append(why);
@@ -75,7 +75,7 @@ function render() {
   const items = currentItems().filter(i => (state.source === 'all' || i.source === state.source) && (!state.search || [i.title, i.reason, ...i.tags].join(' ').toLowerCase().includes(state.search.toLowerCase())));
   $('#inspo-grid').dataset.inspoGridCategory = state.category;
   const samples = matchingSamples();
-  $('#inspo-grid').replaceChildren(...samples.map(sampleCard), ...items.map(card));
+  $('#inspo-grid').replaceChildren(...samples.map((sample,i) => sampleCard(sample,i<8)), ...items.map((item,i) => card(item,i+samples.length<8)));
   $('#inspo-result').textContent = `${category().name} · ${samples.length + items.length} 张参考${samples.length ? `（${samples.length} 张精选）` : ''}`;
   $('#inspo-empty').hidden = samples.length + items.length > 0;
   $('#inspo-empty-title').textContent = '暂无符合条件的参考';
